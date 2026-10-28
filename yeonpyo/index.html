@@ -1,0 +1,385 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>한국사 연표 암기장</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: 한 줄 세로 연표(세로 눈금선) 위에 학습 카드가 놓이는 단일 컬럼 앱 */
+:root{
+  --bg:#eef1f4; --paper:#ffffff; --ink:#18212b; --muted:#5b6876; --line:#cdd5dd;
+  --accent:#1d5f8a; --accent-soft:#dbe8f2; --seal:#b3362c; --good:#2b7a4b; --good-soft:#dcefe3; --bad-soft:#f6dedb;
+  --display:'Black Han Sans','Noto Sans KR',system-ui,sans-serif;
+  --body:'Noto Sans KR',system-ui,-apple-system,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11161c; --paper:#1a222b; --ink:#e7ecf1; --muted:#9aa7b4; --line:#2e3a46;
+  --accent:#6fb0dc; --accent-soft:#1e3242; --seal:#e0685d; --good:#6cc492; --good-soft:#18332a; --bad-soft:#3a2220; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11161c; --paper:#1a222b; --ink:#e7ecf1; --muted:#9aa7b4; --line:#2e3a46;
+  --accent:#6fb0dc; --accent-soft:#1e3242; --seal:#e0685d; --good:#6cc492; --good-soft:#18332a; --bad-soft:#3a2220; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55;margin:0}
+.wrap{max-width:640px;margin:0 auto;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:14px}
+h1{font-family:var(--display);font-weight:400;font-size:30px;line-height:1.1;margin:0;letter-spacing:.5px;text-wrap:balance}
+h1 small{display:block;font-family:var(--body);font-size:12px;font-weight:500;color:var(--muted);letter-spacing:.06em;margin-bottom:4px}
+.seal{flex:none;width:52px;height:52px;border:2.5px solid var(--seal);color:var(--seal);border-radius:6px;display:grid;place-items:center;font-family:var(--display);font-size:15px;line-height:1.05;text-align:center;transform:rotate(-6deg)}
+.label{font-size:11.5px;font-weight:700;letter-spacing:.08em;color:var(--muted);margin:14px 0 6px}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{font:inherit;font-size:14px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);padding:7px 12px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:16px;border:1.5px solid var(--ink);border-radius:10px;overflow:hidden}
+.tabs button{font:inherit;font-weight:700;font-size:14px;padding:10px 4px;border:0;border-right:1.5px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer}
+.tabs button:last-child{border-right:0}
+.tabs button[aria-selected="true"]{background:var(--accent);color:#fff}
+button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.panel{margin-top:16px}
+.hint{color:var(--muted);font-size:13.5px;margin:0 0 10px}
+.badge{display:inline-block;background:var(--bad-soft);color:var(--seal);font-size:11px;font-weight:700;border-radius:999px;padding:0 7px;margin-left:4px;vertical-align:2px}
+
+/* 연표 보기 */
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.btn{font:inherit;font-weight:700;font-size:14px;border:1.5px solid var(--ink);background:var(--paper);color:var(--ink);padding:9px 14px;border-radius:8px;cursor:pointer}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn:disabled{opacity:.4;cursor:default}
+ol.tl{list-style:none;margin:0;padding:0 0 0 18px;border-left:2px solid var(--line);position:relative}
+ol.tl li{position:relative;padding:7px 0 7px 14px}
+ol.tl li::before{content:"";position:absolute;left:-25px;top:15px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2.5px solid var(--accent)}
+ol.tl li.key::before{background:var(--seal);border-color:var(--seal)}
+.yr{font-family:var(--mono);font-weight:600;font-variant-numeric:tabular-nums;font-size:14px;color:var(--accent);display:inline-block;min-width:78px}
+.ev{font-weight:500}
+.note{display:block;font-size:12.5px;color:var(--muted)}
+.cover{display:inline-block;min-width:78px;height:20px;border-radius:4px;background:var(--line);vertical-align:-4px;cursor:pointer;border:0;padding:0}
+.cover.ev-c{min-width:150px}
+ol.tl li.yearhead::before{display:none}
+.yearhead{font-family:var(--display);font-size:18px;margin:14px 0 2px -18px;padding-left:4px;color:var(--ink)}
+
+/* 카드 공통 */
+.card{background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:16px}
+.score{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);margin-bottom:10px;font-variant-numeric:tabular-nums}
+.choices{display:grid;gap:8px}
+.choice{font:inherit;text-align:left;width:100%;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:12px 12px;cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.choice .n{flex:none;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--muted);display:grid;place-items:center;font-family:var(--mono);font-size:13px;font-weight:600}
+.choice.picked{border-color:var(--accent);background:var(--accent-soft)}
+.choice.picked .n{background:var(--accent);border-color:var(--accent);color:#fff}
+.choice.right{border-color:var(--good);background:var(--good-soft)}
+.choice.wrong{border-color:var(--seal);background:var(--bad-soft)}
+.choice .d{display:block;font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-top:2px}
+.result{margin-top:12px;padding:12px;border-radius:10px;font-size:14px}
+.result.ok{background:var(--good-soft)}
+.result.no{background:var(--bad-soft)}
+.result b{font-size:15px}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
+/* 먼저/나중 */
+.q{font-family:var(--display);font-size:20px;margin:0 0 12px;text-wrap:balance}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pair .choice{flex-direction:column;min-height:96px;justify-content:center;font-weight:500}
+@media (max-width:380px){.pair{grid-template-columns:1fr}}
+
+/* 오답 */
+.wl{list-style:none;padding:0;margin:0;display:grid;gap:6px}
+.wl li{background:var(--paper);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;gap:10px;align-items:baseline}
+.wl .cnt{margin-left:auto;font-size:12px;color:var(--seal);font-weight:700;white-space:nowrap}
+.empty{color:var(--muted);text-align:center;padding:28px 10px;border:1.5px dashed var(--line);border-radius:12px}
+footer{margin-top:28px;font-size:12px;color:var(--muted);text-align:center}
+@media (prefers-reduced-motion:no-preference){.choice{transition:background .15s,border-color .15s}}
+</style>
+
+<style>
+.gate{position:fixed;inset:0;background:var(--ink);display:flex;align-items:center;justify-content:center;z-index:20;padding:24px}
+.gate form{background:var(--paper);color:var(--ink);border-radius:18px;padding:28px 22px;width:100%;max-width:360px;display:flex;flex-direction:column;gap:14px;box-sizing:border-box;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.gate .seal{margin-bottom:4px}
+.gate h2{margin:0;font-family:var(--display);font-weight:400;font-size:24px}
+.gate p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.gate input{font:inherit;font-size:18px;padding:13px 15px;border:2px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink)}
+.gate input:focus{border-color:var(--accent);outline:none}
+.gate button{font:inherit;font-size:17px;font-weight:700;padding:14px;border-radius:12px;border:none;background:var(--accent);color:#fff;cursor:pointer}
+.gate .err{color:var(--seal);font-size:13px;min-height:1em}
+</style>
+<div class="gate" id="gate"><form id="gf"><div class="seal" aria-hidden="true">이경태<br>T</div><h2>한국사 연표 암기장</h2><p>이경태T 수강생 전용이에요.<br>선생님께 받은 입장 코드를 입력하세요.</p><input id="gc" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" inputmode="latin" placeholder="입장 코드" aria-label="입장 코드"><div class="err" id="ge"></div><button type="button" id="gb">입장하기</button></form></div>
+<div class="wrap">
+  <header>
+    <h1><small>한영외고 1학년 · 2학기 기말 1주차</small>한국사 연표 암기장</h1>
+    <div class="seal" aria-hidden="true">이경태<br>T</div>
+  </header>
+
+  <div class="label">범위</div>
+  <div class="seg" id="sets">
+    <button data-set="cold" aria-pressed="false">냉전 연표</button>
+    <button data-set="korea" aria-pressed="true">광복~정부 수립</button>
+    <button data-set="all" aria-pressed="false">전체</button>
+  </div>
+
+  <div class="tabs" role="tablist">
+    <button role="tab" data-tab="view" aria-selected="true">연표 가리기</button>
+    <button role="tab" data-tab="order" aria-selected="false">순서 맞추기</button>
+    <button role="tab" data-tab="ab" aria-selected="false">먼저? 나중?</button>
+    <button role="tab" data-tab="wrong" aria-selected="false">오답<span class="badge" id="wcount">0</span></button>
+  </div>
+
+  <section class="panel" id="p-view"></section>
+  <section class="panel" id="p-order" hidden></section>
+  <section class="panel" id="p-ab" hidden></section>
+  <section class="panel" id="p-wrong" hidden></section>
+
+  <footer>[ 한터&amp;SNT ] · 오답 기록은 이 기기에만 저장됩니다</footer>
+</div>
+
+<script>
+// d: 정렬용 날짜(YYYYMMDD), show: 화면 표시, key: 시험 핵심
+const COLD = [
+ {d:19470312,show:"1947.3",ev:"트루먼 독트린 발표",note:"냉전의 시작",key:1},
+ {d:19470605,show:"1947.6",ev:"마셜 계획(마셜 플랜) 발표",note:"유럽 부흥 경제 원조"},
+ {d:19470922,show:"1947.9",ev:"코민포름 결성",note:"소련이 마셜 계획에 대항해 만듦"},
+ {d:19480815,show:"1948.8",ev:"대한민국 정부 수립",note:"9월 북한 정권 수립"},
+ {d:19490125,show:"1949.1",ev:"코메콘(경제 상호 원조 회의) 창설",note:"소련 + 동유럽 경제 기구"},
+ {d:19490404,show:"1949.4",ev:"나토(NATO) 창설",note:"미국 + 서유럽 군사 기구"},
+ {d:19491001,show:"1949.10",ev:"중화 인민 공화국 수립",note:"마오쩌둥, 국민당은 타이완으로"},
+ {d:19500625,show:"1950.6",ev:"6·25 전쟁 발발",note:"아시아의 열전"},
+ {d:19540721,show:"1954",ev:"제네바 회담",note:"베트남 북위 17도선 분단"},
+ {d:19550418,show:"1955.4",ev:"반둥 회의(아시아·아프리카 회의)",note:"29개국, 평화 10원칙 → 제3세계"},
+ {d:19550514,show:"1955.5",ev:"바르샤바 조약 기구 창설",note:"반둥 회의 다음 달"},
+ {d:19640802,show:"1964",ev:"통킹만 사건",note:"미국, 베트남 전쟁 전면 개입"},
+ {d:19690725,show:"1969",ev:"닉슨 독트린 발표",note:"냉전 완화 → 베트남 철군, 중국과 관계 개선",key:1},
+ {d:19720221,show:"1972",ev:"닉슨 중국 방문",note:"수교는 아직!"},
+ {d:19790101,show:"1979",ev:"미·중 수교",note:"방중 7년 뒤"},
+ {d:19891202,show:"1989",ev:"몰타 회담",note:"냉전 종식 선언",key:1},
+ {d:19901003,show:"1990",ev:"독일 통일",note:""},
+ {d:19911226,show:"1991",ev:"소련 해체",note:"냉전 체제 완전 종료"}
+];
+const KOREA = [
+ {d:19440810,show:"1944.8",ev:"조선 건국 동맹 결성",note:"여운형, 국내 비밀 조직"},
+ {d:19450815,show:"1945.8",ev:"광복 · 조선 건국 준비 위원회 조직",note:"여운형 + 안재홍",key:1},
+ {d:19450906,show:"1945.9.6",ev:"조선 인민 공화국 선포",note:"미군 진주 직전 / 건준 지부 → 인민 위원회"},
+ {d:19450907,show:"1945.9.7",ev:"맥아더 포고령 발표",note:"38도선 이남 미군 통치"},
+ {d:19450909,show:"1945.9.9",ev:"미군 서울 진주, 군정 선포",note:"직접 통치, 총독부 체제·경찰 활용"},
+ {d:19450916,show:"1945.9.16",ev:"한국 민주당 창당",note:"송진우·김성수"},
+ {d:19450920,show:"1945.9.20",ev:"미군정청 설치",note:""},
+ {d:19451123,show:"1945.11",ev:"임시 정부 요인 개인 자격 귀국",note:"미군정이 임시 정부 불인정"},
+ {d:19451227,show:"1945.12",ev:"모스크바 3국 외상 회의",note:"임시 정부·미소 공위·최대 5년 신탁 통치",key:1},
+ {d:19460208,show:"1946.2",ev:"북조선 임시 인민 위원회 조직",note:"위원장 김일성"},
+ {d:19460305,show:"1946.3",ev:"북한의 토지 개혁",note:"무상 몰수·무상 분배"},
+ {d:19460320,show:"1946.3",ev:"제1차 미·소 공동 위원회",note:"서울 덕수궁 석조전 → 5월 무기 휴회",key:1},
+ {d:19460603,show:"1946.6",ev:"이승만 정읍 발언",note:"남한만이라도 임시 정부"},
+ {d:19460725,show:"1946.7",ev:"좌우 합작 운동(좌우 합작 위원회)",note:"여운형 + 김규식, 미군정 지원"},
+ {d:19461007,show:"1946.10",ev:"좌우 합작 7원칙 발표",note:"유상 매입·무상 분배"},
+ {d:19470222,show:"1947.2",ev:"북조선 인민 위원회 수립",note:""},
+ {d:19470521,show:"1947.5",ev:"제2차 미·소 공동 위원회",note:"결렬 → 유엔 이관"},
+ {d:19470719,show:"1947.7",ev:"여운형 암살",note:"좌우 합작 사실상 중단"},
+ {d:19471114,show:"1947.11",ev:"유엔 총회, 인구 비례 총선거 결의",note:"유엔 한국 임시 위원단 → 소련 입북 거부"},
+ {d:19480210,show:"1948.2.10",ev:"김구 「삼천만 동포에게 읍고함」",note:"소총회보다 먼저!"},
+ {d:19480226,show:"1948.2.26",ev:"유엔 소총회, 가능한 지역 총선거 결의",note:""},
+ {d:19480403,show:"1948.4.3",ev:"제주 4·3 사건",note:"단독 선거 반대"},
+ {d:19480419,show:"1948.4",ev:"남북 협상(평양 남북 연석 회의)",note:"김구·김규식, 4·3 이후"},
+ {d:19480510,show:"1948.5.10",ev:"5·10 총선거",note:"만 21세 이상 남녀, 의원 198명·임기 2년",key:1},
+ {d:19480717,show:"1948.7.17",ev:"제헌 헌법 공포",note:""},
+ {d:19480815,show:"1948.8.15",ev:"대한민국 정부 수립",note:"대통령 이승만·부통령 이시영",key:1},
+ {d:19480909,show:"1948.9.9",ev:"조선 민주주의 인민 공화국 수립",note:"수상 김일성"},
+ {d:19480922,show:"1948.9",ev:"반민족 행위 처벌법 제정",note:"북한 정권 수립보다 뒤"},
+ {d:19481019,show:"1948.10",ev:"여수·순천 10·19 사건",note:"제주도 출동 거부"},
+ {d:19490518,show:"1949.5",ev:"국회 프락치 사건",note:"반민 특위 탄압"},
+ {d:19490606,show:"1949.6.6",ev:"반민 특위 습격 사건",note:"6월 사건 ①"},
+ {d:19490621,show:"1949.6",ev:"농지 개혁법 제정",note:"6월 사건 ②"},
+ {d:19490626,show:"1949.6.26",ev:"김구 암살",note:"6월 사건 ③"},
+ {d:19491219,show:"1949.12",ev:"귀속 재산 처리법 제정",note:"농지 제외, 민간 불하"},
+ {d:19500310,show:"1950.3",ev:"농지 개혁법 개정안·시행령 통과",note:""},
+ {d:19500501,show:"1950.5",ev:"농지 개혁 본격 시행",note:"6·25 이전 → 급속한 공산화 저지"},
+ {d:19500625,show:"1950.6",ev:"6·25 전쟁 발발",note:""}
+];
+const SETS = {
+  cold: COLD.map((e,i)=>({...e,id:"c"+i})),
+  korea: KOREA.map((e,i)=>({...e,id:"k"+i}))
+};
+SETS.all = [...SETS.korea, ...SETS.cold.filter(e=>!["대한민국 정부 수립","6·25 전쟁 발발"].includes(e.ev))].sort((a,b)=>a.d-b.d);
+const BYID = {}; [...SETS.cold,...SETS.korea].forEach(e=>BYID[e.id]=e);
+
+let setName = "korea", tab = "view";
+const $ = s=>document.querySelector(s);
+const shuffle = a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const esc = s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+// 오답 저장 (이 기기에만)
+let WRONG = {};
+try{ WRONG = JSON.parse(localStorage.getItem("hy-wrong")||"{}")||{} }catch(e){ WRONG = {} }
+function saveWrong(){ try{ localStorage.setItem("hy-wrong",JSON.stringify(WRONG)) }catch(e){} $("#wcount").textContent = Object.keys(WRONG).length }
+function addWrong(ids){ ids.forEach(id=>WRONG[id]=(WRONG[id]||0)+1); saveWrong() }
+saveWrong();
+
+/* ---------- 연표 가리기 ---------- */
+let hideMode = "none"; const opened = new Set();
+function renderView(){
+  const list = SETS[setName];
+  let html = `<p class="hint">회색 칸을 누르면 하나씩 열립니다. 빨간 점은 시험 핵심 사건입니다.</p>
+  <div class="tools">
+    <button class="btn ${hideMode==='none'?'primary':''}" data-hide="none">모두 보기</button>
+    <button class="btn ${hideMode==='year'?'primary':''}" data-hide="year">연도 가리기</button>
+    <button class="btn ${hideMode==='ev'?'primary':''}" data-hide="ev">사건 가리기</button>
+  </div><ol class="tl">`;
+  let lastY = "";
+  list.forEach(e=>{
+    const y = String(e.d).slice(0,4);
+    if(y!==lastY){ html += `<li class="yearhead" style="padding:0">${y}</li>`; lastY = y }
+    const k = e.id;
+    const yr = (hideMode==="year" && !opened.has(k)) ? `<button class="cover" data-open="${k}" aria-label="연도 보기"></button>` : `<span class="yr">${esc(e.show)}</span>`;
+    const ev = (hideMode==="ev" && !opened.has(k)) ? `<button class="cover ev-c" data-open="${k}" aria-label="사건 보기"></button>` : `<span class="ev">${esc(e.ev)}</span>${e.note?`<span class="note">${esc(e.note)}</span>`:""}`;
+    html += `<li class="${e.key?'key':''}">${yr} ${ev}</li>`;
+  });
+  html += `</ol>`;
+  $("#p-view").innerHTML = html;
+}
+$("#p-view").addEventListener("click",ev=>{
+  const h = ev.target.closest("[data-hide]"); if(h){ hideMode = h.dataset.hide; opened.clear(); renderView(); return }
+  const o = ev.target.closest("[data-open]"); if(o){ opened.add(o.dataset.open); renderView() }
+});
+
+/* ---------- 순서 맞추기 ---------- */
+let ord = null, ordLevel = "hard", ordScore = {ok:0,total:0};
+function pickOrder(){
+  const list = SETS[setName];
+  let pool;
+  if(ordLevel==="hard"){ // 가까운 시기 5개 연속
+    const s = Math.floor(Math.random()*(list.length-5+1));
+    pool = list.slice(s,s+5);
+  } else {
+    pool = shuffle(list).slice(0,5);
+  }
+  // 같은 날짜 중복 제거 후 부족하면 다시
+  const ds = new Set(pool.map(e=>e.d)); if(ds.size<5) return pickOrder();
+  const items = shuffle(pool);
+  ord = {items, picked:[], done:false};
+}
+function renderOrder(){
+  if(!ord) pickOrder();
+  const lab = "가나다라마";
+  let html = `<p class="hint">일어난 순서대로 하나씩 누르세요. 다시 누르면 취소됩니다.</p>
+  <div class="tools"><button class="btn ${ordLevel==='hard'?'primary':''}" data-lv="hard">고난도 · 가까운 시기</button><button class="btn ${ordLevel==='easy'?'primary':''}" data-lv="easy">기본 · 전체 범위</button></div>
+  <div class="card"><div class="score"><span>순서 맞추기</span><span>맞힌 문제 ${ordScore.ok} / ${ordScore.total}</span></div><div class="choices">`;
+  const correct = [...ord.items].sort((a,b)=>a.d-b.d);
+  ord.items.forEach((e,i)=>{
+    const p = ord.picked.indexOf(i);
+    let cls = p>=0 ? "picked" : "";
+    if(ord.done){ cls = (correct[p]===e) ? "right" : "wrong" }
+    html += `<button class="choice ${cls}" data-pick="${i}" ${ord.done?'disabled':''}><span class="n">${p>=0?p+1:""}</span><span>(${lab[i]}) ${esc(e.ev)}${ord.done?`<span class="d">${esc(e.show)}</span>`:""}</span></button>`;
+  });
+  html += `</div>`;
+  if(ord.done){
+    const ok = ord.picked.every((idx,k)=>ord.items[idx]===correct[k]);
+    const ans = correct.map(e=>"("+lab[ord.items.indexOf(e)]+")").join(" → ");
+    html += `<div class="result ${ok?'ok':'no'}"><b>${ok?'정답입니다':'다시 확인하세요'}</b><br>정답 순서: ${ans}<br>${correct.map(e=>`<span class="d" style="font-family:var(--mono);font-size:12.5px">${esc(e.show)}</span> ${esc(e.ev)}`).join("<br>")}</div>
+    <div class="row"><button class="btn primary" data-next>다음 문제</button></div>`;
+  } else {
+    html += `<div class="row"><button class="btn primary" data-check ${ord.picked.length<5?'disabled':''}>채점하기</button><button class="btn" data-reset>다시 고르기</button><button class="btn" data-next>다른 문제</button></div>`;
+  }
+  html += `</div>`;
+  $("#p-order").innerHTML = html;
+}
+$("#p-order").addEventListener("click",ev=>{
+  const t = ev.target;
+  const lv = t.closest("[data-lv]"); if(lv){ ordLevel = lv.dataset.lv; ord=null; renderOrder(); return }
+  const pk = t.closest("[data-pick]");
+  if(pk && !ord.done){ const i = +pk.dataset.pick; const p = ord.picked.indexOf(i);
+    if(p>=0) ord.picked.splice(p,1); else if(ord.picked.length<5) ord.picked.push(i); renderOrder(); return }
+  if(t.closest("[data-reset]")){ ord.picked=[]; renderOrder(); return }
+  if(t.closest("[data-next]")){ ord=null; renderOrder(); return }
+  if(t.closest("[data-check]")){
+    ord.done = true; ordScore.total++;
+    const correct = [...ord.items].sort((a,b)=>a.d-b.d);
+    const ok = ord.picked.every((idx,k)=>ord.items[idx]===correct[k]);
+    if(ok) ordScore.ok++; else addWrong(ord.picked.filter((idx,k)=>ord.items[idx]!==correct[k]).map(idx=>ord.items[idx].id));
+    renderOrder();
+  }
+});
+
+/* ---------- 먼저? 나중? ---------- */
+let ab = null, abScore = {ok:0,total:0,streak:0};
+function pickAB(){
+  const list = SETS[setName];
+  let i, j, tries=0;
+  do{ i = Math.floor(Math.random()*list.length); j = i + (Math.random()<.5?-1:1)*(1+Math.floor(Math.random()*3)); tries++ }
+  while((j<0||j>=list.length||list[i].d===list[j].d) && tries<50);
+  if(j<0||j>=list.length) j = (i+1)%list.length;
+  const pair = shuffle([list[i],list[j]]);
+  ab = {pair, ask: Math.random()<.5 ? "먼저" : "나중에", chosen:null};
+}
+function renderAB(){
+  if(!ab) pickAB();
+  const [a,b] = ab.pair;
+  const target = ab.ask==="먼저" ? (a.d<b.d?a:b) : (a.d>b.d?a:b);
+  let html = `<p class="hint">가까운 시기의 두 사건이 나옵니다. 시험 직전에 빠르게 돌려 보세요.</p>
+  <div class="card"><div class="score"><span>연속 정답 ${abScore.streak}</span><span>${abScore.ok} / ${abScore.total}</span></div>
+  <p class="q">둘 중 <span style="color:var(--seal)">${ab.ask}</span> 일어난 사건은?</p><div class="pair">`;
+  ab.pair.forEach((e,i)=>{
+    let cls = "";
+    if(ab.chosen!==null){ cls = e===target ? "right" : (i===ab.chosen ? "wrong" : "") }
+    html += `<button class="choice ${cls}" data-ab="${i}" ${ab.chosen!==null?'disabled':''}><span>${esc(e.ev)}${ab.chosen!==null?`<span class="d">${esc(e.show)}</span>`:""}</span></button>`;
+  });
+  html += `</div>`;
+  if(ab.chosen!==null){
+    const ok = ab.pair[ab.chosen]===target;
+    const first = a.d<b.d?a:b, second = a.d<b.d?b:a;
+    html += `<div class="result ${ok?'ok':'no'}"><b>${ok?'정답':'오답'}</b><br>${esc(first.ev)} (${esc(first.show)}) → ${esc(second.ev)} (${esc(second.show)})${first.note||second.note?`<br><span style="color:var(--muted);font-size:13px">${esc([first.note,second.note].filter(Boolean).join(" / "))}</span>`:""}</div>
+    <div class="row"><button class="btn primary" data-abnext>다음</button></div>`;
+  }
+  html += `</div>`;
+  $("#p-ab").innerHTML = html;
+}
+$("#p-ab").addEventListener("click",ev=>{
+  const c = ev.target.closest("[data-ab]");
+  if(c && ab.chosen===null){
+    ab.chosen = +c.dataset.ab; const [a,b] = ab.pair;
+    const target = ab.ask==="먼저" ? (a.d<b.d?a:b) : (a.d>b.d?a:b);
+    abScore.total++;
+    if(ab.pair[ab.chosen]===target){ abScore.ok++; abScore.streak++ } else { abScore.streak=0; addWrong([a.id,b.id]) }
+    renderAB(); return }
+  if(ev.target.closest("[data-abnext]")){ ab=null; renderAB() }
+});
+
+/* ---------- 오답 ---------- */
+function renderWrong(){
+  const ids = Object.keys(WRONG).filter(id=>BYID[id]).sort((x,y)=>BYID[x].d-BYID[y].d);
+  if(!ids.length){ $("#p-wrong").innerHTML = `<div class="empty">아직 틀린 사건이 없습니다.<br>순서 맞추기나 먼저? 나중?에서 틀린 사건이 여기에 연표 순서로 모입니다.</div>`; return }
+  let html = `<p class="hint">틀린 사건을 연표 순서로 모았습니다. 숫자는 틀린 횟수입니다.</p><ul class="wl">`;
+  ids.forEach(id=>{ const e = BYID[id]; html += `<li><span class="yr">${esc(e.show)}</span><span><span class="ev">${esc(e.ev)}</span>${e.note?`<span class="note">${esc(e.note)}</span>`:""}</span><span class="cnt">${WRONG[id]}회</span></li>` });
+  html += `</ul><div class="row"><button class="btn" data-clear>오답 기록 지우기</button></div><div id="confirm"></div>`;
+  $("#p-wrong").innerHTML = html;
+}
+$("#p-wrong").addEventListener("click",ev=>{
+  if(ev.target.closest("[data-clear]")){ $("#confirm").innerHTML = `<div class="result no">기록을 모두 지울까요? <div class="row"><button class="btn primary" data-yes>지우기</button><button class="btn" data-no>취소</button></div></div>`; return }
+  if(ev.target.closest("[data-yes]")){ WRONG = {}; saveWrong(); renderWrong(); return }
+  if(ev.target.closest("[data-no]")){ $("#confirm").innerHTML = "" }
+});
+
+/* ---------- 탭·범위 ---------- */
+function render(){
+  ["view","order","ab","wrong"].forEach(t=>{ $("#p-"+t).hidden = t!==tab });
+  ({view:renderView,order:renderOrder,ab:renderAB,wrong:renderWrong})[tab]();
+}
+document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",()=>{
+  tab = b.dataset.tab; document.querySelectorAll(".tabs button").forEach(x=>x.setAttribute("aria-selected", x===b)); render();
+}));
+document.querySelectorAll("#sets button").forEach(b=>b.addEventListener("click",()=>{
+  setName = b.dataset.set; document.querySelectorAll("#sets button").forEach(x=>x.setAttribute("aria-pressed", x===b));
+  ord=null; ab=null; opened.clear(); render();
+}));
+render();
+</script>
+
+<script>
+(function(){
+const H=1418297543,K='lkt-yeonpyo-gate';
+const hash=s=>{let h=5381;for(const c of s.trim().toLowerCase())h=((h*33)^c.charCodeAt(0))>>>0;return h};
+const g=document.getElementById('gate');
+let ok=false;try{ok=localStorage.getItem(K)===String(H)}catch(e){}
+if(ok){g.hidden=true;return}
+const M={'ㅂ':'q','ㅈ':'w','ㄷ':'e','ㄱ':'r','ㅅ':'t','ㅛ':'y','ㅕ':'u','ㅑ':'i','ㅐ':'o','ㅔ':'p','ㅁ':'a','ㄴ':'s','ㅇ':'d','ㄹ':'f','ㅎ':'g','ㅗ':'h','ㅓ':'j','ㅏ':'k','ㅣ':'l','ㅋ':'z','ㅌ':'x','ㅊ':'c','ㅍ':'v','ㅠ':'b','ㅜ':'n','ㅡ':'m'};
+const norm=s=>[...String(s).replace(/\s+/g,'')].map(c=>M[c]||c).join('');
+const tryIn=()=>{const v=document.getElementById('gc').value;
+ if(hash(norm(v))===H||hash(v)===H){try{localStorage.setItem(K,String(H))}catch(e){} g.hidden=true}
+ else document.getElementById('ge').textContent='코드가 맞지 않아요. 영문 자판으로 입력했는지 확인해 주세요.'};
+document.getElementById('gb').addEventListener('click',tryIn);
+document.getElementById('gc').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();tryIn()}});
+document.getElementById('gf').addEventListener('submit',e=>{e.preventDefault();tryIn()});
+})();
+</script>
+</body></html>
