@@ -87,6 +87,7 @@ main.wrap{margin-top:-42px;display:flex;flex-direction:column;gap:12px;padding-b
 .next{width:100%;font:inherit;font-size:18px;font-weight:700;cursor:pointer;border:none;border-radius:18px;min-height:58px;background:var(--band);color:#fff;box-shadow:var(--shadow)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .next{background:var(--gold);color:#1C2747}}
 :root[data-theme="dark"] .next{background:var(--gold);color:#1C2747}
+.autobar{height:4px;background:var(--line);border-radius:4px;overflow:hidden}.autobar span{display:block;height:100%;background:var(--o);width:100%;transform-origin:left;animation:shrink linear forwards}@keyframes shrink{from{transform:scaleX(1)}to{transform:scaleX(0)}}
 .skip{font:inherit;font-size:14px;background:none;border:none;color:var(--muted);padding:6px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;align-self:center}
 .nav{display:flex;justify-content:space-between;gap:10px}
 .nav button{font:inherit;font-size:14px;font-weight:500;background:none;border:none;color:var(--muted);padding:8px 4px;cursor:pointer}
@@ -191,6 +192,7 @@ $('reg').innerHTML=ORDER.map((r,i)=>'<option value="'+r+'">'+(i+1)+'. '+r+' ('+C
 function inReg(f){return reg==='all'||f.reg===reg}
 function shuffleArr(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function build(){
+  clearTimeout(auto);
   list=shuffleArr(C.filter(f=>inReg(f)&&(!wrongOnly||st.wrong[f.ko])));
   pos=0;done=false;picked=null;right=0;tried=0;choices=null;paintBase();goRegion(true);render();
 }
@@ -227,14 +229,14 @@ function render(){
     if(!done){h+='<p class="target">'+f.ko+'<small>지도에서 누르세요</small></p>'}
     else{const ok=picked===f;h+='<p class="target">'+f.ko+'</p><div class="feedback '+(ok?'ok':'no')+'"><span class="st">'+(ok?'O':'X')+'</span><span>'+(ok?'정답이에요!':(picked?'아쉬워요. 누른 곳은 '+(picked.ko?picked.ko+josa(picked.ko,'이에요.','예요.'):'문제에 없는 지역이에요.'):'정답 위치를 확인하세요.'))+'<small>초록색이 '+f.ko+josa(f.ko,'이에요.','예요.')+'</small></span></div>'}
     card.innerHTML=h;
-    act.innerHTML=done?'<button class="next" id="nx">'+(pos+1<total?'다음 국가 →':'결과 보기')+'</button>':'<div style="display:flex;justify-content:center"><button class="skip" id="sk">모르겠어요 · 정답 보기</button></div>';
+    act.innerHTML=done?'':'<div style="display:flex;justify-content:center"><button class="skip" id="sk">모르겠어요 · 정답 보기</button></div>';
   }else{
     if(!choices){const same=C.filter(x=>x!==f&&x.reg===f.reg);const pool=shuffleArr(same.length>=3?same:C.filter(x=>x!==f));choices=shuffleArr([f,...pool.slice(0,3)])}
     h+='<p class="target" style="font-size:clamp(20px,6vw,26px)">'+(done?(picked===f?'정답이에요!':'정답은 '+f.ko):'노란색 나라의 이름은?')+'</p>';
     h+='<div class="choices">'+choices.map((c,i)=>'<button data-k="'+i+'" class="'+(done?(c===f?'right':(c===picked?'wrongpick':'')):'')+'"'+(done?' disabled':'')+'>'+c.ko+'</button>').join('')+'</div>';
     card.innerHTML=h;
     card.querySelectorAll('.choices button').forEach(b=>b.onclick=()=>answer(choices[+b.dataset.k]));
-    act.innerHTML=done?'<button class="next" id="nx">'+(pos+1<total?'다음 국가 →':'결과 보기')+'</button>':'';
+    act.innerHTML='';
   }
   if($('sk'))$('sk').onclick=()=>answer(null);
   if($('nx'))$('nx').onclick=next;
@@ -244,8 +246,9 @@ function showQuestionMap(){
   const f=list[pos];if(!f)return;
   if(mode==='name'){cls(f,'hint');focusOn(f)}
 }
+let auto=null;
 function answer(p){
-  if(done)return;const f=list[pos];picked=p;done=true;tried++;
+  if(done)return;clearTimeout(auto);const f=list[pos];picked=p;done=true;tried++;
   if(p===f){right++;if(wrongOnly)delete st.wrong[f.ko]}else st.wrong[f.ko]=1;
   save();
   gLand.selectAll('path').classed('hint',false);gDots.selectAll('.dotc').classed('hint',false);
@@ -254,8 +257,11 @@ function answer(p){
   drawLabels(ex);
   if(p!==f) focusOn(f);
   render();
+  const ms=p===f?900:2600;
+  const c=$('card');const bar=document.createElement('div');bar.className='autobar';bar.innerHTML='<span style="animation-duration:'+ms+'ms"></span>';c.appendChild(bar);
+  auto=setTimeout(next,ms);
 }
-function next(){pos++;done=false;picked=null;choices=null;showQuestionMap();if(mode==='find'&&pos<list.length)goRegion(true);render();window.scrollTo({top:0,behavior:'smooth'})}
+function next(){clearTimeout(auto);if(!done&&pos<list.length)return;pos++;done=false;picked=null;choices=null;showQuestionMap();if(mode==='find'&&pos<list.length)goRegion(true);render();window.scrollTo({top:0,behavior:'smooth'})}
 // map tap (find mode)
 svg.on('click',e=>{
   if(mode!=='find'||done||pos>=list.length)return;
