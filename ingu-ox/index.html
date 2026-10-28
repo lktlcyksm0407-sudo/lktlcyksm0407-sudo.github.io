@@ -1,0 +1,205 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"><title>세계의 인구 OX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: navy masthead band with controls; white question card overlaps it; big round O/X paddles below */
+:root{
+  --band:#1C2747; --band-ink:#FFFFFF; --band-soft:rgba(255,255,255,.14);
+  --bg:#F2F4F9; --surface:#FFFFFF; --ink:#16203A; --muted:#6A7389; --line:#E1E5EE;
+  --o:#2563EB; --o-soft:#E6EEFF; --x:#E0453A; --x-soft:#FDEBEA; --gold:#F5B731;
+  --display:"Black Han Sans","Noto Sans KR",sans-serif;
+  --sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --shadow:0 10px 30px rgba(22,32,58,.10),0 2px 6px rgba(22,32,58,.06);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --band:#141B30; --band-soft:rgba(255,255,255,.10);
+  --bg:#0E1322; --surface:#1A2238; --ink:#EEF1F8; --muted:#9AA3B8; --line:#2A3350;
+  --o:#6E9BFF; --o-soft:#1D2B52; --x:#FF7A70; --x-soft:#45201F; --gold:#F5C451;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --band:#141B30; --band-soft:rgba(255,255,255,.10);
+  --bg:#0E1322; --surface:#1A2238; --ink:#EEF1F8; --muted:#9AA3B8; --line:#2A3350;
+  --o:#6E9BFF; --o-soft:#1D2B52; --x:#FF7A70; --x-soft:#45201F; --gold:#F5C451;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-tap-highlight-color:transparent;letter-spacing:-.01em}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--band)}
+.band{background:var(--band);color:var(--band-ink);padding-bottom:64px}
+.wrap{max-width:620px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));box-sizing:border-box}
+.band .wrap{padding-block:18px 0;display:flex;flex-direction:column;gap:16px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:12px;min-width:0}
+.badge{flex:0 0 auto;width:48px;height:48px;border-radius:14px;background:var(--surface);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:20px;line-height:1;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.badge b{color:var(--o);font-weight:400}.badge i{color:var(--x);font-style:normal}
+.logo small{display:block;font-size:12px;opacity:.75;font-weight:500;letter-spacing:.02em}
+.logo h1{margin:2px 0 0;font-family:var(--display);font-weight:400;font-size:clamp(19px,5.4vw,24px);white-space:nowrap;letter-spacing:0;line-height:1.15}
+.score{flex:0 0 auto;text-align:center;background:var(--band-soft);border-radius:14px;padding:8px 12px;min-width:64px;font-variant-numeric:tabular-nums}
+.score span{display:block;font-size:11px;opacity:.8}
+.score strong{display:block;font-size:20px;font-weight:900;line-height:1.2}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+select,.chip{font:inherit;font-size:14px;font-weight:500;color:var(--band-ink);background:var(--band-soft);border:1px solid transparent;border-radius:999px;padding:9px 14px;min-height:40px;-webkit-appearance:none;appearance:none}
+select{flex:1 1 150px;min-width:0;padding-right:34px;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 18px) 52%,calc(100% - 13px) 52%;background-size:5px 5px;background-repeat:no-repeat}
+select option{color:#16203A;background:#fff}
+.chip{cursor:pointer;flex:0 0 auto}
+.chip[aria-pressed="true"]{background:var(--gold);color:#1C2747}
+.progress{height:6px;background:var(--band-soft);border-radius:6px;overflow:hidden}
+.progress span{display:block;height:100%;background:var(--gold);width:0;border-radius:6px;transition:width .3s}
+main.wrap{margin-top:-48px;display:flex;flex-direction:column;gap:16px;padding-block:0 24px}
+.card{background:var(--surface);border-radius:24px;padding:24px 22px 22px;display:flex;flex-direction:column;gap:16px;min-height:280px;box-shadow:var(--shadow)}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.no{font-family:var(--display);font-size:22px;color:var(--ink);letter-spacing:0}
+.no em{font-style:normal;font-size:13px;font-family:var(--sans);font-weight:700;color:var(--muted);margin-left:4px}
+.tag{background:var(--bg);border-radius:999px;padding:5px 11px;font-weight:500;font-size:12px;max-width:60%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.q{font-size:clamp(19px,5.1vw,22px);font-weight:500;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.result{margin-top:auto;border-radius:18px;padding:16px;display:flex;gap:14px;align-items:flex-start;animation:pop .28s ease-out}
+.result[data-k="O"]{background:var(--o-soft)} .result[data-k="X"]{background:var(--x-soft)}
+@keyframes pop{from{transform:translateY(8px);opacity:.4}to{transform:none;opacity:1}}
+.mark{flex:0 0 auto;width:52px;height:52px;display:grid;place-items:center;font-family:var(--display);font-size:30px;border-radius:50%;color:#fff;animation:stamp .35s cubic-bezier(.3,1.6,.5,1)}
+.result[data-k="O"] .mark{background:var(--o)} .result[data-k="X"] .mark{background:var(--x)}
+@keyframes stamp{from{transform:scale(.4) rotate(-20deg)}to{transform:none}}
+.verdict{font-weight:900;font-size:16px;margin:3px 0 6px}
+.verdict.ok{color:var(--o)} .verdict.no{color:var(--x)}
+.exp{font-size:15.5px;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.pad{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pad button{font-family:var(--display);font-size:52px;line-height:1;cursor:pointer;border:none;border-radius:24px;min-height:104px;color:#fff;box-shadow:var(--shadow);transition:transform .1s}
+#bO{background:var(--o)} #bX{background:var(--x)}
+.pad button:active{transform:scale(.96)}
+.next{width:100%;font:inherit;font-size:18px;font-weight:700;cursor:pointer;border:none;border-radius:20px;min-height:66px;background:var(--band);color:#fff;box-shadow:var(--shadow)}
+:root[data-theme="dark"] .next{background:var(--gold);color:#1C2747}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .next{background:var(--gold);color:#1C2747}}
+.nav{display:flex;justify-content:space-between;gap:10px}
+.nav button{font:inherit;font-size:14px;font-weight:500;background:none;border:none;color:var(--muted);padding:8px 4px;cursor:pointer}
+.nav button:disabled{opacity:.35}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.done{text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;flex:1}
+.done .big{font-family:var(--display);font-size:54px;font-variant-numeric:tabular-nums}
+.done p{margin:0;color:var(--muted)}
+.done .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.done .chip{background:var(--band);color:#fff}
+footer{font-size:12px;color:var(--muted);text-align:center}
+.gate{position:fixed;inset:0;background:var(--band);display:flex;align-items:center;justify-content:center;z-index:20;padding:24px}
+.gate form{background:var(--surface);color:var(--ink);border-radius:24px;padding:30px 24px;width:100%;max-width:360px;display:flex;flex-direction:column;gap:14px;box-sizing:border-box;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.gate .badge{width:56px;height:56px;font-size:24px;background:var(--bg);box-shadow:none}
+.gate h2{margin:0;font-family:var(--display);font-weight:400;font-size:24px}
+.gate p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.gate input{font:inherit;font-size:18px;padding:14px 16px;border:2px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink)}
+.gate input:focus{border-color:var(--o);outline:none}
+.gate button{font:inherit;font-size:17px;font-weight:700;padding:15px;border-radius:14px;border:none;background:var(--o);color:#fff;cursor:pointer}
+.gate .err{color:var(--x);font-size:13px;min-height:1em}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style><style>body{margin:0}:root{padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}</style></head><body>
+
+<div class="gate" id="gate"><form id="gf"><div class="badge" aria-hidden="true"><b>O</b><i>X</i></div><h2>세계의 인구 OX</h2><p>이경태T 수강생 전용이에요.<br>선생님께 받은 입장 코드를 입력하세요.</p><input id="gc" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" inputmode="latin" placeholder="입장 코드" aria-label="입장 코드"><div class="err" id="ge"></div><button type="button" id="gb">입장하기</button></form></div>
+<div class="band"><div class="wrap">
+  <div class="top">
+    <div class="logo"><div class="badge" aria-hidden="true"><b>O</b><i>X</i></div><div><small>이경태T · 세계시민과 지리 3주차</small><h1>세계의 인구 OX</h1></div></div>
+    <div class="score" id="score"></div>
+  </div>
+  <div class="controls">
+    <select id="sec" aria-label="단원 선택"></select>
+    <button class="chip" id="shuf" aria-pressed="false">섞기</button>
+    <button class="chip" id="wrong" aria-pressed="false">틀린 문제</button>
+  </div>
+  <div class="progress"><span id="bar"></span></div>
+</div></div>
+<main class="wrap">
+  <section class="card" id="card" aria-live="polite"></section>
+  <div id="actions"></div>
+  <div class="nav"><button id="prev">← 이전 문제</button><button id="reset">기록 초기화</button></div>
+  <footer>세계시민과 지리 · 세계의 인구 · 한터&amp;SNT</footer>
+</main>
+
+<script>
+const DATA = [{"n": 1, "sec": "세계의 인구 분포", "q": "최근에는 기후, 지형 등 자연적 요인이 사회·경제적 요인보다 인구 분포에 더 큰 영향을 준다.", "a": "X", "e": "최근에는 산업이 발달하고 일자리가 많은 곳으로 인구가 모이는 등 사회·경제적 요인의 영향이 더 커요."}, {"n": 2, "sec": "세계의 인구 분포", "q": "인구 부양력은 어떤 국가의 인구가 그 국가의 자원으로 생활할 수 있는 능력을 말한다.", "a": "O", "e": "개념서의 정의 그대로예요."}, {"n": 3, "sec": "세계의 인구 분포", "q": "동부 및 남부 아시아는 계절풍의 영향으로 벼농사가 발달하여 인구가 밀집해 있다.", "a": "O", "e": "여름 계절풍이 많은 비를 내려 벼농사가 발달 → 인구 부양력이 높아요."}, {"n": 4, "sec": "세계의 인구 분포", "q": "아프리카의 기니만 연안은 사막 기후가 나타나 인구가 희박하다.", "a": "X", "e": "기니만 연안은 계절풍의 영향으로 농업이 발달한 인구 밀집 지역이에요."}, {"n": 5, "sec": "세계의 인구 분포", "q": "서부 유럽과 북아메리카 동부는 산업과 도시가 발달하여 인구가 밀집해 있다.", "a": "O", "e": "산업 혁명 이후 공업·도시 발달 → 사회·경제적 요인에 의한 밀집 지역이에요."}, {"n": 6, "sec": "세계의 인구 분포", "q": "극지방과 사막, 산악 지역은 인구 희박 지역이다.", "a": "O", "e": "시베리아 북부, 캐나다 북부, 사하라·아라비아 사막, 티베트 고원 등이 대표적이에요."}, {"n": 7, "sec": "세계의 인구 분포", "q": "아마존 열대 우림 일대는 경제 활동이 어렵고 교통이 불편하여 인구가 희박하다.", "a": "O", "e": "기출 13번 ㄱ과 같은 내용이에요."}, {"n": 8, "sec": "세계의 인구 분포", "q": "교통과 기술이 발달하면서 거주에 불리한 지역으로는 거주지가 확산되지 않고 있다.", "a": "X", "e": "최근 교통과 기술의 발달로 거주에 불리한 지역까지 거주지가 확산되고 있어요."}, {"n": 9, "sec": "세계의 인구 분포", "q": "대륙별 인구수와 대륙별 인구 밀도의 순위는 모두 아시아가 1위이다.", "a": "O", "e": "인구수·인구 밀도·촌락 인구수 순서가 모두 아아유라앵오(아시아>아프리카>유럽>라틴 아메리카>앵글로아메리카>오세아니아)예요."}, {"n": 10, "sec": "세계의 인구 분포", "q": "대륙별 인구 밀도는 유럽이 아프리카보다 높다.", "a": "X", "e": "인구 밀도 순서는 아시아 > 아프리카 > 유럽 > 라틴 아메리카 > 앵글로아메리카 > 오세아니아예요."}, {"n": 11, "sec": "세계의 인구 분포", "q": "인도에서 북서부 지역은 평야 지역이므로 인구 밀도가 높다.", "a": "X", "e": "북서부는 평야지만 건조 기후라 벼농사를 비롯한 농업에 불리해 인구 밀도가 낮아요."}, {"n": 12, "sec": "세계의 인구 분포", "q": "인도에서 인구 밀도가 높은 곳은 북부·북동부의 평야 지역과 해안 지역이다.", "a": "O", "e": "갠지스강 유역의 힌두스탄 평원과 해안 평야에 인구가 밀집해요."}, {"n": 13, "sec": "인구 대국과 국제 이주", "q": "2023년에 인도가 중국을 추월하여 세계 인구 1위 국가가 되었다.", "a": "O", "e": "2026년 기준 인도 약 14억 5천만, 중국 약 14억 2천만 명이에요."}, {"n": 14, "sec": "인구 대국과 국제 이주", "q": "세계 인구 10위 이내 국가 중 아시아 계절풍 지대에 위치한 국가에는 인도, 중국, 인도네시아, 방글라데시 등이 있다.", "a": "O", "e": "쌀 → 높은 인구 부양력 → 인구가 많아요. 일본·베트남·필리핀도 인구 1억 명이 넘어요."}, {"n": 15, "sec": "인구 대국과 국제 이주", "q": "현재 세계 인구 10위 이내 국가 중 아프리카 국가는 나이지리아 1개국이다.", "a": "X", "e": "2025년 이후 에티오피아도 10위권에 들어 아프리카 국가는 나이지리아·에티오피아 2개국이에요(기출 26번 ㄹ)."}, {"n": 16, "sec": "인구 대국과 국제 이주", "q": "인도의 인구는 2060년경을 정점으로 점차 감소할 것으로 예상된다.", "a": "O", "e": "인구 성장률이 점차 낮아져 2060년을 정점으로 감소할 전망이에요."}, {"n": 17, "sec": "인구 대국과 국제 이주", "q": "인도는 앞으로 유소년층 인구 비율이 증가하고 노년층 인구 비율이 감소할 것으로 예상된다.", "a": "X", "e": "출생률 감소와 평균 수명 증가로 유소년층 비율은 감소, 노년층 비율은 증가할 전망이에요."}, {"n": 18, "sec": "인구 대국과 국제 이주", "q": "인도는 해외 이주자 수가 세계 1위인 국가이다.", "a": "O", "e": "인도 출신 해외 이주자는 약 1,850만 명(2024년)으로 세계 1위예요."}, {"n": 19, "sec": "인구 대국과 국제 이주", "q": "인도 출신 이주자가 가장 많이 거주하는 국가는 영국이다.", "a": "X", "e": "주요 거주지는 1위 아랍 에미리트, 2위 미국, 3위 사우디아라비아예요(각 약 310만, 310만, 250만 명)."}, {"n": 20, "sec": "인구 대국과 국제 이주", "q": "아랍 에미리트는 전체 인구 중 이주자 비율이 약 30% 정도이다.", "a": "X", "e": "전체 인구 약 940만 명 중 이주자가 약 830만 명으로 약 88%예요."}, {"n": 21, "sec": "인구 대국과 국제 이주", "q": "아랍 에미리트로 이주한 인도인은 대부분 건설업에 종사하는 남성 노동자여서 아랍 에미리트의 성비가 높다.", "a": "O", "e": "남성 노동력 유입 → 청장년층 성비가 매우 높아요."}, {"n": 22, "sec": "인구 대국과 국제 이주", "q": "카타르의 청장년층 성비가 높은 까닭은 여성의 해외 이주가 많기 때문이다.", "a": "X", "e": "인구의 80% 이상이 이주민이고, 대부분 건설업 등에 종사하는 남성 노동자가 유입되었기 때문이에요."}, {"n": 23, "sec": "인구 대국과 국제 이주", "q": "카타르 내 이주민의 출신국은 인도가 가장 많다.", "a": "O", "e": "인도 31.5% > 방글라데시 11.8% > 네팔 11.4% > 파키스탄 10.6% 순이에요."}, {"n": 24, "sec": "인구 대국과 국제 이주", "q": "카타르로 이주하는 노동자의 출신국은 대부분 유럽의 선진국이다.", "a": "X", "e": "대부분 아시아와 북부 아프리카의 저개발국 및 개발 도상국이에요. 카타르와 지리적으로 가깝고 이슬람 국가가 많아요."}, {"n": 25, "sec": "세계 인구 성장과 인구 증가율", "q": "세계 인구는 산업 혁명을 기점으로 급속히 증가하였다.", "a": "O", "e": "의료 기술 발달, 공공 위생 시설 개선으로 사망률이 급격히 감소했어요."}, {"n": 26, "sec": "세계 인구 성장과 인구 증가율", "q": "세계 인구가 두 배로 증가하는 데 걸린 시간은 점점 길어졌다.", "a": "X", "e": "약 100년(1850~1950) → 약 40년(1950~1990년경)으로 점점 짧아졌어요."}, {"n": 27, "sec": "세계 인구 성장과 인구 증가율", "q": "세계 인구는 2022년에 80억 명을 넘었으며, 2070년에는 약 103억 명에 이를 것으로 보인다.", "a": "O", "e": "국제 연합(2022) 전망이에요."}, {"n": 28, "sec": "세계 인구 성장과 인구 증가율", "q": "19세기부터 세계 인구가 급증한 주요 원인은 인구 부양력의 감소이다.", "a": "X", "e": "산업 혁명 이후 식량 생산·의료 발달로 인구 부양력이 증가했기 때문이에요(기출 13번 ㄴ)."}, {"n": 29, "sec": "세계 인구 성장과 인구 증가율", "q": "앞으로의 세계 인구 성장은 선진국이 주도할 것이다.", "a": "X", "e": "출생률이 높은 개발 도상국(특히 아프리카)이 주도해요."}, {"n": 30, "sec": "세계 인구 성장과 인구 증가율", "q": "인구 증가율은 자연적 증가율과 사회적 증가율을 더한 값이다.", "a": "O", "e": "인구 증가율 = 자연적 증가율 + 사회적 증가율(순이동률)"}, {"n": 31, "sec": "세계 인구 성장과 인구 증가율", "q": "자연적 증가율은 전입률에서 전출률을 뺀 값이다.", "a": "X", "e": "자연적 증가율 = 출생률 − 사망률. 전입률 − 전출률은 사회적 증가율이에요."}, {"n": 32, "sec": "세계 인구 성장과 인구 증가율", "q": "전체 인구 증가율이 자연적 증가율보다 높은 지역은 인구의 순유입이 나타난다.", "a": "O", "e": "사회적 증가율 = 전체 증가율 − 자연적 증가율 > 0 → 순유입이에요(기출 4번)."}, {"n": 33, "sec": "세계 인구 성장과 인구 증가율", "q": "사회적 증가율은 대체로 선진국은 마이너스, 개발 도상국은 플러스이다.", "a": "X", "e": "일자리를 찾아 개발 도상국에서 선진국으로 이동하므로 선진국은 플러스, 개발 도상국은 마이너스예요."}, {"n": 34, "sec": "세계 인구 성장과 인구 증가율", "q": "아시아가 세계 인구에서 차지하는 비중은 2070년에 현재보다 증가할 것이다.", "a": "X", "e": "아시아 비중은 59.4%(2021년)에서 감소하고, 아프리카 비중이 17.5%에서 약 31%로 늘어날 전망이에요(기출 26번 ㄱ)."}, {"n": 35, "sec": "합계 출산율과 자연 증가율", "q": "합계 출산율은 여성 1명이 가임 기간(15~49세) 동안 낳을 것으로 예상되는 평균 자녀 수이다.", "a": "O", "e": "개발 도상국일수록 높아요."}, {"n": 36, "sec": "합계 출산율과 자연 증가율", "q": "대륙별 합계 출산율은 아프리카가 1위, 유럽이 최하위이다.", "a": "O", "e": "아프리카 4.3명, 유럽 1.5명(2021년)이에요."}, {"n": 37, "sec": "합계 출산율과 자연 증가율", "q": "2015~2020년 대륙별 자연 증가율은 라틴 아메리카가 가장 높다.", "a": "X", "e": "2015~2020년은 아프리카(25.4‰)가 1위예요. 1950~1955년에는 라틴 아메리카(27.0‰)가 1위였어요."}, {"n": 38, "sec": "합계 출산율과 자연 증가율", "q": "1950~1955년에 비해 2015~2020년에 자연 증가율이 증가한 대륙은 아프리카뿐이다.", "a": "O", "e": "아프리카 21.3 → 25.4‰, 나머지 대륙은 모두 감소했어요."}, {"n": 39, "sec": "합계 출산율과 자연 증가율", "q": "2015~2020년 유럽은 사망률이 출생률보다 높아 인구의 자연적 감소가 나타났다.", "a": "O", "e": "유럽의 자연 증가율은 −0.6‰예요."}, {"n": 40, "sec": "합계 출산율과 자연 증가율", "q": "인구 대체 수준의 합계 출산율은 약 1.5명이다.", "a": "X", "e": "현재 인구 규모를 유지하는 인구 대체 수준은 약 2.1명이에요."}, {"n": 41, "sec": "합계 출산율과 자연 증가율", "q": "조출생률은 인구 1,000명당 출생아 수로, 단위는 ‰(퍼밀)이다.", "a": "O", "e": "1년간 총 출생아 수 ÷ 연앙 인구 × 1,000이에요."}, {"n": 42, "sec": "합계 출산율과 자연 증가율", "q": "조사망률은 의료 수준이 낮은 아프리카가 유럽보다 항상 높다.", "a": "X", "e": "유럽은 노인 비율이 가장 높아 조사망률이 매우 높아요. 사망률은 유럽 1위, 앵글로아메리카 2위예요."}, {"n": 43, "sec": "합계 출산율과 자연 증가율", "q": "조출생률(가로축)과 조사망률(세로축) 그래프에서 대각선보다 위에 있는 국가는 자연적 증가가 나타난다.", "a": "X", "e": "대각선 위는 조사망률 > 조출생률 → 자연적 감소예요."}, {"n": 44, "sec": "합계 출산율과 자연 증가율", "q": "일본, 독일 등은 조출생률이 낮고 조사망률이 높아 인구 변천 모형의 2단계에 해당한다.", "a": "X", "e": "일본·독일은 4단계 또는 5단계예요. 2~3단계는 니제르·나이지리아 등이에요."}, {"n": 45, "sec": "인구 변천 모형", "q": "인구 변천 모형은 출생률과 사망률의 변화를 산업화 과정과 연관시켜 일반화한 것이다.", "a": "O", "e": "인구의 자연적 증감을 토대로 인구 성장을 설명해요. 인구 이동은 고려하지 않아요."}, {"n": 46, "sec": "인구 변천 모형", "q": "1단계는 출생률과 사망률이 모두 높아 인구 성장이 정체된다.", "a": "O", "e": "고위 정체·다산다사 단계예요."}, {"n": 47, "sec": "인구 변천 모형", "q": "1단계에서는 사망률보다 출생률의 변동이 심하다.", "a": "X", "e": "1단계는 기근·질병·전쟁 등 외부 요인으로 사망률의 변동이 심해요."}, {"n": 48, "sec": "인구 변천 모형", "q": "2단계는 출생률이 여전히 높은 상태에서 사망률이 빠르게 감소하여 인구가 급증한다.", "a": "O", "e": "초기 팽창·다산소사, 인구 증가율이 가장 높아요."}, {"n": 49, "sec": "인구 변천 모형", "q": "2단계에서는 산아 제한 정책 등으로 출생률이 급격히 낮아진다.", "a": "X", "e": "출생률이 빠르게 감소하는 것은 3단계예요(기출 1번 ②)."}, {"n": 50, "sec": "인구 변천 모형", "q": "3단계는 여성의 사회 진출, 출산 억제 정책 등으로 출생률이 빠르게 감소한다.", "a": "O", "e": "후기 팽창·감산소사, 인구 성장 둔화 단계예요."}, {"n": 51, "sec": "인구 변천 모형", "q": "3단계에는 방추형 인구 피라미드가 나타난다.", "a": "X", "e": "방추형은 4~5단계(출생률이 매우 낮은 선진국)에 나타나요. 3단계는 피라미드형에서 종형으로 바뀌어 가요(기출 15번 ③)."}, {"n": 52, "sec": "인구 변천 모형", "q": "4단계에서는 사망률은 일정하고 출산 정책 등에 따라 출생률의 변동이 심하다.", "a": "O", "e": "저위 정체·소산소사, 인구 고령화가 심화돼요."}, {"n": 53, "sec": "인구 변천 모형", "q": "1단계와 4단계는 모두 출생률과 사망률이 비슷하여 인구 증가가 정체된 상태이다.", "a": "O", "e": "변동이 심한 것은 1단계 사망률, 4단계 출생률이에요."}, {"n": 54, "sec": "인구 변천 모형", "q": "5단계는 출생률이 사망률보다 낮아지는 단계로, 주로 사하라 이남 아프리카 국가가 해당한다.", "a": "X", "e": "5단계는 유럽, 일본, 우리나라 등 일부 선진국이에요."}, {"n": 55, "sec": "인구 변천 모형", "q": "인구의 자연 증가율은 3단계가 2단계보다 높다.", "a": "X", "e": "자연 증가율은 2단계가 가장 높아요."}, {"n": 56, "sec": "인구 변천 모형", "q": "현재 사하라 이남 아프리카의 많은 국가는 인구 변천 모형의 2단계에 해당한다.", "a": "O", "e": "출생률은 높고 사망률은 빠르게 낮아진 단계예요."}, {"n": 57, "sec": "인구 변천 모형", "q": "1단계는 4단계보다 국가 내 유소년층 인구 비율이 낮다.", "a": "X", "e": "1단계는 출생률이 매우 높아 유소년층 비율이 4단계보다 높아요(기출 22번 ②)."}, {"n": 58, "sec": "인구 변천 모형", "q": "인구 변천 모형에서 전체 인구수는 4단계가 2단계보다 많다.", "a": "O", "e": "2~3단계를 거치며 인구가 크게 늘어난 뒤 4단계에서 정체돼요."}, {"n": 59, "sec": "인구 구조 지표", "q": "유소년 부양비는 청장년층 인구에 대한 유소년층 인구의 비율이다.", "a": "O", "e": "유소년 부양비 = 유소년층 인구 ÷ 청장년층 인구 × 100"}, {"n": 60, "sec": "인구 구조 지표", "q": "노령화 지수는 청장년층 인구에 대한 노년층 인구의 비율이다.", "a": "X", "e": "노령화 지수 = 노년층 인구 ÷ 유소년층 인구 × 100. 청장년층 대비 노년층은 노년 부양비예요(기출 25번)."}, {"n": 61, "sec": "인구 구조 지표", "q": "총부양비는 유소년 부양비와 노년 부양비를 더한 값이다.", "a": "O", "e": "(유소년층 + 노년층) ÷ 청장년층 × 100"}, {"n": 62, "sec": "인구 구조 지표", "q": "노년층 비율이 가장 높은 유럽이 대륙별 총부양비 1위이다.", "a": "X", "e": "총부양비는 청장년층 비율과 반비례해요. 청장년층 비율이 가장 낮은 아프리카가 1위예요."}, {"n": 63, "sec": "인구 구조 지표", "q": "유소년 부양비, 노령화 지수, 총부양비, 노년 부양비 중 2가지를 알면 나머지를 모두 구할 수 있다.", "a": "O", "e": "예: 유소년 부양비 20, 노령화 지수 160 → 노년 부양비 32, 총부양비 52(기출 12번)."}, {"n": 64, "sec": "인구 구조 지표", "q": "유소년 부양비 40, 노년 부양비 10인 지역의 노령화 지수는 400이다.", "a": "X", "e": "노령화 지수 = 노년 부양비 ÷ 유소년 부양비 × 100 = 10 ÷ 40 × 100 = 25예요."}, {"n": 65, "sec": "인구 구조 지표", "q": "유소년 부양비 40, 노년 부양비 10인 지역의 유소년층 인구 비율은 약 26.7%이다.", "a": "O", "e": "청장년 100명 기준 유소년 40, 노년 10 → 40 ÷ 150 ≒ 26.7%예요."}, {"n": 66, "sec": "인구 구조 지표", "q": "노령화 지수가 100보다 작으면 노년층 인구가 유소년층 인구보다 많다.", "a": "X", "e": "노령화 지수 = 노년층 ÷ 유소년층 × 100이므로, 100보다 클 때 노년층이 더 많아요."}, {"n": 67, "sec": "인구 구조 지표", "q": "노년 부양비와 중위 연령은 선진국일수록 높다.", "a": "O", "e": "평균 수명이 길어 노년층 인구 비율이 높기 때문이에요."}, {"n": 68, "sec": "인구 구조 지표", "q": "개발 도상국은 총부양비 중 노년 부양비의 비중이 크다.", "a": "X", "e": "개발 도상국은 출생률이 높아 총부양비 중 유소년 부양비의 비중이 커요."}, {"n": 69, "sec": "인구 구조 지표", "q": "중위 연령은 전체 인구를 연령순으로 나열할 때 정중앙에 있는 사람의 연령이다.", "a": "O", "e": "고령화될수록 높아져요."}, {"n": 70, "sec": "인구 구조 지표", "q": "성비는 남자 100명당 여자의 수이다.", "a": "X", "e": "성비는 여자 100명당 남자의 수예요."}, {"n": 71, "sec": "인구 구조 지표", "q": "대체로 선진국은 여초 현상이 나타나며, 중국과 인도, 서남아시아 석유 부국은 성비가 높다.", "a": "O", "e": "선진국은 여성의 평균 수명이 길어 여초, 석유 부국은 남성 노동자 유입으로 성비가 높아요."}, {"n": 72, "sec": "인구 구조 지표", "q": "고령화 사회는 노년층 인구 비율이 7% 이상, 고령 사회는 14% 이상, 초고령 사회는 20% 이상이다.", "a": "O", "e": "우리나라는 2000년 고령화 사회, 2017년 고령 사회에 진입했어요."}, {"n": 73, "sec": "인구 구조 지표", "q": "2010년 우리나라는 노년층 인구 비율이 약 11%로 고령 사회에 해당하였다.", "a": "X", "e": "7% 이상 14% 미만이므로 고령화 사회예요(기출 2번 ㄷ)."}, {"n": 74, "sec": "인구 구조 지표", "q": "우리나라는 2020년부터 사망자 수가 출생아 수보다 많아 인구의 자연적 감소가 나타났다.", "a": "O", "e": "2010년에는 출생아 수가 훨씬 많아 자연적 증가였어요."}, {"n": 75, "sec": "인구 구조 지표", "q": "선진국은 개발 도상국보다 주로 3차 산업 종사자 비율이 높다.", "a": "O", "e": "산업별 인구 구조의 대표 특징이에요."}, {"n": 76, "sec": "인구 피라미드와 국가별 특성", "q": "인구 피라미드는 출생률과 사망률의 변화에 따라 피라미드형, 종형, 방추형으로 나뉜다.", "a": "O", "e": "피라미드형 → 종형 → 방추형 순으로 출생률 감소, 노년층 비율 증가예요."}, {"n": 77, "sec": "인구 피라미드와 국가별 특성", "q": "나이지리아는 1950년과 2021년 모두 피라미드형으로, 높은 출생률을 유지한 채 인구가 증가하였다.", "a": "O", "e": "형태는 크게 변하지 않고 전 연령층 인구가 빠르게 증가했어요."}, {"n": 78, "sec": "인구 피라미드와 국가별 특성", "q": "브라질은 1950년 종형에서 2021년 방추형으로 변화하였다.", "a": "X", "e": "브라질은 피라미드형 → 종형, 독일이 종형 → 방추형이에요."}, {"n": 79, "sec": "인구 피라미드와 국가별 특성", "q": "중위 연령은 독일 > 브라질 > 나이지리아 순으로 높다.", "a": "O", "e": "노년층 비율이 높을수록 중위 연령이 높아요."}, {"n": 80, "sec": "인구 피라미드와 국가별 특성", "q": "나이지리아·브라질·독일 중 3차 산업 종사자 비율은 브라질이 가장 높다.", "a": "X", "e": "3차 산업 비율은 독일 71.1% > 브라질 69.8% > 나이지리아 52.1%예요."}, {"n": 81, "sec": "인구 피라미드와 국가별 특성", "q": "나이지리아는 세 국가(나이지리아·브라질·독일) 중 1차 산업 종사자 비율이 가장 낮다.", "a": "X", "e": "나이지리아는 1차 산업 비율이 35.2%로 가장 높은 저개발국이에요."}, {"n": 82, "sec": "인구 피라미드와 국가별 특성", "q": "니제르는 독일보다 합계 출산율이 높고, 기아와 빈곤 등의 문제가 발생할 수 있다.", "a": "O", "e": "피라미드형 인구 구조의 니제르는 인구 과잉 문제가 나타나요(기출 14번)."}, {"n": 83, "sec": "인구 피라미드와 국가별 특성", "q": "니제르는 생산 연령 인구의 감소에 따른 노동력 부족이 예상된다.", "a": "X", "e": "노동력 부족은 저출산·고령화를 겪는 독일 같은 선진국의 문제예요(기출 14번 ④)."}, {"n": 84, "sec": "인구 문제와 대책", "q": "선진국은 낮은 출생률과 평균 수명 연장으로 저출산·고령화 문제가 발생한다.", "a": "O", "e": "노인 인구 부양 부담이 커져요."}, {"n": 85, "sec": "인구 문제와 대책", "q": "개발 도상국은 사망률이 빠르게 감소한 반면 출생률은 완만하게 감소하여 인구 과잉 문제가 발생한다.", "a": "O", "e": "높은 실업률, 급격한 도시화, 빈곤이 나타나요."}, {"n": 86, "sec": "인구 문제와 대책", "q": "노년 부양비가 높은 국가는 대부분 아프리카에 위치한다.", "a": "X", "e": "노년 부양비가 높은 국가는 대부분 유럽, 아시아에서는 일본이에요. 유소년 부양비가 높은 국가가 아프리카예요."}, {"n": 87, "sec": "인구 문제와 대책", "q": "유소년 부양비가 높은 국가는 산업의 중심이 1차 산업이며 대부분 저개발국이다.", "a": "O", "e": "출생률이 높아 유소년층 비율이 높아요."}, {"n": 88, "sec": "인구 문제와 대책", "q": "선진국의 인구 문제 해결 방안으로 출산 억제 정책이 필요하다.", "a": "X", "e": "선진국은 육아 시설 확충, 자녀 양육비 지원, 노년층 일자리 창출, 연금 제도 개선 등이 필요해요. 출산 억제는 개발 도상국의 대책이에요."}, {"n": 89, "sec": "인구 문제와 대책", "q": "개발 도상국은 지방 산업 단지 및 신도시 건설로 인구를 분산하는 정책을 펼친다.", "a": "O", "e": "대도시 집중을 완화하려는 정책이에요."}, {"n": 90, "sec": "인구 문제와 대책", "q": "스웨덴은 육아 휴직을 여성만 사용할 수 있게 하여 출생률을 높이려 하였다.", "a": "X", "e": "스웨덴은 남성의 육아 휴직 사용을 의무화했어요. 최대 480일 중 2개월은 남성이 의무적으로 사용해요."}, {"n": 91, "sec": "인구 문제와 대책", "q": "노년층 일자리 확충과 사회 보장 제도의 정비·강화는 고령화가 진행된 국가에 필요한 대책이다.", "a": "O", "e": "독일 등 방추형 인구 구조 국가의 대책이에요(기출 14번 ⑤)."}];
+const SECS = [...new Set(DATA.map(d=>d.sec))];
+const ROM=['1','2','3','4','5','6','7','8','9'];
+const KEY='lkt-ingu-ox-v1';
+let st={wrong:{},done:{}};
+try{const s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s&&s.wrong) st=s;}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const $=id=>document.getElementById(id);
+let list=[],pos=0,picked=null,shuffle=false,wrongOnly=false,section='all',right=0,tried=0;
+
+$('sec').innerHTML='<option value="all">전체 단원 ('+DATA.length+'문항)</option>'+
+  SECS.map((s,i)=>'<option value="'+i+'">'+ROM[i]+'. '+s+' ('+DATA.filter(d=>d.sec===s).length+')</option>').join('');
+
+function build(){
+  list=DATA.filter(d=>(section==='all'||d.sec===SECS[+section])&&(!wrongOnly||st.wrong[d.n]));
+  if(shuffle){for(let i=list.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[list[i],list[j]]=[list[j],list[i]]}}
+  pos=0;picked=null;right=0;tried=0;render();
+}
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function render(){
+  const total=list.length;
+  const nWrong=Object.keys(st.wrong).length;
+  $('score').innerHTML=tried?'<span>정답</span><strong>'+right+'/'+tried+'</strong>':'<span>틀린 문제</span><strong>'+nWrong+'</strong>';
+  $('bar').style.width=total?((pos+(picked?1:0))/total*100)+'%':'0';
+  $('prev').disabled=pos===0;
+  const card=$('card'),act=$('actions');
+  if(!total){
+    card.innerHTML='<div class="done"><div class="big">0</div><p>'+(wrongOnly?'틀린 문제가 없어요. 전체 문제로 돌아가 풀어 보세요.':'문제가 없어요.')+'</p></div>';
+    act.innerHTML='';return;
+  }
+  if(pos>=total){
+    card.innerHTML='<div class="done"><p>이번 회차 결과</p><div class="big">'+right+' / '+tried+'</div><p>틀린 문제는 자동으로 모아 두었어요.</p><div class="row"><button class="chip" id="again">처음부터 다시</button><button class="chip" id="gowrong">틀린 문제만 풀기</button></div></div>';
+    act.innerHTML='';
+    $('again').onclick=build;
+    $('gowrong').onclick=()=>{wrongOnly=true;$('wrong').setAttribute('aria-pressed','true');build()};
+    return;
+  }
+  const d=list[pos];
+  const si=SECS.indexOf(d.sec);
+  let h='<div class="meta"><span class="no">'+d.n+'<em>번</em></span><span class="tag">'+ROM[si]+'. '+esc(d.sec)+'</span></div><p class="q">'+esc(d.q)+'</p>';
+  if(picked){
+    const ok=picked===d.a;
+    h+='<div class="result" data-k="'+d.a+'"><div class="mark" aria-label="정답 '+d.a+'">'+d.a+'</div><div><p class="verdict '+(ok?'ok':'no')+'">'+(ok?'정답이에요!':'아쉬워요. 정답은 '+d.a)+'</p><p class="exp">'+esc(d.e||'옳은 설명이에요.')+'</p></div></div>';
+    act.innerHTML='<button class="next" id="nx">'+(pos+1<total?'다음 문제 →':'결과 보기')+'</button>';
+    $('nx').onclick=()=>{pos++;picked=null;render();window.scrollTo({top:0})};
+    $('nx').focus({preventScroll:true});
+  }else{
+    act.innerHTML='<div class="pad"><button id="bO" aria-label="O 맞다">O</button><button id="bX" aria-label="X 틀리다">X</button></div>';
+    $('bO').onclick=()=>answer('O');$('bX').onclick=()=>answer('X');
+  }
+  card.innerHTML=h;
+  const p=$('pos');
+}
+function answer(k){
+  const d=list[pos];picked=k;tried++;
+  if(k===d.a){right++; if(wrongOnly) delete st.wrong[d.n];}
+  else st.wrong[d.n]=1;
+  save();render();
+}
+$('sec').onchange=e=>{section=e.target.value;build()};
+$('shuf').onclick=e=>{shuffle=!shuffle;e.currentTarget.setAttribute('aria-pressed',shuffle);build()};
+$('wrong').onclick=e=>{wrongOnly=!wrongOnly;e.currentTarget.setAttribute('aria-pressed',wrongOnly);build()};
+$('prev').onclick=()=>{if(pos>0){pos--;picked=null;render()}};
+let armed=false;
+$('reset').onclick=e=>{const t=e.currentTarget;if(!armed){armed=true;t.textContent='한 번 더 누르면 초기화';setTimeout(()=>{armed=false;t.textContent='기록 초기화'},2500);return}
+  st={wrong:{},done:{}};save();armed=false;t.textContent='기록 초기화';wrongOnly=false;$('wrong').setAttribute('aria-pressed','false');build()};
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='SELECT'||e.target.tagName==='INPUT')return;
+  if(!picked&&(e.key==='o'||e.key==='O'))answer('O');
+  else if(!picked&&(e.key==='x'||e.key==='X'))answer('X');
+  else if(picked&&(e.key==='Enter'||e.key==='ArrowRight')){e.preventDefault();$('nx')&&$('nx').click()}
+});
+build();
+</script>
+<script>
+(function(){
+const H=1418297543,K='lkt-ingu-ox-gate';
+const hash=s=>{let h=5381;for(const c of s.trim().toLowerCase())h=((h*33)^c.charCodeAt(0))>>>0;return h};
+const g=document.getElementById('gate');
+let ok=false;try{ok=localStorage.getItem(K)===String(H)}catch(e){}
+if(ok){g.hidden=true;return}
+const M={'ㅂ':'q','ㅈ':'w','ㄷ':'e','ㄱ':'r','ㅅ':'t','ㅛ':'y','ㅕ':'u','ㅑ':'i','ㅐ':'o','ㅔ':'p','ㅁ':'a','ㄴ':'s','ㅇ':'d','ㄹ':'f','ㅎ':'g','ㅗ':'h','ㅓ':'j','ㅏ':'k','ㅣ':'l','ㅋ':'z','ㅌ':'x','ㅊ':'c','ㅍ':'v','ㅠ':'b','ㅜ':'n','ㅡ':'m'};
+const norm=s=>[...String(s).replace(/\s+/g,'')].map(c=>M[c]||c).join('');
+const tryIn=()=>{const v=document.getElementById('gc').value;
+ if(hash(norm(v))===H||hash(v)===H){try{localStorage.setItem(K,String(H))}catch(e){} g.hidden=true}
+ else document.getElementById('ge').textContent='코드가 맞지 않아요. 영문 자판으로 입력했는지 확인해 주세요.'};
+document.getElementById('gb').addEventListener('click',tryIn);
+document.getElementById('gc').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();tryIn()}});
+document.getElementById('gf').addEventListener('submit',e=>{e.preventDefault();tryIn()});
+})();
+</script>
+</body></html>
