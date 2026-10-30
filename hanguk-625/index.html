@@ -1,0 +1,197 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"><title>6·25 전쟁 빈칸</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+:root{
+  --band:#1C2747; --band-ink:#FFFFFF; --band-soft:rgba(255,255,255,.14);
+  --bg:#F2F4F9; --surface:#FFFFFF; --ink:#16203A; --muted:#6A7389; --line:#E1E5EE;
+  --o:#2563EB; --o-soft:#E6EEFF; --x:#E0453A; --x-soft:#FDEBEA; --gold:#F5B731;
+  --display:"Black Han Sans","Noto Sans KR",sans-serif;
+  --sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --shadow:0 10px 30px rgba(22,32,58,.10),0 2px 6px rgba(22,32,58,.06);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --band:#141B30; --band-soft:rgba(255,255,255,.10);
+  --bg:#0E1322; --surface:#1A2238; --ink:#EEF1F8; --muted:#9AA3B8; --line:#2A3350;
+  --o:#6E9BFF; --o-soft:#1D2B52; --x:#FF7A70; --x-soft:#45201F; --gold:#F5C451;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --band:#141B30; --band-soft:rgba(255,255,255,.10);
+  --bg:#0E1322; --surface:#1A2238; --ink:#EEF1F8; --muted:#9AA3B8; --line:#2A3350;
+  --o:#6E9BFF; --o-soft:#1D2B52; --x:#FF7A70; --x-soft:#45201F; --gold:#F5C451;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}
+html,body{min-height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-tap-highlight-color:transparent;letter-spacing:-.01em}
+:root{padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--band)}
+.band{background:var(--band);color:var(--band-ink);padding-bottom:64px}
+.wrap{max-width:620px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));box-sizing:border-box}
+.band .wrap{padding-block:18px 0;display:flex;flex-direction:column;gap:16px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:12px;min-width:0}
+.badge{flex:0 0 auto;width:48px;height:48px;border-radius:14px;background:var(--surface);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:17px;line-height:1;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.badge b{color:var(--o);font-weight:400}.badge i{color:var(--x);font-style:normal}
+.logo small{display:block;font-size:12px;opacity:.75;font-weight:500;letter-spacing:.02em}
+.logo h1{margin:2px 0 0;font-family:var(--display);font-weight:400;font-size:clamp(19px,5.4vw,24px);white-space:nowrap;letter-spacing:0;line-height:1.15}
+.score{flex:0 0 auto;text-align:center;background:var(--band-soft);border-radius:14px;padding:8px 12px;min-width:64px;font-variant-numeric:tabular-nums}
+.score span{display:block;font-size:11px;opacity:.8}
+.score strong{display:block;font-size:20px;font-weight:900;line-height:1.2}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+select,.chip{font:inherit;font-size:14px;font-weight:500;color:var(--band-ink);background:var(--band-soft);border:1px solid transparent;border-radius:999px;padding:9px 14px;min-height:40px;-webkit-appearance:none;appearance:none}
+select{flex:1 1 150px;min-width:0;padding-right:34px;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 18px) 52%,calc(100% - 13px) 52%;background-size:5px 5px;background-repeat:no-repeat}
+select option{color:#16203A;background:#fff}
+.chip{cursor:pointer;flex:0 0 auto}
+.chip[aria-pressed="true"]{background:var(--gold);color:#1C2747}
+.progress{height:6px;background:var(--band-soft);border-radius:6px;overflow:hidden}
+.progress span{display:block;height:100%;background:var(--gold);width:0;border-radius:6px;transition:width .3s}
+main.wrap{margin-top:-48px;display:flex;flex-direction:column;gap:16px;padding-block:0 24px}
+.card{background:var(--surface);border-radius:24px;padding:24px 22px 22px;display:flex;flex-direction:column;gap:16px;min-height:280px;box-shadow:var(--shadow)}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.no{font-family:var(--display);font-size:22px;color:var(--ink);letter-spacing:0}
+.no em{font-style:normal;font-size:13px;font-family:var(--sans);font-weight:700;color:var(--muted);margin-left:4px}
+.tag{background:var(--bg);border-radius:999px;padding:5px 11px;font-weight:500;font-size:12px;max-width:60%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.q{font-size:clamp(19px,5.1vw,22px);font-weight:500;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.result{margin-top:auto;border-radius:18px;padding:16px;display:flex;gap:14px;align-items:flex-start;animation:pop .28s ease-out}
+.result[data-k="O"]{background:var(--o-soft)} .result[data-k="X"]{background:var(--x-soft)}
+@keyframes pop{from{transform:translateY(8px);opacity:.4}to{transform:none;opacity:1}}
+.mark{flex:0 0 auto;width:52px;height:52px;display:grid;place-items:center;font-family:var(--display);font-size:30px;border-radius:50%;color:#fff;animation:stamp .35s cubic-bezier(.3,1.6,.5,1)}
+.result[data-k="O"] .mark{background:var(--o)} .result[data-k="X"] .mark{background:var(--x)}
+@keyframes stamp{from{transform:scale(.4) rotate(-20deg)}to{transform:none}}
+.verdict{font-weight:900;font-size:16px;margin:3px 0 6px}
+.verdict.ok{color:var(--o)} .verdict.no{color:var(--x)}
+.exp{font-size:15.5px;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.pad{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pad button{font-family:var(--display);font-size:52px;line-height:1;cursor:pointer;border:none;border-radius:24px;min-height:104px;color:#fff;box-shadow:var(--shadow);transition:transform .1s}
+#bO{background:var(--o)} #bX{background:var(--x)}
+.pad button:active{transform:scale(.96)}
+.next{width:100%;font:inherit;font-size:18px;font-weight:700;cursor:pointer;border:none;border-radius:20px;min-height:66px;background:var(--band);color:#fff;box-shadow:var(--shadow)}
+:root[data-theme="dark"] .next{background:var(--gold);color:#1C2747}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .next{background:var(--gold);color:#1C2747}}
+.nav{display:flex;justify-content:space-between;gap:10px}
+.nav button{font:inherit;font-size:14px;font-weight:500;background:none;border:none;color:var(--muted);padding:8px 4px;cursor:pointer}
+.nav button:disabled{opacity:.35}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.done{text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;flex:1}
+.done .big{font-family:var(--display);font-size:54px;font-variant-numeric:tabular-nums}
+.done p{margin:0;color:var(--muted)}
+.done .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.done .chip{background:var(--band);color:#fff}
+footer{font-size:12px;color:var(--muted);text-align:center}
+.gate{position:fixed;inset:0;background:var(--band);display:flex;align-items:center;justify-content:center;z-index:20;padding:24px}
+.gate form{background:var(--surface);color:var(--ink);border-radius:24px;padding:30px 24px;width:100%;max-width:360px;display:flex;flex-direction:column;gap:14px;box-sizing:border-box;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.gate .badge{width:56px;height:56px;font-size:24px;background:var(--bg);box-shadow:none}
+.gate h2{margin:0;font-family:var(--display);font-weight:400;font-size:24px}
+.gate p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.gate input{font:inherit;font-size:18px;padding:14px 16px;border:2px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink)}
+.gate input:focus{border-color:var(--o);outline:none}
+.gate button{font:inherit;font-size:17px;font-weight:700;padding:15px;border-radius:14px;border:none;background:var(--o);color:#fff;cursor:pointer}
+.gate .err{color:var(--x);font-size:13px;min-height:1em}
+.sh{margin:6px 0 0;font-size:15.5px;font-weight:900;color:var(--ink);background:var(--surface);border-left:5px solid var(--gold);border-radius:12px;padding:9px 14px;box-shadow:var(--shadow)}
+.it{background:var(--surface);border-radius:18px;padding:14px 16px;box-shadow:var(--shadow);font-size:16px;line-height:2.05;word-break:keep-all;overflow-wrap:anywhere}
+.it.dn{opacity:.6}
+.it p{margin:2px 0}.it img{display:block;max-width:100%;max-height:260px;margin:4px auto 6px;border-radius:8px}
+.ih{display:flex;justify-content:space-between;align-items:center;line-height:1.3;margin-bottom:4px}
+.nn{font-family:var(--display);font-size:18px;color:var(--muted)}
+.chk{font:inherit;font-size:12.5px;border:1.5px solid var(--line);background:none;color:var(--muted);border-radius:999px;padding:4px 10px;cursor:pointer}
+.chk[aria-pressed="true"]{background:var(--o);border-color:var(--o);color:#fff}
+.bl{font:inherit;font-weight:700;display:inline-block;vertical-align:baseline;border:none;border-bottom:2.5px solid var(--o);background:var(--o-soft);border-radius:6px 6px 0 0;padding:0 6px;margin:0 2px;line-height:1.5;cursor:pointer;color:transparent;min-height:1.5em}
+.bl span{visibility:hidden}.bl.open{color:var(--x);background:var(--x-soft);border-bottom-color:var(--x)}.bl.open span{visibility:visible}
+.pick{white-space:normal}.pick i{font-style:normal;color:var(--muted);margin:0 2px}
+.op{font:inherit;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:0 7px;line-height:1.55;cursor:pointer;margin:0 1px}
+.op.right{background:var(--o);border-color:var(--o);color:#fff;font-weight:700}.op.bad{background:var(--x);border-color:var(--x);color:#fff}
+.tw{overflow-x:auto;margin:4px 0}.tw table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.7}.tw th,.tw td{border:1px solid var(--line);padding:6px 8px;vertical-align:top}.tw th{background:var(--bg);white-space:nowrap}
+.empty{text-align:center;color:var(--muted);padding:30px 10px;line-height:1.8;background:var(--surface);border-radius:18px}
+.tip{font-size:12.5px;opacity:.85;margin:0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style></head><body>
+<div class="gate" id="gate"><form id="gf"><div class="badge" aria-hidden="true"><b>빈</b><i>칸</i></div><h2>6·25 전쟁 빈칸</h2><p>이경태T 수강생 전용이에요.<br>선생님께 받은 입장 코드를 입력하세요.</p><input id="gc" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" inputmode="latin" placeholder="입장 코드" aria-label="입장 코드"><div class="err" id="ge"></div><button type="button" id="gb">입장하기</button></form></div>
+<div class="band"><div class="wrap">
+  <div class="top">
+    <div class="logo"><div class="badge" aria-hidden="true"><b>빈</b><i>칸</i></div><div><small>이경태T · 한국사2 Ⅱ-2-1 교과서 빈칸 (2주차)</small><h1>6·25 전쟁 빈칸</h1></div></div>
+    <div class="score" id="score"></div>
+  </div>
+  <div class="controls">
+    <select id="sec" aria-label="단원 선택"></select>
+    <button class="chip" id="all" aria-pressed="false">정답 모두 보기</button>
+    <button class="chip" id="hide" aria-pressed="false">외운 문장 숨기기</button>
+  </div>
+  <div class="progress"><span id="bar"></span></div><p class="tip">빈칸을 누르면 정답이 보여요 · ( A / B )는 맞는 쪽을 눌러 보세요</p>
+</div></div>
+<main class="wrap">
+  <section id="list" style="display:flex;flex-direction:column;gap:12px"></section>
+  <div class="nav"><span></span><button id="reset">기록 초기화</button></div>
+  <footer>26 한영외고 1학년 2학기 기말고사 대비 · 한터&amp;SNT</footer>
+</main>
+<script>
+const DATA = [{"h": "전쟁의 기운이 감도는 한반도", "s": "전쟁의 기운이 감도는 한반도", "t": "1. 남북에 이념과 체제가 다른 정권이 각각 수립되면서 한반도는 냉전의 한가운데 서게 되었다. 남과 북은 {38도선*/휴전선}근처에서 잦은 군사적 충돌을 빚었다."}, {"h": "전쟁의 기운이 감도는 한반도", "s": "전쟁의 기운이 감도는 한반도", "t": "2. 남한의 후방 지역에서는 {좌익 유격대}가 활동하며 남한 사회에 혼란을 일으켰다. 남한은 {조선 경비대}를 {국군*/북한군}으로 개편하여 _국방력을 강화하고 좌익 유격대 토벌_에 나섰다."}, {"h": "전쟁의 기운이 감도는 한반도", "s": "전쟁의 기운이 감도는 한반도", "t": "3. _미군과 소련군이 한반도에서 철수한 상황_에서 북한은 {소련*/중국}으로부터 _전차와 비행기 등의 무기를 지원_받았으며 중국 내전에 참여하였던 {조선 의용군} 등을 {국군/북한군*}에 편입하였다."}, {"h": "전쟁의 기운이 감도는 한반도", "s": "전쟁의 기운이 감도는 한반도", "t": "4. 1950년대 초 _소련과 중국은 북한의 전쟁 계획에 동의하고 지원을 약속_하였다. 이 무렵 미국은 {애치슨 선언}을 발표하여 미국의 태평양 지역 방위선에서 {한국}을 제외하였다."}, {"h": "전쟁의 기운이 감도는 한반도", "s": "전쟁의 기운이 감도는 한반도", "img": "b1_0", "lines": [], "pre": "5."}, {"h": "전쟁의 기운이 감도는 한반도", "s": "전쟁의 기운이 감도는 한반도", "t": "· 애치슨 라인은 {미국*/소련} 국무 장관 애치슨이 선 언한 {미국*/소련}의 태평양 지역 방위선이며 여기서 {대한민국}과 {타이완}이 미국의 방위선에서 제외된 이는 한국이 외적의 침입을 받는 경우 스스로 방어해야 한다는 의미이다."}, {"h": "전쟁의 기운이 감도는 한반도", "s": "전쟁의 기운이 감도는 한반도", "t": "· 애치슨 선언은 {1950년 1월}로 {6.25} 전쟁 발발 이전에 발표되었다."}, {"h": "북한의 기습 남침으로 전면전이 발생하다", "s": "북한의 기습 남침으로 전면전이 발생하다", "t": "1. 1950년 6월 25일 새벽 북한군의 전면적인 {남침*/북침}으로 전쟁이 발발하였다."}, {"h": "북한의 기습 남침으로 전면전이 발생하다", "s": "북한의 기습 남침으로 전면전이 발생하다", "t": "2. 북한군은 개전 {3}일 만에 서울을 점령하였다. 그리고 남쪽으로 계속 밀고 내려와 {낙동강} 일대를 제외한 남한 대부분 지역을 장악하였다."}, {"h": "북한의 기습 남침으로 전면전이 발생하다", "s": "북한의 기습 남침으로 전면전이 발생하다", "t": "3. 전쟁 발발 직후 _유엔 안전 보장 이사회는 북한의 행위를 침략으로 규정_ 하고, 한국을 지원하기 위해 {유엔군} 파병을 결의하였다. 이에 따라 미국을 비롯하여 {16}개국으로 구성된 유엔군이 참전하였다. 국군과 유엔군은 {낙동강} 일대에 방어선을 구축하고 북한군을 저지하였다."}, {"h": "인천 상륙 작전과 중국군의 참전", "s": "인천 상륙 작전과 중국군의 참전", "t": "1. 반격에 나선 국군과 유엔군은 {인천 상륙 작전}에 성공하여 전세를 역전시킨 후 {서울}을 수복하였다. 이어 38도선을 넘어 {평양}을 점령하고 {압록강}까지 진격하였다. 국군과 유엔군이 북진하자 {소련/중국*}은 대규모 병력을 보내 북한을 지원하였다. {소련군/중국군*}의 참전으로 전세는 다시 역전 되었고 전쟁은 {국제전}의 양상을 띠게 되었다."}, {"h": "인천 상륙 작전과 중국군의 참전", "s": "인천 상륙 작전과 중국군의 참전", "t": "2. 국군과 유엔군은 북한 지역에서 철수하였고, 1951년 1월 서울을 다시 빼앗겼는데 이를 {1·4 후퇴}라고 한다. 하지만 전열을 가다듬은 국군과 유엔군은 {서울}을 되찾았으며, 이후 전선은 {38도선} 부근에서 교착 상태에 빠졌다."}, {"h": "정전 협정이 체결되다", "s": "정전 협정이 체결되다", "t": "1. 전쟁이 교착 상태에 빠지자 {미국/소련*}의 제의로 {정전 회담}이 {1951년 7월}에 시작되었다."}, {"h": "정전 협정이 체결되다", "s": "정전 협정이 체결되다", "t": "2. 정전 회담은 ① {군사 분계선 설정}과 ② {포로 송환 문제}로 어려움을 겪었다."}, {"h": "정전 협정이 체결되다", "s": "정전 협정이 체결되다", "t": "3. {중국과 북한*/유엔군}은 기존의 북위 38도선을 {중국과 북한/유엔군*}은 회담 당시 전투가 벌어지던 전선을 각각 군사 분계선으로 주장하였다."}, {"h": "정전 협정이 체결되다", "s": "정전 협정이 체결되다", "t": "4. 포로 송환 문제 역시 중국과 북한은 포로의 {본국 송환*/자유로운 선택}을 주장하고, 유엔군은 포로의 {본국 송환/자유로운 선택*}을 허용하자고 주장하며 대립하였다."}, {"h": "정전 협정이 체결되다", "s": "정전 협정이 체결되다", "t": "5. 정전 회담이 진행되는 동안에도 {38도선} 근처에서는 치열한 공방전이 벌어졌고 희생자는 더욱 늘어났다. 이승만 정부는 {북진 통일}을 주장하며 _정전을 반대_하고, 단독으로 반공 포로를 {석방}하여 협상을 어렵게 만들었다. 그러나 _미국으로부터_ {상호 방위 조약} _체결을 약속받 은 후 정전을 수용_하였다. 결국 2년여의 회담 끝에 정전 협정이 {1953년 7월}에 체결되었다."}, {"h": "정전 협정이 체결되다", "s": "정전 협정이 체결되다", "t": "6.한 개의 {군사 분계선}을 확정하고 쌍방이 이 선으로부터 각기 {2}km씩 후퇴하여 적대 군대 간에 한 개의 {비무장 지대}를 설정한다.\n위 사료는 {정전 협정문}의 1조 1항의 내용이다. 정전 협정문은 {영어}, {한국어}, {중국어}로 작성되었고 {유엔군}, {북한군}, {중국군} 사령관이 서명하였다. 전쟁 초기 국군의 작전 지휘권을 {유엔군 사령관}에 넘긴 남한은 정전 협정 당사자로 참여{하지 못하고*/하였고} _협정 내용을 준수한다는 입장_을 밝혔다. 정전 협정이 체결되면서 1953년 7월 27일 22시 기준 양측 군대가 대치하고 있는 전선을 경계로 {휴전선}이 설정되었다. 또한 휴전선의 남과 북 방향으로 각각 {2}km씩 {비무장 지대(DMZ)} 가 설치되어 이곳에서는 서로 적대 행위를 할 수 없게 하였다. 이로써 1945년 미국과 소련의 군사 분계선으로 설정되었던 북위 38도선 대신 {휴전선}이 남북한의 군사 분계선이 되었다."}, {"h": "6ㆍ25 전쟁의 피해와 영향", "s": "6ㆍ25 전쟁의 피해와 영향", "t": "1. 3년여 간의 전쟁으로 남과 북에서 {군인과 민간인*/군인만}을 합쳐 수백만 명이 희생되었고, 수많은 {전쟁고아}와 {이산가족}이 발생하였다. 남북한의 공장, 항구, 도로 등 상당 수의 산업 시설과 사회 기반 시설이 파괴되는 등 물적 피해도 컸다. 많은 사람이 고향을 떠나 이주하면서 _촌락이나 대가족 중심의 공동체적 사회 질서가 해체_되었다."}, {"h": "6ㆍ25 전쟁의 피해와 영향", "s": "6ㆍ25 전쟁의 피해와 영향", "t": "2. 전쟁으로 _남북한의 이념 대립은 물론 적대감도 더욱 깊어_졌다. 또한 전쟁과 분단으로 인한 상처는 남북한 모두에게 큰 고통을 주었다. _이산가족의 아픔_과 _민간인 학살 문제_, _귀환하지 못한 국군 포로 문제_ 등은 제대로 해결되지 못한 채 현재에 이르고 있다."}, {"h": "6ㆍ25 전쟁의 피해와 영향", "s": "6ㆍ25 전쟁의 피해와 영향", "t": "3. 한편 한국에 대한 미국의 정치적·경제적·군사적 영향력은 더욱 {커졌다.*/작아졌다.} 전쟁 중에 국군의 작전 지휘권이 {유엔군 사령관}에게 이관되었고, 전쟁 직후에 체결된 {한미 상호 방위 조약}에 따라 미군은 한국에서 {계속 주둔하게 되었다.*/철수 하게 되었다.}"}, {"h": "6ㆍ25 전쟁의 피해와 영향", "s": "6ㆍ25 전쟁의 피해와 영향", "t": "4. 6·25 전쟁에 군대를 파병한 중국은 북한에 대한 영향력이 {커졌다.*/작아졌다.} {일본}은 전쟁 기간에 {주권}을 회복하여 국제 사회에 {복귀}하였고, _6·25 전쟁 특수를 통해 경제 재건의 기회를 마련_하였다. 이후 _미국의 의도에 따라 아시아에서 공산주의의 확산을 막는_ {반공 거점 국가}로 자리 잡았다."}, {"h": "6ㆍ25 전쟁의 피해와 영향", "s": "6ㆍ25 전쟁의 피해와 영향", "t": "5. {거창 양민 학살 사건} 등 _국군에 의한 학살_도 벌어졌다. 국군이 북한군과 좌익 무장대를 토벌하는 과정에서 마을 주민까지 무차별 사살한 것이다. 북한군에 협력할 가능성이 있다는 이유만으로 {국민 보도 연맹원} 등이 집단 학살되었다."}, {"h": "6ㆍ25 전쟁의 피해와 영향", "s": "6ㆍ25 전쟁의 피해와 영향", "img": "b4_0", "lines": [], "pre": "6."}, {"h": "6·25 전쟁 연표", "s": "6·25 전쟁 연표", "t": "1950. 1. · 미국, {애치슨 선언} 발표 — 한반도를 미국의 태평양 방위선에서 제외"}, {"h": "6·25 전쟁 연표", "s": "6·25 전쟁 연표", "t": "1950. 6. · 북한의 {남침}(6. 25.) → {3}일 만에 서울 함락(6. 28.)"}, {"h": "6·25 전쟁 연표", "s": "6·25 전쟁 연표", "t": "1950. 7. · {16}개국으로 구성된 유엔군 참전 / 국군 {작전 지휘권}을 유엔군 사령관에게 이양"}, {"h": "6·25 전쟁 연표", "s": "6·25 전쟁 연표", "t": "1950. 7. · {노근리} 학살 사건 (인천 상륙 작전 이전)"}, {"h": "6·25 전쟁 연표", "s": "6·25 전쟁 연표", "t": "1950. 7.~8. · {국민 보도 연맹} 학살 사건 (인천 상륙 작전 이전)"}, {"h": "6·25 전쟁 연표", "s": "6·25 전쟁 연표", "t": "1950. 8. · 국군과 유엔군, {낙동강} 방어선 구축"}, {"h": "6·25 전쟁 연표", "s": "6·25 전쟁 연표", "t": "1950. 9. · {인천 상륙 작전}(9. 15.) → {서울 수복}(9. 28.)"}, {"h": "6·25 전쟁 연표", "s": "6·25 전쟁 연표", "t": "1950. 10. · 38도선 돌파(10. 1.) → {평양} 탈환(10. 19.)"}, {"h": "6·25 전쟁 연표", "s": "6·25 전쟁 연표", "t": "1950. 10. · {중국군} 참전(10. 19.) → 국제전 양상 ⚠ 압록강 진출보다 먼저!"}, {"h": "6·25 전쟁 연표", "s": "6·25 전쟁 연표", "t": "1950. 10. · 국군과 유엔군, {압록강}까지 진출(10. 26.)"}, {"h": "6·25 전쟁 연표", "s": "6·25 전쟁 연표", "t": "1950. 12. · {흥남} 철수"}, {"h": "6·25 전쟁 연표", "s": "6·25 전쟁 연표", "t": "1951. 1. · {1·4 후퇴} — 서울 다시 함락"}, {"h": "6·25 전쟁 연표", "s": "6·25 전쟁 연표", "t": "1951. 1. · {국민 방위군} 사건 (1·4 후퇴 이후)"}, {"h": "6·25 전쟁 연표", "s": "6·25 전쟁 연표", "t": "1951. 2. · {거창} 양민 학살 사건 (1·4 후퇴 이후)"}, {"h": "6·25 전쟁 연표", "s": "6·25 전쟁 연표", "t": "1951. 3. · 서울 재탈환 → {38도선} 부근에서 전선 교착"}, {"h": "6·25 전쟁 연표", "s": "6·25 전쟁 연표", "t": "1951. 7. · {소련}의 제의로 {정전 회담} 시작"}, {"h": "6·25 전쟁 연표", "s": "6·25 전쟁 연표", "t": "1953. 6. · 이승만의 {반공 포로} 석방 (정전 협정 직전)"}, {"h": "6·25 전쟁 연표", "s": "6·25 전쟁 연표", "t": "1953. 7. · {정전 협정} 체결(7. 27.)"}, {"h": "6·25 전쟁 연표", "s": "6·25 전쟁 연표", "t": "1953. 10. · {한미 상호 방위 조약} 체결 (정전 협정 이후, 미군 주둔의 근거)"}];
+const SECS=[...new Set(DATA.map(d=>d.h))];
+const ROM=['Ⅰ','Ⅱ','Ⅲ','Ⅳ','Ⅴ'];
+const KEY='hy-hist2-hanguk-625-v1';
+let st={done:{}};try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&s.done)st=s}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const $=id=>document.getElementById(id);
+let section='0',showAll=false,hideDone=false;
+$('sec').innerHTML=SECS.map((s,i)=>'<option value="'+i+'">'+(i+1)+'. '+s+' ('+DATA.filter(d=>d.h===s).length+')</option>').join('');
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function mk(t){
+  return esc(t).replace(/\{(.+?)\}/g,(m,x)=>{
+    if(x.includes('/')){
+      return '<span class="pick">( '+x.split('/').map(o=>{const ok=o.endsWith('*');o=o.replace(/\*$/,'');return '<button class="op'+(showAll&&ok?' right':'')+'" data-ok="'+(ok?1:0)+'">'+o+'</button>'}).join('<i>/</i>')+' )</span>';
+    }
+    return '<button class="bl'+(showAll?' open':'')+'" style="min-width:'+Math.max(2.5,x.length*0.95)+'em"><span>'+x+'</span></button>';
+  }).replace(/_(.+?)_/g,'<u>$1</u>').replace(/\n/g,'<br>');
+}
+function render(){
+  const items=DATA.map((d,i)=>[d,i]).filter(([d])=>d.h===SECS[+section]);
+  const nd=items.filter(([d,i])=>st.done[i]).length;
+  $('score').innerHTML='<span>외운 문장</span><strong>'+nd+'/'+items.length+'</strong>';
+  $('bar').style.width=(items.length?nd/items.length*100:0)+'%';
+  let h='',cur='',n=0;
+  items.forEach(([d,i])=>{
+    if(hideDone&&st.done[i])return;
+    if(d.s!==cur){cur=d.s;n=0;h+='<h3 class="sh">'+esc(d.s)+'</h3>'}
+    n++;
+    const num=(d.pre||((d.t||'').match(/^(\d+)\./)||[])[0]||'');
+    h+='<article class="it'+(st.done[i]?' dn':'')+'"><div class="ih"><span class="nn">'+num+'</span><button class="chk" data-i="'+i+'" aria-pressed="'+(st.done[i]?'true':'false')+'">'+(st.done[i]?'외웠어요 ✓':'외웠어요')+'</button></div>';
+    if(d.img)h+='<img src="img/'+d.img+'.jpg" alt="">'+(d.lines||[]).map(l=>'<p>'+mk(l)+'</p>').join('');
+    else if(d.tbl)h+='<div class="tw"><table>'+d.tbl.map((r,ri)=>'<tr>'+r.map(c=>(ri===0?'<th>':'<td>')+mk(c)+(ri===0?'</th>':'</td>')).join('')+'</tr>').join('')+'</table></div>';
+    else h+='<p>'+mk(d.t.replace(/^\d+\.\s*/,''))+'</p>';
+    h+='</article>';
+  });
+  if(!h)h='<div class="empty">이 단원의 문장을 모두 외웠어요! 👏<br>‘외운 문장 숨기기’를 끄면 다시 볼 수 있어요.</div>';
+  $('list').innerHTML=h;
+}
+$('list').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  if(b.classList.contains('bl'))b.classList.toggle('open');
+  else if(b.classList.contains('op')){b.classList.add(b.dataset.ok==='1'?'right':'bad');if(b.dataset.ok!=='1')setTimeout(()=>b.classList.remove('bad'),900)}
+  else if(b.classList.contains('chk')){const i=b.dataset.i;if(st.done[i])delete st.done[i];else st.done[i]=1;save();render()}
+});
+$('sec').onchange=e=>{section=e.target.value;window.scrollTo({top:0});render()};
+$('all').onclick=e=>{showAll=!showAll;e.currentTarget.setAttribute('aria-pressed',showAll);e.currentTarget.textContent=showAll?'모두 가리기':'정답 모두 보기';render()};
+$('hide').onclick=e=>{hideDone=!hideDone;e.currentTarget.setAttribute('aria-pressed',hideDone);render()};
+let armed=false;
+$('reset').onclick=e=>{const t=e.currentTarget;if(!armed){armed=true;t.textContent='한 번 더 누르면 초기화';setTimeout(()=>{armed=false;t.textContent='기록 초기화'},2500);return}
+ st={done:{}};save();armed=false;t.textContent='기록 초기화';render()};
+render();
+</script>
+<script>
+(function(){
+const H=1418297543,K='hy-hist2-hanguk-625-gate';
+const hash=s=>{let h=5381;for(const c of s.trim().toLowerCase())h=((h*33)^c.charCodeAt(0))>>>0;return h};
+const g=document.getElementById('gate');
+let ok=false;try{ok=localStorage.getItem(K)===String(H)}catch(e){}
+if(ok){g.hidden=true;return}
+const M={'ㅂ':'q','ㅈ':'w','ㄷ':'e','ㄱ':'r','ㅅ':'t','ㅛ':'y','ㅕ':'u','ㅑ':'i','ㅐ':'o','ㅔ':'p','ㅁ':'a','ㄴ':'s','ㅇ':'d','ㄹ':'f','ㅎ':'g','ㅗ':'h','ㅓ':'j','ㅏ':'k','ㅣ':'l','ㅋ':'z','ㅌ':'x','ㅊ':'c','ㅍ':'v','ㅠ':'b','ㅜ':'n','ㅡ':'m'};
+const norm=s=>[...String(s).replace(/\s+/g,'')].map(c=>M[c]||c).join('');
+const tryIn=()=>{const v=document.getElementById('gc').value;
+ if(hash(norm(v))===H||hash(v)===H){try{localStorage.setItem(K,String(H))}catch(e){} g.hidden=true}
+ else document.getElementById('ge').textContent='코드가 맞지 않아요. 영문 자판으로 입력했는지 확인해 주세요.'};
+document.getElementById('gb').addEventListener('click',tryIn);
+document.getElementById('gc').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();tryIn()}});
+document.getElementById('gf').addEventListener('submit',e=>{e.preventDefault();tryIn()});
+})();
+</script>
+</body></html>
