@@ -1,0 +1,194 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"><title>세계 대전 암기 노트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+:root{
+  --band:#1C2747; --band-ink:#FFFFFF; --band-soft:rgba(255,255,255,.14);
+  --bg:#F2F4F9; --surface:#FFFFFF; --ink:#16203A; --muted:#6A7389; --line:#E1E5EE;
+  --o:#2563EB; --o-soft:#E6EEFF; --x:#E0453A; --x-soft:#FDEBEA; --gold:#F5B731;
+  --display:"Black Han Sans","Noto Sans KR",sans-serif;
+  --sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --shadow:0 10px 30px rgba(22,32,58,.10),0 2px 6px rgba(22,32,58,.06);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --band:#141B30; --band-soft:rgba(255,255,255,.10);
+  --bg:#0E1322; --surface:#1A2238; --ink:#EEF1F8; --muted:#9AA3B8; --line:#2A3350;
+  --o:#6E9BFF; --o-soft:#1D2B52; --x:#FF7A70; --x-soft:#45201F; --gold:#F5C451;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --band:#141B30; --band-soft:rgba(255,255,255,.10);
+  --bg:#0E1322; --surface:#1A2238; --ink:#EEF1F8; --muted:#9AA3B8; --line:#2A3350;
+  --o:#6E9BFF; --o-soft:#1D2B52; --x:#FF7A70; --x-soft:#45201F; --gold:#F5C451;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}
+html,body{min-height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-tap-highlight-color:transparent;letter-spacing:-.01em}
+:root{padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--band)}
+.band{background:var(--band);color:var(--band-ink);padding-bottom:64px}
+.wrap{max-width:620px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));box-sizing:border-box}
+.band .wrap{padding-block:18px 0;display:flex;flex-direction:column;gap:16px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:12px;min-width:0}
+.badge{flex:0 0 auto;width:48px;height:48px;border-radius:14px;background:var(--surface);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:17px;line-height:1;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.badge b{color:var(--o);font-weight:400}.badge i{color:var(--x);font-style:normal}
+.logo small{display:block;font-size:12px;opacity:.75;font-weight:500;letter-spacing:.02em}
+.logo h1{margin:2px 0 0;font-family:var(--display);font-weight:400;font-size:clamp(19px,5.4vw,24px);white-space:nowrap;letter-spacing:0;line-height:1.15}
+.score{flex:0 0 auto;text-align:center;background:var(--band-soft);border-radius:14px;padding:8px 12px;min-width:64px;font-variant-numeric:tabular-nums}
+.score span{display:block;font-size:11px;opacity:.8}
+.score strong{display:block;font-size:20px;font-weight:900;line-height:1.2}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+select,.chip{font:inherit;font-size:14px;font-weight:500;color:var(--band-ink);background:var(--band-soft);border:1px solid transparent;border-radius:999px;padding:9px 14px;min-height:40px;-webkit-appearance:none;appearance:none}
+select{flex:1 1 150px;min-width:0;padding-right:34px;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 18px) 52%,calc(100% - 13px) 52%;background-size:5px 5px;background-repeat:no-repeat}
+select option{color:#16203A;background:#fff}
+.chip{cursor:pointer;flex:0 0 auto}
+.chip[aria-pressed="true"]{background:var(--gold);color:#1C2747}
+.progress{height:6px;background:var(--band-soft);border-radius:6px;overflow:hidden}
+.progress span{display:block;height:100%;background:var(--gold);width:0;border-radius:6px;transition:width .3s}
+main.wrap{margin-top:-48px;display:flex;flex-direction:column;gap:16px;padding-block:0 24px}
+.card{background:var(--surface);border-radius:24px;padding:24px 22px 22px;display:flex;flex-direction:column;gap:16px;min-height:280px;box-shadow:var(--shadow)}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.no{font-family:var(--display);font-size:22px;color:var(--ink);letter-spacing:0}
+.no em{font-style:normal;font-size:13px;font-family:var(--sans);font-weight:700;color:var(--muted);margin-left:4px}
+.tag{background:var(--bg);border-radius:999px;padding:5px 11px;font-weight:500;font-size:12px;max-width:60%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.q{font-size:clamp(19px,5.1vw,22px);font-weight:500;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.result{margin-top:auto;border-radius:18px;padding:16px;display:flex;gap:14px;align-items:flex-start;animation:pop .28s ease-out}
+.result[data-k="O"]{background:var(--o-soft)} .result[data-k="X"]{background:var(--x-soft)}
+@keyframes pop{from{transform:translateY(8px);opacity:.4}to{transform:none;opacity:1}}
+.mark{flex:0 0 auto;width:52px;height:52px;display:grid;place-items:center;font-family:var(--display);font-size:30px;border-radius:50%;color:#fff;animation:stamp .35s cubic-bezier(.3,1.6,.5,1)}
+.result[data-k="O"] .mark{background:var(--o)} .result[data-k="X"] .mark{background:var(--x)}
+@keyframes stamp{from{transform:scale(.4) rotate(-20deg)}to{transform:none}}
+.verdict{font-weight:900;font-size:16px;margin:3px 0 6px}
+.verdict.ok{color:var(--o)} .verdict.no{color:var(--x)}
+.exp{font-size:15.5px;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.pad{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pad button{font-family:var(--display);font-size:52px;line-height:1;cursor:pointer;border:none;border-radius:24px;min-height:104px;color:#fff;box-shadow:var(--shadow);transition:transform .1s}
+#bO{background:var(--o)} #bX{background:var(--x)}
+.pad button:active{transform:scale(.96)}
+.next{width:100%;font:inherit;font-size:18px;font-weight:700;cursor:pointer;border:none;border-radius:20px;min-height:66px;background:var(--band);color:#fff;box-shadow:var(--shadow)}
+:root[data-theme="dark"] .next{background:var(--gold);color:#1C2747}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .next{background:var(--gold);color:#1C2747}}
+.nav{display:flex;justify-content:space-between;gap:10px}
+.nav button{font:inherit;font-size:14px;font-weight:500;background:none;border:none;color:var(--muted);padding:8px 4px;cursor:pointer}
+.nav button:disabled{opacity:.35}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.done{text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;flex:1}
+.done .big{font-family:var(--display);font-size:54px;font-variant-numeric:tabular-nums}
+.done p{margin:0;color:var(--muted)}
+.done .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.done .chip{background:var(--band);color:#fff}
+footer{font-size:12px;color:var(--muted);text-align:center}
+.gate{position:fixed;inset:0;background:var(--band);display:flex;align-items:center;justify-content:center;z-index:20;padding:24px}
+.gate form{background:var(--surface);color:var(--ink);border-radius:24px;padding:30px 24px;width:100%;max-width:360px;display:flex;flex-direction:column;gap:14px;box-sizing:border-box;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.gate .badge{width:56px;height:56px;font-size:24px;background:var(--bg);box-shadow:none}
+.gate h2{margin:0;font-family:var(--display);font-weight:400;font-size:24px}
+.gate p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.gate input{font:inherit;font-size:18px;padding:14px 16px;border:2px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink)}
+.gate input:focus{border-color:var(--o);outline:none}
+.gate button{font:inherit;font-size:17px;font-weight:700;padding:15px;border-radius:14px;border:none;background:var(--o);color:#fff;cursor:pointer}
+.gate .err{color:var(--x);font-size:13px;min-height:1em}
+.sh{margin:6px 0 0;font-size:15.5px;font-weight:900;color:var(--ink);background:var(--surface);border-left:5px solid var(--gold);border-radius:12px;padding:9px 14px;box-shadow:var(--shadow)}
+.it{background:var(--surface);border-radius:18px;padding:14px 16px;box-shadow:var(--shadow);font-size:16px;line-height:2.05;word-break:keep-all;overflow-wrap:anywhere}
+.it.dn{opacity:.6}
+.it p{margin:2px 0}.it img{display:block;max-width:100%;max-height:260px;margin:4px auto 6px;border-radius:8px}
+.ih{display:flex;justify-content:space-between;align-items:center;line-height:1.3;margin-bottom:4px}
+.nn{font-family:var(--display);font-size:18px;color:var(--muted)}
+.chk{font:inherit;font-size:12.5px;border:1.5px solid var(--line);background:none;color:var(--muted);border-radius:999px;padding:4px 10px;cursor:pointer}
+.chk[aria-pressed="true"]{background:var(--o);border-color:var(--o);color:#fff}
+.bl{font:inherit;font-weight:700;display:inline-block;vertical-align:baseline;border:none;border-bottom:2.5px solid var(--o);background:var(--o-soft);border-radius:6px 6px 0 0;padding:0 6px;margin:0 2px;line-height:1.5;cursor:pointer;color:transparent;min-height:1.5em}
+.bl span{visibility:hidden}.bl.open{color:var(--x);background:var(--x-soft);border-bottom-color:var(--x)}.bl.open span{visibility:visible}
+.pick{white-space:normal}.pick i{font-style:normal;color:var(--muted);margin:0 2px}
+.op{font:inherit;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:0 7px;line-height:1.55;cursor:pointer;margin:0 1px}
+.op.right{background:var(--o);border-color:var(--o);color:#fff;font-weight:700}.op.bad{background:var(--x);border-color:var(--x);color:#fff}
+.empty{text-align:center;color:var(--muted);padding:30px 10px;line-height:1.8;background:var(--surface);border-radius:18px}
+.tip{font-size:12.5px;opacity:.85;margin:0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style></head><body>
+<div class="gate" id="gate"><form id="gf"><div class="badge" aria-hidden="true"><b>암</b><i>기</i></div><h2>세계 대전 암기 노트</h2><p>이경태T 수강생 전용이에요.<br>선생님께 받은 입장 코드를 입력하세요.</p><input id="gc" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" inputmode="latin" placeholder="입장 코드" aria-label="입장 코드"><div class="err" id="ge"></div><button type="button" id="gb">입장하기</button></form></div>
+<div class="band"><div class="wrap">
+  <div class="top">
+    <div class="logo"><div class="badge" aria-hidden="true"><b>암</b><i>기</i></div><div><small>이경태T · 중학교 역사① Ⅵ-1</small><h1>세계 대전 암기 노트</h1></div></div>
+    <div class="score" id="score"></div>
+  </div>
+  <div class="controls">
+    <select id="sec" aria-label="단원 선택"></select>
+    <button class="chip" id="all" aria-pressed="false">정답 모두 보기</button>
+    <button class="chip" id="hide" aria-pressed="false">외운 문장 숨기기</button>
+  </div>
+  <div class="progress"><span id="bar"></span></div><p class="tip">빈칸을 누르면 정답이 보여요 · ( A / B )는 맞는 쪽을 눌러 보세요</p>
+</div></div>
+<main class="wrap">
+  <section id="list" style="display:flex;flex-direction:column;gap:12px"></section>
+  <div class="nav"><span></span><button id="reset">기록 초기화</button></div>
+  <footer>중학교 역사① 내신 대비 · 한터&amp;SNT</footer>
+</main>
+<script>
+const DATA = [{"h": "제1차 세계 대전과 국제 질서의 변화", "s": "제국주의 열강들이 서로 대립하다", "t": "19세기 후반 유럽의 제국주의 열강은 {식민지}를 확보하기 위하여 경쟁하였다. 그 과정에서 {독일*/프랑스}은/는 {독일/프랑스*}을/를 고립시키기 위해 {오스트리아·헝가리 제국}, {이탈리아}와 {3국 동맹}을 맺었다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "제국주의 열강들이 서로 대립하다", "t": "이에 맞서 프랑스는 {영국}, {러시아}와 함께 {3국 협상}으로 대응하였다. 이에 따라 유럽은 3국 동맹과 3국 협상을 중심으로 하는 _양대 세력_으로 나뉘었다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "제국주의 열강들이 서로 대립하다", "t": "독일의 {3B*/3C} 정책(베를린, 비잔티움, 바그다드)과 영국의 {3B/3C*} 정책(케이프타운, 카이로, 캘커타)이라는 팽창 정책이 대립하였고, 북아프리카에서는 {모로코} 사건으로 독일과 프랑스가 갈등하였다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "제국주의 열강들이 서로 대립하다", "t": "{발칸반도}는 여러 민족과 종교가 얽혀 있어 ‘{유럽의 화약고}’라고 불렸다. 이곳에서 러시아는 {범슬라브주의*/범게르만주의}를 내세워 슬라브족의 단결과 독립을 도모하고, 독일과 오스트리아·헝가리 제국은 {범슬라브주의/범게르만주의*}로 맞서면서 유럽 열강의 긴장과 대립이 고조되었다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "제국주의 열강들이 서로 대립하다", "img": "alliance", "lines": ["· 3국 동맹 : {독일}, {오스트리아·헝가리 제국}, {이탈리아}", "· 3국 협상 : {프랑스}, {영국}, {러시아}", "· 전쟁이 일어나자 {이탈리아}는 3국 동맹을 떠나 {협상국*/동맹국} 편에 가담하였다."]}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "제1차 세계 대전이 일어나다", "t": "1914년 {사라예보 사건}을 계기로 {오스트리아·헝가리 제국*/독일}은 {세르비아}를 상대로 선전 포고를 하였다. 이에 세르비아를 지원하던 {러시아*/영국}가 참전을 결정하였고 3국 동맹과 3국 협상의 열강이 전쟁에 가담하였다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "제1차 세계 대전이 일어나다", "t": "사라예보 사건 : 보스니아의 {세르비아계} 청년이 사라예보를 방문한 {오스트리아·헝가리 제국}의 _황태자 부부를 암살_한 사건이다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "제1차 세계 대전이 일어나다", "t": "전쟁이 일어나자 이탈리아는 {협상국*/동맹국}에, 오스만 제국은 {협상국/동맹국*} 편에 가담하였다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "제1차 세계 대전이 일어나다", "img": "ww1map", "lines": ["· 독일은 러시아군이 동부 전선으로 진격하기 이전에 {서부*/동부} 전선을 장악하여 전쟁을 빨리 끝내겠다는 계획을 세우고 {벨기에}와 {프랑스}로 진격하였다.", "· 하지만 러시아가 예상보다 빠르게 군대를 동원함에 따라 {동부} 전선으로 병력을 돌릴 수밖에 없었다."]}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "제1차 세계 대전이 일어나다", "t": "독일과 영국·프랑스 사이의 서부 전선에서는 방어용 구덩이에서 서로 대치하는 {참호전}이 전개되었다. 동부 전선에서는 {독일*/러시아}이/가 {독일/러시아*}을/를 공격하여 큰 피해를 주었다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "연합국이 승리하다", "t": "{영국*/독일}이 독일로 가는 물자를 통제하기 위해 {해상}을 봉쇄하자 독일은 중립국 선박까지 공격하는 {무제한 잠수함 작전}을 펼쳤다. 이를 계기로 {미국}이 참전하면서 연합국이 전쟁에서 유리한 위치를 차지하였다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "연합국이 승리하다", "img": "lusitania", "lines": ["· 독일의 무제한 잠수함 작전으로 {영국*/미국}의 상선 {루시타니아호}가 침몰하였다.", "· 이때 {미국}인 사상자가 발생하여 미국의 참전 여론이 고조되었다."]}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "연합국이 승리하다", "t": "{혁명}이 일어난 러시아는 독일과 {단독}으로 강화 조약을 맺고 전쟁에서 이탈하였고, 이에 독일은 {서부*/동부} 전선에만 집중하였으나 전세를 역전하는 데는 실패하였다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "연합국이 승리하다", "t": "{오스만 제국}, {오스트리아·헝가리 제국} 등 독일 동맹국이 차례로 연합국에 항복하였다. 독일에서는 사기를 잃은 {킬 군항}의 수병들이 반란을 일으키자 {빌헬름 2세}가 퇴위하였다. 이후 성립된 {공화국*/황제} 정부가 항복함으로써 제1차 세계 대전이 끝났다({1918})."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "제1차 세계 대전에서 나타난 새로운 전쟁의 모습", "t": "{총력전} : 국가가 가진 모든 힘을 동원하는 전쟁으로, 국민의 참전과 경제 활동을 호소하는 {선전} 활동이 중요하였고, {여성}도 전쟁 물자 생산에 참여하였다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "제1차 세계 대전에서 나타난 새로운 전쟁의 모습", "t": "{신무기} : 과학 기술의 발전과 산업화로 {잠수함}, {전차}, {독가스}, 기관총, 화염 방사기, {비행기} 등이 새롭게 발명되거나 개량되었다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "제1차 세계 대전에서 나타난 새로운 전쟁의 모습", "t": "{참호전} : 독일과 영국·프랑스의 전선이 {교착} 상태에 빠지자, 양측은 참호를 파고 장기전에 들어갔다. 군인들은 비위생적인 환경으로 인해 {전염병}에 시달렸다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "제1차 세계 대전에서 나타난 새로운 전쟁의 모습", "t": "{물량전} : 많은 양의 생산물을 사용하고 파괴하였다는 것을 의미한다. 전쟁이 장기화되면서 {전쟁 물자 보급}이 승패를 좌우하였다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "제1차 세계 대전에서 나타난 새로운 전쟁의 모습", "t": "총력전으로 인해 참전국은 {식민지}를 더욱 가혹하게 수탈하여 식민지인의 고통이 심화되었다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "제1차 세계 대전에서 나타난 새로운 전쟁의 모습", "img": "poster", "lines": ["영국의 전쟁 참여 독려 포스터 — {총력전}"]}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "제1차 세계 대전에서 나타난 새로운 전쟁의 모습", "img": "women", "lines": ["포탄 공장에서 일하는 여성 — {총력전}"]}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "제1차 세계 대전에서 나타난 새로운 전쟁의 모습", "img": "tank", "lines": ["참호를 건너는 영국 전차 — {신무기}"]}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "베르사유 체제가 성립하다", "t": "제1차 세계 대전이 끝나자 전후 문제를 처리하기 위한 {파리 강화 회의}가 열렸다({1919}). 회의는 미국의 {윌슨} 대통령이 제시한 {민족 자결주의} 등 {14개조 평화 원칙}을 바탕으로 삼았다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "베르사유 체제가 성립하다", "t": "평화 원칙에 포함된 민족 자결주의는 {식민지 독립운동}에 큰 영향을 미쳤다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "베르사유 체제가 성립하다", "t": "파리 강화 회의에 따라 연합국과 독일은 {베르사유 조약}을 맺었다. 이에 따라 독일은 {영토}가 축소되고 {군비}가 감축되었으며, 막대한 전쟁 {배상금}을 지불하기로 하였다. 이렇게 제1차 세계 대전 이후 성립된 세계 질서를 {베르사유 체제}라고 한다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "베르사유 체제가 성립하다", "img": "cryingchild", "lines": ["· 베르사유 궁전의 기둥 뒤에 울고 있는 아이는 {독일}을 의미한다.", "· 독일인들은 강압적인 베르사유 조약을 ‘{베르사유 명령}’이라고 부르기도 하였다.", "· 베르사유 체제는 평화를 추구하였지만 {전승국}의 이익 수호, 패전국 {독일}에 대한 보복, 사회주의 국가 {러시아}에 대한 견제 등의 목표도 포함하였다."]}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "베르사유 체제가 성립하다", "t": "베르사유 체제의 결과로 국제 평화와 안전을 확보하기 위해 국제기구인 {국제 연맹}이 창설되었다({1920}). 그러나 {미국*/영국}을 비롯한 강대국이 불참하고 분쟁을 막을 {군사적 수단}이 없었기 때문에 국제 문제를 해결하는 데 큰 영향력을 발휘하지는 못하였다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "베르사유 체제가 성립하다", "t": "베르사유 조약이 체결된 후 {아시아} 지역 문제와 {군비 축소} 문제를 협의하기 위한 {워싱턴 회의}가 열렸다. 미국, 영국, 일본 등은 해군 전함을 비롯한 군비 제한에 관한 사항에 합의하였다. 이 회의에서 열강은 {일본*/중국}의 팽창을 견제하여 중국의 주권 존중과 영토 보존을 약속하였다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "베르사유 체제가 성립하다", "t": "베르사유 조약으로 거액의 배상금을 물게 된 독일은 경제적인 어려움에 부딪혔다. 이에 {미국*/소련}을 중심으로 배상금의 규모를 줄이려는 노력이 나타났다. 또한 미국을 포함한 {15}개국이 국제 분쟁의 평화적인 해결을 다짐하는 {켈로그·브리앙 조약}을 체결하였다({1928})."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "민주주의가 확대되고 발전하다", "t": "제1차 세계 대전 중 독일에서는 혁명이 일어나 민주주의 원칙에 입각한 {바이마르 공화국}이 수립되었다. 바이마르 공화국은 {군주제}를 폐지하고 {국민 주권}주의에 의한 민주적인 헌법을 제정하였다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "민주주의가 확대되고 발전하다", "t": "독일에 이어 {오스트리아}와 {오스만 제국}에서도 제정이 무너졌다. 베르사유 조약 체결을 계기로 {동유럽}에서는 신생 독립국들이 나타났는데 대부분 {공화정*/군주정}을 선택하였다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "민주주의가 확대되고 발전하다", "t": "제1차 세계 대전을 계기로 {노동자} 계층의 권익에 대한 관심이 높아졌다. 재산에 따라 선거권을 제한하던 제도 대신 {보통 선거}가 자리 잡기 시작하면서 노동자의 선거권이 확대되었다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "민주주의가 확대되고 발전하다", "t": "19세기 후반부터 시작된 {여성 참정권} 운동도 활발하게 전개되었다. 영국은 1928년에 {21}세 이상의 모든 성인에게 투표권을 부여하였다. 이러한 변화는 적극적인 방법으로 노력한 {서프러제트} 운동의 영향을 받았다."}, {"h": "제1차 세계 대전과 국제 질서의 변화", "s": "민주주의가 확대되고 발전하다", "img": "weimar", "lines": ["· 바이마르 헌법(1919) 제1조 : 독일은 {공화국}이다. 국가 권력은 {국민}으로부터 나온다.", "· 바이마르 헌법에는 남녀의 {보통·평등·직접·비밀} 선거, 내각제, 노동자의 {단결권}과 단체 교섭권 등이 규정되어 있다.", "· 대한민국 헌법 제1조의 {민주 공화국}, {국민 주권} 조항과 비슷하다."]}, {"h": "러시아 혁명의 전개", "s": "러시아에서 혁명이 일어나다", "t": "{알렉산드르 2세}가 암살된 이후 {전제 정치}가 강화된 러시아에서는 자유주의와 {사회주의} 사상이 퍼지면서 {노동자} 계급을 중심으로 사회 개혁 요구가 높아졌다."}, {"h": "러시아 혁명의 전개", "s": "러시아에서 혁명이 일어나다", "t": "{러일 전쟁}이 발발하자 생활이 어려워진 노동자들은 시위를 전개하였다. 시위 도중 발생한 발포 사건으로 수많은 인명이 살상되었다({피의 일요일 사건}, {1905}). 노동자들의 저항이 거세지자 {니콜라이 2세}는 {두마}(의회)를 설치하는 등 개혁을 약속하였으나 별다른 성과를 내지 못하였다."}, {"h": "러시아 혁명의 전개", "s": "러시아에서 혁명이 일어나다", "t": "제1차 세계 대전에서 러시아는 독일과의 전투에서 큰 피해를 입었다. 이에 전쟁 중지, 전제 정치 타도 등을 외치는 봉기가 일어나고 노동자·병사 {소비에트}가 결성되었다(1917). 이 사건으로 {차르}(황제)가 퇴위하고 {임시 정부}가 수립되었다({2월 혁명*/10월 혁명})."}, {"h": "러시아 혁명의 전개", "s": "러시아에서 혁명이 일어나다", "t": "임시 정부가 개혁을 미루고 {전쟁}을 지속하자 {레닌}이 이끄는 {볼셰비키}는 임시 정부를 무너뜨리고 {소비에트 정부}를 세웠다({2월 혁명/10월 혁명*}). 이로써 러시아에서 세계 최초로 {사회주의} 혁명에 의한 소비에트 정권이 수립되었다."}, {"h": "러시아 혁명의 전개", "s": "러시아에서 혁명이 일어나다", "img": "lenin", "lines": ["· 소비에트 : ‘{평의회}’를 뜻하는 러시아어로, 직접 선거로 뽑힌 대표들이 모인 자치 기구", "· 볼셰비키 : 러시아어로 ‘{다수}’를 뜻함, 혁명 후 러시아 {공산당}으로 이름을 바꿈", "· 2월 혁명·10월 혁명은 오늘날 달력으로 각각 {3}월, {11}월에 일어났다."]}, {"h": "러시아 혁명의 전개", "s": "소련이 사회주의 정책을 추진하다", "t": "전쟁에서 이탈한 소비에트 정부는 공장, 은행, 철도 등 주요 산업 시설과 토지를 {국유화}하는 사회주의 정책을 펼쳤다. 또한 {제헌 의회}를 해산하고 {일당} 체제가 시작되었다."}, {"h": "러시아 혁명의 전개", "s": "소련이 사회주의 정책을 추진하다", "t": "{연합국}의 지원을 받은 {반혁명} 세력과의 내전으로 경제난이 심해졌다. 이에 레닌은 {자본주의*/사회주의} 요소를 일부 도입한 {신경제 정책(NEP)}을 실시하였다. 1922년에는 러시아를 중심으로 여러 소비에트 정부를 흡수하여 {소비에트 사회주의 공화국 연방(소련)}을 수립하였다."}, {"h": "러시아 혁명의 전개", "s": "소련이 사회주의 정책을 추진하다", "t": "레닌의 뒤를 이은 {스탈린}은 신경제 정책을 {버리고*/확대하고} 전면적인 사회주의 경제 정책을 추진하였다. 농업의 {집단화}, 중공업 중심의 {경제 개발 5개년 계획}을 추진하였다. 또한 정치 반대파에 대한 {숙청}을 감행하였다. 소련은 세계적인 {공업} 국가로 성장하였으나 정치적으로는 권위주의적인 {독재} 체제가 강화되었다."}, {"h": "러시아 혁명의 전개", "s": "소련이 사회주의 정책을 추진하다", "t": "레닌은 혁명을 전파하기 위해 국제 사회주의 운동 조직인 {코민테른}을 결성하여 {유럽}의 노동 운동과 {아시아·아프리카}의 반제국주의 민족 운동을 지원하였다."}, {"h": "러시아 혁명의 전개", "s": "소련이 사회주의 정책을 추진하다", "img": "socialmap", "lines": ["· 러시아 혁명의 영향으로 독일 공산당({1918}), 중국 공산당({1921}), 일본 공산당({1922}), 몽골 인민 공화국({1924}), 조선 공산당({1925}), 베트남 공산당({1930}) 등이 만들어졌다.", "· 코민테른 제2차 대회(1920) : ‘만국의 노동자, {피억압 민족}이여 단결하라!’"]}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "대공황이 일어나다", "t": "{미국*/영국}은 제1차 세계 대전 이후 경제가 크게 발전하였다. 기업들은 생산량을 늘렸지만 노동자들의 {임금}은 크게 오르지 않았다. 또한 생산된 물품이 소비되지 못하고 쌓이는 현상이 나타났다."}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "대공황이 일어나다", "t": "결국 {1929}년 10월 {뉴욕} 증시의 주가가 큰 폭으로 떨어졌다. 수많은 기업과 금융 기관이 도산하였으며 {농산물} 가격이 폭락하면서 {실업자}가 급증하였다({대공황}). 이러한 경제 위기는 전 세계로 확산되었다."}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "대공황이 일어나다", "t": "미국의 {루스벨트} 대통령은 {자유방임} 정책을 수정하여 정부가 경제 활동에 개입하는 {뉴딜 정책}을 추진하였다. 정부가 {테네시강 유역 개발} 공사와 같은 대규모 {공공사업}을 진행하여 실업률을 낮추었고 {실업 수당} 지급과 같은 {사회 보장} 제도를 강화하였다."}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "대공황이 일어나다", "t": "영국과 프랑스는 외국 상품에 높은 관세를 붙이는 {보호 무역}과 본국과 식민지를 경제 블록으로 묶는 {블록 경제}를 통해 대공황의 위기를 극복해 나갔다."}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "대공황이 일어나다", "img": "tva", "lines": ["· 농업 조정법 : 주요 농산물의 {과잉 생산} 제한, 농민에게 보조금 지급", "· 국가 산업 부흥법 : 산업 부문의 생산 조절, 최저 가격과 {노동 시간} 규정", "· {사회 보장법} : 노인·유족·실업자에게 수당 지급, 의료 서비스 지원"]}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "전체주의가 등장하여 대외 팽창을 추구하다", "t": "{전체주의} : 개인의 모든 활동은 민족이나 국가와 같은 전체의 발전을 위하여서만 존재한다는 이념을 바탕으로 국가 권력이 국민 생활을 통제하는 독재 체제이다. 이탈리아의 {파시즘}과 독일의 {나치즘}이 대표적이다."}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "전체주의가 등장하여 대외 팽창을 추구하다", "t": "이탈리아에서는 반노동 운동과 민족주의를 주장하는 {무솔리니}의 {파시스트당}이 {로마}로 진군하여 정권을 잡았다. 무솔리니는 파시스트당을 제외한 모든 정당을 해산하고 {일당 독재} 체제를 구축하였다."}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "전체주의가 등장하여 대외 팽창을 추구하다", "t": "독일은 대공황 이후 경제 위기에 빠져 있었다. 이러한 상황에서 {히틀러}의 {나치스}가 {반유대주의}를 내세우며 독일인의 지지를 얻었다. 1932년 나치스는 선거에서 승리하였고 이듬해 총리로 취임한 히틀러는 {독재} 체제를 수립하고 {유대인} 탄압 정책을 추진하였다."}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "전체주의가 등장하여 대외 팽창을 추구하다", "t": "일본에서는 대공황을 겪으면서 {군부} 세력을 중심으로 {군국주의}가 확산되었다."}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "전체주의가 등장하여 대외 팽창을 추구하다", "t": "일본은 {1931}년에 만주를 침략하고({만주 사변}) 점령지에 {만주국}을 세웠다. {1937}년에는 중국에 대한 전면적인 침략을 감행하였다({중일 전쟁}). 독일도 {재무장}을 선언하고 {오스트리아}를 합병하였다."}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "전체주의가 등장하여 대외 팽창을 추구하다", "t": "1935년 이탈리아는 {에티오피아}를 침공하였는데, 국제적 비난이 거세지자 일본, 독일에 이어 {국제 연맹}을 탈퇴하였다. 독일과 일본은 {소련*/미국}에 대항하기 위하여 {방공 협정}을 체결하였고 이후 이탈리아가 참여하면서 {추축국} 진영이 형성되었다."}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "전체주의가 등장하여 대외 팽창을 추구하다", "img": "mussolini", "lines": ["무솔리니 — “파시스트는 로마로 진군하라.”"]}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "전체주의가 등장하여 대외 팽창을 추구하다", "img": "hitler", "lines": ["히틀러 — “독일 민족에 어울리는 영토를 확보해야 한다.”"]}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "전체주의가 등장하여 대외 팽창을 추구하다", "img": "ss", "lines": ["나치스 친위대"]}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "제2차 세계 대전이 발발하다", "t": "독일이 대외 팽창에 나서자, 영국과 프랑스는 독일과 {뮌헨 협정}을 맺는 {유화 정책}을 통해 평화를 정착시키려 하였다. 이 협정으로 독일은 체코슬로바키아의 {수데텐란트} 지역을 합병하였다."}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "제2차 세계 대전이 발발하다", "t": "하지만 독일은 비밀리에 소련과 {독소 불가침 조약}을 맺은 후 {폴란드}를 침공하였다({1939}). 이에 {영국}과 {프랑스}가 독일에 선전 포고하면서 제2차 세계 대전이 시작되었다."}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "제2차 세계 대전이 발발하다", "t": "독일은 소련과 함께 폴란드 일부를 차지한 뒤 영국·프랑스 연합군을 물리치고 {파리}를 점령하였다. 이후 {발칸반도}까지 점령하였지만 전쟁 물자가 부족해지자 불가침 조약을 깨고 {소련}까지 침공하였다. 이를 계기로 소련은 {연합국*/추축국}에 합류하였다. 이탈리아는 독일에 합류하여 {그리스}와 {북부 아프리카}를 침략하였다."}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "제2차 세계 대전이 발발하다", "t": "일본은 중일 전쟁이 장기화되자 자원 확보를 위해 {동남아시아}를 침략하였다. 이에 미국은 {석유} 수출을 금지하며 일본에 경제 제재를 가하였다. 이에 일본은 하와이 {진주만}의 해군 기지를 기습 공격하여 {아시아·태평양 전쟁}({1941})을 일으켰다. 이를 계기로 {미국}도 참전하면서 전선은 전 세계로 확대되었다."}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "제2차 세계 대전이 발발하다", "img": "euromap", "lines": ["· ❶ 독일의 {폴란드} 침공 (1939. 9.)", "· ❷ {스탈린그라드} 전투 (1942. 8.~1943. 2.)", "· ❸ 연합군의 {노르망디} 상륙 작전 (1944. 6.) → 파리 해방(1944. 8.)", "· 이탈리아 항복(1943. 9.) → 독일 항복(1945. {5}.)"]}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "연합국이 전쟁에서 승리하다", "t": "태평양에서는 미국이 {미드웨이 해전}({1942})에서 일본 해군을 물리치면서 전세가 연합국에 유리하게 전개되었다. 유럽에서는 독일이 소련을 침공한 이후 완강한 저항에 부딪혀 큰 피해를 입었다."}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "연합국이 전쟁에서 승리하다", "t": "연합국은 승세가 뚜렷해지자 먼저 {이탈리아*/독일}에 진격하였다. 이를 계기로 {무솔리니}가 몰락하자 이탈리아는 연합국에 항복하였다. 이후 연합국은 {노르망디 상륙 작전}({1944})에 성공하여 프랑스 {파리}를 수복하고 독일로 진격하였다. 동서 양쪽에서 압박을 받은 독일은 연합국에 항복하였다({1945})."}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "연합국이 전쟁에서 승리하다", "t": "일본은 연합국의 항복 권고에도 전쟁을 지속하였다. 이에 미국은 1945년 8월 일본 {히로시마}와 {나가사키}에 {원자 폭탄}을 투하하였다. 이후 {소련*/중국}이 일본에 선전 포고하고 공격을 시작하자 일본이 {무조건 항복}을 하면서 제2차 세계 대전은 끝났다."}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "연합국이 전쟁에서 승리하다", "img": "pacmap", "lines": ["· ❶ {진주만} 공격 (1941. 12.)", "· ❷ {미드웨이} 해전 (1942. 6.)", "· ❸ 일본 항복 (1945. 8.) ← 원자 폭탄 투하, {소련} 참전"]}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "전쟁의 비극이 확대된 이유", "t": "제2차 세계 대전 중에는 {대량 학살}과 민간인 지역 {무차별 공습}이 일어났고, {원자 폭탄} 등 대량 살상 무기가 사용되어 {민간인}의 피해가 더욱 커졌다."}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "전쟁의 비극이 확대된 이유", "t": "{니묄러}의 「처음 그들이 왔을 때」 : 나치의 박해에 {침묵}한 결과, 마침내 나를 위해 나서 줄 사람이 아무도 남지 않았다."}, {"h": "전체주의의 등장과 제2차 세계 대전의 발발", "s": "전쟁의 비극이 확대된 이유", "t": "{침묵의 나선} 이론 : 자신의 의견이 {소수}라고 생각하는 대중이 스스로 침묵함으로써, 국가나 권력이 주도하는 의견이 {대중 매체}를 통해 주요 여론이 된다는 이론으로 {나치즘}이 확산된 현상을 설명하는 데 활용된다."}, {"h": "한눈에 보는 연표", "s": "연표", "t": "1905 · {피의 일요일 사건}"}, {"h": "한눈에 보는 연표", "s": "연표", "t": "1914 · {사라예보 사건} → 제1차 세계 대전"}, {"h": "한눈에 보는 연표", "s": "연표", "t": "1917 · 러시아 {2월 혁명}(3월) · {10월 혁명}(11월), 미국 참전"}, {"h": "한눈에 보는 연표", "s": "연표", "t": "1918 · {킬 군항} 반란 → 독일 항복, 종전"}, {"h": "한눈에 보는 연표", "s": "연표", "t": "1919 · {파리 강화 회의} · {베르사유 조약}, 바이마르 헌법, {코민테른}"}, {"h": "한눈에 보는 연표", "s": "연표", "t": "1920 · {국제 연맹} 창설"}, {"h": "한눈에 보는 연표", "s": "연표", "t": "1921~1922 · {워싱턴 회의}"}, {"h": "한눈에 보는 연표", "s": "연표", "t": "1922 · {소련} 수립"}, {"h": "한눈에 보는 연표", "s": "연표", "t": "1928 · {켈로그·브리앙 조약}, 영국 21세 이상 남녀 투표권"}, {"h": "한눈에 보는 연표", "s": "연표", "t": "1929 · {대공황}(뉴욕 증시 폭락)"}, {"h": "한눈에 보는 연표", "s": "연표", "t": "1931 · {만주 사변}(일본)"}, {"h": "한눈에 보는 연표", "s": "연표", "t": "1935 · 이탈리아의 {에티오피아} 침공"}, {"h": "한눈에 보는 연표", "s": "연표", "t": "1937 · {중일 전쟁}"}, {"h": "한눈에 보는 연표", "s": "연표", "t": "1938 · {뮌헨 협정}"}, {"h": "한눈에 보는 연표", "s": "연표", "t": "1939 · {독소 불가침 조약} → {폴란드} 침공 → 제2차 세계 대전"}, {"h": "한눈에 보는 연표", "s": "연표", "t": "1941 · {진주만} 기습 → 아시아·태평양 전쟁"}, {"h": "한눈에 보는 연표", "s": "연표", "t": "1942 · {미드웨이 해전}"}, {"h": "한눈에 보는 연표", "s": "연표", "t": "1943 · {스탈린그라드} 전투 승리, {이탈리아} 항복"}, {"h": "한눈에 보는 연표", "s": "연표", "t": "1944 · {노르망디 상륙 작전}"}, {"h": "한눈에 보는 연표", "s": "연표", "t": "1945 · 독일 항복(5월) → {원자 폭탄} 투하, 소련 참전 → 일본 항복(8월)"}];
+const SECS=[...new Set(DATA.map(d=>d.h))];
+const ROM=['Ⅰ','Ⅱ','Ⅲ','Ⅳ','Ⅴ'];
+const KEY='ms-hist1-ww-note-v1';
+let st={done:{}};try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&s.done)st=s}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const $=id=>document.getElementById(id);
+let section='0',showAll=false,hideDone=false;
+$('sec').innerHTML=SECS.map((s,i)=>'<option value="'+i+'">'+(i<3?ROM[i]+'. ':'')+s+'</option>').join('');
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function mk(t){
+  return esc(t).replace(/\{(.+?)\}/g,(m,x)=>{
+    if(x.includes('/')){
+      return '<span class="pick">( '+x.split('/').map(o=>{const ok=o.endsWith('*');o=o.replace(/\*$/,'');return '<button class="op'+(showAll&&ok?' right':'')+'" data-ok="'+(ok?1:0)+'">'+o+'</button>'}).join('<i>/</i>')+' )</span>';
+    }
+    return '<button class="bl'+(showAll?' open':'')+'" style="min-width:'+Math.max(2.5,x.length*0.95)+'em"><span>'+x+'</span></button>';
+  }).replace(/_(.+?)_/g,'<u>$1</u>');
+}
+function render(){
+  const items=DATA.map((d,i)=>[d,i]).filter(([d])=>d.h===SECS[+section]);
+  const nd=items.filter(([d,i])=>st.done[i]).length;
+  $('score').innerHTML='<span>외운 문장</span><strong>'+nd+'/'+items.length+'</strong>';
+  $('bar').style.width=(items.length?nd/items.length*100:0)+'%';
+  let h='',cur='',n=0;
+  items.forEach(([d,i])=>{
+    if(hideDone&&st.done[i])return;
+    if(d.s!==cur){cur=d.s;n=0;h+='<h3 class="sh">'+esc(d.s)+'</h3>'}
+    n++;
+    h+='<article class="it'+(st.done[i]?' dn':'')+'"><div class="ih"><span class="nn">'+n+'</span><button class="chk" data-i="'+i+'" aria-pressed="'+(st.done[i]?'true':'false')+'">'+(st.done[i]?'외웠어요 ✓':'외웠어요')+'</button></div>';
+    if(d.img)h+='<img src="img/'+d.img+'.jpg" alt="">'+d.lines.map(l=>'<p>'+mk(l)+'</p>').join('');
+    else h+='<p>'+mk(d.t)+'</p>';
+    h+='</article>';
+  });
+  if(!h)h='<div class="empty">이 단원의 문장을 모두 외웠어요! 👏<br>‘외운 문장 숨기기’를 끄면 다시 볼 수 있어요.</div>';
+  $('list').innerHTML=h;
+}
+$('list').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  if(b.classList.contains('bl'))b.classList.toggle('open');
+  else if(b.classList.contains('op')){b.classList.add(b.dataset.ok==='1'?'right':'bad');if(b.dataset.ok!=='1')setTimeout(()=>b.classList.remove('bad'),900)}
+  else if(b.classList.contains('chk')){const i=b.dataset.i;if(st.done[i])delete st.done[i];else st.done[i]=1;save();render()}
+});
+$('sec').onchange=e=>{section=e.target.value;window.scrollTo({top:0});render()};
+$('all').onclick=e=>{showAll=!showAll;e.currentTarget.setAttribute('aria-pressed',showAll);e.currentTarget.textContent=showAll?'모두 가리기':'정답 모두 보기';render()};
+$('hide').onclick=e=>{hideDone=!hideDone;e.currentTarget.setAttribute('aria-pressed',hideDone);render()};
+let armed=false;
+$('reset').onclick=e=>{const t=e.currentTarget;if(!armed){armed=true;t.textContent='한 번 더 누르면 초기화';setTimeout(()=>{armed=false;t.textContent='기록 초기화'},2500);return}
+ st={done:{}};save();armed=false;t.textContent='기록 초기화';render()};
+render();
+</script>
+<script>
+(function(){
+const H=1418297543,K='ms-hist1-ww-note-gate';
+const hash=s=>{let h=5381;for(const c of s.trim().toLowerCase())h=((h*33)^c.charCodeAt(0))>>>0;return h};
+const g=document.getElementById('gate');
+let ok=false;try{ok=localStorage.getItem(K)===String(H)}catch(e){}
+if(ok){g.hidden=true;return}
+const M={'ㅂ':'q','ㅈ':'w','ㄷ':'e','ㄱ':'r','ㅅ':'t','ㅛ':'y','ㅕ':'u','ㅑ':'i','ㅐ':'o','ㅔ':'p','ㅁ':'a','ㄴ':'s','ㅇ':'d','ㄹ':'f','ㅎ':'g','ㅗ':'h','ㅓ':'j','ㅏ':'k','ㅣ':'l','ㅋ':'z','ㅌ':'x','ㅊ':'c','ㅍ':'v','ㅠ':'b','ㅜ':'n','ㅡ':'m'};
+const norm=s=>[...String(s).replace(/\s+/g,'')].map(c=>M[c]||c).join('');
+const tryIn=()=>{const v=document.getElementById('gc').value;
+ if(hash(norm(v))===H||hash(v)===H){try{localStorage.setItem(K,String(H))}catch(e){} g.hidden=true}
+ else document.getElementById('ge').textContent='코드가 맞지 않아요. 영문 자판으로 입력했는지 확인해 주세요.'};
+document.getElementById('gb').addEventListener('click',tryIn);
+document.getElementById('gc').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();tryIn()}});
+document.getElementById('gf').addEventListener('submit',e=>{e.preventDefault();tryIn()});
+})();
+</script>
+</body></html>

@@ -1,0 +1,201 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"><title>세계 대전 OX 트레이닝</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+:root{
+  --band:#1C2747; --band-ink:#FFFFFF; --band-soft:rgba(255,255,255,.14);
+  --bg:#F2F4F9; --surface:#FFFFFF; --ink:#16203A; --muted:#6A7389; --line:#E1E5EE;
+  --o:#2563EB; --o-soft:#E6EEFF; --x:#E0453A; --x-soft:#FDEBEA; --gold:#F5B731;
+  --display:"Black Han Sans","Noto Sans KR",sans-serif;
+  --sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --shadow:0 10px 30px rgba(22,32,58,.10),0 2px 6px rgba(22,32,58,.06);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --band:#141B30; --band-soft:rgba(255,255,255,.10);
+  --bg:#0E1322; --surface:#1A2238; --ink:#EEF1F8; --muted:#9AA3B8; --line:#2A3350;
+  --o:#6E9BFF; --o-soft:#1D2B52; --x:#FF7A70; --x-soft:#45201F; --gold:#F5C451;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --band:#141B30; --band-soft:rgba(255,255,255,.10);
+  --bg:#0E1322; --surface:#1A2238; --ink:#EEF1F8; --muted:#9AA3B8; --line:#2A3350;
+  --o:#6E9BFF; --o-soft:#1D2B52; --x:#FF7A70; --x-soft:#45201F; --gold:#F5C451;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}
+html,body{min-height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-tap-highlight-color:transparent;letter-spacing:-.01em}
+:root{padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--band)}
+.band{background:var(--band);color:var(--band-ink);padding-bottom:64px}
+.wrap{max-width:620px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));box-sizing:border-box}
+.band .wrap{padding-block:18px 0;display:flex;flex-direction:column;gap:16px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:12px;min-width:0}
+.badge{flex:0 0 auto;width:48px;height:48px;border-radius:14px;background:var(--surface);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:20px;line-height:1;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.badge b{color:var(--o);font-weight:400}.badge i{color:var(--x);font-style:normal}
+.logo small{display:block;font-size:12px;opacity:.75;font-weight:500;letter-spacing:.02em}
+.logo h1{margin:2px 0 0;font-family:var(--display);font-weight:400;font-size:clamp(19px,5.4vw,24px);white-space:nowrap;letter-spacing:0;line-height:1.15}
+.score{flex:0 0 auto;text-align:center;background:var(--band-soft);border-radius:14px;padding:8px 12px;min-width:64px;font-variant-numeric:tabular-nums}
+.score span{display:block;font-size:11px;opacity:.8}
+.score strong{display:block;font-size:20px;font-weight:900;line-height:1.2}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+select,.chip{font:inherit;font-size:14px;font-weight:500;color:var(--band-ink);background:var(--band-soft);border:1px solid transparent;border-radius:999px;padding:9px 14px;min-height:40px;-webkit-appearance:none;appearance:none}
+select{flex:1 1 150px;min-width:0;padding-right:34px;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 18px) 52%,calc(100% - 13px) 52%;background-size:5px 5px;background-repeat:no-repeat}
+select option{color:#16203A;background:#fff}
+.chip{cursor:pointer;flex:0 0 auto}
+.chip[aria-pressed="true"]{background:var(--gold);color:#1C2747}
+.progress{height:6px;background:var(--band-soft);border-radius:6px;overflow:hidden}
+.progress span{display:block;height:100%;background:var(--gold);width:0;border-radius:6px;transition:width .3s}
+main.wrap{margin-top:-48px;display:flex;flex-direction:column;gap:16px;padding-block:0 24px}
+.card{background:var(--surface);border-radius:24px;padding:24px 22px 22px;display:flex;flex-direction:column;gap:16px;min-height:280px;box-shadow:var(--shadow)}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.no{font-family:var(--display);font-size:22px;color:var(--ink);letter-spacing:0}
+.no em{font-style:normal;font-size:13px;font-family:var(--sans);font-weight:700;color:var(--muted);margin-left:4px}
+.tag{background:var(--bg);border-radius:999px;padding:5px 11px;font-weight:500;font-size:12px;max-width:60%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.q{font-size:clamp(19px,5.1vw,22px);font-weight:500;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.result{margin-top:auto;border-radius:18px;padding:16px;display:flex;gap:14px;align-items:flex-start;animation:pop .28s ease-out}
+.result[data-k="O"]{background:var(--o-soft)} .result[data-k="X"]{background:var(--x-soft)}
+@keyframes pop{from{transform:translateY(8px);opacity:.4}to{transform:none;opacity:1}}
+.mark{flex:0 0 auto;width:52px;height:52px;display:grid;place-items:center;font-family:var(--display);font-size:30px;border-radius:50%;color:#fff;animation:stamp .35s cubic-bezier(.3,1.6,.5,1)}
+.result[data-k="O"] .mark{background:var(--o)} .result[data-k="X"] .mark{background:var(--x)}
+@keyframes stamp{from{transform:scale(.4) rotate(-20deg)}to{transform:none}}
+.verdict{font-weight:900;font-size:16px;margin:3px 0 6px}
+.verdict.ok{color:var(--o)} .verdict.no{color:var(--x)}
+.exp{font-size:15.5px;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.pad{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pad button{font-family:var(--display);font-size:52px;line-height:1;cursor:pointer;border:none;border-radius:24px;min-height:104px;color:#fff;box-shadow:var(--shadow);transition:transform .1s}
+#bO{background:var(--o)} #bX{background:var(--x)}
+.pad button:active{transform:scale(.96)}
+.next{width:100%;font:inherit;font-size:18px;font-weight:700;cursor:pointer;border:none;border-radius:20px;min-height:66px;background:var(--band);color:#fff;box-shadow:var(--shadow)}
+:root[data-theme="dark"] .next{background:var(--gold);color:#1C2747}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .next{background:var(--gold);color:#1C2747}}
+.nav{display:flex;justify-content:space-between;gap:10px}
+.nav button{font:inherit;font-size:14px;font-weight:500;background:none;border:none;color:var(--muted);padding:8px 4px;cursor:pointer}
+.nav button:disabled{opacity:.35}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.done{text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;flex:1}
+.done .big{font-family:var(--display);font-size:54px;font-variant-numeric:tabular-nums}
+.done p{margin:0;color:var(--muted)}
+.done .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.done .chip{background:var(--band);color:#fff}
+footer{font-size:12px;color:var(--muted);text-align:center}
+.gate{position:fixed;inset:0;background:var(--band);display:flex;align-items:center;justify-content:center;z-index:20;padding:24px}
+.gate form{background:var(--surface);color:var(--ink);border-radius:24px;padding:30px 24px;width:100%;max-width:360px;display:flex;flex-direction:column;gap:14px;box-sizing:border-box;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.gate .badge{width:56px;height:56px;font-size:24px;background:var(--bg);box-shadow:none}
+.gate h2{margin:0;font-family:var(--display);font-weight:400;font-size:24px}
+.gate p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.gate input{font:inherit;font-size:18px;padding:14px 16px;border:2px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink)}
+.gate input:focus{border-color:var(--o);outline:none}
+.gate button{font:inherit;font-size:17px;font-weight:700;padding:15px;border-radius:14px;border:none;background:var(--o);color:#fff;cursor:pointer}
+.gate .err{color:var(--x);font-size:13px;min-height:1em}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style></head><body>
+<div class="gate" id="gate"><form id="gf"><div class="badge" aria-hidden="true"><b>O</b><i>X</i></div><h2>세계 대전 OX 트레이닝</h2><p>이경태T 수강생 전용이에요.<br>선생님께 받은 입장 코드를 입력하세요.</p><input id="gc" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" inputmode="latin" placeholder="입장 코드" aria-label="입장 코드"><div class="err" id="ge"></div><button type="button" id="gb">입장하기</button></form></div>
+<div class="band"><div class="wrap">
+  <div class="top">
+    <div class="logo"><div class="badge" aria-hidden="true"><b>O</b><i>X</i></div><div><small>이경태T · 중학교 역사① Ⅵ-1</small><h1>세계 대전 OX 트레이닝</h1></div></div>
+    <div class="score" id="score"></div>
+  </div>
+  <div class="controls">
+    <select id="sec" aria-label="단원 선택"></select>
+    <button class="chip" id="shuf" aria-pressed="false">섞기</button>
+    <button class="chip" id="wrong" aria-pressed="false">틀린 문제</button>
+  </div>
+  <div class="progress"><span id="bar"></span></div>
+</div></div>
+<main class="wrap">
+  <section class="card" id="card" aria-live="polite"></section>
+  <div id="actions"></div>
+  <div class="nav"><button id="prev">← 이전 문제</button><button id="reset">기록 초기화</button></div>
+  <footer>중학교 역사① 내신 대비 · 한터&amp;SNT</footer>
+</main>
+<script>
+const DATA = [{"n": 1, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "19세기 후반 유럽의 제국주의 열강은 식민지를 확보하기 위하여 경쟁하였다.", "a": "O", "e": ""}, {"n": 2, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "독일은 프랑스를 고립시키기 위해 오스트리아·헝가리 제국, 이탈리아와 3국 동맹을 맺었다.", "a": "O", "e": ""}, {"n": 3, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "3국 협상은 프랑스, 영국, 이탈리아가 맺었다.", "a": "X", "e": "3국 협상은 프랑스, 영국, 러시아예요. 이탈리아는 3국 동맹이에요."}, {"n": 4, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "발칸반도는 여러 민족과 종교가 얽혀 있어 ‘유럽의 화약고’라고 불렸다.", "a": "O", "e": ""}, {"n": 5, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "러시아는 범게르만주의를 내세워 게르만족의 단결을 도모하였다.", "a": "X", "e": "러시아는 범슬라브주의예요. 범게르만주의는 독일·오스트리아·헝가리 제국이에요."}, {"n": 6, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "독일의 3B 정책과 영국의 3C 정책은 서로 대립하였다.", "a": "O", "e": ""}, {"n": 7, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "제1차 세계 대전은 사라예보 사건을 계기로 일어났다.", "a": "O", "e": ""}, {"n": 8, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "사라예보 사건은 세르비아의 황태자 부부가 암살된 사건이다.", "a": "X", "e": "암살된 것은 오스트리아·헝가리 제국의 황태자 부부예요. 암살한 사람이 세르비아계 청년이에요."}, {"n": 9, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "사라예보 사건 후 오스트리아·헝가리 제국은 세르비아에 선전 포고를 하였다.", "a": "O", "e": ""}, {"n": 10, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "세르비아를 지원하던 러시아가 참전을 결정하였다.", "a": "O", "e": ""}, {"n": 11, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "이탈리아는 제1차 세계 대전에서 동맹국 편으로 싸웠다.", "a": "X", "e": "이탈리아는 3국 동맹이었지만 전쟁에서는 협상국(연합국) 편에 가담했어요."}, {"n": 12, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "오스만 제국은 동맹국 편에 가담하였다.", "a": "O", "e": ""}, {"n": 13, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "독일은 서부 전선을 먼저 장악하기 위해 벨기에와 프랑스로 진격하였다.", "a": "O", "e": ""}, {"n": 14, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "서부 전선에서는 방어용 구덩이에서 서로 대치하는 참호전이 전개되었다.", "a": "O", "e": ""}, {"n": 15, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "동부 전선에서는 러시아가 독일을 공격하여 큰 피해를 주었다.", "a": "X", "e": "동부 전선에서는 독일이 러시아를 공격하여 큰 피해를 주었어요."}, {"n": 16, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "영국이 해상을 봉쇄하자 독일은 무제한 잠수함 작전을 펼쳤다.", "a": "O", "e": ""}, {"n": 17, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "독일의 무제한 잠수함 작전은 미국이 참전하는 계기가 되었다.", "a": "O", "e": ""}, {"n": 18, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "루시타니아호는 독일 잠수함의 공격으로 침몰한 미국 군함이다.", "a": "X", "e": "루시타니아호는 영국 상선이에요. 미국인 사상자가 생겨 미국의 참전 여론이 높아졌어요."}, {"n": 19, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "혁명이 일어난 러시아는 독일과 단독으로 강화 조약을 맺고 전쟁에서 이탈하였다.", "a": "O", "e": ""}, {"n": 20, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "독일에서는 킬 군항의 수병들이 반란을 일으키자 빌헬름 2세가 퇴위하였다.", "a": "O", "e": ""}, {"n": 21, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "제1차 세계 대전은 1918년 독일 황제 정부가 항복하면서 끝났다.", "a": "X", "e": "빌헬름 2세 퇴위 후 성립된 공화국 정부가 항복했어요."}, {"n": 22, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "총력전으로 여성도 전쟁 물자 생산에 참여하였다.", "a": "O", "e": ""}, {"n": 23, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "제1차 세계 대전에서는 잠수함, 전차, 독가스, 비행기 등의 신무기가 사용되었다.", "a": "O", "e": ""}, {"n": 24, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "물량전은 적은 물자로 짧게 끝나는 전쟁을 의미한다.", "a": "X", "e": "물량전은 많은 양의 생산물을 사용·파괴하는 전쟁으로, 물자 보급이 승패를 좌우했어요."}, {"n": 25, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "참호 속 병사들은 비위생적인 환경 때문에 전염병에 시달렸다.", "a": "O", "e": ""}, {"n": 26, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "총력전으로 참전국은 식민지를 더욱 가혹하게 수탈하였다.", "a": "O", "e": ""}, {"n": 27, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "파리 강화 회의는 레닌이 제시한 14개조 평화 원칙을 바탕으로 하였다.", "a": "X", "e": "14개조 평화 원칙은 미국 윌슨 대통령이 제시했어요."}, {"n": 28, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "14개조 평화 원칙에는 민족 자결주의가 포함되어 있다.", "a": "O", "e": ""}, {"n": 29, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "민족 자결주의는 식민지 독립운동에 큰 영향을 미쳤다.", "a": "O", "e": ""}, {"n": 30, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "베르사유 조약으로 독일은 영토가 축소되고 군비가 감축되었다.", "a": "O", "e": ""}, {"n": 31, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "베르사유 조약으로 독일은 막대한 전쟁 배상금을 지불하게 되었다.", "a": "O", "e": ""}, {"n": 32, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "제1차 세계 대전 이후 성립된 세계 질서를 워싱턴 체제라고 한다.", "a": "X", "e": "베르사유 체제라고 해요."}, {"n": 33, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "독일인들은 베르사유 조약을 ‘베르사유 명령’이라고 부르기도 하였다.", "a": "O", "e": ""}, {"n": 34, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "베르사유 체제에는 사회주의 국가 러시아에 대한 견제도 포함되었다.", "a": "O", "e": ""}, {"n": 35, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "국제 연맹은 1920년에 창설되었다.", "a": "O", "e": ""}, {"n": 36, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "국제 연맹에는 미국이 중심이 되어 적극 참여하였다.", "a": "X", "e": "미국을 비롯한 강대국이 불참했어요."}, {"n": 37, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "국제 연맹은 분쟁을 막을 군사적 수단이 없었다.", "a": "O", "e": ""}, {"n": 38, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "워싱턴 회의에서는 아시아 지역 문제와 군비 축소 문제를 협의하였다.", "a": "O", "e": ""}, {"n": 39, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "워싱턴 회의에서 열강은 일본의 팽창을 지원하기로 약속하였다.", "a": "X", "e": "열강은 일본의 팽창을 견제하여 중국의 주권 존중과 영토 보존을 약속했어요."}, {"n": 40, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "미국을 중심으로 독일의 배상금 규모를 줄이려는 노력이 나타났다.", "a": "O", "e": ""}, {"n": 41, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "켈로그·브리앙 조약은 15개국이 국제 분쟁의 평화적 해결을 다짐한 조약이다.", "a": "O", "e": ""}, {"n": 42, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "제1차 세계 대전 중 독일에서는 혁명이 일어나 바이마르 공화국이 수립되었다.", "a": "O", "e": ""}, {"n": 43, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "바이마르 공화국은 군주제를 강화하였다.", "a": "X", "e": "바이마르 공화국은 군주제를 폐지하고 민주적 헌법을 만들었어요."}, {"n": 44, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "베르사유 조약 이후 동유럽의 신생 독립국은 대부분 공화정을 선택하였다.", "a": "O", "e": ""}, {"n": 45, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "제1차 세계 대전 이후 보통 선거가 자리 잡으면서 노동자의 선거권이 확대되었다.", "a": "O", "e": ""}, {"n": 46, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "서프러제트는 평화적인 방법만을 사용한 프랑스의 여성 참정권 운동이다.", "a": "X", "e": "서프러제트는 단식, 무력시위 등 폭력적인 방법까지 동원한 영국의 운동이에요."}, {"n": 47, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "영국은 1928년에 21세 이상의 모든 성인에게 투표권을 부여하였다.", "a": "O", "e": ""}, {"n": 48, "sec": "제1차 세계 대전과 국제 질서의 변화", "q": "바이마르 헌법에는 노동자의 단결권이 규정되어 있다.", "a": "O", "e": ""}, {"n": 49, "sec": "러시아 혁명의 전개", "q": "알렉산드르 2세가 암살된 이후 러시아에서는 전제 정치가 강화되었다.", "a": "O", "e": ""}, {"n": 50, "sec": "러시아 혁명의 전개", "q": "피의 일요일 사건은 러일 전쟁 중인 1905년에 일어났다.", "a": "O", "e": ""}, {"n": 51, "sec": "러시아 혁명의 전개", "q": "피의 일요일 사건 이후 니콜라이 2세는 두마(의회) 설치 등 개혁을 약속하였다.", "a": "O", "e": ""}, {"n": 52, "sec": "러시아 혁명의 전개", "q": "니콜라이 2세의 개혁으로 러시아의 문제가 모두 해결되었다.", "a": "X", "e": "개혁을 약속했지만 별다른 성과를 내지 못했어요."}, {"n": 53, "sec": "러시아 혁명의 전개", "q": "2월 혁명으로 차르가 퇴위하고 임시 정부가 수립되었다.", "a": "O", "e": ""}, {"n": 54, "sec": "러시아 혁명의 전개", "q": "2월 혁명 때 노동자·병사 소비에트가 결성되었다.", "a": "O", "e": ""}, {"n": 55, "sec": "러시아 혁명의 전개", "q": "소비에트는 ‘다수’를 뜻하는 러시아어이다.", "a": "X", "e": "소비에트는 ‘평의회’라는 뜻이에요. ‘다수’는 볼셰비키예요."}, {"n": 56, "sec": "러시아 혁명의 전개", "q": "임시 정부는 개혁을 미루고 전쟁을 지속하였다.", "a": "O", "e": ""}, {"n": 57, "sec": "러시아 혁명의 전개", "q": "10월 혁명은 레닌이 이끄는 볼셰비키가 일으켰다.", "a": "O", "e": ""}, {"n": 58, "sec": "러시아 혁명의 전개", "q": "10월 혁명으로 세계 최초로 사회주의 혁명에 의한 소비에트 정권이 수립되었다.", "a": "O", "e": ""}, {"n": 59, "sec": "러시아 혁명의 전개", "q": "2월 혁명과 10월 혁명은 오늘날 달력으로 3월과 11월에 일어났다.", "a": "O", "e": ""}, {"n": 60, "sec": "러시아 혁명의 전개", "q": "소비에트 정부는 공장, 은행, 철도 등 주요 산업 시설을 국유화하였다.", "a": "O", "e": ""}, {"n": 61, "sec": "러시아 혁명의 전개", "q": "소비에트 정부는 제헌 의회를 해산하고 일당 체제를 시작하였다.", "a": "O", "e": ""}, {"n": 62, "sec": "러시아 혁명의 전개", "q": "연합국은 소비에트 정부를 지원하여 반혁명 세력을 물리쳤다.", "a": "X", "e": "연합국은 반혁명 세력을 지원했어요."}, {"n": 63, "sec": "러시아 혁명의 전개", "q": "레닌은 자본주의 요소를 일부 도입한 신경제 정책(NEP)을 실시하였다.", "a": "O", "e": ""}, {"n": 64, "sec": "러시아 혁명의 전개", "q": "신경제 정책은 곡물의 강제 징발을 강화하는 정책이었다.", "a": "X", "e": "곡물의 강제 징발을 폐지하고 개인의 소유와 경영을 허용했어요."}, {"n": 65, "sec": "러시아 혁명의 전개", "q": "1922년 러시아를 중심으로 소련이 수립되었다.", "a": "O", "e": ""}, {"n": 66, "sec": "러시아 혁명의 전개", "q": "스탈린은 레닌의 신경제 정책을 더욱 확대하였다.", "a": "X", "e": "스탈린은 신경제 정책을 버리고 전면적인 사회주의 경제 정책을 추진했어요."}, {"n": 67, "sec": "러시아 혁명의 전개", "q": "스탈린은 농업의 집단화와 경제 개발 5개년 계획을 추진하였다.", "a": "O", "e": ""}, {"n": 68, "sec": "러시아 혁명의 전개", "q": "스탈린 시기 소련은 공업 국가로 성장하였으나 독재 체제가 강화되었다.", "a": "O", "e": ""}, {"n": 69, "sec": "러시아 혁명의 전개", "q": "레닌은 혁명을 전파하기 위해 코민테른을 결성하였다.", "a": "O", "e": ""}, {"n": 70, "sec": "러시아 혁명의 전개", "q": "코민테른은 아시아·아프리카의 반제국주의 민족 운동을 지원하였다.", "a": "O", "e": ""}, {"n": 71, "sec": "러시아 혁명의 전개", "q": "러시아 혁명의 영향으로 중국 공산당, 조선 공산당 등이 결성되었다.", "a": "O", "e": ""}, {"n": 72, "sec": "러시아 혁명의 전개", "q": "코민테른 제2차 대회에서는 ‘만국의 노동자, 피억압 민족이여 단결하라!’라는 구호가 나타났다.", "a": "O", "e": ""}, {"n": 73, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "제1차 세계 대전 이후 미국 경제는 크게 발전하였다.", "a": "O", "e": ""}, {"n": 74, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "대공황 직전 미국 노동자들의 임금은 생산량보다 크게 올랐다.", "a": "X", "e": "기업은 생산량을 늘렸지만 노동자 임금은 크게 오르지 않았어요."}, {"n": 75, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "1929년 10월 뉴욕 증시의 주가가 폭락하면서 대공황이 시작되었다.", "a": "O", "e": ""}, {"n": 76, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "대공황으로 농산물 가격이 폭등하였다.", "a": "X", "e": "농산물 가격이 폭락했어요."}, {"n": 77, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "대공황은 미국 경제에 의존하던 유럽을 비롯한 전 세계로 확산되었다.", "a": "O", "e": ""}, {"n": 78, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "루스벨트는 자유방임 정책을 강화하여 대공황을 극복하려 하였다.", "a": "X", "e": "자유방임 정책을 수정하여 정부가 경제에 개입하는 뉴딜 정책을 추진했어요."}, {"n": 79, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "뉴딜 정책으로 테네시강 유역 개발 공사 같은 대규모 공공사업이 진행되었다.", "a": "O", "e": ""}, {"n": 80, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "뉴딜 정책으로 실업 수당 지급 같은 사회 보장 제도가 강화되었다.", "a": "O", "e": ""}, {"n": 81, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "농업 조정법은 주요 농산물의 과잉 생산을 제한하였다.", "a": "O", "e": ""}, {"n": 82, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "영국과 프랑스는 보호 무역과 블록 경제로 대공황을 극복해 나갔다.", "a": "O", "e": ""}, {"n": 83, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "전체주의는 개인의 자유를 국가보다 중요하게 여기는 체제이다.", "a": "X", "e": "전체주의는 개인보다 국가·민족 전체를 중요하게 여겨 국민 생활을 통제하는 독재 체제예요."}, {"n": 84, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "이탈리아에서는 무솔리니의 파시스트당이 로마로 진군하여 정권을 잡았다.", "a": "O", "e": ""}, {"n": 85, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "무솔리니는 파시스트당을 제외한 모든 정당을 해산하였다.", "a": "O", "e": ""}, {"n": 86, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "독일의 나치스는 반유대주의를 내세우며 지지를 얻었다.", "a": "O", "e": ""}, {"n": 87, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "히틀러는 1932년 선거 승리 후 이듬해 총리로 취임하였다.", "a": "O", "e": ""}, {"n": 88, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "일본에서는 대공황 이후 군부를 중심으로 군국주의가 확산되었다.", "a": "O", "e": ""}, {"n": 89, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "일본은 1931년 중일 전쟁을 일으켰다.", "a": "X", "e": "1931년은 만주 사변이에요. 중일 전쟁은 1937년이에요."}, {"n": 90, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "독일은 재무장을 선언하고 오스트리아를 합병하였다.", "a": "O", "e": ""}, {"n": 91, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "이탈리아는 에티오피아를 침공하였다.", "a": "O", "e": ""}, {"n": 92, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "독일과 일본은 미국에 대항하기 위하여 방공 협정을 체결하였다.", "a": "X", "e": "방공 협정은 소련(공산주의)에 대항하기 위한 협정이에요."}, {"n": 93, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "방공 협정에 이탈리아가 참여하면서 추축국 진영이 형성되었다.", "a": "O", "e": ""}, {"n": 94, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "영국과 프랑스는 뮌헨 협정을 맺는 유화 정책을 폈다.", "a": "O", "e": ""}, {"n": 95, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "뮌헨 협정으로 독일이 폴란드 전체를 합병하였다.", "a": "X", "e": "뮌헨 협정으로 독일은 체코슬로바키아의 수데텐란트를 합병했어요."}, {"n": 96, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "독일은 소련과 독소 불가침 조약을 맺은 후 폴란드를 침공하였다.", "a": "O", "e": ""}, {"n": 97, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "독일이 폴란드를 침공하자 영국과 프랑스가 독일에 선전 포고하였다.", "a": "O", "e": ""}, {"n": 98, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "독일은 영국·프랑스 연합군을 물리치고 파리를 점령하였다.", "a": "O", "e": ""}, {"n": 99, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "독일이 소련을 침공하자 소련은 추축국에 합류하였다.", "a": "X", "e": "소련은 연합국에 합류했어요."}, {"n": 100, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "이탈리아는 그리스와 북부 아프리카를 침략하였다.", "a": "O", "e": ""}, {"n": 101, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "일본이 동남아시아를 침략하자 미국은 석유 수출을 금지하였다.", "a": "O", "e": ""}, {"n": 102, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "일본은 진주만을 기습하여 아시아·태평양 전쟁을 일으켰다.", "a": "O", "e": ""}, {"n": 103, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "미국은 미드웨이 해전에서 일본 해군에 패배하였다.", "a": "X", "e": "미국이 미드웨이 해전(1942)에서 일본 해군을 물리쳤어요."}, {"n": 104, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "스탈린그라드 전투에서 소련군의 저항으로 독일군이 큰 손실을 입었다.", "a": "O", "e": ""}, {"n": 105, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "연합국은 독일보다 이탈리아를 먼저 항복시켰다.", "a": "O", "e": ""}, {"n": 106, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "노르망디 상륙 작전 성공 후 연합국은 파리를 수복하였다.", "a": "O", "e": ""}, {"n": 107, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "독일은 일본보다 늦게 항복하였다.", "a": "X", "e": "독일(1945. 5.)이 일본(1945. 8.)보다 먼저 항복했어요."}, {"n": 108, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "미국은 히로시마와 나가사키에 원자 폭탄을 투하하였다.", "a": "O", "e": ""}, {"n": 109, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "소련은 제2차 세계 대전이 끝날 때까지 일본과 전쟁을 벌이지 않았다.", "a": "X", "e": "원자 폭탄 투하 후 소련이 일본에 선전 포고하고 공격했어요."}, {"n": 110, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "제2차 세계 대전 중에는 대량 학살과 민간인 지역 무차별 공습이 일어났다.", "a": "O", "e": ""}, {"n": 111, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "침묵의 나선 이론은 나치즘이 확산된 현상을 설명하는 데 활용되기도 한다.", "a": "O", "e": ""}, {"n": 112, "sec": "전체주의의 등장과 제2차 세계 대전의 발발", "q": "침묵의 나선 이론에 따르면 다수가 지지하는 의견은 늘 옳다.", "a": "X", "e": "소수라고 느낀 사람들이 침묵하면서 권력의 의견이 여론이 되는 과정을 설명해요. 다수 의견이 늘 옳지는 않아요."}];
+const SECS = [...new Set(DATA.map(d=>d.sec))];
+const ROM=['Ⅰ','Ⅱ','Ⅲ','Ⅳ','Ⅴ','Ⅵ','Ⅶ','Ⅷ'];
+const KEY='ms-hist1-ww-ox-v1';
+let st={wrong:{}};
+try{const s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s&&s.wrong) st=s;}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const $=id=>document.getElementById(id);
+let list=[],pos=0,picked=null,shuffle=false,wrongOnly=false,section='all',right=0,tried=0;
+$('sec').innerHTML='<option value="all">전체 단원 ('+DATA.length+'문항)</option>'+
+  SECS.map((s,i)=>'<option value="'+i+'">'+ROM[i]+'. '+s+' ('+DATA.filter(d=>d.sec===s).length+')</option>').join('');
+function build(){
+  list=DATA.filter(d=>(section==='all'||d.sec===SECS[+section])&&(!wrongOnly||st.wrong[d.n]));
+  if(shuffle){for(let i=list.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[list[i],list[j]]=[list[j],list[i]]}}
+  pos=0;picked=null;right=0;tried=0;render();
+}
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function render(){
+  const total=list.length;
+  const nWrong=Object.keys(st.wrong).length;
+  $('score').innerHTML=tried?'<span>정답</span><strong>'+right+'/'+tried+'</strong>':'<span>틀린 문제</span><strong>'+nWrong+'</strong>';
+  $('bar').style.width=total?((pos+(picked?1:0))/total*100)+'%':'0';
+  $('prev').disabled=pos===0;
+  const card=$('card'),act=$('actions');
+  if(!total){
+    card.innerHTML='<div class="done"><div class="big">0</div><p>'+(wrongOnly?'틀린 문제가 없어요. 전체 문제로 돌아가 풀어 보세요.':'문제가 없어요.')+'</p></div>';
+    act.innerHTML='';return;
+  }
+  if(pos>=total){
+    card.innerHTML='<div class="done"><p>이번 회차 결과</p><div class="big">'+right+' / '+tried+'</div><p>틀린 문제는 자동으로 모아 두었어요.</p><div class="row"><button class="chip" id="again">처음부터 다시</button><button class="chip" id="gowrong">틀린 문제만 풀기</button></div></div>';
+    act.innerHTML='';
+    $('again').onclick=build;
+    $('gowrong').onclick=()=>{wrongOnly=true;$('wrong').setAttribute('aria-pressed','true');build()};
+    return;
+  }
+  const d=list[pos];
+  const si=SECS.indexOf(d.sec);
+  let h='<div class="meta"><span class="no">'+d.n+'<em>번</em></span><span class="tag">'+ROM[si]+'. '+esc(d.sec)+'</span></div><p class="q">'+esc(d.q)+'</p>';
+  if(picked){
+    const ok=picked===d.a;
+    h+='<div class="result" data-k="'+d.a+'"><div class="mark" aria-label="정답 '+d.a+'">'+d.a+'</div><div><p class="verdict '+(ok?'ok':'no')+'">'+(ok?'정답이에요!':'아쉬워요. 정답은 '+d.a)+'</p><p class="exp">'+esc(d.e||'옳은 설명이에요.')+'</p></div></div>';
+    act.innerHTML='<button class="next" id="nx">'+(pos+1<total?'다음 문제 →':'결과 보기')+'</button>';
+    $('nx').onclick=()=>{pos++;picked=null;render();window.scrollTo({top:0})};
+    $('nx').focus({preventScroll:true});
+  }else{
+    act.innerHTML='<div class="pad"><button id="bO" aria-label="O 맞다">O</button><button id="bX" aria-label="X 틀리다">X</button></div>';
+    $('bO').onclick=()=>answer('O');$('bX').onclick=()=>answer('X');
+  }
+  card.innerHTML=h;
+}
+function answer(k){
+  const d=list[pos];picked=k;tried++;
+  if(k===d.a){right++; if(wrongOnly) delete st.wrong[d.n];}
+  else st.wrong[d.n]=1;
+  save();render();
+}
+$('sec').onchange=e=>{section=e.target.value;build()};
+$('shuf').onclick=e=>{shuffle=!shuffle;e.currentTarget.setAttribute('aria-pressed',shuffle);build()};
+$('wrong').onclick=e=>{wrongOnly=!wrongOnly;e.currentTarget.setAttribute('aria-pressed',wrongOnly);build()};
+$('prev').onclick=()=>{if(pos>0){pos--;picked=null;render()}};
+let armed=false;
+$('reset').onclick=e=>{const t=e.currentTarget;if(!armed){armed=true;t.textContent='한 번 더 누르면 초기화';setTimeout(()=>{armed=false;t.textContent='기록 초기화'},2500);return}
+  st={wrong:{}};save();armed=false;t.textContent='기록 초기화';wrongOnly=false;$('wrong').setAttribute('aria-pressed','false');build()};
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='SELECT'||e.target.tagName==='INPUT')return;
+  if(!picked&&(e.key==='o'||e.key==='O'))answer('O');
+  else if(!picked&&(e.key==='x'||e.key==='X'))answer('X');
+  else if(picked&&(e.key==='Enter'||e.key==='ArrowRight')){e.preventDefault();$('nx')&&$('nx').click()}
+});
+build();
+</script>
+<script>
+(function(){
+const H=1418297543,K='ms-hist1-ww-ox-gate';
+const hash=s=>{let h=5381;for(const c of s.trim().toLowerCase())h=((h*33)^c.charCodeAt(0))>>>0;return h};
+const g=document.getElementById('gate');
+let ok=false;try{ok=localStorage.getItem(K)===String(H)}catch(e){}
+if(ok){g.hidden=true;return}
+const M={'ㅂ':'q','ㅈ':'w','ㄷ':'e','ㄱ':'r','ㅅ':'t','ㅛ':'y','ㅕ':'u','ㅑ':'i','ㅐ':'o','ㅔ':'p','ㅁ':'a','ㄴ':'s','ㅇ':'d','ㄹ':'f','ㅎ':'g','ㅗ':'h','ㅓ':'j','ㅏ':'k','ㅣ':'l','ㅋ':'z','ㅌ':'x','ㅊ':'c','ㅍ':'v','ㅠ':'b','ㅜ':'n','ㅡ':'m'};
+const norm=s=>[...String(s).replace(/\s+/g,'')].map(c=>M[c]||c).join('');
+const tryIn=()=>{const v=document.getElementById('gc').value;
+ if(hash(norm(v))===H||hash(v)===H){try{localStorage.setItem(K,String(H))}catch(e){} g.hidden=true}
+ else document.getElementById('ge').textContent='코드가 맞지 않아요. 영문 자판으로 입력했는지 확인해 주세요.'};
+document.getElementById('gb').addEventListener('click',tryIn);
+document.getElementById('gc').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();tryIn()}});
+document.getElementById('gf').addEventListener('submit',e=>{e.preventDefault();tryIn()});
+})();
+</script>
+</body></html>
