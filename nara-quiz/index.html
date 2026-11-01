@@ -81,11 +81,16 @@ main.wrap{margin-top:-38px;display:flex;flex-direction:column;gap:12px;padding-b
 #map .c.s0{fill:#F472B6}#map .c.s1{fill:#60A5FA}#map .c.s2{fill:#A78BFA}#map .c.s3{fill:#FB923C}#map .c.s4{fill:#2DD4BF}#map .c.s5{fill:#FACC15}
 #map .c[class*=" s"]{stroke:#1F2937;stroke-width:1.1}
 #map .c.sel{stroke:#000;stroke-width:3.2}
-#map .lbl.st{fill:#0B1220;font-weight:900}
+#map .lbl.st{fill:#000;font-weight:900}
 #map .lbl.st.on{fill:#B91C1C}
 #map .ring{fill:none;stroke:#DC2626;stroke-width:3.2;vector-effect:non-scaling-stroke;animation:pulse 1.4s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-#map .lbl{font-family:var(--sans);font-weight:900;text-anchor:middle;dominant-baseline:middle;paint-order:stroke;stroke:#fff;stroke-linejoin:round;fill:#1C2747;pointer-events:none}
+#map .lbl{font-family:var(--sans);font-weight:900;text-anchor:middle;dominant-baseline:central;fill:#000;stroke:none;pointer-events:none}
+#map .pill{fill:#fff;stroke:#111827;vector-effect:non-scaling-stroke;stroke-width:1.2}
+#map .pill.ok{fill:#DCFCE7;stroke:#15803D;stroke-width:2}
+#map .pill.no{fill:#FEE2E2;stroke:#B91C1C;stroke-width:2}
+#map .pill.opt{fill:#EEF2FF;stroke:#3730A3}
+#map .pill.on{fill:#FFF7D6;stroke:#B91C1C;stroke-width:2}
 #map .lbl.ok{fill:#14532D}
 #map .lbl.no{fill:#991B1B}
 #map .lbl.opt{fill:#312E81}
@@ -162,7 +167,7 @@ footer{text-align:center;font-size:12px;font-weight:500;color:var(--muted);margi
   <section class="card" id="card" aria-live="polite"></section>
   <div class="mapbox" id="mapbox">
     <div class="mapbtns"><button id="zin" aria-label="확대">+</button><button id="zout" aria-label="축소">−</button><button id="zfit" aria-label="문제 위치로">⤢</button></div>
-    <svg id="map" viewBox="0 0 1000 620" role="img" aria-label="세계 지도"><g id="vp"><g id="land"></g><g id="marks"></g><g id="lbls"></g></g></svg>
+    <svg id="map" viewBox="0 0 1000 620" role="img" aria-label="세계 지도"><g id="vp"><g id="land"></g><g id="marks"></g><g id="lblbg"></g><g id="lbls"></g></g></svg>
     <div class="mini"><svg id="mini" viewBox="0 0 200 104"><path class="ml" id="mland"></path><rect class="mr" id="mrect"></rect></svg></div>
   </div>
   <p class="maphint" id="hint">두 손가락으로 확대·축소, 드래그로 이동 · 작은 나라는 빨간 원으로 표시돼요</p>
@@ -201,7 +206,7 @@ const C=DATA.map(d=>{const f=byName[d.en];const m=mainPoly(f);return Object.assi
 const byKo={};C.forEach(c=>byKo[c.ko]=c);
 
 // draw land
-const gLand=d3.select('#land'),gMarks=d3.select('#marks'),gL=d3.select('#lbls');
+const gLand=d3.select('#land'),gMarks=d3.select('#marks'),gL=d3.select('#lbls'),gB=d3.select('#lblbg');
 gLand.selectAll('path').data(feats).join('path').attr('class','c').attr('d',path).attr('data-i',f=>f.i);
 // mini map
 const mp=d3.geoNaturalEarth1().fitExtent([[2,2],[198,102]],{type:'Sphere'});
@@ -216,9 +221,11 @@ function mini(t){const s=mp.scale()/proj.scale(),[tx,ty]=proj.translate(),[mx,my
   r.setAttribute('x',(x0-tx)*s+mx);r.setAttribute('y',(y0-ty)*s+my);r.setAttribute('width',Math.max(4,w*s));r.setAttribute('height',Math.max(4,h*s));}
 function sizeMarks(){const s=SC()*K;
   gMarks.selectAll('circle').attr('r',d=>Math.max(14,d.rr||0)/s);
-  gL.selectAll('text').attr('font-size',d=>(d.big?19:(mode==='study'?15:16))/s).attr('stroke-width',5.5/s);
-  declutter();
+  gL.selectAll('text').attr('font-size',d=>(d.big?19:(mode==='study'?15:16))/s).attr('stroke-width',0);
+  declutter();pills(s);
 }
+function pills(s){gB.selectAll('*').remove();gL.selectAll('text').each(function(){if(this.style.display==='none')return;const b=this.getBBox();const px=5/s,py=2.5/s;const k=(this.getAttribute('class')||'').split(' ').filter(x=>x==='ok'||x==='no'||x==='opt'||x==='on').join(' ');
+  gB.append('rect').attr('class','pill '+k).attr('x',b.x-px).attr('y',b.y-py).attr('width',b.width+2*px).attr('height',b.height+2*py).attr('rx',6/s)})}
 function fit(boxes,maxK){let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;boxes.forEach(b=>{x0=Math.min(x0,b[0][0]);y0=Math.min(y0,b[0][1]);x1=Math.max(x1,b[1][0]);y1=Math.max(y1,b[1][1])});
   const pw=(x1-x0)*.16+8,ph=(y1-y0)*.16+8;x0-=pw;x1+=pw;y0-=ph;y1+=ph;
   let k=Math.min(W/(x1-x0),H/(y1-y0));k=Math.max(1,Math.min(maxK||40,k));
@@ -278,13 +285,13 @@ document.querySelectorAll('.mode button').forEach(b=>b.onclick=()=>setMode(b.dat
 $('hide').onclick=e=>{hideNames=!hideNames;e.currentTarget.setAttribute('aria-pressed',hideNames);reveal={};showStudy()};
 function makeOpts(c){const near=c.nb.slice(0,6).map(k=>byKo[k]).filter(Boolean);return shuffle([c,...shuffle(near).slice(0,4)])}
 function paint(){
-  gLand.selectAll('path').attr('class','c');gMarks.selectAll('*').remove();gL.selectAll('*').remove();
+  gLand.selectAll('path').attr('class','c');gMarks.selectAll('*').remove();gL.selectAll('*').remove();gB.selectAll('*').remove();
 }
 function cls(c,k){gLand.select('path[data-i="'+c.f.i+'"]').attr('class','c '+k)}
 function ring(c,color){if(c.area<40){gMarks.append('circle').datum({rr:14}).attr('class','ring').attr('cx',c.c[0]).attr('cy',c.c[1]).style('stroke',color||null)}}
 function label(c,k,big){gL.append('text').datum({big,y0:c.c[1]}).attr('class','lbl '+k).attr('x',c.c[0]).attr('y',c.c[1]).text(c.ko)}
-function ov(a,b){return a.x<b.x+b.width+1&&a.x+a.width+1>b.x&&a.y<b.y+b.height&&a.y+a.height>b.y}
-function declutter(){if(mode==='study')return hideClutter();const placed=[];gL.selectAll('text').each(function(d){const n=this;n.setAttribute('y',d.y0);let bb=n.getBBox();const step=bb.height*1.02;let t=0;
+function ov(a,b){const m=a.height*.5;return a.x<b.x+b.width+m&&a.x+a.width+m>b.x&&a.y<b.y+b.height+m&&a.y+a.height+m>b.y}
+function declutter(){if(mode==='study')return hideClutter();const placed=[];gL.selectAll('text').each(function(d){const n=this;n.setAttribute('y',d.y0);let bb=n.getBBox();const step=bb.height*1.4;let t=0;
   while(placed.some(p=>ov(p,bb))&&t<10){t++;const off=(t%2?1:-1)*Math.ceil(t/2)*step;n.setAttribute('y',d.y0+off);bb=n.getBBox()}placed.push(bb)})}
 function hideClutter(){const ns=gL.selectAll('text').nodes();const placed=[];ns.sort((a,b)=>{const A=d3.select(a).datum(),B=d3.select(b).datum();return (B.pri||0)-(A.pri||0)});
   ns.forEach(n=>{n.style.display='';const d=d3.select(n).datum();if(d.hid){n.style.display='none';return}const bb=n.getBBox();if(placed.some(p=>ov(p,bb)))n.style.display='none';else placed.push(bb)})}
