@@ -7,7 +7,7 @@
   --band:#1C2747; --band-ink:#FFFFFF; --band-soft:rgba(255,255,255,.14);
   --bg:#F2F4F9; --surface:#FFFFFF; --ink:#16203A; --muted:#6A7389; --line:#E1E5EE;
   --o:#2563EB; --o-soft:#E6EEFF; --x:#E0453A; --x-soft:#FDEBEA; --gold:#F5B731; --ok:#16A34A; --ok-soft:#E3F6E9;
-  --sea:#D6E6F5; --land:#FFFFFF; --border:#8C97A6; --target:#F5B731;
+  --sea:#D6E6F5; --land:#DCE6D2; --border:#7F8C7A; --target:#F5B731;
   --display:"Black Han Sans","Noto Sans KR",sans-serif;
   --sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
   --shadow:0 10px 30px rgba(22,32,58,.10),0 2px 6px rgba(22,32,58,.06);
@@ -51,6 +51,17 @@ select option{color:#16203A;background:#fff}
 .seg{display:flex;background:var(--band-soft);border-radius:999px;padding:3px;flex:0 0 auto}
 .seg button{font:inherit;font-size:13px;font-weight:700;border:none;background:none;color:var(--band-ink);padding:7px 12px;border-radius:999px;cursor:pointer;opacity:.8}
 .seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);opacity:1}
+.mode{display:grid;grid-template-columns:1fr 1fr;background:var(--band-soft);border-radius:999px;padding:3px}
+.mode button{font:inherit;font-size:15px;font-weight:900;border:none;background:none;color:var(--band-ink);padding:10px 8px;border-radius:999px;cursor:pointer;opacity:.8}
+.mode button[aria-pressed="true"]{background:var(--gold);color:#1C2747;opacity:1}
+.study-h{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.study-h b{font-size:20px;font-weight:900}
+.study-p{margin:6px 0 10px;font-size:14px;color:var(--muted);line-height:1.6}
+.clist{display:flex;flex-wrap:wrap;gap:6px}
+.clist button{font:inherit;font-size:14px;font-weight:700;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:99px;padding:6px 11px;cursor:pointer}
+.clist button.on{background:var(--gold);border-color:var(--gold);color:#1C2747}
+.clist button.wr{border-color:var(--x)}
+.go{margin-top:14px;width:100%;font:inherit;font-size:17px;font-weight:900;padding:14px;border-radius:16px;border:none;background:var(--band);color:#fff;cursor:pointer}
 .progress{height:6px;border-radius:99px;background:var(--band-soft);overflow:hidden}
 .progress span{display:block;height:100%;width:0;background:var(--gold);transition:width .3s}
 main.wrap{margin-top:-38px;display:flex;flex-direction:column;gap:12px;padding-bottom:30px}
@@ -67,6 +78,10 @@ main.wrap{margin-top:-38px;display:flex;flex-direction:column;gap:12px;padding-b
 #map .c.ok{fill:#4ADE80;stroke:#14532D;stroke-width:1.6}
 #map .c.no{fill:#FCA5A5;stroke:#991B1B;stroke-width:1.4}
 #map .c.opt{fill:#C7D2FE;stroke:#3730A3;stroke-width:1.1}
+#map .c.s0{fill:#FBCFE8}#map .c.s1{fill:#BFDBFE}#map .c.s2{fill:#DDD6FE}#map .c.s3{fill:#FED7AA}#map .c.s4{fill:#99F6E4}#map .c.s5{fill:#FECACA}
+#map .c.sel{stroke:#1C2747;stroke-width:2.2}
+#map .lbl.st{fill:#1C2747;font-weight:700}
+#map .lbl.st.on{fill:#B45309}
 #map .ring{fill:none;stroke:#E0453A;stroke-width:2.5;vector-effect:non-scaling-stroke;animation:pulse 1.4s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 #map .lbl{font-family:var(--sans);font-weight:900;text-anchor:middle;dominant-baseline:middle;paint-order:stroke;stroke:#fff;stroke-linejoin:round;fill:#1C2747;pointer-events:none}
@@ -130,11 +145,13 @@ footer{text-align:center;font-size:12px;color:var(--muted);margin-top:4px}
     <div class="logo"><div class="badge" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#2563EB" stroke-width="2"/><path d="M3.5 12h17M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" fill="none" stroke="#2563EB" stroke-width="1.6"/><path d="M14 13.5l2.2 2.2 4-4.4" fill="none" stroke="#E0453A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><small>이경태T · 수능 세계지리</small><h1>세계지리 국가 맞히기</h1></div></div>
     <div class="stats"><div class="stat" id="sc"><span>정답</span><strong>0/0</strong></div><div class="stat hot" id="sk"><span>연속</span><strong>0</strong></div></div>
   </div>
+  <div class="mode" role="group" aria-label="학습 단계"><button data-m="study" aria-pressed="true">① 미리 외우기</button><button data-m="quiz" aria-pressed="false">② 문제 풀기</button></div>
   <div class="controls">
     <select id="reg" aria-label="권역 선택"></select>
-    <div class="seg" role="group" aria-label="문제 수"><button data-n="10" aria-pressed="false">10문제</button><button data-n="20" aria-pressed="true">20문제</button><button data-n="0" aria-pressed="false">전체</button></div>
+    <div class="seg" id="nseg" role="group" aria-label="문제 수"><button data-n="10" aria-pressed="false">10문제</button><button data-n="20" aria-pressed="true">20문제</button><button data-n="0" aria-pressed="false">전체</button></div>
   </div>
   <div class="controls">
+    <button class="chip" id="hide" aria-pressed="false">이름 가리기</button>
     <button class="chip" id="wrong" aria-pressed="false">틀린 국가만</button>
     <button class="chip" id="pts" aria-pressed="true">수능 포인트</button>
   </div>
@@ -147,7 +164,7 @@ footer{text-align:center;font-size:12px;color:var(--muted);margin-top:4px}
     <svg id="map" viewBox="0 0 1000 620" role="img" aria-label="세계 지도"><g id="vp"><g id="land"></g><g id="marks"></g><g id="lbls"></g></g></svg>
     <div class="mini"><svg id="mini" viewBox="0 0 200 104"><path class="ml" id="mland"></path><rect class="mr" id="mrect"></rect></svg></div>
   </div>
-  <p class="maphint">두 손가락으로 확대·축소, 드래그로 이동 · 작은 나라는 빨간 원으로 표시돼요</p>
+  <p class="maphint" id="hint">두 손가락으로 확대·축소, 드래그로 이동 · 작은 나라는 빨간 원으로 표시돼요</p>
   <section id="choicebox"></section>
   <section class="card" id="after" hidden></section>
   <div class="nav"><button id="restart">처음부터</button><button id="reset">기록 초기화</button></div>
@@ -198,7 +215,7 @@ function mini(t){const s=mp.scale()/proj.scale(),[tx,ty]=proj.translate(),[mx,my
   r.setAttribute('x',(x0-tx)*s+mx);r.setAttribute('y',(y0-ty)*s+my);r.setAttribute('width',Math.max(4,w*s));r.setAttribute('height',Math.max(4,h*s));}
 function sizeMarks(){const s=SC()*K;
   gMarks.selectAll('circle').attr('r',d=>Math.max(14,d.rr||0)/s);
-  gL.selectAll('text').attr('font-size',d=>(d.big?17:14)/s).attr('stroke-width',4/s);
+  gL.selectAll('text').attr('font-size',d=>(d.big?17:(mode==='study'?12.5:14))/s).attr('stroke-width',4/s);
   declutter();
 }
 function fit(boxes,maxK){let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;boxes.forEach(b=>{x0=Math.min(x0,b[0][0]);y0=Math.min(y0,b[0][1]);x1=Math.max(x1,b[1][0]);y1=Math.max(y1,b[1][1])});
@@ -210,14 +227,54 @@ let curTf=d3.zoomIdentity;
 function goView(anim){svg.transition().duration(anim?650:0).call(zoom.transform,curTf)}
 
 // state
-let reg=ORDER[0],N=20,wrongOnly=false,showPts=true,list=[],pos=0,done=false,picked=null,right=0,tried=0,streak=0,best=0,opts=null,missed=[];
+let mode='study',hideNames=false,sel=null,reveal={},reg=ORDER[0],N=20,wrongOnly=false,showPts=true,list=[],pos=0,done=false,picked=null,right=0,tried=0,streak=0,best=0,opts=null,missed=[];
 $('reg').innerHTML=ORDER.map((r,i)=>'<option value="'+r+'">'+(i+1)+'. '+r+' ('+C.filter(c=>c.reg===r).length+'개국)</option>').join('')+'<option value="all">전체 권역 ('+C.length+'개국)</option>';
 function pool(){return C.filter(c=>(reg==='all'||c.reg===reg)&&(!wrongOnly||st.wrong[c.ko]))}
 function build(){
+  if(mode==='study'){sel=null;reveal={};return show()}
   const p=shuffle(pool().slice());list=N?p.slice(0,N):p;
   pos=0;done=false;picked=null;right=0;tried=0;streak=0;opts=null;missed=[];
   show();
 }
+const NB=topojson.neighbors(WORLD.objects.countries.geometries);
+const geoIdx={};WORLD.objects.countries.geometries.forEach((g,i)=>geoIdx[g.properties.name]=i);
+const COL={};(function(){const idxSet=new Set(C.map(c=>geoIdx[c.en]));const order=C.slice().sort((a,b)=>b.area-a.area);
+  order.forEach(c=>{const used=new Set((NB[geoIdx[c.en]]||[]).filter(i=>idxSet.has(i)).map(i=>COL[WORLD.objects.countries.geometries[i].properties.name]).filter(x=>x!=null));let k=0;while(used.has(k))k++;COL[c.en]=k%6})})();
+const BOX={'몬순 아시아':[[62,-11],[146,52]],'오세아니아':[[110,-48],[180,-1]],'건조 아시아와 북부 아프리카':[[-18,10],[90,55]],'유럽':[[-24,35],[50,71]],'북부 아메리카':[[-170,20],[-50,78]],'사하라 이남 아프리카':[[-18,-36],[52,22]],'중·남부 아메리카':[[-118,-56],[-33,33]]};
+function boxRect(b){const p=[];for(let t=0;t<=1;t+=.05){p.push(proj([b[0][0]+(b[1][0]-b[0][0])*t,b[0][1]]),proj([b[0][0]+(b[1][0]-b[0][0])*t,b[1][1]]),proj([b[0][0],b[0][1]+(b[1][1]-b[0][1])*t]),proj([b[1][0],b[0][1]+(b[1][1]-b[0][1])*t]))}
+  return[[d3.min(p,d=>d[0]),d3.min(p,d=>d[1])],[d3.max(p,d=>d[0]),d3.max(p,d=>d[1])]]}
+function regList(){return C.filter(c=>reg==='all'||c.reg===reg)}
+function showStudy(){
+  paint();const L=regList();
+  L.forEach(c=>cls(c,'s'+COL[c.en]+(sel===c?' sel':'')));
+  L.forEach(c=>{if(c.area<40)ring(c,sel===c?'#B45309':'#6A7389')});
+  L.forEach(c=>{gL.append('text').datum({pri:(sel===c?1e9:0)+c.area,y0:c.c[1],hid:hideNames&&!reveal[c.ko]&&sel!==c}).attr('class','lbl st'+(sel===c?' on':'')).attr('x',c.c[0]).attr('y',c.c[1]).text(c.ko).on('click',null)});
+  sizeMarks();renderStudy();
+}
+function studyView(anim){if(reg==='all')curTf=d3.zoomIdentity;else{const r=boxRect(BOX[reg]);const k=Math.min(W/(r[1][0]-r[0][0]),H/(r[1][1]-r[0][1]));curTf=d3.zoomIdentity.translate(W/2-k*(r[0][0]+r[1][0])/2,H/2-k*(r[0][1]+r[1][1])/2).scale(k)}goView(anim)}
+function renderStudy(){
+  const L=regList(),card=$('card'),cb=$('choicebox'),af=$('after');
+  $('bar').style.width='0';
+  const sorted=L.slice().sort((a,b)=>a.ko.localeCompare(b.ko,'ko'));
+  card.innerHTML='<div class="study-h"><b>'+(reg==='all'?'전체 권역':reg)+'</b><span class="tag">'+L.length+'개국</span></div><p class="study-p" style="margin-bottom:0">지도에서 나라 이름과 위치를 먼저 외워 보세요. 지도나 아래 이름을 누르면 수능 포인트가 나와요.'+(hideNames?' <b>이름 가리기</b> 중이에요 — 나라를 눌러 이름을 확인하세요.':'')+'</p>';
+  let h='<div class="card">';
+  if(sel)h+='<div class="pt" style="margin:0 0 12px"><span class="h">'+sel.reg+'</span><b>'+sel.ko+'</b>'+(showPts?' · '+sel.kw:'')+'<span class="near">주변 국가: '+sel.nb.slice(0,4).join(', ')+'</span></div>';
+  h+='<div class="clist">'+sorted.map(c=>'<button data-ko="'+c.ko+'" class="'+(sel===c?'on':'')+(st.wrong[c.ko]?' wr':'')+'">'+(hideNames&&!reveal[c.ko]&&sel!==c?'❓':c.ko)+'</button>').join('')+'</div></div>';
+  cb.innerHTML=h;
+  cb.querySelectorAll('.clist button').forEach(b=>b.onclick=()=>pick(byKo[b.dataset.ko],true));
+  af.innerHTML='<button class="go" id="goq" style="margin-top:0">다 외웠어요! 이 권역 문제 풀기 →</button>';
+  af.hidden=false;$('goq').onclick=()=>setMode('quiz');
+}
+function pick(c,zoomTo){sel=sel===c&&!zoomTo?null:c;if(c)reveal[c.ko]=1;showStudy();
+  if(zoomTo&&c){const b=boxOf(c);const t=fit([b],Math.max(K*1.6,4));svg.transition().duration(600).call(zoom.transform,t);
+    const m=$('mapbox').getBoundingClientRect();if(m.top<0||m.top>window.innerHeight*.5)window.scrollTo({top:window.scrollY+m.top-10,behavior:'smooth'})}}
+svg.on('click',e=>{if(mode!=='study')return;const g=e.target.closest('[data-i]');if(!g)return;const f=feats[+g.getAttribute('data-i')];const c=C.find(x=>x.f===f);if(c&&(reg==='all'||c.reg===reg))pick(c,false)});
+function setMode(m){mode=m;document.querySelectorAll('.mode button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m===m));
+  const q=m==='quiz';$('nseg').hidden=!q;$('wrong').hidden=!q;$('hide').hidden=q;document.querySelector('.stats').style.visibility=q?'visible':'hidden';
+  $('hint').textContent=q?'두 손가락으로 확대·축소, 드래그로 이동 · 작은 나라는 빨간 원으로 표시돼요':'지도를 확대하면 가려진 나라 이름이 더 보여요 · 나라를 누르면 수능 포인트가 나와요';
+  if(!q){sel=null;reveal={};showStudy();studyView(true)}else build();window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('.mode button').forEach(b=>b.onclick=()=>setMode(b.dataset.m));
+$('hide').onclick=e=>{hideNames=!hideNames;e.currentTarget.setAttribute('aria-pressed',hideNames);reveal={};showStudy()};
 function makeOpts(c){const near=c.nb.slice(0,6).map(k=>byKo[k]).filter(Boolean);return shuffle([c,...shuffle(near).slice(0,4)])}
 function paint(){
   gLand.selectAll('path').attr('class','c');gMarks.selectAll('*').remove();gL.selectAll('*').remove();
@@ -226,9 +283,11 @@ function cls(c,k){gLand.select('path[data-i="'+c.f.i+'"]').attr('class','c '+k)}
 function ring(c,color){if(c.area<40){gMarks.append('circle').datum({rr:14}).attr('class','ring').attr('cx',c.c[0]).attr('cy',c.c[1]).style('stroke',color||null)}}
 function label(c,k,big){gL.append('text').datum({big,y0:c.c[1]}).attr('class','lbl '+k).attr('x',c.c[0]).attr('y',c.c[1]).text(c.ko)}
 function ov(a,b){return a.x<b.x+b.width+1&&a.x+a.width+1>b.x&&a.y<b.y+b.height&&a.y+a.height>b.y}
-function declutter(){const placed=[];gL.selectAll('text').each(function(d){const n=this;n.setAttribute('y',d.y0);let bb=n.getBBox();const step=bb.height*1.02;let t=0;
+function declutter(){if(mode==='study')return hideClutter();const placed=[];gL.selectAll('text').each(function(d){const n=this;n.setAttribute('y',d.y0);let bb=n.getBBox();const step=bb.height*1.02;let t=0;
   while(placed.some(p=>ov(p,bb))&&t<10){t++;const off=(t%2?1:-1)*Math.ceil(t/2)*step;n.setAttribute('y',d.y0+off);bb=n.getBBox()}placed.push(bb)})}
-function show(){
+function hideClutter(){const ns=gL.selectAll('text').nodes();const placed=[];ns.sort((a,b)=>{const A=d3.select(a).datum(),B=d3.select(b).datum();return (B.pri||0)-(A.pri||0)});
+  ns.forEach(n=>{n.style.display='';const d=d3.select(n).datum();if(d.hid){n.style.display='none';return}const bb=n.getBBox();if(placed.some(p=>ov(p,bb)))n.style.display='none';else placed.push(bb)})}
+function show(){if(mode==='study')return showStudy();
   paint();
   const c=list[pos];
   if(c){opts=opts||makeOpts(c);cls(c,'t');ring(c);curTf=fit([boxOf(c),...opts.filter(o=>o!==c).map(o=>{const r=Math.min(40,Math.max(8,(o.b[1][0]-o.b[0][0])*.25));return[[o.c[0]-r,o.c[1]-r],[o.c[0]+r,o.c[1]+r]]})]);goView(true)}
@@ -273,21 +332,22 @@ function answer(p){
 }
 function next(){if(!done)return;pos++;done=false;picked=null;opts=null;show();const m=$('card').getBoundingClientRect();window.scrollTo({top:window.scrollY+m.top-12,behavior:'smooth'})}
 document.addEventListener('keydown',e=>{if(!$('gate').hidden)return;
+  if(mode!=='quiz')return;
   if(!done&&/^[1-5]$/.test(e.key)&&opts&&list[pos]){answer(opts[+e.key-1])}
   else if(done&&(e.key==='Enter'||e.key===' ')){e.preventDefault();next()}});
-$('reg').onchange=e=>{reg=e.target.value;build()};
-document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');N=+b.dataset.n;build()});
+$('reg').onchange=e=>{reg=e.target.value;if(mode==='study'){sel=null;reveal={};showStudy();studyView(true)}else build()};
+document.querySelectorAll('#nseg button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#nseg button').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');N=+b.dataset.n;build()});
 $('wrong').onclick=e=>{wrongOnly=!wrongOnly;e.currentTarget.setAttribute('aria-pressed',wrongOnly);build()};
-$('pts').onclick=e=>{showPts=!showPts;e.currentTarget.setAttribute('aria-pressed',showPts);if(done)render()};
+$('pts').onclick=e=>{showPts=!showPts;e.currentTarget.setAttribute('aria-pressed',showPts);if(mode==='study')renderStudy();else if(done)render()};
 $('zin').onclick=()=>svg.transition().duration(300).call(zoom.scaleBy,1.8);
 $('zout').onclick=()=>svg.transition().duration(300).call(zoom.scaleBy,1/1.8);
-$('zfit').onclick=()=>goView(true);
-$('restart').onclick=build;
+$('zfit').onclick=()=>{if(mode==='study')studyView(true);else goView(true)};
+$('restart').onclick=()=>{if(mode==='study'){sel=null;reveal={};showStudy();studyView(true)}else build()};
 let armed=false;
 $('reset').onclick=e=>{const t=e.currentTarget;if(!armed){armed=true;t.textContent='한 번 더 누르면 초기화';setTimeout(()=>{armed=false;t.textContent='기록 초기화'},2500);return}
   st={wrong:{},seen:{}};save();armed=false;t.textContent='기록 초기화';wrongOnly=false;$('wrong').setAttribute('aria-pressed','false');build()};
 window.addEventListener('resize',()=>sizeMarks());
-build();
+setMode('study');
 })();
 </script>
 <script>
