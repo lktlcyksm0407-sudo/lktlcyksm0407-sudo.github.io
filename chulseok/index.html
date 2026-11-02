@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#17324d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="QR 출석부">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<title>QR 출석부</title>
+<style>
+:root{color-scheme:light only;--ink:#17222d;--sub:#5b6875;--line:#d9dfe5;--bg:#f3f5f7;--card:#fff;--navy:#17324d;--ok:#12714a;--okb:#e2f4ea;--late:#9a5b00;--lateb:#fdf0d6;--no:#b3261e;--nob:#fbe6e4}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}
+header{background:var(--navy);color:#fff;padding:calc(10px + env(safe-area-inset-top)) 16px 10px;display:flex;align-items:center;justify-content:space-between}
+header b{font-size:18px}
+nav{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+nav button{border:0;background:none;padding:12px 2px;font-size:14px;font-weight:600;color:var(--sub);border-bottom:3px solid transparent}
+nav button.on{color:var(--navy);border-color:var(--navy)}
+main{max-width:720px;margin:0 auto;padding:14px 16px 60px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px}
+h2{font-size:16px;margin:0 0 10px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.grow{flex:1;min-width:120px}
+label.f{display:block;font-size:13px;color:var(--sub);margin-bottom:4px}
+input,select,textarea{width:100%;padding:10px;border:1px solid #b8c2cc;border-radius:8px;background:#fff;min-height:44px}
+textarea{min-height:110px}
+.btn{border:1px solid #b8c2cc;background:#fff;border-radius:8px;padding:10px 14px;min-height:44px;font-weight:600}
+.btn.p{background:var(--navy);border-color:var(--navy);color:#fff}
+.btn.d{color:var(--no);border-color:#e0b4b1}
+.btn.s{padding:6px 10px;min-height:36px;font-size:14px}
+.muted{color:var(--sub);font-size:14px}
+.notice{background:#fff7e0;border:1px solid #ecd48f;border-radius:10px;padding:10px 12px;font-size:14px;margin-bottom:12px}
+#cam{position:relative;background:#111;border-radius:12px;overflow:hidden;aspect-ratio:1/1;max-height:62vh;width:100%}
+#cam video{width:100%;height:100%;object-fit:cover;display:block}
+#cam .frame{position:absolute;inset:15%;border:3px solid rgba(255,255,255,.85);border-radius:14px;pointer-events:none}
+#cam .msg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;padding:20px}
+#flash{position:fixed;inset:0;display:none;z-index:30;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;color:#fff}
+#flash .n{font-size:clamp(44px,13vw,84px);font-weight:800;line-height:1.15}
+#flash .t{font-size:clamp(22px,6vw,36px);font-weight:700;margin-top:8px}
+#flash.P{background:var(--ok)}#flash.L{background:#b86e00}#flash.D{background:#44515e}#flash.E{background:var(--no)}
+.stats{display:flex;gap:12px;font-weight:700;flex-wrap:wrap}
+.P{color:var(--ok)}.L{color:var(--late)}.A{color:var(--no)}
+#flash.P,#flash.L,#flash.E,#flash.D{color:#fff}
+.st{display:flex;align-items:center;gap:8px;padding:8px 0;border-top:1px solid #edf0f3}
+.st:first-child{border-top:0}
+.st .nm{flex:1;min-width:0;font-weight:600;overflow-wrap:anywhere}
+.st small{display:block;font-weight:400;color:var(--sub)}
+.seg{display:flex;flex:none}
+.seg button{border:1px solid #b8c2cc;background:#fff;min-width:46px;min-height:42px;font-size:14px;font-weight:600;margin-left:-1px}
+.seg button:first-child{border-radius:8px 0 0 8px;margin-left:0}.seg button:last-child{border-radius:0 8px 8px 0}
+.seg .on.P{background:var(--ok);color:#fff}.seg .on.L{background:#b86e00;color:#fff}.seg .on.A{background:var(--no);color:#fff}
+#modal{position:fixed;inset:0;background:rgba(10,20,30,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:40}
+#modal>div{background:#fff;border-radius:14px;padding:18px;max-width:440px;width:100%;max-height:85vh;overflow:auto}
+#modal .acts{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;margin-top:14px}
+.qr svg{display:block;width:100%;height:auto}
+#printArea{display:none}
+body.kiosk nav,body.kiosk .nokiosk{display:none!important}
+@media print{
+ @page{size:A4 portrait;margin:8mm}
+ html,body{background:#fff}
+ header,nav,main,#modal,#flash{display:none!important}
+ #printArea{display:grid;grid-template-columns:1fr 1fr;gap:0}
+ .pc{height:68mm;border:1px dashed #777;padding:4mm;display:flex;align-items:center;gap:4mm;break-inside:avoid;color:#000}
+ .pc .qr{width:50mm;flex:none}
+ .pc .nm{font-size:22pt;font-weight:800;overflow-wrap:anywhere}
+ .pc .sm{font-size:9pt;margin-top:2mm}
+}
+</style></head><body>
+<header><b>QR 출석부</b><button class="btn s" id="kioskBtn" style="background:none;color:#fff;border-color:#8ba0b4">입구 모드</button></header>
+<nav id="tabs"></nav>
+<main id="view"></main>
+<div id="printArea"></div>
+<div id="flash"></div>
+<div id="modal"><div id="modalBox"></div></div>
+<script src="jsQR.js"></script>
+<script src="qrcode.js"></script>
+<script src="app.js"></script>
+</body></html>
