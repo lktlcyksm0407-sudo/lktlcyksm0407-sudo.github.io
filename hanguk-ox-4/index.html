@@ -1,0 +1,205 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"><title>한국사 OX 트레이닝 4주차</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: navy masthead band with controls; white question card overlaps it; big round O/X paddles below */
+:root{
+  --band:#1C2747; --band-ink:#FFFFFF; --band-soft:rgba(255,255,255,.14);
+  --bg:#F2F4F9; --surface:#FFFFFF; --ink:#16203A; --muted:#6A7389; --line:#E1E5EE;
+  --o:#2563EB; --o-soft:#E6EEFF; --x:#E0453A; --x-soft:#FDEBEA; --gold:#F5B731;
+  --display:"Black Han Sans","Noto Sans KR",sans-serif;
+  --sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --shadow:0 10px 30px rgba(22,32,58,.10),0 2px 6px rgba(22,32,58,.06);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --band:#141B30; --band-soft:rgba(255,255,255,.10);
+  --bg:#0E1322; --surface:#1A2238; --ink:#EEF1F8; --muted:#9AA3B8; --line:#2A3350;
+  --o:#6E9BFF; --o-soft:#1D2B52; --x:#FF7A70; --x-soft:#45201F; --gold:#F5C451;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --band:#141B30; --band-soft:rgba(255,255,255,.10);
+  --bg:#0E1322; --surface:#1A2238; --ink:#EEF1F8; --muted:#9AA3B8; --line:#2A3350;
+  --o:#6E9BFF; --o-soft:#1D2B52; --x:#FF7A70; --x-soft:#45201F; --gold:#F5C451;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-tap-highlight-color:transparent;letter-spacing:-.01em}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--band)}
+.band{background:var(--band);color:var(--band-ink);padding-bottom:64px}
+.wrap{max-width:620px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));box-sizing:border-box}
+.band .wrap{padding-block:18px 0;display:flex;flex-direction:column;gap:16px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:12px;min-width:0}
+.badge{flex:0 0 auto;width:48px;height:48px;border-radius:14px;background:var(--surface);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:20px;line-height:1;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.badge b{color:var(--o);font-weight:400}.badge i{color:var(--x);font-style:normal}
+.logo small{display:block;font-size:12px;opacity:.75;font-weight:500;letter-spacing:.02em}
+.logo h1{margin:2px 0 0;font-family:var(--display);font-weight:400;font-size:clamp(19px,5.4vw,24px);white-space:nowrap;letter-spacing:0;line-height:1.15}
+.score{flex:0 0 auto;text-align:center;background:var(--band-soft);border-radius:14px;padding:8px 12px;min-width:64px;font-variant-numeric:tabular-nums}
+.score span{display:block;font-size:11px;opacity:.8}
+.score strong{display:block;font-size:20px;font-weight:900;line-height:1.2}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+select,.chip{font:inherit;font-size:14px;font-weight:500;color:var(--band-ink);background:var(--band-soft);border:1px solid transparent;border-radius:999px;padding:9px 14px;min-height:40px;-webkit-appearance:none;appearance:none}
+select{flex:1 1 150px;min-width:0;padding-right:34px;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 18px) 52%,calc(100% - 13px) 52%;background-size:5px 5px;background-repeat:no-repeat}
+select option{color:#16203A;background:#fff}
+.chip{cursor:pointer;flex:0 0 auto}
+.chip[aria-pressed="true"]{background:var(--gold);color:#1C2747}
+.progress{height:6px;background:var(--band-soft);border-radius:6px;overflow:hidden}
+.progress span{display:block;height:100%;background:var(--gold);width:0;border-radius:6px;transition:width .3s}
+main.wrap{margin-top:-48px;display:flex;flex-direction:column;gap:16px;padding-block:0 24px}
+.card{background:var(--surface);border-radius:24px;padding:24px 22px 22px;display:flex;flex-direction:column;gap:16px;min-height:280px;box-shadow:var(--shadow)}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.no{font-family:var(--display);font-size:22px;color:var(--ink);letter-spacing:0}
+.no em{font-style:normal;font-size:13px;font-family:var(--sans);font-weight:700;color:var(--muted);margin-left:4px}
+.tag{background:var(--bg);border-radius:999px;padding:5px 11px;font-weight:500;font-size:12px;max-width:60%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.q{font-size:clamp(19px,5.1vw,22px);font-weight:500;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.result{margin-top:auto;border-radius:18px;padding:16px;display:flex;gap:14px;align-items:flex-start;animation:pop .28s ease-out}
+.result[data-k="O"]{background:var(--o-soft)} .result[data-k="X"]{background:var(--x-soft)}
+@keyframes pop{from{transform:translateY(8px);opacity:.4}to{transform:none;opacity:1}}
+.mark{flex:0 0 auto;width:52px;height:52px;display:grid;place-items:center;font-family:var(--display);font-size:30px;border-radius:50%;color:#fff;animation:stamp .35s cubic-bezier(.3,1.6,.5,1)}
+.result[data-k="O"] .mark{background:var(--o)} .result[data-k="X"] .mark{background:var(--x)}
+@keyframes stamp{from{transform:scale(.4) rotate(-20deg)}to{transform:none}}
+.verdict{font-weight:900;font-size:16px;margin:3px 0 6px}
+.verdict.ok{color:var(--o)} .verdict.no{color:var(--x)}
+.exp{font-size:15.5px;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.pad{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pad button{font-family:var(--display);font-size:52px;line-height:1;cursor:pointer;border:none;border-radius:24px;min-height:104px;color:#fff;box-shadow:var(--shadow);transition:transform .1s}
+#bO{background:var(--o)} #bX{background:var(--x)}
+.pad button:active{transform:scale(.96)}
+.next{width:100%;font:inherit;font-size:18px;font-weight:700;cursor:pointer;border:none;border-radius:20px;min-height:66px;background:var(--band);color:#fff;box-shadow:var(--shadow)}
+:root[data-theme="dark"] .next{background:var(--gold);color:#1C2747}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .next{background:var(--gold);color:#1C2747}}
+.nav{display:flex;justify-content:space-between;gap:10px}
+.nav button{font:inherit;font-size:14px;font-weight:500;background:none;border:none;color:var(--muted);padding:8px 4px;cursor:pointer}
+.nav button:disabled{opacity:.35}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.done{text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;flex:1}
+.done .big{font-family:var(--display);font-size:54px;font-variant-numeric:tabular-nums}
+.done p{margin:0;color:var(--muted)}
+.done .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.done .chip{background:var(--band);color:#fff}
+footer{font-size:12px;color:var(--muted);text-align:center}
+.gate{position:fixed;inset:0;background:var(--band);display:flex;align-items:center;justify-content:center;z-index:20;padding:24px}
+.gate form{background:var(--surface);color:var(--ink);border-radius:24px;padding:30px 24px;width:100%;max-width:360px;display:flex;flex-direction:column;gap:14px;box-sizing:border-box;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.gate .badge{width:56px;height:56px;font-size:24px;background:var(--bg);box-shadow:none}
+.gate h2{margin:0;font-family:var(--display);font-weight:400;font-size:24px}
+.gate p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.gate input{font:inherit;font-size:18px;padding:14px 16px;border:2px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink)}
+.gate input:focus{border-color:var(--o);outline:none}
+.gate button{font:inherit;font-size:17px;font-weight:700;padding:15px;border-radius:14px;border:none;background:var(--o);color:#fff;cursor:pointer}
+.gate .err{color:var(--x);font-size:13px;min-height:1em}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style><style>body{margin:0}:root{padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}</style></head><body>
+
+<div class="gate" id="gate"><form id="gf"><div class="badge" aria-hidden="true"><b>O</b><i>X</i></div><h2>한국사 OX 트레이닝 4주차</h2><p>이경태T 수강생 전용이에요.<br>선생님께 받은 입장 코드를 입력하세요.</p><input id="gc" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" inputmode="latin" placeholder="입장 코드" aria-label="입장 코드"><div class="err" id="ge"></div><button type="button" id="gb">입장하기</button></form></div>
+<div class="band"><div class="wrap">
+  <div class="top">
+    <div class="logo"><div class="badge" aria-hidden="true"><b>O</b><i>X</i></div><div><small>이경태T · 미래엔 한국사2</small><h1>한국사 OX 트레이닝 4주차</h1></div></div>
+    <div class="score" id="score"></div>
+  </div>
+  <div class="controls">
+    <select id="sec" aria-label="단원 선택"></select>
+    <button class="chip" id="shuf" aria-pressed="false">섞기</button>
+    <button class="chip" id="wrong" aria-pressed="false">틀린 문제</button>
+  </div>
+  <div class="progress"><span id="bar"></span></div>
+</div></div>
+<main class="wrap">
+  <section class="card" id="card" aria-live="polite"></section>
+  <div id="actions"></div>
+  <div class="nav"><button id="prev">← 이전 문제</button><button id="reset">기록 초기화</button></div>
+  <footer>26 한영외고 1학년 2학기 기말고사 대비 · 한터&amp;SNT</footer>
+</main>
+
+<script>
+const DATA = [{"n": 1, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "제2대 국회 의원 선거는 6·25 전쟁 발발 직전에 실시되었다.", "a": "O", "e": ""}, {"n": 2, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "제2대 국회 의원 선거에서는 이승만 정부에 우호적인 후보가 대거 당선되었다.", "a": "X", "e": "이승만 정부에 비판적인 후보가 대거 당선되었어요."}, {"n": 3, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "이승만 정부는 각종 비리를 저지르고 반민족 행위자를 옹호하여 국민의 기대를 저버렸다.", "a": "O", "e": ""}, {"n": 4, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "국민 방위군 사건이 폭로되면서 이승만이 국회에서 재선될 가능성이 높아졌다.", "a": "X", "e": "재선될 가능성은 더욱 낮아졌어요."}, {"n": 5, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "국민 방위군 사건은 군 지휘관들이 군수품을 빼돌리고 착복하면서 일어났다.", "a": "O", "e": ""}, {"n": 6, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "국민 방위군 가운데 많은 사람이 보급품을 받지 못해 추위와 굶주림으로 사망하였다.", "a": "O", "e": ""}, {"n": 7, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "국민 방위군 사건은 정전 협정 체결 이후에 일어났다.", "a": "X", "e": "1951년 1월~3월, 전쟁 중에 일어났어요. 정전 협정은 1953년 7월이에요."}, {"n": 8, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "1951년 이승만은 자유당을 창당하고 대통령 직선제 개헌을 추진하였다.", "a": "O", "e": ""}, {"n": 9, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "1951년 이승만은 민주당을 창당하였다.", "a": "X", "e": "이승만이 창당한 것은 자유당이에요. 민주당은 사사오입 개헌 뒤 야당 세력이 창당했어요."}, {"n": 10, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "제1대 대통령 선거는 간선제로 실시되었다.", "a": "O", "e": ""}, {"n": 11, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "제2대 대통령 선거는 국회의 간선제로 실시되었다.", "a": "X", "e": "발췌 개헌으로 직선제가 되어 제2대 대통령 선거는 직선제로 실시되었어요."}, {"n": 12, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "이승만 정부는 1952년 임시 수도 부산 일대에 계엄령을 선포하였다.", "a": "O", "e": ""}, {"n": 13, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "이승만 정부는 1952년 임시 수도 대구 일대에 계엄령을 선포하였다.", "a": "X", "e": "임시 수도는 부산이에요."}, {"n": 14, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "이승만 정부는 이승만에 비판적인 국회 의원들을 간첩 혐의로 구속하였다.", "a": "O", "e": ""}, {"n": 15, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "이승만 정부는 자유당 국회 의원들을 간첩 혐의로 구속하였다.", "a": "X", "e": "구속 대상은 이승만에 비판적인 국회 의원들이에요."}, {"n": 16, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "1952년 부산 일대의 계엄령 선포와 국회 의원 구속을 부산 정치 파동이라고 한다.", "a": "O", "e": ""}, {"n": 17, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "대통령 직선제 개헌안은 경찰과 군인이 국회를 포위한 가운데 통과되었다.", "a": "O", "e": ""}, {"n": 18, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "대통령 직선제 개헌안은 충분한 토론을 거쳐 비밀 투표로 통과되었다.", "a": "X", "e": "토론 없이 기립 투표로 통과되었어요."}, {"n": 19, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "발췌 개헌은 1952년에 이루어진 2차 개헌이다.", "a": "X", "e": "발췌 개헌은 1차 개헌이에요. 2차 개헌은 사사오입 개헌이에요."}, {"n": 20, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "발췌 개헌은 자유당의 대통령 직선제안과 민주 국민당의 양원제 및 내각 책임제안을 절충한 것이다.", "a": "O", "e": ""}, {"n": 21, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "발췌 개헌에서 자유당은 양원제 및 내각 책임제안을, 민주 국민당은 대통령 직선제안을 내놓았다.", "a": "X", "e": "거꾸로예요. 자유당이 대통령 직선제안, 민주 국민당이 양원제 및 내각 책임제안이에요."}, {"n": 22, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "이승만은 발췌 개헌이 이루어진 그해 다시 대통령에 당선되었다.", "a": "O", "e": ""}, {"n": 23, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "발췌 개헌안 제53조는 대통령과 부통령을 국민의 보통·평등·직접·비밀 투표로 선거한다고 규정하였다.", "a": "O", "e": ""}, {"n": 24, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "발췌 개헌안 제31조는 국회를 민의원과 참의원으로 구성한다고 규정하였다.", "a": "O", "e": ""}, {"n": 25, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "발췌 개헌 직후 민의원과 참의원의 양원제 국회가 실제로 구성되었다.", "a": "X", "e": "헌법에 명시만 되었고, 실제 양원제 국회는 3차 개헌 이후에 구성되었어요."}, {"n": 26, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "발췌 개헌은 6·25 전쟁이 끝난 뒤에 이루어졌다.", "a": "X", "e": "1952년, 전쟁 중에 이루어졌어요."}, {"n": 27, "sec": "전쟁 중에 직선제 개헌을 하다", "q": "국민 방위군 사건은 자유당 창당보다 먼저 일어났다.", "a": "O", "e": ""}, {"n": 28, "sec": "장기 집권을 위해 개헌하다", "q": "1954년 5월 제3대 국회 의원 선거에서 자유당이 압승하였다.", "a": "O", "e": ""}, {"n": 29, "sec": "장기 집권을 위해 개헌하다", "q": "사사오입 개헌 전에는 대통령이 1차 중임, 즉 2번까지만 할 수 있었다.", "a": "O", "e": ""}, {"n": 30, "sec": "장기 집권을 위해 개헌하다", "q": "자유당은 당시 대통령인 이승만에 한해 중임 제한 규정을 적용하지 않는다는 개헌안을 발의하였다.", "a": "O", "e": ""}, {"n": 31, "sec": "장기 집권을 위해 개헌하다", "q": "사사오입 개헌은 모든 대통령의 중임 제한을 폐지하는 내용이다.", "a": "X", "e": "당시 대통령인 이승만에 한해 중임 제한을 적용하지 않는 내용이에요."}, {"n": 32, "sec": "장기 집권을 위해 개헌하다", "q": "사사오입 개헌의 핵심 내용은 대통령 직선제이다.", "a": "X", "e": "대통령 직선제는 발췌 개헌의 핵심이에요."}, {"n": 33, "sec": "장기 집권을 위해 개헌하다", "q": "당시 국회 재적 의원은 203명이었다.", "a": "O", "e": ""}, {"n": 34, "sec": "장기 집권을 위해 개헌하다", "q": "개헌에 필요한 찬성은 재적 의원의 3분의 2를 넘는 136명이었다.", "a": "O", "e": ""}, {"n": 35, "sec": "장기 집권을 위해 개헌하다", "q": "당시 개헌에 필요한 찬성은 135명이었다.", "a": "X", "e": "135.333…명을 넘어야 하므로 136명이에요."}, {"n": 36, "sec": "장기 집권을 위해 개헌하다", "q": "개헌안 표결 결과 찬성은 136표였다.", "a": "X", "e": "찬성은 135표였어요. 136명은 개헌에 필요한 찬성 수예요."}, {"n": 37, "sec": "장기 집권을 위해 개헌하다", "q": "표결 결과 정족수에 1명이 모자라 개헌안은 부결되었다.", "a": "O", "e": ""}, {"n": 38, "sec": "장기 집권을 위해 개헌하다", "q": "개헌안은 표결 당일 곧바로 통과가 선포되었다.", "a": "X", "e": "일단 부결되었고, 이틀 후 통과가 선포되었어요."}, {"n": 39, "sec": "장기 집권을 위해 개헌하다", "q": "이틀 후 국회 의장은 사사오입의 논리를 적용하여 개헌안이 통과되었다고 선포하였다.", "a": "O", "e": ""}, {"n": 40, "sec": "장기 집권을 위해 개헌하다", "q": "사사오입은 반올림을 뜻한다.", "a": "O", "e": ""}, {"n": 41, "sec": "장기 집권을 위해 개헌하다", "q": "자유당은 135.333…명을 올림하여 136명으로 보아야 한다고 주장하였다.", "a": "X", "e": "자유당은 반올림하면 135명이라며 찬성 135표로 통과되었다고 주장했어요."}, {"n": 42, "sec": "장기 집권을 위해 개헌하다", "q": "사사오입 개헌안이 통과되자 야당 국회 의원들이 항의하였다.", "a": "O", "e": ""}, {"n": 43, "sec": "장기 집권을 위해 개헌하다", "q": "사사오입 개헌은 2차 개헌이다.", "a": "O", "e": ""}, {"n": 44, "sec": "장기 집권을 위해 개헌하다", "q": "사사오입 개헌은 1952년에 이루어졌다.", "a": "X", "e": "1954년에 이루어졌어요. 1952년은 발췌 개헌이에요."}, {"n": 45, "sec": "장기 집권을 위해 개헌하다", "q": "사사오입 개헌으로 이승만은 횟수의 제한 없이 대통령에 출마할 수 있게 되었다.", "a": "O", "e": ""}, {"n": 46, "sec": "장기 집권을 위해 개헌하다", "q": "법과 절차를 무시한 개헌이 계속되면서 민주주의는 크게 훼손되었다.", "a": "O", "e": ""}, {"n": 47, "sec": "장기 집권을 위해 개헌하다", "q": "사사오입 개헌 이후 이승만 정부에 대한 국민의 신뢰가 높아졌다.", "a": "X", "e": "국민의 불신과 불만이 더욱 커졌어요."}, {"n": 48, "sec": "장기 집권을 위해 개헌하다", "q": "야당 세력은 민주당을 창당하여 이승만 정부와 자유당에 맞섰다.", "a": "O", "e": ""}, {"n": 49, "sec": "장기 집권을 위해 개헌하다", "q": "사사오입 개헌안 제55조 1항은 대통령과 부통령의 임기를 4년으로 규정하였다.", "a": "O", "e": ""}, {"n": 50, "sec": "장기 집권을 위해 개헌하다", "q": "사사오입 개헌안은 대통령과 부통령의 임기를 6년으로 규정하였다.", "a": "X", "e": "임기는 4년이에요."}, {"n": 51, "sec": "장기 집권을 위해 개헌하다", "q": "사사오입 개헌안에는 대통령이 궐위되면 부통령이 대통령이 되고 잔임 기간 중 재임한다는 내용이 있다.", "a": "O", "e": ""}, {"n": 52, "sec": "장기 집권을 위해 개헌하다", "q": "사사오입 개헌안 부칙은 공포 당시의 대통령에게 제55조 1항 단서의 제한을 적용하지 않는다고 규정하였다.", "a": "O", "e": ""}, {"n": 53, "sec": "반공 체제를 강화하다", "q": "1956년 선거는 제3대 대통령 선거이면서 제4대 부통령 선거였다.", "a": "O", "e": ""}, {"n": 54, "sec": "반공 체제를 강화하다", "q": "1956년 대통령 선거에 자유당의 이승만, 민주당의 신익희, 무소속의 조봉암이 출마하였다.", "a": "O", "e": ""}, {"n": 55, "sec": "반공 체제를 강화하다", "q": "1956년 대통령 선거에서 조봉암은 자유당 후보로 출마하였다.", "a": "X", "e": "조봉암은 진보 성향의 무소속 후보였어요."}, {"n": 56, "sec": "반공 체제를 강화하다", "q": "민주당의 신익희 후보는 선거 기간 중 갑작스럽게 사망하였다.", "a": "O", "e": ""}, {"n": 57, "sec": "반공 체제를 강화하다", "q": "1956년 대통령 선거 기간 중 조봉암 후보가 갑작스럽게 사망하였다.", "a": "X", "e": "선거 기간 중 사망한 후보는 신익희예요."}, {"n": 58, "sec": "반공 체제를 강화하다", "q": "진보 성향의 조봉암은 유효 표의 30%가량을 얻으며 돌풍을 일으켰다.", "a": "O", "e": ""}, {"n": 59, "sec": "반공 체제를 강화하다", "q": "1956년 부통령에는 민주당의 장면이 당선되었다.", "a": "O", "e": ""}, {"n": 60, "sec": "반공 체제를 강화하다", "q": "1956년 부통령에는 자유당의 이기붕이 당선되었다.", "a": "X", "e": "민주당의 장면이 자유당의 이기붕을 누르고 당선되었어요."}, {"n": 61, "sec": "반공 체제를 강화하다", "q": "장면의 부통령 당선으로 자유당 정부의 위기 의식이 높아졌다.", "a": "O", "e": ""}, {"n": 62, "sec": "반공 체제를 강화하다", "q": "제3대 대통령 선거에서 민주당은 “못살겠다 갈아 보자.”라는 구호를 내세웠다.", "a": "O", "e": ""}, {"n": 63, "sec": "반공 체제를 강화하다", "q": "제3대 대통령 선거에서 민주당은 “갈아 봤자 더 못산다.”라는 구호로 대응하였다.", "a": "X", "e": "“갈아 봤자 더 못산다.”는 여당인 자유당의 구호예요."}, {"n": 64, "sec": "반공 체제를 강화하다", "q": "조봉암은 평화 통일 등을 내세우며 진보당을 창당하였다.", "a": "O", "e": ""}, {"n": 65, "sec": "반공 체제를 강화하다", "q": "조봉암은 북진 통일을 내세우며 진보당을 창당하였다.", "a": "X", "e": "조봉암은 평화 통일을 내세웠어요."}, {"n": 66, "sec": "반공 체제를 강화하다", "q": "진보당은 1956년 대통령 선거 이전에 창당되었다.", "a": "X", "e": "진보당은 대통령 선거 이후에 창당되었어요."}, {"n": 67, "sec": "반공 체제를 강화하다", "q": "이승만 정부는 반공 이념을 앞세워 진보당을 탄압하였다.", "a": "O", "e": ""}, {"n": 68, "sec": "반공 체제를 강화하다", "q": "1958년 조봉암과 진보당 간부들은 간첩죄와 국가 보안법 위반 등의 혐의로 구속되었다.", "a": "O", "e": ""}, {"n": 69, "sec": "반공 체제를 강화하다", "q": "이승만 정부는 진보당의 정당 등록을 취소하였다.", "a": "O", "e": ""}, {"n": 70, "sec": "반공 체제를 강화하다", "q": "조봉암은 4·19 혁명 이후에 사형을 당하였다.", "a": "X", "e": "4·19 혁명 전인 1959년에 사형을 당했어요."}, {"n": 71, "sec": "반공 체제를 강화하다", "q": "조봉암은 2011년 52년 만에 무죄를 선고받았다.", "a": "O", "e": ""}, {"n": 72, "sec": "반공 체제를 강화하다", "q": "2011년 재심에서 조봉암의 공소 사실은 대부분 유죄로 확정되었다.", "a": "X", "e": "공소 사실 대부분이 무죄로 밝혀졌어요."}, {"n": 73, "sec": "반공 체제를 강화하다", "q": "이승만 정부는 야당의 찬성 속에 국가 보안법을 개정하였다.", "a": "X", "e": "야당의 반대에도 불구하고 개정했어요."}, {"n": 74, "sec": "반공 체제를 강화하다", "q": "개정된 국가 보안법은 언론의 자유 등 국민의 기본권을 침해하는 독소 조항을 담고 있었다.", "a": "O", "e": ""}, {"n": 75, "sec": "반공 체제를 강화하다", "q": "이승만 정부는 정부에 비판적이었던 『경향신문』을 폐간하였다.", "a": "O", "e": ""}, {"n": 76, "sec": "반공 체제를 강화하다", "q": "이승만 정부는 정부에 비판적이었던 『동아일보』를 폐간하였다.", "a": "X", "e": "폐간된 신문은 『경향신문』이에요."}, {"n": 77, "sec": "반공 체제를 강화하다", "q": "이승만 정부는 북한과의 대치 상황을 내세워 자유와 민주주의를 제한할 수 있다는 분위기를 조성하였다.", "a": "O", "e": ""}, {"n": 78, "sec": "반공 체제를 강화하다", "q": "이승만 정부는 학생들을 동원하여 대규모 반공 궐기 대회를 수시로 개최하였다.", "a": "O", "e": ""}, {"n": 79, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "6·25 전쟁 이후 식량과 생필품이 부족하고 물가도 크게 올랐다.", "a": "O", "e": ""}, {"n": 80, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "전후 복구와 경제 재건 과정에서 미국의 경제 원조가 큰 역할을 하였다.", "a": "O", "e": ""}, {"n": 81, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "한국 정부는 소비재와 잉여 농산물 원조를 요청하였다.", "a": "X", "e": "한국 정부가 요청한 것은 철강과 기계 등 생산재예요."}, {"n": 82, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "미국은 주로 철강과 기계 등 생산재를 원조하였다.", "a": "X", "e": "미국은 주로 소비재와 잉여 농산물 등을 원조했어요."}, {"n": 83, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "미국의 잉여 농산물을 가공하는 삼백 산업을 중심으로 공업화가 진행되었다.", "a": "O", "e": ""}, {"n": 84, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "삼백 산업은 제분, 제당, 면방직 산업을 말한다.", "a": "O", "e": ""}, {"n": 85, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "삼백 산업은 철강, 기계, 시멘트 산업을 말한다.", "a": "X", "e": "삼백 산업은 제분, 제당, 면방직 산업이에요."}, {"n": 86, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "삼백 산업의 생산품인 밀가루, 설탕, 면직물은 모두 흰색이다.", "a": "O", "e": ""}, {"n": 87, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "삼백 산업은 원조로 받은 원재료를 가공하여 판매하였다.", "a": "O", "e": ""}, {"n": 88, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "이승만 정부는 원조 물자를 기업에 배정하여 민간 자본에 의한 경제 발전을 추구하였다.", "a": "O", "e": ""}, {"n": 89, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "원조 물자는 모든 기업에 고르게 배정되어 부작용이 나타나지 않았다.", "a": "X", "e": "특정 기업에 혜택이 편중되었어요."}, {"n": 90, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "원조 물자 배정 과정에서 정경 유착이나 독점과 같은 부작용이 나타났다.", "a": "O", "e": ""}, {"n": 91, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "미국의 경제 원조로 식량 사정은 다소 나아졌다.", "a": "O", "e": ""}, {"n": 92, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "미국에서 값싼 농산물이 들어오면서 곡물 가격이 상승하였다.", "a": "X", "e": "곡물 가격은 하락했어요."}, {"n": 93, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "곡물 가격이 하락하면서 농촌 경제가 크게 좋아졌다.", "a": "X", "e": "농촌 경제는 어려움을 겪었어요."}, {"n": 94, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "농가 부채가 쌓이고 춘궁기의 어려움도 커졌다.", "a": "O", "e": ""}, {"n": 95, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "도시를 떠나 농촌으로 향하는 사람이 증가하였다.", "a": "X", "e": "거꾸로예요. 농촌을 떠나 도시로 향하는 농민이 증가했어요."}, {"n": 96, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "미국의 경제 원조 추이 그래프에서 1961년의 원조액이 가장 많다.", "a": "X", "e": "1958년(32,127만 달러)이 가장 많아요."}, {"n": 97, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "미국의 경제 원조액은 1958년 이후 계속 늘어났다.", "a": "X", "e": "미국의 경제 상황이 나빠지면서 1950년대 후반부터 점차 줄어들었어요."}, {"n": 98, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "1950년대 말 무상 원조가 유상 차관으로 변경되었다.", "a": "O", "e": ""}, {"n": 99, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "1950년대 말 유상 차관이 무상 원조로 변경되었다.", "a": "X", "e": "거꾸로예요. 무상 원조가 유상 차관으로 바뀌었어요."}, {"n": 100, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "전후 인구 증가와 교육열로 학급당 학생 수가 70~80명이 되기도 하였다.", "a": "O", "e": ""}, {"n": 101, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "한글 교육이 본격화되면서 문맹률이 크게 높아졌다.", "a": "X", "e": "문맹률은 크게 낮아졌어요."}, {"n": 102, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "한글세대는 1980년대에 처음 등장하여 경제 성장의 원동력이 되었다.", "a": "X", "e": "한글세대는 전후 한글 교육으로 등장해 1960년대 경제 성장의 원동력이 되었어요."}, {"n": 103, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "전쟁 이후 젊은 세대는 미국으로 대표되는 서구 문화에 열광하였다.", "a": "O", "e": ""}, {"n": 104, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "영화, 가요로 대표되는 대중문화가 유행하였다.", "a": "O", "e": ""}, {"n": 105, "sec": "미국의 경제 원조와 전후 복구 사업", "q": "소설 『자유 부인』은 전통적인 여성상을 강조하여 논쟁 없이 환영받았다.", "a": "X", "e": "개방적 여성상의 등장으로 사회적 논쟁으로 이어졌어요."}, {"n": 106, "sec": "3·15 부정 선거와 4·19 혁명", "q": "이승만 정부의 독재와 부패로 민심이 악화되는 가운데 1960년 3월 15일 정·부통령 선거가 실시되었다.", "a": "O", "e": ""}, {"n": 107, "sec": "3·15 부정 선거와 4·19 혁명", "q": "고령인 이승만에게 문제가 생기면 부통령이 대통령직을 승계하였다.", "a": "O", "e": ""}, {"n": 108, "sec": "3·15 부정 선거와 4·19 혁명", "q": "이승만 정부와 자유당은 이기붕을 반드시 부통령에 당선시키려 하였다.", "a": "O", "e": ""}, {"n": 109, "sec": "3·15 부정 선거와 4·19 혁명", "q": "1960년 선거에서 이기붕은 민주당 부통령 후보였다.", "a": "X", "e": "이기붕은 자유당 후보예요. 민주당 부통령 후보는 장면이에요."}, {"n": 110, "sec": "3·15 부정 선거와 4·19 혁명", "q": "1960년 선거의 민주당 대통령 후보는 신익희였다.", "a": "X", "e": "1960년 후보는 조병옥이에요. 신익희는 1956년 후보예요."}, {"n": 111, "sec": "3·15 부정 선거와 4·19 혁명", "q": "조병옥은 선거 운동 중 건강 악화로 투표 한 달 전에 사망하였다.", "a": "O", "e": ""}, {"n": 112, "sec": "3·15 부정 선거와 4·19 혁명", "q": "이승만 정부와 자유당은 공무원과 경찰 등을 동원하여 관권 선거와 금권 선거를 자행하였다.", "a": "O", "e": ""}, {"n": 113, "sec": "3·15 부정 선거와 4·19 혁명", "q": "야당 후보의 선거 유세 방해와 선거인 명부 조작이 이루어졌다.", "a": "O", "e": ""}, {"n": 114, "sec": "3·15 부정 선거와 4·19 혁명", "q": "3·15 부정 선거에서는 3인조·9인조 비밀 투표가 강요되었다.", "a": "X", "e": "3인조·9인조 공개 투표예요."}, {"n": 115, "sec": "3·15 부정 선거와 4·19 혁명", "q": "총유권자 수보다 투표자 수가 많이 나와 투표용지를 불태우기도 하였다.", "a": "O", "e": ""}, {"n": 116, "sec": "3·15 부정 선거와 4·19 혁명", "q": "3·15 선거 결과 부통령에 장면이 당선되었다.", "a": "X", "e": "대통령에 이승만, 부통령에 이기붕이 당선되었어요."}, {"n": 117, "sec": "3·15 부정 선거와 4·19 혁명", "q": "부정 선거를 규탄하는 시위는 선거가 끝난 뒤부터 일어났다.", "a": "X", "e": "선거 이전부터 규탄 시위가 일어났어요."}, {"n": 118, "sec": "3·15 부정 선거와 4·19 혁명", "q": "선거 당일 마산과 광주 등지에서 선거 무효를 외치는 시위가 전개되었다.", "a": "O", "e": ""}, {"n": 119, "sec": "3·15 부정 선거와 4·19 혁명", "q": "마산의 대규모 시위를 3·15 의거라고 한다.", "a": "O", "e": ""}, {"n": 120, "sec": "3·15 부정 선거와 4·19 혁명", "q": "3·15 의거에서 경찰의 발포로 많은 사상자가 발생하였다.", "a": "O", "e": ""}, {"n": 121, "sec": "3·15 부정 선거와 4·19 혁명", "q": "선거 관리 책임자인 내무부 장관이 사임하면서 상황은 잠시 진정되었다.", "a": "O", "e": ""}, {"n": 122, "sec": "3·15 부정 선거와 4·19 혁명", "q": "선거 관리 책임자인 부통령이 사임하면서 상황은 잠시 진정되었다.", "a": "X", "e": "선거 관리 책임자는 내무부 장관이에요."}, {"n": 123, "sec": "3·15 부정 선거와 4·19 혁명", "q": "김주열 학생은 선거 당일 시위에서 경찰이 쏜 최루탄에 사망하였다.", "a": "O", "e": ""}, {"n": 124, "sec": "3·15 부정 선거와 4·19 혁명", "q": "김주열 학생의 시신은 1960년 4월 11일 마산 앞바다에서 발견되었다.", "a": "O", "e": ""}, {"n": 125, "sec": "3·15 부정 선거와 4·19 혁명", "q": "김주열 학생의 시신은 부산 앞바다에서 발견되었다.", "a": "X", "e": "마산 앞바다에서 발견되었어요."}, {"n": 126, "sec": "3·15 부정 선거와 4·19 혁명", "q": "이승만 정부는 시위의 배후에 공산당이 있다고 발표하였다.", "a": "O", "e": ""}, {"n": 127, "sec": "3·15 부정 선거와 4·19 혁명", "q": "정부의 공산당 배후 발표로 시위는 곧바로 진정되었다.", "a": "X", "e": "시위는 전국으로 빠르게 확산되었어요."}, {"n": 128, "sec": "3·15 부정 선거와 4·19 혁명", "q": "4월 18일 고려대학교 학생들이 시위를 벌였다.", "a": "O", "e": ""}, {"n": 129, "sec": "3·15 부정 선거와 4·19 혁명", "q": "4월 19일 전국에서 대규모 시위가 전개되었다.", "a": "O", "e": ""}, {"n": 130, "sec": "3·15 부정 선거와 4·19 혁명", "q": "시위대는 대통령이 있는 경무대로 향하였다.", "a": "O", "e": ""}, {"n": 131, "sec": "3·15 부정 선거와 4·19 혁명", "q": "4월 19일 시위대는 국회로 향하였다가 군대의 발포로 해산되었다.", "a": "X", "e": "시위대는 경무대로 향했고, 경찰이 무차별 총격을 가했어요."}, {"n": 132, "sec": "3·15 부정 선거와 4·19 혁명", "q": "4월 19일 하루 동안 전국에서 100명이 넘는 사람이 사망하였다.", "a": "O", "e": ""}, {"n": 133, "sec": "3·15 부정 선거와 4·19 혁명", "q": "이승만 정부는 비상계엄을 선포하고 군대까지 동원하였다.", "a": "O", "e": ""}, {"n": 134, "sec": "3·15 부정 선거와 4·19 혁명", "q": "비상계엄 선포로 학생과 시민의 저항은 완전히 진압되었다.", "a": "X", "e": "학생과 시민의 자발적인 참여와 저항을 막을 수 없었어요."}, {"n": 135, "sec": "3·15 부정 선거와 4·19 혁명", "q": "대학교수들은 “학생의 피에 보답하라.”라고 외치며 이승만의 퇴진을 요구하였다.", "a": "O", "e": ""}, {"n": 136, "sec": "3·15 부정 선거와 4·19 혁명", "q": "대학교수단 시국 선언문은 학생 데모를 공산당의 조종으로 보는 것을 고의의 왜곡이라고 하였다.", "a": "O", "e": ""}, {"n": 137, "sec": "3·15 부정 선거와 4·19 혁명", "q": "대학교수단 시국 선언문은 정·부통령 선거를 다시 하라고 요구하였다.", "a": "O", "e": ""}, {"n": 138, "sec": "3·15 부정 선거와 4·19 혁명", "q": "초등학생까지 시위에 참여하였다.", "a": "O", "e": ""}, {"n": 139, "sec": "3·15 부정 선거와 4·19 혁명", "q": "서울 수송초등학교 학생들은 “부모 형제들에게 총부리를 대지 말라.”라는 구호를 내걸었다.", "a": "O", "e": ""}, {"n": 140, "sec": "3·15 부정 선거와 4·19 혁명", "q": "이승만은 4월 19일 당일 대통령 자리에서 물러나겠다는 성명을 발표하였다.", "a": "X", "e": "사임 성명은 4월 26일에 발표했어요."}, {"n": 141, "sec": "3·15 부정 선거와 4·19 혁명", "q": "이승만은 대통령 사임 후 일본으로 망명하였다.", "a": "X", "e": "미국으로 망명했어요."}, {"n": 142, "sec": "3·15 부정 선거와 4·19 혁명", "q": "이승만의 사임 성명에는 선거를 다시 하도록 지시하였다는 내용이 있다.", "a": "O", "e": ""}, {"n": 143, "sec": "3·15 부정 선거와 4·19 혁명", "q": "이승만의 사임 성명에는 이기붕을 공직에서 완전히 물러나게 하였다는 내용이 있다.", "a": "O", "e": ""}, {"n": 144, "sec": "3·15 부정 선거와 4·19 혁명", "q": "이승만의 사임 성명에는 국민이 원한다면 내각 책임제 개헌을 하겠다는 내용이 있다.", "a": "O", "e": ""}, {"n": 145, "sec": "3·15 부정 선거와 4·19 혁명", "q": "이승만의 사임 성명은 대학교수단 시국 선언문보다 먼저 발표되었다.", "a": "X", "e": "시국 선언(4. 25.)이 먼저, 사임 성명(4. 26.)이 나중이에요."}, {"n": 146, "sec": "3·15 부정 선거와 4·19 혁명", "q": "4·19 혁명은 다양한 계층의 시민이 참여하여 독재 정권을 무너뜨린 민주 혁명이었다.", "a": "O", "e": ""}, {"n": 147, "sec": "3·15 부정 선거와 4·19 혁명", "q": "4·19 혁명의 경험은 이후 민주화 운동의 밑거름이 되었다.", "a": "O", "e": ""}, {"n": 148, "sec": "3·15 부정 선거와 4·19 혁명", "q": "4·19 혁명 당시 사망자는 6,259명, 부상자는 186명이었다.", "a": "X", "e": "거꾸로예요. 사망자가 186명, 부상자가 6,259명이에요."}, {"n": 149, "sec": "3·15 부정 선거와 4·19 혁명", "q": "4·19 혁명 희생자 가운데 신분별로 일반인이 96명으로 가장 많았다.", "a": "O", "e": ""}, {"n": 150, "sec": "3·15 부정 선거와 4·19 혁명", "q": "4·19 혁명 희생자 가운데 학생 중에서는 대학생이 가장 많았다.", "a": "X", "e": "학생 중에서는 고등학생(39명)이 가장 많아요. 대학생은 24명이에요."}, {"n": 151, "sec": "3·15 부정 선거와 4·19 혁명", "q": "4·19 혁명 희생자의 사망 원인은 총상이 165명으로 가장 많았다.", "a": "O", "e": ""}, {"n": 152, "sec": "3·15 부정 선거와 4·19 혁명", "q": "한성여중 진영숙은 숨지기 4시간 전 어머니께 편지를 남겼다.", "a": "O", "e": ""}, {"n": 153, "sec": "3·15 부정 선거와 4·19 혁명", "q": "국립 4·19 민주 묘지는 경남 마산에 조성되어 있다.", "a": "X", "e": "서울 강북구에 조성되어 있어요."}, {"n": 154, "sec": "장면 내각과 통일 운동", "q": "4·19 혁명 이후 윤보선 과도 정부가 출범하였다.", "a": "X", "e": "허정 과도 정부예요. 윤보선은 이후 대통령이 되었어요."}, {"n": 155, "sec": "장면 내각과 통일 운동", "q": "허정 과도 정부는 3·15 부정 선거를 무효로 하고 개헌을 추진하였다.", "a": "O", "e": ""}, {"n": 156, "sec": "장면 내각과 통일 운동", "q": "3차 개헌은 내각 책임제와 양원제 국회를 주요 내용으로 하였다.", "a": "O", "e": ""}, {"n": 157, "sec": "장면 내각과 통일 운동", "q": "3차 개헌의 주요 내용은 대통령 직선제이다.", "a": "X", "e": "주요 내용은 내각 책임제와 양원제 국회예요."}, {"n": 158, "sec": "장면 내각과 통일 운동", "q": "양원제는 의회를 두 개로 나누어 운영하는 제도로, 장면 정부 시기 민의원과 참의원이 이에 해당한다.", "a": "O", "e": ""}, {"n": 159, "sec": "장면 내각과 통일 운동", "q": "3차 개헌 이후의 총선거에서 야당인 민주당이 압승을 거두었다.", "a": "O", "e": ""}, {"n": 160, "sec": "장면 내각과 통일 운동", "q": "3차 개헌 이후의 총선거에서 자유당이 압승을 거두었다.", "a": "X", "e": "민주당이 압승했어요."}, {"n": 161, "sec": "장면 내각과 통일 운동", "q": "장면 내각 시기 대통령은 윤보선, 국무총리는 장면이었다.", "a": "O", "e": ""}, {"n": 162, "sec": "장면 내각과 통일 운동", "q": "장면 내각 시기 대통령은 장면, 국무총리는 윤보선이었다.", "a": "X", "e": "거꾸로예요. 대통령이 윤보선, 국무총리가 장면이에요."}, {"n": 163, "sec": "장면 내각과 통일 운동", "q": "장면 내각은 1961년 5월에 출범하였다.", "a": "X", "e": "1960년 8월에 출범했어요. 1961년 5월은 5·16 군사 정변 시기예요."}, {"n": 164, "sec": "장면 내각과 통일 운동", "q": "장면 내각은 경제 개발 5개년 계획을 수립하였다.", "a": "O", "e": ""}, {"n": 165, "sec": "장면 내각과 통일 운동", "q": "장면 내각은 경제 개발 5개년 계획을 끝까지 실시하였다.", "a": "X", "e": "수립했지만 5·16 군사 정변으로 실시하지 못했어요."}, {"n": 166, "sec": "장면 내각과 통일 운동", "q": "장면 내각은 경지 정리, 산림녹화, 도로·교량·댐 건설 등 국토 개발 사업을 추진하였다.", "a": "O", "e": ""}, {"n": 167, "sec": "장면 내각과 통일 운동", "q": "장면 내각은 지방 자치제를 실시하고 공무원 공개 채용 제도를 도입하였다.", "a": "O", "e": ""}, {"n": 168, "sec": "장면 내각과 통일 운동", "q": "장면 내각의 시정 방침에는 일본과의 국교 단절이 포함되었다.", "a": "X", "e": "일본과의 국교 정상화가 포함되었어요."}, {"n": 169, "sec": "장면 내각과 통일 운동", "q": "장면 내각의 시정 방침에는 유엔 감시하의 남북한 자유선거에 의한 통일 달성이 포함되었다.", "a": "O", "e": ""}, {"n": 170, "sec": "장면 내각과 통일 운동", "q": "4·19 혁명 이후 학생들은 학도 호국단 폐지와 학원 민주화를 주장하였다.", "a": "O", "e": ""}, {"n": 171, "sec": "장면 내각과 통일 운동", "q": "4·19 혁명 이후 학생들은 교원 노조를 결성하였다.", "a": "X", "e": "교원 노조를 결성한 것은 교사들이에요."}, {"n": 172, "sec": "장면 내각과 통일 운동", "q": "4·19 혁명 이후 농민들은 임금 인상과 처우 개선을 요구하였다.", "a": "X", "e": "임금 인상과 처우 개선은 노동자의 요구예요. 농민은 농산물 가격 유지를 요구했어요."}, {"n": 173, "sec": "장면 내각과 통일 운동", "q": "4·19 혁명 이후 6·25 전쟁 중 발생한 양민 학살 사건의 진상 조사 요구가 나왔다.", "a": "O", "e": ""}, {"n": 174, "sec": "장면 내각과 통일 운동", "q": "혁신 세력의 통일 운동이 활기를 띠었다.", "a": "O", "e": ""}, {"n": 175, "sec": "장면 내각과 통일 운동", "q": "학생들은 평양에서 남북 학생 회담을 개최하자고 제안하였다.", "a": "X", "e": "판문점에서 개최하자고 제안했어요."}, {"n": 176, "sec": "장면 내각과 통일 운동", "q": "민간에서는 중립화 통일, 남북 협상 등을 주장하였다.", "a": "O", "e": ""}, {"n": 177, "sec": "장면 내각과 통일 운동", "q": "민족 자주 통일 중앙 협의회는 민족 자주, 평화, 민주의 3대 원칙을 내세웠다.", "a": "O", "e": ""}, {"n": 178, "sec": "장면 내각과 통일 운동", "q": "민족 자주 통일 중앙 협의회는 반공 북진 통일을 주장하였다.", "a": "X", "e": "‘반공 북진 통일이 아닌’ 대북 평화 통일을 주장했어요."}, {"n": 179, "sec": "장면 내각과 통일 운동", "q": "“가자 북으로! 오라 남으로!”는 남북 학생 회담 지지 집회의 구호이다.", "a": "O", "e": ""}, {"n": 180, "sec": "장면 내각과 통일 운동", "q": "장면 내각은 민간 차원의 통일 운동을 적극 지원하였다.", "a": "X", "e": "민간 차원의 통일 운동에 부정적이었어요."}, {"n": 181, "sec": "장면 내각과 통일 운동", "q": "장면 내각은 각계각층의 민주화 요구를 제대로 수용하였다.", "a": "X", "e": "제대로 수용하지 못했어요."}, {"n": 182, "sec": "장면 내각과 통일 운동", "q": "장면 내각은 부정 선거 책임자와 부정 축재자 처벌에 적극적이었다.", "a": "X", "e": "처벌에 소극적이었어요."}, {"n": 183, "sec": "장면 내각과 통일 운동", "q": "장면 내각 시기 자유당 내 파벌 싸움으로 정치적 혼란이 초래되었다.", "a": "X", "e": "민주당 내 파벌 싸움(구파, 신파)이에요."}, {"n": 184, "sec": "장면 내각과 통일 운동", "q": "5·16 군사 정변이 일어나면서 장면 내각은 붕괴되었다.", "a": "O", "e": ""}, {"n": 185, "sec": "장면 내각과 통일 운동", "q": "5·16 군사 정변 이후 통일 운동이 더욱 활발해졌다.", "a": "X", "e": "5·16 군사 정변으로 통일 운동은 중단되었어요."}];
+const SECS = [...new Set(DATA.map(d=>d.sec))];
+const ROM=['Ⅰ','Ⅱ','Ⅲ','Ⅳ','Ⅴ','Ⅵ'];
+const KEY='hanyoung-ox-w4-v1';
+let st={wrong:{},done:{}};
+try{const s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s&&s.wrong) st=s;}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const $=id=>document.getElementById(id);
+let list=[],pos=0,picked=null,shuffle=false,wrongOnly=false,section='all',right=0,tried=0;
+
+$('sec').innerHTML='<option value="all">전체 단원 ('+DATA.length+'문항)</option>'+
+  SECS.map((s,i)=>'<option value="'+i+'">'+ROM[i]+'. '+s+' ('+DATA.filter(d=>d.sec===s).length+')</option>').join('');
+
+function build(){
+  list=DATA.filter(d=>(section==='all'||d.sec===SECS[+section])&&(!wrongOnly||st.wrong[d.n]));
+  if(shuffle){for(let i=list.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[list[i],list[j]]=[list[j],list[i]]}}
+  pos=0;picked=null;right=0;tried=0;render();
+}
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function render(){
+  const total=list.length;
+  const nWrong=Object.keys(st.wrong).length;
+  $('score').innerHTML=tried?'<span>정답</span><strong>'+right+'/'+tried+'</strong>':'<span>틀린 문제</span><strong>'+nWrong+'</strong>';
+  $('bar').style.width=total?((pos+(picked?1:0))/total*100)+'%':'0';
+  $('prev').disabled=pos===0;
+  const card=$('card'),act=$('actions');
+  if(!total){
+    card.innerHTML='<div class="done"><div class="big">0</div><p>'+(wrongOnly?'틀린 문제가 없어요. 전체 문제로 돌아가 풀어 보세요.':'문제가 없어요.')+'</p></div>';
+    act.innerHTML='';return;
+  }
+  if(pos>=total){
+    card.innerHTML='<div class="done"><p>이번 회차 결과</p><div class="big">'+right+' / '+tried+'</div><p>틀린 문제는 자동으로 모아 두었어요.</p><div class="row"><button class="chip" id="again">처음부터 다시</button><button class="chip" id="gowrong">틀린 문제만 풀기</button></div></div>';
+    act.innerHTML='';
+    $('again').onclick=build;
+    $('gowrong').onclick=()=>{wrongOnly=true;$('wrong').setAttribute('aria-pressed','true');build()};
+    return;
+  }
+  const d=list[pos];
+  const si=SECS.indexOf(d.sec);
+  let h='<div class="meta"><span class="no">'+d.n+'<em>번</em></span><span class="tag">'+ROM[si]+'. '+esc(d.sec)+'</span></div><p class="q">'+esc(d.q)+'</p>';
+  if(picked){
+    const ok=picked===d.a;
+    h+='<div class="result" data-k="'+d.a+'"><div class="mark" aria-label="정답 '+d.a+'">'+d.a+'</div><div><p class="verdict '+(ok?'ok':'no')+'">'+(ok?'정답이에요!':'아쉬워요. 정답은 '+d.a)+'</p><p class="exp">'+esc(d.e||'옳은 설명이에요.')+'</p></div></div>';
+    act.innerHTML='<button class="next" id="nx">'+(pos+1<total?'다음 문제 →':'결과 보기')+'</button>';
+    $('nx').onclick=()=>{pos++;picked=null;render();window.scrollTo({top:0})};
+    $('nx').focus({preventScroll:true});
+  }else{
+    act.innerHTML='<div class="pad"><button id="bO" aria-label="O 맞다">O</button><button id="bX" aria-label="X 틀리다">X</button></div>';
+    $('bO').onclick=()=>answer('O');$('bX').onclick=()=>answer('X');
+  }
+  card.innerHTML=h;
+  const p=$('pos');
+}
+function answer(k){
+  const d=list[pos];picked=k;tried++;
+  if(k===d.a){right++; if(wrongOnly) delete st.wrong[d.n];}
+  else st.wrong[d.n]=1;
+  save();render();
+}
+$('sec').onchange=e=>{section=e.target.value;build()};
+$('shuf').onclick=e=>{shuffle=!shuffle;e.currentTarget.setAttribute('aria-pressed',shuffle);build()};
+$('wrong').onclick=e=>{wrongOnly=!wrongOnly;e.currentTarget.setAttribute('aria-pressed',wrongOnly);build()};
+$('prev').onclick=()=>{if(pos>0){pos--;picked=null;render()}};
+let armed=false;
+$('reset').onclick=e=>{const t=e.currentTarget;if(!armed){armed=true;t.textContent='한 번 더 누르면 초기화';setTimeout(()=>{armed=false;t.textContent='기록 초기화'},2500);return}
+  st={wrong:{},done:{}};save();armed=false;t.textContent='기록 초기화';wrongOnly=false;$('wrong').setAttribute('aria-pressed','false');build()};
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='SELECT'||e.target.tagName==='INPUT')return;
+  if(!picked&&(e.key==='o'||e.key==='O'))answer('O');
+  else if(!picked&&(e.key==='x'||e.key==='X'))answer('X');
+  else if(picked&&(e.key==='Enter'||e.key==='ArrowRight')){e.preventDefault();$('nx')&&$('nx').click()}
+});
+build();
+</script>
+<script>
+(function(){
+const H=1418297543,K='hanyoung-ox-w4-gate';
+const hash=s=>{let h=5381;for(const c of s.trim().toLowerCase())h=((h*33)^c.charCodeAt(0))>>>0;return h};
+const g=document.getElementById('gate');
+let ok=false;try{ok=localStorage.getItem(K)===String(H)}catch(e){}
+if(ok){g.hidden=true;return}
+const M={'ㅂ':'q','ㅈ':'w','ㄷ':'e','ㄱ':'r','ㅅ':'t','ㅛ':'y','ㅕ':'u','ㅑ':'i','ㅐ':'o','ㅔ':'p','ㅁ':'a','ㄴ':'s','ㅇ':'d','ㄹ':'f','ㅎ':'g','ㅗ':'h','ㅓ':'j','ㅏ':'k','ㅣ':'l','ㅋ':'z','ㅌ':'x','ㅊ':'c','ㅍ':'v','ㅠ':'b','ㅜ':'n','ㅡ':'m'};
+const norm=s=>[...String(s).replace(/\s+/g,'')].map(c=>M[c]||c).join('');
+const tryIn=()=>{const v=document.getElementById('gc').value;
+ if(hash(norm(v))===H||hash(v)===H){try{localStorage.setItem(K,String(H))}catch(e){} g.hidden=true}
+ else document.getElementById('ge').textContent='코드가 맞지 않아요. 영문 자판으로 입력했는지 확인해 주세요.'};
+document.getElementById('gb').addEventListener('click',tryIn);
+document.getElementById('gc').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();tryIn()}});
+document.getElementById('gf').addEventListener('submit',e=>{e.preventDefault();tryIn()});
+})();
+</script>
+</body></html>
