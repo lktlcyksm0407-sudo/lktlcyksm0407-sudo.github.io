@@ -1,0 +1,197 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"><title>이승만·4·19 빈칸</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+:root{
+  --band:#1C2747; --band-ink:#FFFFFF; --band-soft:rgba(255,255,255,.14);
+  --bg:#F2F4F9; --surface:#FFFFFF; --ink:#16203A; --muted:#6A7389; --line:#E1E5EE;
+  --o:#2563EB; --o-soft:#E6EEFF; --x:#E0453A; --x-soft:#FDEBEA; --gold:#F5B731;
+  --display:"Black Han Sans","Noto Sans KR",sans-serif;
+  --sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --shadow:0 10px 30px rgba(22,32,58,.10),0 2px 6px rgba(22,32,58,.06);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --band:#141B30; --band-soft:rgba(255,255,255,.10);
+  --bg:#0E1322; --surface:#1A2238; --ink:#EEF1F8; --muted:#9AA3B8; --line:#2A3350;
+  --o:#6E9BFF; --o-soft:#1D2B52; --x:#FF7A70; --x-soft:#45201F; --gold:#F5C451;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --band:#141B30; --band-soft:rgba(255,255,255,.10);
+  --bg:#0E1322; --surface:#1A2238; --ink:#EEF1F8; --muted:#9AA3B8; --line:#2A3350;
+  --o:#6E9BFF; --o-soft:#1D2B52; --x:#FF7A70; --x-soft:#45201F; --gold:#F5C451;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}
+html,body{min-height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-tap-highlight-color:transparent;letter-spacing:-.01em}
+:root{padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--band)}
+.band{background:var(--band);color:var(--band-ink);padding-bottom:64px}
+.wrap{max-width:620px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));box-sizing:border-box}
+.band .wrap{padding-block:18px 0;display:flex;flex-direction:column;gap:16px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:12px;min-width:0}
+.badge{flex:0 0 auto;width:48px;height:48px;border-radius:14px;background:var(--surface);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:17px;line-height:1;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.badge b{color:var(--o);font-weight:400}.badge i{color:var(--x);font-style:normal}
+.logo small{display:block;font-size:12px;opacity:.75;font-weight:500;letter-spacing:.02em}
+.logo h1{margin:2px 0 0;font-family:var(--display);font-weight:400;font-size:clamp(19px,5.4vw,24px);white-space:nowrap;letter-spacing:0;line-height:1.15}
+.score{flex:0 0 auto;text-align:center;background:var(--band-soft);border-radius:14px;padding:8px 12px;min-width:64px;font-variant-numeric:tabular-nums}
+.score span{display:block;font-size:11px;opacity:.8}
+.score strong{display:block;font-size:20px;font-weight:900;line-height:1.2}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+select,.chip{font:inherit;font-size:14px;font-weight:500;color:var(--band-ink);background:var(--band-soft);border:1px solid transparent;border-radius:999px;padding:9px 14px;min-height:40px;-webkit-appearance:none;appearance:none}
+select{flex:1 1 150px;min-width:0;padding-right:34px;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 18px) 52%,calc(100% - 13px) 52%;background-size:5px 5px;background-repeat:no-repeat}
+select option{color:#16203A;background:#fff}
+.chip{cursor:pointer;flex:0 0 auto}
+.chip[aria-pressed="true"]{background:var(--gold);color:#1C2747}
+.progress{height:6px;background:var(--band-soft);border-radius:6px;overflow:hidden}
+.progress span{display:block;height:100%;background:var(--gold);width:0;border-radius:6px;transition:width .3s}
+main.wrap{margin-top:-48px;display:flex;flex-direction:column;gap:16px;padding-block:0 24px}
+.card{background:var(--surface);border-radius:24px;padding:24px 22px 22px;display:flex;flex-direction:column;gap:16px;min-height:280px;box-shadow:var(--shadow)}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.no{font-family:var(--display);font-size:22px;color:var(--ink);letter-spacing:0}
+.no em{font-style:normal;font-size:13px;font-family:var(--sans);font-weight:700;color:var(--muted);margin-left:4px}
+.tag{background:var(--bg);border-radius:999px;padding:5px 11px;font-weight:500;font-size:12px;max-width:60%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.q{font-size:clamp(19px,5.1vw,22px);font-weight:500;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.result{margin-top:auto;border-radius:18px;padding:16px;display:flex;gap:14px;align-items:flex-start;animation:pop .28s ease-out}
+.result[data-k="O"]{background:var(--o-soft)} .result[data-k="X"]{background:var(--x-soft)}
+@keyframes pop{from{transform:translateY(8px);opacity:.4}to{transform:none;opacity:1}}
+.mark{flex:0 0 auto;width:52px;height:52px;display:grid;place-items:center;font-family:var(--display);font-size:30px;border-radius:50%;color:#fff;animation:stamp .35s cubic-bezier(.3,1.6,.5,1)}
+.result[data-k="O"] .mark{background:var(--o)} .result[data-k="X"] .mark{background:var(--x)}
+@keyframes stamp{from{transform:scale(.4) rotate(-20deg)}to{transform:none}}
+.verdict{font-weight:900;font-size:16px;margin:3px 0 6px}
+.verdict.ok{color:var(--o)} .verdict.no{color:var(--x)}
+.exp{font-size:15.5px;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.pad{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pad button{font-family:var(--display);font-size:52px;line-height:1;cursor:pointer;border:none;border-radius:24px;min-height:104px;color:#fff;box-shadow:var(--shadow);transition:transform .1s}
+#bO{background:var(--o)} #bX{background:var(--x)}
+.pad button:active{transform:scale(.96)}
+.next{width:100%;font:inherit;font-size:18px;font-weight:700;cursor:pointer;border:none;border-radius:20px;min-height:66px;background:var(--band);color:#fff;box-shadow:var(--shadow)}
+:root[data-theme="dark"] .next{background:var(--gold);color:#1C2747}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .next{background:var(--gold);color:#1C2747}}
+.nav{display:flex;justify-content:space-between;gap:10px}
+.nav button{font:inherit;font-size:14px;font-weight:500;background:none;border:none;color:var(--muted);padding:8px 4px;cursor:pointer}
+.nav button:disabled{opacity:.35}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.done{text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;flex:1}
+.done .big{font-family:var(--display);font-size:54px;font-variant-numeric:tabular-nums}
+.done p{margin:0;color:var(--muted)}
+.done .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.done .chip{background:var(--band);color:#fff}
+footer{font-size:12px;color:var(--muted);text-align:center}
+.gate{position:fixed;inset:0;background:var(--band);display:flex;align-items:center;justify-content:center;z-index:20;padding:24px}
+.gate form{background:var(--surface);color:var(--ink);border-radius:24px;padding:30px 24px;width:100%;max-width:360px;display:flex;flex-direction:column;gap:14px;box-sizing:border-box;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.gate .badge{width:56px;height:56px;font-size:24px;background:var(--bg);box-shadow:none}
+.gate h2{margin:0;font-family:var(--display);font-weight:400;font-size:24px}
+.gate p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.gate input{font:inherit;font-size:18px;padding:14px 16px;border:2px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink)}
+.gate input:focus{border-color:var(--o);outline:none}
+.gate button{font:inherit;font-size:17px;font-weight:700;padding:15px;border-radius:14px;border:none;background:var(--o);color:#fff;cursor:pointer}
+.gate .err{color:var(--x);font-size:13px;min-height:1em}
+.sh{margin:6px 0 0;font-size:15.5px;font-weight:900;color:var(--ink);background:var(--surface);border-left:5px solid var(--gold);border-radius:12px;padding:9px 14px;box-shadow:var(--shadow)}
+.it{background:var(--surface);border-radius:18px;padding:14px 16px;box-shadow:var(--shadow);font-size:16px;line-height:2.05;word-break:keep-all;overflow-wrap:anywhere}
+.it.dn{opacity:.6}
+.it p{margin:2px 0}.it img{display:block;max-width:100%;max-height:260px;margin:4px auto 6px;border-radius:8px}
+.ih{display:flex;justify-content:space-between;align-items:center;line-height:1.3;margin-bottom:4px}
+.nn{font-family:var(--display);font-size:18px;color:var(--muted)}
+.chk{font:inherit;font-size:12.5px;border:1.5px solid var(--line);background:none;color:var(--muted);border-radius:999px;padding:4px 10px;cursor:pointer}
+.chk[aria-pressed="true"]{background:var(--o);border-color:var(--o);color:#fff}
+.bl{max-width:100%;white-space:normal;font:inherit;font-weight:700;display:inline-block;vertical-align:baseline;border:none;border-bottom:2.5px solid var(--o);background:var(--o-soft);border-radius:6px 6px 0 0;padding:0 6px;margin:0 2px;line-height:1.5;cursor:pointer;color:transparent;min-height:1.5em}
+.bl span{visibility:hidden}.bl.open{color:var(--x);background:var(--x-soft);border-bottom-color:var(--x)}.bl.open span{visibility:visible}
+.pick{white-space:normal}.pick i{font-style:normal;color:var(--muted);margin:0 2px}
+.op{font:inherit;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:0 7px;line-height:1.55;cursor:pointer;margin:0 1px}
+.op.right{background:var(--o);border-color:var(--o);color:#fff;font-weight:700}.op.bad{background:var(--x);border-color:var(--x);color:#fff}
+.tw{overflow-x:auto;margin:4px 0}.tw table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.7}.tw th,.tw td{border:1px solid var(--line);padding:6px 8px;vertical-align:top}.tw th{background:var(--bg);white-space:nowrap}
+.empty{text-align:center;color:var(--muted);padding:30px 10px;line-height:1.8;background:var(--surface);border-radius:18px}
+.tip{font-size:12.5px;opacity:.85;margin:0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style></head><body>
+<div class="gate" id="gate"><form id="gf"><div class="badge" aria-hidden="true"><b>빈</b><i>칸</i></div><h2>이승만·4·19 빈칸</h2><p>이경태T 수강생 전용이에요.<br>선생님께 받은 입장 코드를 입력하세요.</p><input id="gc" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" inputmode="latin" placeholder="입장 코드" aria-label="입장 코드"><div class="err" id="ge"></div><button type="button" id="gb">입장하기</button></form></div>
+<div class="band"><div class="wrap">
+  <div class="top">
+    <div class="logo"><div class="badge" aria-hidden="true"><b>빈</b><i>칸</i></div><div><small>이경태T · 한국사2 4주차 개념 빈칸</small><h1>이승만·4·19 빈칸</h1></div></div>
+    <div class="score" id="score"></div>
+  </div>
+  <div class="controls">
+    <select id="sec" aria-label="단원 선택"></select>
+    <button class="chip" id="all" aria-pressed="false">정답 모두 보기</button>
+    <button class="chip" id="hide" aria-pressed="false">외운 문장 숨기기</button>
+  </div>
+  <div class="progress"><span id="bar"></span></div><p class="tip">빈칸을 누르면 정답이 보여요 · ( A / B )는 맞는 쪽을 눌러 보세요</p>
+</div></div>
+<main class="wrap">
+  <section id="list" style="display:flex;flex-direction:column;gap:12px"></section>
+  <div class="nav"><span></span><button id="reset">기록 초기화</button></div>
+  <footer>26 한영외고 1학년 2학기 기말고사 대비 · 한터&amp;SNT</footer>
+</main>
+<script>
+const DATA = [{"h": "이승만 정부의 개헌", "s": "이승만 정부의 개헌", "t": "1. 1948~1960년 이승만 정권의 흐름\n1948년 - {제헌 국회} 선거\n1948년 - {제1대 대통령} 선거 - {간선제*/직선제} - {이승만}\n1950년 - {제2대 국회 의원} 선거 (6·25 전쟁 이전에 실시, 반이승만 성향 국회 의원 대부분 당선)\n1952년 - {발췌 개헌} - {직선제 개헌}\n1952년 - {제2대 대통령} 선거 - {간선제/직선제*} - {이승만}\n1954년 - {제3대 국회 의원} 선거\n1954년 - {사사오입 개헌} - {초대 대통령에 한하여 3선 금지 조항을 적용하지 않는 개헌}\n1956년 - {제3대 대통령} 선거 - {간선제/직선제*} - 대통령 {이승만*/신익희/조봉암}, 부통령 {장면*/이기붕}"}, {"h": "이승만 정부의 개헌", "s": "이승만 정부의 개헌", "t": "2. 제2대 국회 의원 선거는 6·25 전쟁 {전*/후}에 실시되었고 이승만 정부에 {비판적인*/우호적인} 후보가 대거 당선되어 {간선제*/직선제}로 대통령 당선이 어렵게 되자 대통령 {간선제/직선제*}를 추진하였다."}, {"h": "이승만 정부의 개헌", "s": "이승만 정부의 개헌", "t": "3. 이승만 정부가 각종 {비리}를 저지르고 반민족 행위자를 {옹호}하여 국민의 기대를 저버린 결과였다. 더욱이 {국민 방위군 사건} 등이 폭로되면서 이승만이 {국회}에서 대통령에 재선될 가능성은 더욱 낮아졌다. 이에 1951년 이승만은 {자유당}을 창당하고, 대통령 {직선제} 개헌을 추진하였다.\n참고) 국민 방위군 사건(1951년 1월~3월, 1·4 후퇴 직후): 중공군의 참전으로 전세가 불리해지자 한국 정부는 예비 병력 확보를 위해 국민 방위군 창설 → 군 지휘관들이 군수품을 빼돌려 전쟁 중에 소집된 국민 방위군 가운데 많은 사람들이 추위와 굶주림으로 사망함"}, {"h": "이승만 정부의 개헌", "s": "이승만 정부의 개헌", "t": "4. 1차 개헌 과정(발췌 개헌)\n① 51년 12월: 이승만의 {자유당} 창당 → 대통령 {직선제*/간선제} 개헌 추진\n② 52년 5월: 전쟁 중인 1952년 임시 수도 {부산} 일대에 {계엄령}을 선포하고, 이승만에 비판적인 국회 의원들을 간첩 혐의로 구속하였는데 이를 {부산 정치 파동}이라고 함\n③ 52년 7월: 이러한 공포 분위기 속에 대통령 {직선제*/간선제} 개헌안은 경찰과 군인이 국회를 포위한 가운데 토론 없이 {기립} 투표로 통과되었는데 이를 {발췌 개헌}이라고 함\n④ 52년 8월: 제2대 대통령 선거에서 {이승만} 당선"}, {"h": "이승만 정부의 개헌", "s": "이승만 정부의 개헌", "t": "5. 발췌 개헌은 자유당의 {대통령 직선제안*/양원제 및 내각 책임제안}과 민주 국민당의 {대통령 직선제안/양원제 및 내각 책임제안*}을 절충한 개헌안이다."}, {"h": "이승만 정부의 개헌", "s": "이승만 정부의 개헌", "t": "6. 연도를 보고 사건을 순서대로 쓰기(6·25 전쟁 기간)\n① 1950.5 {제2대 국회 의원 선거} ← 6·25 전쟁 이전\n② 1950.6 {6·25 전쟁}\n③ 1951.1 {국민 방위군 사건}\n④ 1951.12 {자유당 창당}\n⑤ 1952.5 {부산 정치 파동}\n⑥ 1952.7 {발췌 개헌(1차 개헌)}\n⑦ 1952.8 {제2대 대통령 선거}\n⑧ 1953.6 {이승만 반공 포로 석방}\n⑨ 1953.7 {정전 협정 체결}\n⑩ 1953.10 {한·미 상호 방위 조약} ← 6·25 전쟁 이후\n⑪ 1954.5 {제3대 국회 의원 선거}\n⑫ 1954.11 {사사오입 개헌(2차 개헌)}"}, {"h": "이승만 정부의 개헌", "s": "이승만 정부의 개헌", "t": "7. 2차 개헌(사사오입 개헌)\n① 54년 5월: 3대 국회 의원 선거에서 {자유당}의 압승\n② 54년 11월: 자유당은 {초대 대통령에 한하여 3선 금지 조항을 적용하지 않는} 개헌안 발의 → 국회의 표결 결과 의결 정족수에 1명이 모자라 부결이 선언되었으나, 이틀 후 국회 의장은 {사사오입}을 적용하여 개헌안이 통과되었다고 선포하였는데 이를 {사사오입} 개헌(2차 개헌)이라고 함 → 법과 절차를 무시한 개헌을 통해 이승만은 횟수의 제한 없이 대통령 출마가 가능해져 장기 독재의 기반을 마련하였고, 민주주의의 원칙은 크게 훼손함\n참고) 헌법을 개정하려면 국회 재적 의원 203명 중 3분의 2(135.333…명)를 넘는 136명이 찬성해야 하는데, 투표 결과는 찬성이 135표였다. 자유당은 사사오입(반올림)의 논리를 앞세워 개헌안을 억지로 번복하여 통과시켰다."}, {"h": "이승만 정부의 개헌", "s": "이승만 정부의 개헌", "t": "8. 사사오입 개헌 → {민주당 창당} → 제3대 대통령 선거"}, {"h": "이승만 정부의 개헌", "s": "이승만 정부의 개헌", "img": "p4_1", "lines": ["· 자료1은 {발췌 개헌}이고 자료2는 {사사오입 개헌}이다.", "· 자료1의 핵심 내용은 {대통령 직선제}이고 자료2의 핵심 내용은 {초대 대통령에 한하여 3선 금지 조항을 적용하지 않는다}이다."], "pre": "9."}, {"h": "제3대 대선과 진보당 사건", "s": "제3대 대선과 진보당 사건", "t": "1. 1956년은 {3}대 대통령 선거이면서 {4}대 부통령 선거였다."}, {"h": "제3대 대선과 진보당 사건", "s": "제3대 대선과 진보당 사건", "t": "2. 1954.11 사사오입 개헌(2차) 이후 1956.5\n· 1956년 대통령 선거에서는 자유당의 {이승만}, 민주당의 {신익희}, 무소속에 {조봉암} 후보가 출마하였으나 선거 기간 도중 {신익희}가 갑자기 사망하여 {이승만*/조봉암}이 당선되었고 진보 성향의 {이승만/조봉암*} 후보가 {30}% 가량의 득표율을 보였다.\n· 4대 부통령 선거에서는 {자유당/민주당*} 후보인 {이기붕/장면*}이 당선되었다."}, {"h": "제3대 대선과 진보당 사건", "s": "제3대 대선과 진보당 사건", "img": "p3_0", "lines": ["· 1956년 정·부통령 선거 결과 표"], "pre": "3."}, {"h": "제3대 대선과 진보당 사건", "s": "제3대 대선과 진보당 사건", "t": "4. 1956.11 3대 대통령 선거 이후 조봉암은 {북진 통일/평화 통일*}을 앞세우며 {진보당}을 창당함"}, {"h": "제3대 대선과 진보당 사건", "s": "제3대 대선과 진보당 사건", "t": "5. 1958.1 이승만 정부는 {반공} 이념을 앞세워 진보당을 탄압하였다. {1958}년 조봉암과 진보당 간부들을 간첩죄와 {국가 보안법} 위반 등의 혐의를 씌워 구속하고 진보당 정당 등록을 취소하였으며 이후 조봉암을 사형에 처한 {진보당 사건}이 발생하였다."}, {"h": "제3대 대선과 진보당 사건", "s": "제3대 대선과 진보당 사건", "t": "6. 1959.4 진보당 사건 이후 정부에 비판적인 {경향신문}을 폐간하는 등 언론을 탄압하였다."}, {"h": "제3대 대선과 진보당 사건", "s": "제3대 대선과 진보당 사건", "t": "7. 조봉암은 2011년 52년 만에 {무죄} 선고를 받았다."}, {"h": "제3대 대선과 진보당 사건", "s": "제3대 대선과 진보당 사건", "img": "p3_1", "lines": ["◎ 제{3}대 대통령 선거 벽보", "· {민주당}은 “못살겠다 갈아 보자.”라는 구호를 내세워 지지를 호소하였고", "· 여당인 {자유당}은 “갈아 봤자 더 못산다.”라는 구호로 대응하였다."], "pre": "8."}, {"h": "제3대 대선과 진보당 사건", "s": "제3대 대선과 진보당 사건", "img": "p4_0", "lines": ["피고인은 …… 진보당 창당과 관련한 이 사건 재심 대상 판결로 사형이 집행되기에 이르렀는바, 이 사건 재심에서 피고인에 대한 공소 사실 대부분이 무죄로 밝혀졌으므로 이제 뒤늦게나마 재심 판결로써 그 잘못을 바로잡고 ……."], "pre": "9."}, {"h": "제3대 대선과 진보당 사건", "s": "제3대 대선과 진보당 사건", "t": "10. 이승만 정부는 북한과의 대치 상황을 내세워 자유와 민주주의를 제한할 수 있다는 사회적 분위기를 조성함 → 학생들을 동원하여 대규모 {반공 궐기 대회}를 수시로 개최하고 {반공}을 내세워 정부 비판 세력을 탄압하는 등 {독재 체제}를 강화함"}, {"h": "미국의 경제 원조", "s": "미국의 경제 원조", "t": "1. 전후 복구와 경제 재건 과정에서 {미국의 경제 원조}가 큰 역할을 하였다. 미국은 주로 {소비재}와 {잉여 농산물} 등을 원조하였다."}, {"h": "미국의 경제 원조", "s": "미국의 경제 원조", "t": "2. 미국의 잉여 농산물을 가공하는 {삼백 산업}을 중심으로 공업화가 진행되었다. 이로 인해 식량 사정은 {좋아졌지만*/악화되었지만} 곡물 가격은 {하락하여*/상승하여} 농촌 경제는 {좋아졌다/어려움을 겪었다*}. 이로 인해 농촌을 떠나 {도시}로 향하는 농민이 증가하였다."}, {"h": "미국의 경제 원조", "s": "미국의 경제 원조", "t": "3. 원조 물자를 기업에 배정함으로써 {민간 자본}에 의한 경제 발전도 추구하였지만 그 과정에서 특정 기업에 혜택이 편중되면서 {정경 유착}이나 {독점}과 같은 부작용이 나타났다."}, {"h": "미국의 경제 원조", "s": "미국의 경제 원조", "t": "4. {1950년대 말} 미국의 경제 상황이 나빠지면서 우리나라도 미국의 경제 원조가 {감소*/증가}하였고 {무상 원조}가 {유상 차관}으로 변경되었다."}, {"h": "미국의 경제 원조", "s": "미국의 경제 원조", "t": "5. 제분, 제당, 면방직 산업의 생산품인 밀가루, 설탕, 면직물이 모두 {흰색}이어서 {삼백 산업}이라고 불렸다."}, {"h": "4·19 혁명", "s": "4·19 혁명", "t": "1. 이승만 정부의 {독재}와 {부패}로 민심이 악화되는 가운데 1960년 3월 15일, 정·부통령 선거가 실시되었다. 이승만 정부와 {자유당}은 {불법}을 저질러서라도 권력을 유지하고자 하였다. 당시 고령인 이승만에게 건강상의 문제가 생기면 {부통령}이 대통령직을 승계하기 때문에 자유당 후보인 {이기붕}을 반드시 부통령에 당선시키려 하였다."}, {"h": "4·19 혁명", "s": "4·19 혁명", "t": "2. 이승만 정부와 자유당은 공무원과 경찰 등을 동원하여 {관권} 선거와 {금권} 선거를 자행하였다.\n(1) 야당 후보의 선거 유세를 {방해}하고 선거인 명부 {조작}\n(2) {3인조·9인조 공개 투표} 등 대대적인 부정을 저질렀다.\n이를 {3·15 부정 선거}라고 한다.\n→ 결과 대통령에 {이승만}이, 부통령에 {이기붕}이 당선되었다."}, {"h": "4·19 혁명", "s": "4·19 혁명", "tbl": [["4대 대통령 선거", "자유당", "민주당"], ["대통령", "{이승만}", "{조병옥}"], ["부통령", "{이기붕}", "{장면}"]], "pre": "3."}, {"h": "4·19 혁명", "s": "4·19 혁명", "t": "4. 선거 {이전*/이후}부터 부정 선거 의혹을 규탄하는 시위가 일어났다. 선거 {당일}에도 {마산과 광주} 등지에서 선거 무효를 외치는 시위가 전개되었다. 특히 {마산}의 대규모 시위를 {3·15 의거}라고 하는데 여기에서 경찰의 발포로 많은 사상자가 발생하였다."}, {"h": "4·19 혁명", "s": "4·19 혁명", "t": "5. 시위가 확산되는 가운데 선거 관리 책임자인 {내무부 장관}이 사임하면서 상황은 잠시 진정되었다. 그러나 선거 당일 시위에서 경찰이 쏜 최루탄에 사망한 {김주열} 학생의 시신이 마산 앞바다에서 발견되자 시민의 분노가 폭발하였다. 이승만 정부는 시위의 배후에 {공산당}이 있다고 발표하여 분노한 민심을 가라앉히려 하였지만 시위는 {전국}으로 빠르게 확산되었다."}, {"h": "4·19 혁명", "s": "4·19 혁명", "t": "6. 시위가 확산되는 가운데 {4월 19일} 전국에서 대규모 시위가 전개되었다. 학생과 시민 등 수만 명이 시위에 나섰고, 시위대는 대통령이 있는 {경무대}로 향하였다. 이때 경찰이 시위대를 향해 무차별 총격을 가하였고, 이날 하루 동안 전국에서 100명이 넘는 사람이 사망하였다."}, {"h": "4·19 혁명", "s": "4·19 혁명", "t": "7. 이승만 정부는 {비상계엄}을 선포하고 {군대}까지 동원하였지만 학생과 시민의 자발적인 참여와 저항을 막을 수 없었다."}, {"h": "4·19 혁명", "s": "4·19 혁명", "t": "8. {대학교수}들도 시위에 나서 {“학생의 피에 보답하라.”}라고 외치면서 이승만의 퇴진을 요구하였다. 심지어 초등학생까지 시위에 참여하였다."}, {"h": "4·19 혁명", "s": "4·19 혁명", "t": "9. 4월 26일 대규모 시위가 시작되자 결국 국민의 요구에 굴복한 이승만은 대통령 자리에서 물러나겠다는 성명을 발표하고 {미국}으로 망명하였다.\n■ 4.11(김주열 학생) → 4.18(고려대 학생 시위) → 4.19(전국적 시위, 경무대) → 비상계엄 선포 → 4.25(대학교수단 시국 선언) → 4.26(이승만 하야)"}, {"h": "4·19 혁명", "s": "4·19 혁명", "t": "10. 4·19 혁명의 순서\n① 이승만 하야 ② 김주열 학생 시신 발견 ③ 대학교수단 시국 선언 ④ 고려대 학생 시위 ⑤ 비상계엄 선포 ⑥ 전국적 시위+경무대 진출\n순서: {② ④ ⑥ ⑤ ③ ①}"}, {"h": "4·19 혁명", "s": "4·19 혁명", "t": "11. 3·15 부정 선거와 4·19 혁명 OX\n① 4월 26일 이승만은 하야하였고 미국으로 망명하였다. {O*/X}\n② 4·19 혁명은 학생과 시민이 이승만 독재 정권을 무너뜨린 민주 혁명이다. {O*/X}\n③ 대학교수단은 학생의 피에 보답하라고 외치며 시국 선언을 하였지만 계엄군은 시위대를 철저히 진압하였다. {O/X*}\n④ 김주열 학생 시신 발견 이후 이승만 정부는 시위의 배후에 공산당이 있다고 발표하였다. {O*/X}\n⑤ 4월 18일 고려대 시위는 4·19 혁명의 직접적인 도화선이 되었다. {O*/X}\n⑥ 부정 선거에 항의하는 시위가 확산되는 가운데 선거 관리 책임자인 부통령이 사임하면서 상황은 잠시 진정되었다. {O/X*}\n⑦ 3·15 부정 선거에서는 선거 당일 투표함을 통째로 바꾸기도 하였다. {O*/X}\n⑧ 3·15 부정 선거에서는 총유권자보다 투표자 수가 많이 나와 투표용지를 불태우기도 하였다. {O*/X}"}, {"h": "4·19 혁명", "s": "4·19 혁명", "img": "p8_0", "lines": ["위 사료는 {4·19 혁명} 당시 희생된 학생들을 추모하여 쓴 시이다."], "pre": "12."}, {"h": "4·19 혁명", "s": "4·19 혁명", "img": "p8_1", "lines": ["자료1은 {대학교수단 시국 선언문}이다.", "자료2는 {이승만 대통령의 사임 성명}이다.", "(가)는 {3·15 부정 선거}이다.", "(나)는 {이기붕}이다.", "(다)는 {내각 책임제}이다."], "pre": "13."}, {"h": "허정 과도 정부와 장면 내각", "s": "허정 과도 정부와 장면 내각", "t": "1. 이승만 하야 → 허정 과도 정부 → {3차 개헌} → 장면 내각\n■ 허정 과도 정부: 이승만 하야 후 장면 내각이 출범하기 전까지의 중립적 과도 정부(허정은 외무 장관에서 대통령 권한 대행이 됨)"}, {"h": "허정 과도 정부와 장면 내각", "s": "허정 과도 정부와 장면 내각", "t": "2. 3차 개헌은 {허정 과도 정부} 시기에 실시되었는데 {내각 책임제}와 {양원제} 국회를 구성한다는 내용이 중심이다.\n■ 내각 책임제: 의회의 다수 정당이 내각을 구성하는 정부 형태로 총리가 정치적 실권을 행사하고 대통령은 상징적 국가 원수임. 장면 내각은 우리나라 최초의 내각 책임제임\n■ 양원제: 민의원(하원)과 참의원(상원)으로 구성. 발췌 개헌으로 양원제가 헌법에 명시는 되었지만 실제로 양원제 국회가 구성되지 않았기 때문에 양원제 국회는 3차 개헌 이후뿐이다."}, {"h": "허정 과도 정부와 장면 내각", "s": "허정 과도 정부와 장면 내각", "t": "3. 3차 개헌 이후 실시된 총선에서 {자유당/민주당*}이 압승하였고 이에 국회에서 {윤보선}을 대통령으로 선출하고 대통령이 국무총리로 {장면}을 지명하면서 {장면 내각}이 출범하게 되었다."}, {"h": "허정 과도 정부와 장면 내각", "s": "허정 과도 정부와 장면 내각", "t": "4. 장면 내각에서는 {지방 자치제}와 {공무원 공개 채용 제도}를 실시하였다."}, {"h": "허정 과도 정부와 장면 내각", "s": "허정 과도 정부와 장면 내각", "t": "5. 장면 내각에서는 {경제 개발 5개년 계획}을 {수립*/실시}하였다.\n(경제 개발 5개년 계획을 마련하였으나 5·16 군사 정변으로 실시하지 못함)"}, {"h": "허정 과도 정부와 장면 내각", "s": "허정 과도 정부와 장면 내각", "t": "6. 4·19 혁명 이후 분출하는 각계각층의 민주화 요구\n① 학생들은 {학도 호국단} 폐지와 {학원 민주화}를 주장하였다.\n② 교사들은 {교원 노조}를 결성하였다.\n③ 농민들은 {농산물 가격 유지}를 요구하였다.\n④ 노동자는 {임금 인상과 처우 개선}을 요구하였다."}, {"h": "허정 과도 정부와 장면 내각", "s": "허정 과도 정부와 장면 내각", "t": "7. 4·19 혁명 이후 평화 통일 운동 확산\n① 4·19 혁명 이후 {평화 통일} 운동이 확산되었는데 학생들은 {남북 학생 회담}을 요구하였고 민간에서도 {중립화 통일론}을 내세우며 남북 정당과 사회단체의 정치 협상을 주장하였다.\n② 4·19 혁명 이후 6·25 전쟁 중 발생한 {양민 학살 사건}에 대한 진상 조사를 요구하였다."}, {"h": "허정 과도 정부와 장면 내각", "s": "허정 과도 정부와 장면 내각", "t": "8. 장면 내각의 한계\n① 각계각층에서 분출된 민주화 요구를 {잘 수용함/제대로 수용하지 못함*}\n② 민간 차원의 통일 운동에 {긍정적/부정적*}\n③ 부정 선거 책임자와 부정 축재자 처벌에도 {적극적/소극적*}이었음\n④ 민주당 내에서 {파벌 싸움(구파, 신파)}으로 정치적 혼란을 초래함\n⑤ {5·16 군사 정변}으로 붕괴(1961) → 4·19 혁명 정신이 계승 {되었다./되지 못함.*}"}, {"h": "허정 과도 정부와 장면 내각", "s": "허정 과도 정부와 장면 내각", "t": "9. 1. 일본과의 국교 정상화 및 유엔 감시하의 남북한 자유선거에 의한 통일 달성\n2. 관료 제도의 합리화와 공무원 재산 등록 및 경찰 중립화를 통한 민주주의 구현\n3. 부정 선거의 원흉과 발포 책임자, 부정·불법 축재자 처벌\n4. 외자 도입과 경제 원조 확대를 통한 _경제 개발 계획 추진_\n5. 군비 축소와 군의 정예화 추진을 통한 국방력 강화 및 군의 정치적 중립 확보\n위 사료는 {장면 내각}의 시정 방침이다."}, {"h": "허정 과도 정부와 장면 내각", "s": "허정 과도 정부와 장면 내각", "t": "10. 4·19 혁명 이후 민족 자주 통일 중앙 협의회는 {민족 자주}, {평화}, {민주}란 3대 원칙에서 통일을 실현하기 위한 국민운동을 전개하였다."}, {"h": "허정 과도 정부와 장면 내각", "s": "허정 과도 정부와 장면 내각", "img": "p10_0", "lines": ["“이 땅이 뉘 땅인데 오도 가도 못하는가 가자 북으로 오라 남으로”는 장면 내각 당시 평화 통일 운동 중 {남북 학생 회담} 지지 집회 중에서 볼 수 있었던 구호이다."], "pre": "11."}];
+const SECS=[...new Set(DATA.map(d=>d.h))];
+const ROM=['Ⅰ','Ⅱ','Ⅲ','Ⅳ','Ⅴ'];
+const KEY='hy-hist2-hanguk-419-v1';
+let st={done:{}};try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&s.done)st=s}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const $=id=>document.getElementById(id);
+let section='0',showAll=false,hideDone=false;
+$('sec').innerHTML=SECS.map((s,i)=>'<option value="'+i+'">'+(i+1)+'. '+s+' ('+DATA.filter(d=>d.h===s).length+')</option>').join('');
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function mk(t){
+  return esc(t).replace(/\{(.+?)\}/g,(m,x)=>{
+    if(x.includes('/')){
+      return '<span class="pick">( '+x.split('/').map(o=>{const ok=o.endsWith('*');o=o.replace(/\*$/,'');return '<button class="op'+(showAll&&ok?' right':'')+'" data-ok="'+(ok?1:0)+'">'+o+'</button>'}).join('<i>/</i>')+' )</span>';
+    }
+    return '<button class="bl'+(showAll?' open':'')+'" style="min-width:'+Math.min(14,Math.max(2.5,x.length*0.95))+'em"><span>'+x+'</span></button>';
+  }).replace(/_(.+?)_/g,'<u>$1</u>').replace(/\n/g,'<br>');
+}
+function render(){
+  const items=DATA.map((d,i)=>[d,i]).filter(([d])=>d.h===SECS[+section]);
+  const nd=items.filter(([d,i])=>st.done[i]).length;
+  $('score').innerHTML='<span>외운 문장</span><strong>'+nd+'/'+items.length+'</strong>';
+  $('bar').style.width=(items.length?nd/items.length*100:0)+'%';
+  let h='',cur='',n=0;
+  items.forEach(([d,i])=>{
+    if(hideDone&&st.done[i])return;
+    if(d.s!==cur){cur=d.s;n=0;h+='<h3 class="sh">'+esc(d.s)+'</h3>'}
+    n++;
+    const num=(d.pre||((d.t||'').match(/^(\d+)\./)||[])[0]||'');
+    h+='<article class="it'+(st.done[i]?' dn':'')+'"><div class="ih"><span class="nn">'+num+'</span><button class="chk" data-i="'+i+'" aria-pressed="'+(st.done[i]?'true':'false')+'">'+(st.done[i]?'외웠어요 ✓':'외웠어요')+'</button></div>';
+    if(d.img)h+='<img src="img/'+d.img+'.jpg" alt="">'+(d.lines||[]).map(l=>'<p>'+mk(l)+'</p>').join('');
+    else if(d.tbl)h+='<div class="tw"><table>'+d.tbl.map((r,ri)=>'<tr>'+r.map(c=>(ri===0?'<th>':'<td>')+mk(c)+(ri===0?'</th>':'</td>')).join('')+'</tr>').join('')+'</table></div>';
+    else h+='<p>'+mk(d.t.replace(/^\d+\.\s*/,''))+'</p>';
+    h+='</article>';
+  });
+  if(!h)h='<div class="empty">이 단원의 문장을 모두 외웠어요! 👏<br>‘외운 문장 숨기기’를 끄면 다시 볼 수 있어요.</div>';
+  $('list').innerHTML=h;
+}
+$('list').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  if(b.classList.contains('bl'))b.classList.toggle('open');
+  else if(b.classList.contains('op')){b.classList.add(b.dataset.ok==='1'?'right':'bad');if(b.dataset.ok!=='1')setTimeout(()=>b.classList.remove('bad'),900)}
+  else if(b.classList.contains('chk')){const i=b.dataset.i;if(st.done[i])delete st.done[i];else st.done[i]=1;save();render()}
+});
+$('sec').onchange=e=>{section=e.target.value;window.scrollTo({top:0});render()};
+$('all').onclick=e=>{showAll=!showAll;e.currentTarget.setAttribute('aria-pressed',showAll);e.currentTarget.textContent=showAll?'모두 가리기':'정답 모두 보기';render()};
+$('hide').onclick=e=>{hideDone=!hideDone;e.currentTarget.setAttribute('aria-pressed',hideDone);render()};
+let armed=false;
+$('reset').onclick=e=>{const t=e.currentTarget;if(!armed){armed=true;t.textContent='한 번 더 누르면 초기화';setTimeout(()=>{armed=false;t.textContent='기록 초기화'},2500);return}
+ st={done:{}};save();armed=false;t.textContent='기록 초기화';render()};
+render();
+</script>
+<script>
+(function(){
+const H=1418297543,K='hy-hist2-hanguk-419-gate';
+const hash=s=>{let h=5381;for(const c of s.trim().toLowerCase())h=((h*33)^c.charCodeAt(0))>>>0;return h};
+const g=document.getElementById('gate');
+let ok=false;try{ok=localStorage.getItem(K)===String(H)}catch(e){}
+if(ok){g.hidden=true;return}
+const M={'ㅂ':'q','ㅈ':'w','ㄷ':'e','ㄱ':'r','ㅅ':'t','ㅛ':'y','ㅕ':'u','ㅑ':'i','ㅐ':'o','ㅔ':'p','ㅁ':'a','ㄴ':'s','ㅇ':'d','ㄹ':'f','ㅎ':'g','ㅗ':'h','ㅓ':'j','ㅏ':'k','ㅣ':'l','ㅋ':'z','ㅌ':'x','ㅊ':'c','ㅍ':'v','ㅠ':'b','ㅜ':'n','ㅡ':'m'};
+const norm=s=>[...String(s).replace(/\s+/g,'')].map(c=>M[c]||c).join('');
+const tryIn=()=>{const v=document.getElementById('gc').value;
+ if(hash(norm(v))===H||hash(v)===H){try{localStorage.setItem(K,String(H))}catch(e){} g.hidden=true}
+ else document.getElementById('ge').textContent='코드가 맞지 않아요. 영문 자판으로 입력했는지 확인해 주세요.'};
+document.getElementById('gb').addEventListener('click',tryIn);
+document.getElementById('gc').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();tryIn()}});
+document.getElementById('gf').addEventListener('submit',e=>{e.preventDefault();tryIn()});
+})();
+</script>
+</body></html>
