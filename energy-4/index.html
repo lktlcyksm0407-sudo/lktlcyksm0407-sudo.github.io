@@ -1,0 +1,197 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"><title>세계의 에너지 자원 빈칸</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+:root{
+  --band:#1C2747; --band-ink:#FFFFFF; --band-soft:rgba(255,255,255,.14);
+  --bg:#F2F4F9; --surface:#FFFFFF; --ink:#16203A; --muted:#6A7389; --line:#E1E5EE;
+  --o:#2563EB; --o-soft:#E6EEFF; --x:#E0453A; --x-soft:#FDEBEA; --gold:#F5B731;
+  --display:"Black Han Sans","Noto Sans KR",sans-serif;
+  --sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --shadow:0 10px 30px rgba(22,32,58,.10),0 2px 6px rgba(22,32,58,.06);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --band:#141B30; --band-soft:rgba(255,255,255,.10);
+  --bg:#0E1322; --surface:#1A2238; --ink:#EEF1F8; --muted:#9AA3B8; --line:#2A3350;
+  --o:#6E9BFF; --o-soft:#1D2B52; --x:#FF7A70; --x-soft:#45201F; --gold:#F5C451;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --band:#141B30; --band-soft:rgba(255,255,255,.10);
+  --bg:#0E1322; --surface:#1A2238; --ink:#EEF1F8; --muted:#9AA3B8; --line:#2A3350;
+  --o:#6E9BFF; --o-soft:#1D2B52; --x:#FF7A70; --x-soft:#45201F; --gold:#F5C451;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}
+html,body{min-height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-tap-highlight-color:transparent;letter-spacing:-.01em}
+:root{padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--band)}
+.band{background:var(--band);color:var(--band-ink);padding-bottom:64px}
+.wrap{max-width:620px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));box-sizing:border-box}
+.band .wrap{padding-block:18px 0;display:flex;flex-direction:column;gap:16px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:12px;min-width:0}
+.badge{flex:0 0 auto;width:48px;height:48px;border-radius:14px;background:var(--surface);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:17px;line-height:1;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.badge b{color:var(--o);font-weight:400}.badge i{color:var(--x);font-style:normal}
+.logo small{display:block;font-size:12px;opacity:.75;font-weight:500;letter-spacing:.02em}
+.logo h1{margin:2px 0 0;font-family:var(--display);font-weight:400;font-size:clamp(19px,5.4vw,24px);white-space:nowrap;letter-spacing:0;line-height:1.15}
+.score{flex:0 0 auto;text-align:center;background:var(--band-soft);border-radius:14px;padding:8px 12px;min-width:64px;font-variant-numeric:tabular-nums}
+.score span{display:block;font-size:11px;opacity:.8}
+.score strong{display:block;font-size:20px;font-weight:900;line-height:1.2}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+select,.chip{font:inherit;font-size:14px;font-weight:500;color:var(--band-ink);background:var(--band-soft);border:1px solid transparent;border-radius:999px;padding:9px 14px;min-height:40px;-webkit-appearance:none;appearance:none}
+select{flex:1 1 150px;min-width:0;padding-right:34px;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 18px) 52%,calc(100% - 13px) 52%;background-size:5px 5px;background-repeat:no-repeat}
+select option{color:#16203A;background:#fff}
+.chip{cursor:pointer;flex:0 0 auto}
+.chip[aria-pressed="true"]{background:var(--gold);color:#1C2747}
+.progress{height:6px;background:var(--band-soft);border-radius:6px;overflow:hidden}
+.progress span{display:block;height:100%;background:var(--gold);width:0;border-radius:6px;transition:width .3s}
+main.wrap{margin-top:-48px;display:flex;flex-direction:column;gap:16px;padding-block:0 24px}
+.card{background:var(--surface);border-radius:24px;padding:24px 22px 22px;display:flex;flex-direction:column;gap:16px;min-height:280px;box-shadow:var(--shadow)}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.no{font-family:var(--display);font-size:22px;color:var(--ink);letter-spacing:0}
+.no em{font-style:normal;font-size:13px;font-family:var(--sans);font-weight:700;color:var(--muted);margin-left:4px}
+.tag{background:var(--bg);border-radius:999px;padding:5px 11px;font-weight:500;font-size:12px;max-width:60%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.q{font-size:clamp(19px,5.1vw,22px);font-weight:500;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.result{margin-top:auto;border-radius:18px;padding:16px;display:flex;gap:14px;align-items:flex-start;animation:pop .28s ease-out}
+.result[data-k="O"]{background:var(--o-soft)} .result[data-k="X"]{background:var(--x-soft)}
+@keyframes pop{from{transform:translateY(8px);opacity:.4}to{transform:none;opacity:1}}
+.mark{flex:0 0 auto;width:52px;height:52px;display:grid;place-items:center;font-family:var(--display);font-size:30px;border-radius:50%;color:#fff;animation:stamp .35s cubic-bezier(.3,1.6,.5,1)}
+.result[data-k="O"] .mark{background:var(--o)} .result[data-k="X"] .mark{background:var(--x)}
+@keyframes stamp{from{transform:scale(.4) rotate(-20deg)}to{transform:none}}
+.verdict{font-weight:900;font-size:16px;margin:3px 0 6px}
+.verdict.ok{color:var(--o)} .verdict.no{color:var(--x)}
+.exp{font-size:15.5px;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.pad{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pad button{font-family:var(--display);font-size:52px;line-height:1;cursor:pointer;border:none;border-radius:24px;min-height:104px;color:#fff;box-shadow:var(--shadow);transition:transform .1s}
+#bO{background:var(--o)} #bX{background:var(--x)}
+.pad button:active{transform:scale(.96)}
+.next{width:100%;font:inherit;font-size:18px;font-weight:700;cursor:pointer;border:none;border-radius:20px;min-height:66px;background:var(--band);color:#fff;box-shadow:var(--shadow)}
+:root[data-theme="dark"] .next{background:var(--gold);color:#1C2747}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .next{background:var(--gold);color:#1C2747}}
+.nav{display:flex;justify-content:space-between;gap:10px}
+.nav button{font:inherit;font-size:14px;font-weight:500;background:none;border:none;color:var(--muted);padding:8px 4px;cursor:pointer}
+.nav button:disabled{opacity:.35}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.done{text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;flex:1}
+.done .big{font-family:var(--display);font-size:54px;font-variant-numeric:tabular-nums}
+.done p{margin:0;color:var(--muted)}
+.done .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.done .chip{background:var(--band);color:#fff}
+footer{font-size:12px;color:var(--muted);text-align:center}
+.gate{position:fixed;inset:0;background:var(--band);display:flex;align-items:center;justify-content:center;z-index:20;padding:24px}
+.gate form{background:var(--surface);color:var(--ink);border-radius:24px;padding:30px 24px;width:100%;max-width:360px;display:flex;flex-direction:column;gap:14px;box-sizing:border-box;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.gate .badge{width:56px;height:56px;font-size:24px;background:var(--bg);box-shadow:none}
+.gate h2{margin:0;font-family:var(--display);font-weight:400;font-size:24px}
+.gate p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.gate input{font:inherit;font-size:18px;padding:14px 16px;border:2px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink)}
+.gate input:focus{border-color:var(--o);outline:none}
+.gate button{font:inherit;font-size:17px;font-weight:700;padding:15px;border-radius:14px;border:none;background:var(--o);color:#fff;cursor:pointer}
+.gate .err{color:var(--x);font-size:13px;min-height:1em}
+.sh{margin:6px 0 0;font-size:15.5px;font-weight:900;color:var(--ink);background:var(--surface);border-left:5px solid var(--gold);border-radius:12px;padding:9px 14px;box-shadow:var(--shadow)}
+.it{background:var(--surface);border-radius:18px;padding:14px 16px;box-shadow:var(--shadow);font-size:16px;line-height:2.05;word-break:keep-all;overflow-wrap:anywhere}
+.it.dn{opacity:.6}
+.it p{margin:2px 0}.it img{display:block;max-width:100%;max-height:none;margin:4px auto 6px;border-radius:8px}
+.ih{display:flex;justify-content:space-between;align-items:center;line-height:1.3;margin-bottom:4px}
+.nn{font-family:var(--display);font-size:18px;color:var(--muted)}
+.chk{font:inherit;font-size:12.5px;border:1.5px solid var(--line);background:none;color:var(--muted);border-radius:999px;padding:4px 10px;cursor:pointer}
+.chk[aria-pressed="true"]{background:var(--o);border-color:var(--o);color:#fff}
+.bl{max-width:100%;white-space:normal;font:inherit;font-weight:700;display:inline-block;vertical-align:baseline;border:none;border-bottom:2.5px solid var(--o);background:var(--o-soft);border-radius:6px 6px 0 0;padding:0 6px;margin:0 2px;line-height:1.5;cursor:pointer;color:transparent;min-height:1.5em}
+.bl span{visibility:hidden}.bl.open{color:var(--x);background:var(--x-soft);border-bottom-color:var(--x)}.bl.open span{visibility:visible}
+.pick{white-space:normal}.pick i{font-style:normal;color:var(--muted);margin:0 2px}
+.op{font:inherit;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:0 7px;line-height:1.55;cursor:pointer;margin:0 1px}
+.op.right{background:var(--o);border-color:var(--o);color:#fff;font-weight:700}.op.bad{background:var(--x);border-color:var(--x);color:#fff}
+.tw{overflow-x:auto;margin:4px 0}.tw table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.7}.tw th,.tw td{border:1px solid var(--line);padding:6px 8px;vertical-align:top}.tw th{background:var(--bg);white-space:nowrap}
+.empty{text-align:center;color:var(--muted);padding:30px 10px;line-height:1.8;background:var(--surface);border-radius:18px}
+.tip{font-size:12.5px;opacity:.85;margin:0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style></head><body>
+<div class="gate" id="gate"><form id="gf"><div class="badge" aria-hidden="true"><b>빈</b><i>칸</i></div><h2>세계의 에너지 자원 빈칸</h2><p>이경태T 수강생 전용이에요.<br>선생님께 받은 입장 코드를 입력하세요.</p><input id="gc" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" inputmode="latin" placeholder="입장 코드" aria-label="입장 코드"><div class="err" id="ge"></div><button type="button" id="gb">입장하기</button></form></div>
+<div class="band"><div class="wrap">
+  <div class="top">
+    <div class="logo"><div class="badge" aria-hidden="true"><b>빈</b><i>칸</i></div><div><small>이경태T · 세계시민과 지리 4주차</small><h1>세계의 에너지 자원 빈칸</h1></div></div>
+    <div class="score" id="score"></div>
+  </div>
+  <div class="controls">
+    <select id="sec" aria-label="단원 선택"></select>
+    <button class="chip" id="all" aria-pressed="false">정답 모두 보기</button>
+    <button class="chip" id="hide" aria-pressed="false">외운 문장 숨기기</button>
+  </div>
+  <div class="progress"><span id="bar"></span></div><p class="tip">빈칸을 누르면 정답이 보여요 · ( A / B )는 맞는 쪽을 눌러 보세요</p>
+</div></div>
+<main class="wrap">
+  <section id="list" style="display:flex;flex-direction:column;gap:12px"></section>
+  <div class="nav"><span></span><button id="reset">기록 초기화</button></div>
+  <footer>한영외고 세계시민과 지리 2학기 기말고사 대비 · 한터&amp;SNT</footer>
+</main>
+<script>
+const DATA = [{"h": "1차 에너지 소비 구조", "s": "1차 에너지 소비 구조", "t": "1. 세계 1차 에너지 자원의 소비 구조 순서를 쓰시오.\n{석유} > {석탄} > {천연가스} > {신재생 에너지} > {수력} > {원자력}"}, {"h": "1차 에너지 소비 구조", "s": "1차 에너지 소비 구조", "t": "2. 세계 1차 에너지 자원의 소비 구조에서 총 소비량은 {증가*/감소}하고 있다."}, {"h": "1차 에너지 소비 구조", "s": "1차 에너지 소비 구조", "t": "3. 세계 1차 에너지 자원의 소비 구조에서 석유의 소비량은 계속 {증가*/감소}하지만 석유가 차지하는 비중은 점점 {증가/감소*}하고 있다."}, {"h": "1차 에너지 소비 구조", "s": "1차 에너지 소비 구조", "t": "4. 세계 1차 에너지 자원의 소비 구조에서 석탄은 {2000}년대에 급증하였는데 이는 {중국}, {인도} 등 신흥국의 공업화 때문이다."}, {"h": "1차 에너지 소비 구조", "s": "1차 에너지 소비 구조", "t": "5. 세계 1차 에너지 자원의 소비 구조에서 천연가스는 꾸준히 {증가*/감소}하고 있다."}, {"h": "1차 에너지 소비 구조", "s": "1차 에너지 소비 구조", "t": "6. 세계 1차 에너지 자원의 소비 구조에서 원자력은 {1980}년대부터 등장하기 시작하였고 1980~2010년까지는 {증가*/감소}하다가 2010년 이후 {증가/감소*}하기 시작하였다."}, {"h": "1차 에너지 소비 구조", "s": "1차 에너지 소비 구조", "t": "7. 세계 1차 에너지 자원의 소비 구조에서 신재생 에너지는 {2010}년 이후 급증하여 {2022}년 수력을 넘어섰다."}, {"h": "1차 에너지 소비 구조", "s": "1차 에너지 소비 구조", "t": "8. 전 세계 화석 에너지 소비량 1~5위 국가까지 쓰시오.\n{중국} > {미국} > {인도} > {러시아} > {일본}"}, {"h": "1차 에너지 소비 구조", "s": "1차 에너지 소비 구조", "pre": "9.", "t": "화석 에너지의 용도별 소비 비율 1위를 쓰시오.", "tbl": [["에너지", "용도별 소비 비율"], ["석탄", "1위 {산업용}"], ["석유", "1위 {수송용}"], ["천연가스", "1위 {산업용}, 2위 {가정용}"]]}, {"h": "석탄·석유·천연가스의 특징", "s": "석탄·석유·천연가스의 특징", "t": "10. 석탄은 {산업 혁명} 시기부터 {증기 기관}의 연료로 이용되었고 연소 시 석유, 천연가스에 비해 대기 오염 배출량이 {많다*/적다}."}, {"h": "석탄·석유·천연가스의 특징", "s": "석탄·석유·천연가스의 특징", "t": "11. 석탄은 주로 {고기 조산대*/신생대 제3기 배사 구조}에 매장되어 있으며 {비교적 고르게 매장*/일부 지역에 집중 매장}되어 편재성이 {큰/작은*} 편이어서 국제 이동량이 석유보다 {적다*/많다}."}, {"h": "석탄·석유·천연가스의 특징", "s": "석탄·석유·천연가스의 특징", "t": "12. 석유는 19세기 {내연 기관}의 발명과 {자동차} 보급의 확산으로 소비량이 급증하였다. 주로 {고기 조산대/신생대 제3기 배사 구조*}에 매장되어 있으며 {서남아시아}의 {페르시아만}에 세계 매장량이 약 {50}% 분포한다."}, {"h": "석탄·석유·천연가스의 특징", "s": "석탄·석유·천연가스의 특징", "t": "13. 천연가스는 산업용은 주로 {발전용}으로, 가정용은 주로 {난방}에 이용되며 {냉동 액화 기술} 발달로 운반과 사용이 편리해지면서 소비량이 빠르게 증가하였다."}, {"h": "석탄·석유·천연가스의 특징", "s": "석탄·석유·천연가스의 특징", "t": "14. 천연가스는 석탄과 석유보다 연소 시 대기 오염 배출량이 {적다*/많다}."}, {"h": "석탄·석유·천연가스의 특징", "s": "석탄·석유·천연가스의 특징", "t": "15. 천연가스는 {고기 조산대/신생대 제3기 배사 구조*}에 매장되어 {석유}와 함께 매장되어 있는 경우가 많다."}, {"h": "석탄·석유·천연가스의 특징", "s": "석탄·석유·천연가스의 특징", "t": "16. 천연가스는 러시아에서 {유럽}으로 이어지는 {육상*/해상} 구간에서는 주로 {파이프라인*/액화 천연가스 수송선}을 이용하며, 서남아시아 및 동남아시아에서 {동아시아}로 이어지는 {육상/해상*} 구간에서는 주로 {파이프라인/액화 천연가스 수송선*}을 이용한다."}, {"h": "국가별 생산·수출·수입", "s": "국가별 생산·수출·수입", "t": "17. 석탄의 생산량 1~3위를 쓰시오.\n{중국} > {인도} > {인도네시아}"}, {"h": "국가별 생산·수출·수입", "s": "국가별 생산·수출·수입", "t": "18. 석탄 수출량 1~3위를 쓰시오.\n{인도네시아} > {오스트레일리아} > {러시아}"}, {"h": "국가별 생산·수출·수입", "s": "국가별 생산·수출·수입", "t": "19. 석탄 수입량 1~3위를 쓰시오.\n{중국} > {인도} > {일본}"}, {"h": "국가별 생산·수출·수입", "s": "국가별 생산·수출·수입", "t": "20. 석유 생산량 1~3위를 쓰시오.\n{미국} > {러시아} > {사우디아라비아}"}, {"h": "국가별 생산·수출·수입", "s": "국가별 생산·수출·수입", "t": "21. 석유 수출량 1~3위를 쓰시오.\n{미국} > {사우디아라비아} > {러시아}"}, {"h": "국가별 생산·수출·수입", "s": "국가별 생산·수출·수입", "t": "22. 석유 수입량 1~3위를 쓰시오.\n{중국} > {미국} > {인도}"}, {"h": "국가별 생산·수출·수입", "s": "국가별 생산·수출·수입", "t": "23. 천연가스 생산량 1~3위를 쓰시오.\n{미국} > {러시아} > {이란}"}, {"h": "국가별 생산·수출·수입", "s": "국가별 생산·수출·수입", "t": "24. 천연가스 수출량 1~3위를 쓰시오.\n{미국} > {카타르} > {러시아}"}, {"h": "국가별 생산·수출·수입", "s": "국가별 생산·수출·수입", "t": "25. 천연가스 수입량 1~3위를 쓰시오.\n{중국} > {독일} > {일본}"}, {"h": "국가별 생산·수출·수입", "s": "국가별 생산·수출·수입", "t": "26. 석탄 소비량 1위는 {중국}, 석유 소비량 1위는 {미국}, 천연가스 소비량 1위는 {미국}으로 {생산량} 1위 국가와 같다."}, {"h": "국가별 생산·수출·수입", "s": "국가별 생산·수출·수입", "t": "27. 석탄 수입량 상위 4개국은 모두 {아시아} 국가이다."}, {"h": "국가별 생산·수출·수입", "s": "국가별 생산·수출·수입", "t": "28. 석탄, 석유, 천연가스 수출량 3위 국가는 모두 {러시아}이다."}, {"h": "국가별 생산·수출·수입", "s": "국가별 생산·수출·수입", "t": "29. 석유 생산량과 수출량, 천연가스 생산량과 수출량 1위는 모두 {미국}이다."}, {"h": "대륙별 생산·소비", "s": "대륙별 생산·소비", "pre": "30.", "t": "대륙별 석탄 생산량과 소비량 1~3위를 쓰시오.", "tbl": [["구분", "1~3위"], ["생산량", "{아오(독보적, 80%)} > {유럽} > {앵글로}"], ["소비량", "{아오(독보적, 80%)} > {유럽} > {앵글로}"]]}, {"h": "대륙별 생산·소비", "s": "대륙별 생산·소비", "pre": "31.", "t": "대륙별 석유 생산량과 소비량 1~3위를 쓰시오.", "tbl": [["구분", "1~3위"], ["생산량", "{서남아시아} > {앵글로} > {유럽}"], ["소비량", "{아오} > {앵글로} > {유럽}"]]}, {"h": "대륙별 생산·소비", "s": "대륙별 생산·소비", "pre": "32.", "t": "대륙별 천연가스 생산량과 소비량 1~3위를 쓰시오.", "tbl": [["구분", "1~3위"], ["생산량", "{앵글로} > {유럽} > {서남아시아}"], ["소비량", "{유럽} > {앵글로} > {아오}"]]}, {"h": "대륙별 생산·소비", "s": "대륙별 생산·소비", "pre": "33.", "img": "q33", "lines": ["(가)~(다)는 석유, 석탄, 천연가스 중 하나이고 A~D는 대륙이다.", "(가)는 {석유}, (나)는 {석탄}, (다)는 {천연가스}이다.", "A는 {아오}, B는 {유럽}, C는 {앵글로}, D는 {서남아시아}이다.", "· 아프리카는 석유, 석탄, 천연가스 생산량 모두 라틴 아메리카보다 {많다*/적다}.", "· 서남아시아는 {석탄} 생산량과 소비량이 거의 없다.", "· 소비량에서 아오가 1위가 아닌 것은 {천연가스}이고 1위는 {유럽}이다."]}, {"h": "대륙별 생산·소비", "s": "대륙별 생산·소비", "t": "34. 대륙별 1차 에너지 소비 비율 순서를 쓰시오.\n{아오} > {유럽} > {앵글로} > {라틴} > {아프리카}"}, {"h": "대륙별 생산·소비", "s": "대륙별 생산·소비", "t": "35. 대륙별 1차 에너지원별 소비량 비율에서\n· 아시아는 {석탄}이 1위이고\n· 유럽은 {천연가스}가 1위이고\n· 앵글로, 라틴아메리카, 아프리카는 모두 {석유}가 1위이다.\n· 수력과 신재생 에너지 비율 1위는 {라틴아메리카}이다.\n· 원자력 비율 높은 2개 대륙은 {유럽}, {앵글로}이다."}, {"h": "국가별 소비 구조", "s": "국가별 소비 구조", "t": "36. 국가별 1차 에너지 소비량 순위 1~5위까지 쓰시오.\n{중국} > {미국} > {인도} > {러시아} > {일본}"}, {"h": "국가별 소비 구조", "s": "국가별 소비 구조", "t": "37. 국가별 1차 에너지 소비량에서 대부분 국가들은 1위로 {석유}를 소비하고, 1위가 {석유}가 아니면 2위는 무조건 {석유}이다."}, {"h": "국가별 소비 구조", "s": "국가별 소비 구조", "t": "38. 중국의 1차 에너지 소비량 순서 1~3위까지 쓰시오.\n{석탄} > {석유} > {천연가스}"}, {"h": "국가별 소비 구조", "s": "국가별 소비 구조", "t": "39. 미국의 1차 에너지 소비량 순서 1~3위까지 쓰시오.\n{석유} > {천연가스} > {원자력}"}, {"h": "국가별 소비 구조", "s": "국가별 소비 구조", "t": "40. 석탄을 1위로 쓰는 국가를 쓰시오.\n{남아공}, {인도}, {중국}, {인도네시아}, {폴란드}"}, {"h": "국가별 소비 구조", "s": "국가별 소비 구조", "t": "41. 천연가스를 1위로 쓰는 국가를 쓰시오.\n{카타르}, {이란}, {러시아}, {캐나다}"}, {"h": "국가별 소비 구조", "s": "국가별 소비 구조", "t": "42. 수력을 1위로 쓰는 국가를 쓰시오.\n{노르웨이}"}, {"h": "국가별 소비 구조", "s": "국가별 소비 구조", "t": "43. 수력이 1위는 아니지만 수력 비율이 높은 국가를 쓰시오.\n{브라질}, {캐나다}"}, {"h": "국가별 소비 구조", "s": "국가별 소비 구조", "t": "44. 원자력을 1위로 쓰는 국가를 쓰시오.\n{프랑스}"}, {"h": "국가별 소비 구조", "s": "국가별 소비 구조", "t": "45. 신재생 비율이 1위는 아니지만 높은 국가를 쓰시오.\n{브라질}, {인도네시아}"}, {"h": "국가별 소비 구조", "s": "국가별 소비 구조", "t": "46. 원자력 국가별 생산량 1~3위를 쓰시오.\n{미국} > {중국} > {프랑스}"}, {"h": "국가별 소비 구조", "s": "국가별 소비 구조", "t": "47. 국가별 전력 생산에서 원자력 발전이 차지하는 비중이 높은 국가 1~3위를 쓰시오.\n{프랑스} > {우크라이나} > {대한민국}"}, {"h": "화석 에너지 비교", "s": "화석 에너지 비교", "t": "48. 화석 에너지 상용화 순서를 쓰시오.\n{석탄} > {석유} > {천연가스}"}, {"h": "화석 에너지 비교", "s": "화석 에너지 비교", "t": "49. 대기 오염 정도와 이산화탄소 배출량 순서를 쓰시오.\n{석탄} > {석유} > {천연가스}"}, {"h": "화석 에너지 비교", "s": "화석 에너지 비교", "t": "50. 화석 에너지 생산량과 소비량 순서 1~3위를 쓰시오.\n{석유} > {석탄} > {천연가스}"}];
+const SECS=[...new Set(DATA.map(d=>d.h))];
+const ROM=['Ⅰ','Ⅱ','Ⅲ','Ⅳ','Ⅴ','Ⅵ'];
+const KEY='hy-geo-energy-4-v1';
+let st={done:{}};try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&s.done)st=s}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const $=id=>document.getElementById(id);
+let section='0',showAll=false,hideDone=false;
+$('sec').innerHTML=SECS.map((s,i)=>'<option value="'+i+'">'+(i+1)+'. '+s+' ('+DATA.filter(d=>d.h===s).length+')</option>').join('');
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function mk(t){
+  return esc(t).replace(/\{(.+?)\}/g,(m,x)=>{
+    if(x.includes('/')){
+      return '<span class="pick">( '+x.split('/').map(o=>{const ok=o.endsWith('*');o=o.replace(/\*$/,'');return '<button class="op'+(showAll&&ok?' right':'')+'" data-ok="'+(ok?1:0)+'">'+o+'</button>'}).join('<i>/</i>')+' )</span>';
+    }
+    return '<button class="bl'+(showAll?' open':'')+'" style="min-width:'+Math.min(14,Math.max(2.5,x.length*0.95))+'em"><span>'+x+'</span></button>';
+  }).replace(/_(.+?)_/g,'<u>$1</u>').replace(/\n/g,'<br>');
+}
+function render(){
+  const items=DATA.map((d,i)=>[d,i]).filter(([d])=>d.h===SECS[+section]);
+  const nd=items.filter(([d,i])=>st.done[i]).length;
+  $('score').innerHTML='<span>외운 문장</span><strong>'+nd+'/'+items.length+'</strong>';
+  $('bar').style.width=(items.length?nd/items.length*100:0)+'%';
+  let h='',cur='',n=0;
+  items.forEach(([d,i])=>{
+    if(hideDone&&st.done[i])return;
+    if(d.s!==cur){cur=d.s;n=0;h+='<h3 class="sh">'+esc(d.s)+'</h3>'}
+    n++;
+    const num=(d.pre||((d.t||'').match(/^(\d+)\./)||[])[0]||'');
+    h+='<article class="it'+(st.done[i]?' dn':'')+'"><div class="ih"><span class="nn">'+num+'</span><button class="chk" data-i="'+i+'" aria-pressed="'+(st.done[i]?'true':'false')+'">'+(st.done[i]?'외웠어요 ✓':'외웠어요')+'</button></div>';
+    if(d.img)h+='<a href="img/'+d.img+'.jpg" target="_blank" rel="noopener"><img src="img/'+d.img+'.jpg" alt="그래프(누르면 크게 보기)"></a><p class="tip" style="text-align:center;margin:0">그래프를 누르면 크게 볼 수 있어요</p>'+(d.lines||[]).map(l=>'<p>'+mk(l)+'</p>').join('');
+    else if(d.tbl)h+='<div class="tw"><table>'+d.tbl.map((r,ri)=>'<tr>'+r.map(c=>(ri===0?'<th>':'<td>')+mk(c)+(ri===0?'</th>':'</td>')).join('')+'</tr>').join('')+'</table></div>';
+    else h+='<p>'+mk(d.t.replace(/^\d+\.\s*/,''))+'</p>';
+    h+='</article>';
+  });
+  if(!h)h='<div class="empty">이 단원의 문장을 모두 외웠어요! 👏<br>‘외운 문장 숨기기’를 끄면 다시 볼 수 있어요.</div>';
+  $('list').innerHTML=h;
+}
+$('list').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  if(b.classList.contains('bl'))b.classList.toggle('open');
+  else if(b.classList.contains('op')){b.classList.add(b.dataset.ok==='1'?'right':'bad');if(b.dataset.ok!=='1')setTimeout(()=>b.classList.remove('bad'),900)}
+  else if(b.classList.contains('chk')){const i=b.dataset.i;if(st.done[i])delete st.done[i];else st.done[i]=1;save();render()}
+});
+$('sec').onchange=e=>{section=e.target.value;window.scrollTo({top:0});render()};
+$('all').onclick=e=>{showAll=!showAll;e.currentTarget.setAttribute('aria-pressed',showAll);e.currentTarget.textContent=showAll?'모두 가리기':'정답 모두 보기';render()};
+$('hide').onclick=e=>{hideDone=!hideDone;e.currentTarget.setAttribute('aria-pressed',hideDone);render()};
+let armed=false;
+$('reset').onclick=e=>{const t=e.currentTarget;if(!armed){armed=true;t.textContent='한 번 더 누르면 초기화';setTimeout(()=>{armed=false;t.textContent='기록 초기화'},2500);return}
+ st={done:{}};save();armed=false;t.textContent='기록 초기화';render()};
+render();
+</script>
+<script>
+(function(){
+const H=1418297543,K='hy-geo-energy-4-gate';
+const hash=s=>{let h=5381;for(const c of s.trim().toLowerCase())h=((h*33)^c.charCodeAt(0))>>>0;return h};
+const g=document.getElementById('gate');
+let ok=false;try{ok=localStorage.getItem(K)===String(H)}catch(e){}
+if(ok){g.hidden=true;return}
+const M={'ㅂ':'q','ㅈ':'w','ㄷ':'e','ㄱ':'r','ㅅ':'t','ㅛ':'y','ㅕ':'u','ㅑ':'i','ㅐ':'o','ㅔ':'p','ㅁ':'a','ㄴ':'s','ㅇ':'d','ㄹ':'f','ㅎ':'g','ㅗ':'h','ㅓ':'j','ㅏ':'k','ㅣ':'l','ㅋ':'z','ㅌ':'x','ㅊ':'c','ㅍ':'v','ㅠ':'b','ㅜ':'n','ㅡ':'m'};
+const norm=s=>[...String(s).replace(/\s+/g,'')].map(c=>M[c]||c).join('');
+const tryIn=()=>{const v=document.getElementById('gc').value;
+ if(hash(norm(v))===H||hash(v)===H){try{localStorage.setItem(K,String(H))}catch(e){} g.hidden=true}
+ else document.getElementById('ge').textContent='코드가 맞지 않아요. 영문 자판으로 입력했는지 확인해 주세요.'};
+document.getElementById('gb').addEventListener('click',tryIn);
+document.getElementById('gc').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();tryIn()}});
+document.getElementById('gf').addEventListener('submit',e=>{e.preventDefault();tryIn()});
+})();
+</script>
+</body></html>
