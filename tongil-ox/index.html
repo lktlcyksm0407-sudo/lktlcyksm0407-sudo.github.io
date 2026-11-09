@@ -1,0 +1,205 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"><title>통일 국토 OX 트레이닝</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: navy masthead band with controls; white question card overlaps it; big round O/X paddles below */
+:root{
+  --band:#1C2747; --band-ink:#FFFFFF; --band-soft:rgba(255,255,255,.14);
+  --bg:#F2F4F9; --surface:#FFFFFF; --ink:#16203A; --muted:#6A7389; --line:#E1E5EE;
+  --o:#2563EB; --o-soft:#E6EEFF; --x:#E0453A; --x-soft:#FDEBEA; --gold:#F5B731;
+  --display:"Black Han Sans","Noto Sans KR",sans-serif;
+  --sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --shadow:0 10px 30px rgba(22,32,58,.10),0 2px 6px rgba(22,32,58,.06);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --band:#141B30; --band-soft:rgba(255,255,255,.10);
+  --bg:#0E1322; --surface:#1A2238; --ink:#EEF1F8; --muted:#9AA3B8; --line:#2A3350;
+  --o:#6E9BFF; --o-soft:#1D2B52; --x:#FF7A70; --x-soft:#45201F; --gold:#F5C451;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --band:#141B30; --band-soft:rgba(255,255,255,.10);
+  --bg:#0E1322; --surface:#1A2238; --ink:#EEF1F8; --muted:#9AA3B8; --line:#2A3350;
+  --o:#6E9BFF; --o-soft:#1D2B52; --x:#FF7A70; --x-soft:#45201F; --gold:#F5C451;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-tap-highlight-color:transparent;letter-spacing:-.01em}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--band)}
+.band{background:var(--band);color:var(--band-ink);padding-bottom:64px}
+.wrap{max-width:620px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));box-sizing:border-box}
+.band .wrap{padding-block:18px 0;display:flex;flex-direction:column;gap:16px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:12px;min-width:0}
+.badge{flex:0 0 auto;width:48px;height:48px;border-radius:14px;background:var(--surface);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:20px;line-height:1;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.badge b{color:var(--o);font-weight:400}.badge i{color:var(--x);font-style:normal}
+.logo small{display:block;font-size:12px;opacity:.75;font-weight:500;letter-spacing:.02em}
+.logo h1{margin:2px 0 0;font-family:var(--display);font-weight:400;font-size:clamp(19px,5.4vw,24px);white-space:nowrap;letter-spacing:0;line-height:1.15}
+.score{flex:0 0 auto;text-align:center;background:var(--band-soft);border-radius:14px;padding:8px 12px;min-width:64px;font-variant-numeric:tabular-nums}
+.score span{display:block;font-size:11px;opacity:.8}
+.score strong{display:block;font-size:20px;font-weight:900;line-height:1.2}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+select,.chip{font:inherit;font-size:14px;font-weight:500;color:var(--band-ink);background:var(--band-soft);border:1px solid transparent;border-radius:999px;padding:9px 14px;min-height:40px;-webkit-appearance:none;appearance:none}
+select{flex:1 1 150px;min-width:0;padding-right:34px;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 18px) 52%,calc(100% - 13px) 52%;background-size:5px 5px;background-repeat:no-repeat}
+select option{color:#16203A;background:#fff}
+.chip{cursor:pointer;flex:0 0 auto}
+.chip[aria-pressed="true"]{background:var(--gold);color:#1C2747}
+.progress{height:6px;background:var(--band-soft);border-radius:6px;overflow:hidden}
+.progress span{display:block;height:100%;background:var(--gold);width:0;border-radius:6px;transition:width .3s}
+main.wrap{margin-top:-48px;display:flex;flex-direction:column;gap:16px;padding-block:0 24px}
+.card{background:var(--surface);border-radius:24px;padding:24px 22px 22px;display:flex;flex-direction:column;gap:16px;min-height:280px;box-shadow:var(--shadow)}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.no{font-family:var(--display);font-size:22px;color:var(--ink);letter-spacing:0}
+.no em{font-style:normal;font-size:13px;font-family:var(--sans);font-weight:700;color:var(--muted);margin-left:4px}
+.tag{background:var(--bg);border-radius:999px;padding:5px 11px;font-weight:500;font-size:12px;max-width:60%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.q{font-size:clamp(19px,5.1vw,22px);font-weight:500;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.result{margin-top:auto;border-radius:18px;padding:16px;display:flex;gap:14px;align-items:flex-start;animation:pop .28s ease-out}
+.result[data-k="O"]{background:var(--o-soft)} .result[data-k="X"]{background:var(--x-soft)}
+@keyframes pop{from{transform:translateY(8px);opacity:.4}to{transform:none;opacity:1}}
+.mark{flex:0 0 auto;width:52px;height:52px;display:grid;place-items:center;font-family:var(--display);font-size:30px;border-radius:50%;color:#fff;animation:stamp .35s cubic-bezier(.3,1.6,.5,1)}
+.result[data-k="O"] .mark{background:var(--o)} .result[data-k="X"] .mark{background:var(--x)}
+@keyframes stamp{from{transform:scale(.4) rotate(-20deg)}to{transform:none}}
+.verdict{font-weight:900;font-size:16px;margin:3px 0 6px}
+.verdict.ok{color:var(--o)} .verdict.no{color:var(--x)}
+.exp{font-size:15.5px;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.pad{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pad button{font-family:var(--display);font-size:52px;line-height:1;cursor:pointer;border:none;border-radius:24px;min-height:104px;color:#fff;box-shadow:var(--shadow);transition:transform .1s}
+#bO{background:var(--o)} #bX{background:var(--x)}
+.pad button:active{transform:scale(.96)}
+.next{width:100%;font:inherit;font-size:18px;font-weight:700;cursor:pointer;border:none;border-radius:20px;min-height:66px;background:var(--band);color:#fff;box-shadow:var(--shadow)}
+:root[data-theme="dark"] .next{background:var(--gold);color:#1C2747}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .next{background:var(--gold);color:#1C2747}}
+.nav{display:flex;justify-content:space-between;gap:10px}
+.nav button{font:inherit;font-size:14px;font-weight:500;background:none;border:none;color:var(--muted);padding:8px 4px;cursor:pointer}
+.nav button:disabled{opacity:.35}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.done{text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;flex:1}
+.done .big{font-family:var(--display);font-size:54px;font-variant-numeric:tabular-nums}
+.done p{margin:0;color:var(--muted)}
+.done .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.done .chip{background:var(--band);color:#fff}
+footer{font-size:12px;color:var(--muted);text-align:center}
+.gate{position:fixed;inset:0;background:var(--band);display:flex;align-items:center;justify-content:center;z-index:20;padding:24px}
+.gate form{background:var(--surface);color:var(--ink);border-radius:24px;padding:30px 24px;width:100%;max-width:360px;display:flex;flex-direction:column;gap:14px;box-sizing:border-box;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.gate .badge{width:56px;height:56px;font-size:24px;background:var(--bg);box-shadow:none}
+.gate h2{margin:0;font-family:var(--display);font-weight:400;font-size:24px}
+.gate p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.gate input{font:inherit;font-size:18px;padding:14px 16px;border:2px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink)}
+.gate input:focus{border-color:var(--o);outline:none}
+.gate button{font:inherit;font-size:17px;font-weight:700;padding:15px;border-radius:14px;border:none;background:var(--o);color:#fff;cursor:pointer}
+.gate .err{color:var(--x);font-size:13px;min-height:1em}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style><style>body{margin:0}:root{padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}</style></head><body>
+
+<div class="gate" id="gate"><form id="gf"><div class="badge" aria-hidden="true"><b>O</b><i>X</i></div><h2>통일 국토 OX 트레이닝</h2><p>이경태T 수강생 전용이에요.<br>선생님께 받은 입장 코드를 입력하세요.</p><input id="gc" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" inputmode="latin" placeholder="입장 코드" aria-label="입장 코드"><div class="err" id="ge"></div><button type="button" id="gb">입장하기</button></form></div>
+<div class="band"><div class="wrap">
+  <div class="top">
+    <div class="logo"><div class="badge" aria-hidden="true"><b>O</b><i>X</i></div><div><small>이경태T · 중학교 사회② Ⅺ-3</small><h1>통일 국토 OX 트레이닝</h1></div></div>
+    <div class="score" id="score"></div>
+  </div>
+  <div class="controls">
+    <select id="sec" aria-label="단원 선택"></select>
+    <button class="chip" id="shuf" aria-pressed="false">섞기</button>
+    <button class="chip" id="wrong" aria-pressed="false">틀린 문제</button>
+  </div>
+  <div class="progress"><span id="bar"></span></div>
+</div></div>
+<main class="wrap">
+  <section class="card" id="card" aria-live="polite"></section>
+  <div id="actions"></div>
+  <div class="nav"><button id="prev">← 이전 문제</button><button id="reset">기록 초기화</button></div>
+  <footer>중학교 사회② 내신 대비 · SNT</footer>
+</main>
+
+<script>
+const DATA = [{"n": 1, "sec": "한반도 평화의 중요성", "q": "평화는 인류의 보편적 가치이다.", "a": "O", "e": ""}, {"n": 2, "sec": "한반도 평화의 중요성", "q": "평화는 선진국에서만 보장되는 가치이다.", "a": "X", "e": "평화는 모든 인류에게 해당하는 보편적 가치예요."}, {"n": 3, "sec": "한반도 평화의 중요성", "q": "국제 사회는 평화를 실현하기 위해 함께 노력하고 있다.", "a": "O", "e": ""}, {"n": 4, "sec": "한반도 평화의 중요성", "q": "한반도의 평화는 한반도에 영구적인 안정과 번영을 가져온다.", "a": "O", "e": ""}, {"n": 5, "sec": "한반도 평화의 중요성", "q": "한반도의 평화는 동남아시아 지역의 긴장을 완화한다.", "a": "X", "e": "동아시아 지역의 긴장을 완화해요(중국·일본 등)."}, {"n": 6, "sec": "한반도 평화의 중요성", "q": "한반도의 평화는 동아시아 지역의 경제 발전에 이바지할 것이다.", "a": "O", "e": ""}, {"n": 7, "sec": "한반도 평화의 중요성", "q": "세계적 차원에서 한반도의 평화는 화해와 협력의 평화 시대를 여는 출발점이 될 것이다.", "a": "O", "e": ""}, {"n": 8, "sec": "한반도 평화의 중요성", "q": "세계적 차원에서 한반도의 평화는 냉전 체제를 강화하는 계기가 될 것이다.", "a": "X", "e": "냉전이 완화되고 화해와 평화 분위기가 조성돼요."}, {"n": 9, "sec": "한반도 평화의 중요성", "q": "세계시민은 모든 인류를 동료 시민으로 여기는 시민이다.", "a": "O", "e": ""}, {"n": 10, "sec": "한반도 평화의 중요성", "q": "세계시민은 국적, 인종, 민족에 따라 지구 공동체 소속을 다르게 생각한다.", "a": "X", "e": "국적, 인종, 민족을 떠나 동등한 지구 공동체 소속으로 생각해요."}, {"n": 11, "sec": "한반도 평화의 중요성", "q": "우리는 세계시민으로서 한반도 평화와 통일 문제에 관심을 가져야 한다.", "a": "O", "e": ""}, {"n": 12, "sec": "한반도 평화의 중요성", "q": "한반도 평화와 통일은 남북한만의 문제이므로 세계와는 관계가 없다.", "a": "X", "e": "한반도 평화는 동아시아와 세계 평화와도 밀접한 관련이 있어요."}, {"n": 13, "sec": "한반도 평화의 중요성", "q": "남북한의 기술 협력으로 우리나라에서 큰 인기를 얻은 만화 캐릭터가 탄생하였다.", "a": "O", "e": ""}, {"n": 14, "sec": "한반도 평화의 중요성", "q": "남북의 협력 사례가 많아지면 우리나라는 외교적으로 고립될 것이다.", "a": "X", "e": "외교적으로도 세계의 중심 국가가 될 수 있어요."}, {"n": 15, "sec": "한반도 평화의 중요성", "q": "한반도 평화의 중요성 토의 활동에서 A는 한반도, B는 동아시아, C는 세계적 차원에서 까닭을 쓴다.", "a": "O", "e": ""}, {"n": 16, "sec": "한반도 평화의 중요성", "q": "한반도 차원에서 한반도 평화는 이산가족 문제 해결에 도움이 된다.", "a": "O", "e": ""}, {"n": 17, "sec": "한반도 평화의 중요성", "q": "동아시아 차원에서 한반도 평화는 중국과 일본 등의 군사 비용을 늘린다.", "a": "X", "e": "긴장 완화로 군사 비용이 감축돼요."}, {"n": 18, "sec": "한반도 평화의 중요성", "q": "동아시아 차원에서 한반도 평화는 우크라이나와 러시아의 긴장 완화에 기여한다.", "a": "X", "e": "우크라이나·러시아는 동아시아가 아니에요. 동아시아는 중국·일본 등."}, {"n": 19, "sec": "한반도 평화의 중요성", "q": "한반도 평화는 한·미·일 3국의 군사 동맹 강화를 가져오는 것이 핵심이다.", "a": "X", "e": "교과서에 없는 내용이에요. 핵심은 긴장 완화·화해·협력."}, {"n": 20, "sec": "한반도 평화의 중요성", "q": "평화 감수성은 폭력으로 발생하는 타인의 고통에 민감하게 반응하는 마음이다.", "a": "O", "e": ""}, {"n": 21, "sec": "한반도 평화의 중요성", "q": "평화 감수성은 경쟁과 대립을 통해 갈등을 해결하는 힘이다.", "a": "X", "e": "소통과 공감을 통해 갈등을 해결하는 힘이에요."}, {"n": 22, "sec": "한반도 평화의 중요성", "q": "한반도의 평화와 통일을 위해서는 평화 감수성을 바탕으로 남북 갈등을 평화적으로 해결해야 한다.", "a": "O", "e": ""}, {"n": 23, "sec": "한반도 평화의 중요성", "q": "남북은 상호 존중과 화해·협력을 바탕으로 이해와 공존, 신뢰의 문화를 구축해야 한다.", "a": "O", "e": ""}, {"n": 24, "sec": "한반도 평화의 중요성", "q": "남북은 경쟁과 대립의 문화를 구축해야 한다.", "a": "X", "e": "이해와 공존, 신뢰의 문화를 구축해야 해요."}, {"n": 25, "sec": "한반도 평화의 중요성", "q": "한반도 평화와 통일을 위해 국제 사회의 도움은 필요하지 않다.", "a": "X", "e": "한반도 평화 정착을 위한 국제 사회의 협력을 이끌어 내야 해요."}, {"n": 26, "sec": "한반도 평화의 중요성", "q": "갈등과 분쟁의 평화적 해결 방안을 모색하고 실천함으로써 한반도의 평화 통일을 이루어야 한다.", "a": "O", "e": ""}, {"n": 27, "sec": "한반도 평화의 중요성", "q": "남북 갈등 해결을 위해 우리의 입장만을 일방적으로 북한에 전달해야 한다.", "a": "X", "e": "일방적 전달이 아니라 상호 존중·소통과 공감이 필요해요."}, {"n": 28, "sec": "한반도 평화의 중요성", "q": "일상생활에서도 갈등과 분쟁을 평화롭게 해결하는 방안을 실천해야 한다.", "a": "O", "e": ""}, {"n": 29, "sec": "한반도 평화의 중요성", "q": "1969년 동독 정부는 화해 정책을 추진하기 시작하였다.", "a": "X", "e": "화해 정책을 시작한 것은 서독 정부예요."}, {"n": 30, "sec": "한반도 평화의 중요성", "q": "1969년 서독 정부는 화해 정책을 추진하기 시작하였다.", "a": "O", "e": ""}, {"n": 31, "sec": "한반도 평화의 중요성", "q": "1972년에는 양국 간 갈등의 평화적 해결 원칙을 담은 ‘동·서독 기본 조약’이 체결되었다.", "a": "O", "e": ""}, {"n": 32, "sec": "한반도 평화의 중요성", "q": "1972년 동·서독 사이에 강화 조약이 체결되었다.", "a": "X", "e": "‘동·서독 기본 조약’이에요."}, {"n": 33, "sec": "한반도 평화의 중요성", "q": "동·서독은 적대 관계 속에서도 텔레비전 시청 허용 등으로 상호 이해와 신뢰 관계를 쌓았다.", "a": "O", "e": ""}, {"n": 34, "sec": "한반도 평화의 중요성", "q": "동·서독은 경제·문화 협력을 통해 상호 이해와 신뢰를 쌓았다.", "a": "O", "e": ""}, {"n": 35, "sec": "한반도 평화의 중요성", "q": "동·서독은 통일 전까지 모든 교류를 중단하였다.", "a": "X", "e": "적대 관계 속에서도 TV 시청 허용, 경제·문화 협력 등 교류를 했어요."}, {"n": 36, "sec": "한반도 평화의 중요성", "q": "1980년대 말 동유럽에 민주화 열기가 확산되었다.", "a": "O", "e": ""}, {"n": 37, "sec": "한반도 평화의 중요성", "q": "1980년대 말 동독 정부는 자유와 체제 개혁을 요구하는 평화 혁명을 전개하였다.", "a": "X", "e": "평화 혁명의 주체는 동독 시민들이에요."}, {"n": 38, "sec": "한반도 평화의 중요성", "q": "동독 시민들의 평화 혁명 결과 동독이 몰락하였다.", "a": "O", "e": ""}, {"n": 39, "sec": "한반도 평화의 중요성", "q": "통일을 위한 법과 제도는 미국, 구소련 등 국제 사회가 주도하여 마련하였다.", "a": "X", "e": "시민들의 지지 속에 동독과 서독 정부가 마련했어요."}, {"n": 40, "sec": "한반도 평화의 중요성", "q": "미국, 구소련 등 국제 사회는 독일의 통일에 동의하고 지지하였다.", "a": "O", "e": ""}, {"n": 41, "sec": "한반도 평화의 중요성", "q": "독일은 1989년 10월에 통일을 선포하였다.", "a": "X", "e": "통일 선포는 1990년 10월이에요(1989년은 장벽 붕괴)."}, {"n": 42, "sec": "한반도 평화의 중요성", "q": "독일은 1990년 10월에 통일을 선포하였다.", "a": "O", "e": ""}, {"n": 43, "sec": "한반도 평화의 중요성", "q": "베를린 장벽은 1961년 8월에 동독이 동·서 베를린 사이에 건설하였다.", "a": "O", "e": ""}, {"n": 44, "sec": "한반도 평화의 중요성", "q": "베를린 장벽은 서독이 건설하였다.", "a": "X", "e": "동독이 건설했어요."}, {"n": 45, "sec": "한반도 평화의 중요성", "q": "베를린 장벽은 1989년 11월 9일에 동·서 베를린 시민들에 의해 붕괴되었다.", "a": "O", "e": ""}, {"n": 46, "sec": "한반도 평화의 중요성", "q": "베를린 장벽은 냉전과 독일 분단을 상징하는 구조물이다.", "a": "O", "e": ""}, {"n": 47, "sec": "한반도 평화의 중요성", "q": "독일은 서독이 군사력으로 동독을 점령하여 통일하였다.", "a": "X", "e": "독일은 분단 문제를 평화적으로 해결한 대표 국가예요."}, {"n": 48, "sec": "한반도 평화의 중요성", "q": "분단 문제를 평화적으로 해결하기 위해서는 시민, 정부, 국제 사회의 노력이 모두 중요하다.", "a": "O", "e": ""}, {"n": 49, "sec": "한반도 평화의 중요성", "q": "남북으로 분단되었던 예멘은 정상 회담, 지하자원 공동 개발 등 협력을 바탕으로 평화 통일을 이루었다.", "a": "O", "e": ""}, {"n": 50, "sec": "한반도 평화의 중요성", "q": "한반도 평화는 동아시아의 긴장 완화와 세계 평화를 실현하기 위해 중요한 과제이다.", "a": "O", "e": ""}, {"n": 51, "sec": "통일 국토의 미래", "q": "남북 통일로 평화가 정착되면 이산가족과 실향민들은 고향을 방문하거나 헤어진 가족을 만날 수 있다.", "a": "O", "e": ""}, {"n": 52, "sec": "통일 국토의 미래", "q": "실향민은 전쟁·분단 등 정치적 이유로 고향에 갈 수 없거나 재해 등으로 고향이 사라진 사람들이다.", "a": "O", "e": ""}, {"n": 53, "sec": "통일 국토의 미래", "q": "통일 후 자유로운 왕래와 교류로 민족 동질성을 회복할 수 있다.", "a": "O", "e": ""}, {"n": 54, "sec": "통일 국토의 미래", "q": "통일 이후 자유로운 왕래와 교류가 이루어지면 민족 동질성을 회복하기 어려울 것이다.", "a": "X", "e": "자유로운 왕래와 교류로 민족 동질성을 회복할 수 있어요."}, {"n": 55, "sec": "통일 국토의 미래", "q": "민족 동질성은 특정 민족이나 집단이 언어, 문화, 역사 등 유사한 특성을 공유하는 정도이다.", "a": "O", "e": ""}, {"n": 56, "sec": "통일 국토의 미래", "q": "통일 후 민족 동질성을 회복하면 전통과 문화를 계승할 수 있다.", "a": "O", "e": ""}, {"n": 57, "sec": "통일 국토의 미래", "q": "통일 후 남북 간 문화의 이질화가 심화될 것이다.", "a": "X", "e": "이질화가 아니라 민족 동질성 회복이에요."}, {"n": 58, "sec": "통일 국토의 미래", "q": "통일이 되면 전쟁의 위협이 줄어들어 평화로운 일상생활이 가능해질 것이다.", "a": "O", "e": ""}, {"n": 59, "sec": "통일 국토의 미래", "q": "통일이 되면 전쟁의 위협이 커져 국방비가 늘어날 것이다.", "a": "X", "e": "전쟁의 위협이 줄어들어요."}, {"n": 60, "sec": "통일 국토의 미래", "q": "분단 비용을 다른 사회문제를 해결하는 데 활용하면 풍요로운 복지 국가를 만들 수 있다.", "a": "O", "e": ""}, {"n": 61, "sec": "통일 국토의 미래", "q": "통일 후 분단 비용이 늘어나 삶의 질이 낮아질 것이다.", "a": "X", "e": "분단 비용을 활용해 삶의 질이 높아져요."}, {"n": 62, "sec": "통일 국토의 미래", "q": "통일 이후 인구가 늘어나면 시장이 확대될 것이다.", "a": "O", "e": ""}, {"n": 63, "sec": "통일 국토의 미래", "q": "통일 이후 인구가 늘어나면 소비 시장이 축소될 것이다.", "a": "X", "e": "시장이 확대돼요."}, {"n": 64, "sec": "통일 국토의 미래", "q": "통일 후 북한의 노동력과 자원, 남한의 자본과 기술을 상호 보완하면 국가 경쟁력이 높아진다.", "a": "O", "e": ""}, {"n": 65, "sec": "통일 국토의 미래", "q": "통일 후 북한의 자본과 기술, 남한의 노동력과 자원을 상호 보완하게 된다.", "a": "X", "e": "북한 = 노동력·자원, 남한 = 자본·기술이에요."}, {"n": 66, "sec": "통일 국토의 미래", "q": "통일 후 새로운 직업과 일자리가 생겨날 것이다.", "a": "O", "e": ""}, {"n": 67, "sec": "통일 국토의 미래", "q": "통일이 되면 인구, 경제 규모, 국제 사회에서의 위상 등 사회·경제적 상황이 변화할 것이다.", "a": "O", "e": ""}, {"n": 68, "sec": "통일 국토의 미래", "q": "여행 기획가는 남북을 자유롭게 여행하려는 국민과 외국인이 많아져 필요해질 직업이다.", "a": "O", "e": ""}, {"n": 69, "sec": "통일 국토의 미래", "q": "지하자원 전문가는 남북의 문화 차이를 극복하도록 돕는 직업이다.", "a": "X", "e": "그것은 남북 문화 통합 전문가예요. 지하자원 전문가는 북한 지하자원 개발·관리."}, {"n": 70, "sec": "통일 국토의 미래", "q": "물류 사업가는 대륙과 해양으로 상품의 유통과 교역이 활발해지면서 많아질 직업이다.", "a": "O", "e": ""}, {"n": 71, "sec": "통일 국토의 미래", "q": "남북 문화 통합 전문가는 남북의 문화 차이를 극복하여 더 나은 방향으로 나아가도록 돕는다.", "a": "O", "e": ""}, {"n": 72, "sec": "통일 국토의 미래", "q": "국립통일교육원 누리집에서 한반도 통일에 관한 다양한 정보를 얻을 수 있다.", "a": "O", "e": ""}, {"n": 73, "sec": "통일 국토의 미래", "q": "한반도가 통일을 이루면 국토 공간이 다양하게 개발되고 이용될 것이다.", "a": "O", "e": ""}, {"n": 74, "sec": "통일 국토의 미래", "q": "통일 후 우리 삶의 터전이 축소될 것이다.", "a": "X", "e": "삶의 터전이 확대돼요."}, {"n": 75, "sec": "통일 국토의 미래", "q": "통일 후 균형 있는 국토 개발이 가능해질 것이다.", "a": "O", "e": ""}, {"n": 76, "sec": "통일 국토의 미래", "q": "통일이 되면 백두대간이 다시 하나로 연결된다.", "a": "O", "e": ""}, {"n": 77, "sec": "통일 국토의 미래", "q": "백두대간은 백두산에서 한라산까지 이어지는 산줄기이다.", "a": "X", "e": "백두산에서 지리산까지 이어지는 가장 크고 긴 산줄기예요."}, {"n": 78, "sec": "통일 국토의 미래", "q": "금강산, 비무장 지대와 같은 접경지역, 남·북한의 주요 도시, 제주도 등을 연결하여 생태와 문화가 어우러진 국토 공간을 만들 수 있다.", "a": "O", "e": ""}, {"n": 79, "sec": "통일 국토의 미래", "q": "비무장 지대에서는 생태·평화·문화의 가치를 공유하는 행사가 열리기도 한다.", "a": "O", "e": ""}, {"n": 80, "sec": "통일 국토의 미래", "q": "남북을 잇는 철도와 도로가 연결되면 화물 운송비가 늘어날 것이다.", "a": "X", "e": "화물 운송비를 줄일 수 있어요."}, {"n": 81, "sec": "통일 국토의 미래", "q": "통일이 되면 유라시아 대륙과 태평양을 오가는 화물이 우리나라로 모일 것이다.", "a": "O", "e": ""}, {"n": 82, "sec": "통일 국토의 미래", "q": "통일이 되면 유라시아 대륙과 대서양을 오가는 화물이 우리나라로 모일 것이다.", "a": "X", "e": "유라시아 대륙과 태평양이에요."}, {"n": 83, "sec": "통일 국토의 미래", "q": "통일 한국은 세계의 물류 및 경제 중심지로 발전할 것이다.", "a": "O", "e": ""}, {"n": 84, "sec": "통일 국토의 미래", "q": "통일 한국은 주변 국가들과 에너지·자원·관광·경제 교류 등을 통해 동아시아의 중심 국가가 될 것이다.", "a": "O", "e": ""}, {"n": 85, "sec": "통일 국토의 미래", "q": "통일 한국은 아메리카 대륙과 육로로 연결되어 경제 시장이 확대될 것이다.", "a": "X", "e": "육로로 연결되는 곳은 유라시아 대륙이에요."}, {"n": 86, "sec": "통일 국토의 미래", "q": "현재 우리나라는 남북 분단으로 유라시아 대륙과 단절되어 섬과 같이 고립되어 있다.", "a": "O", "e": ""}, {"n": 87, "sec": "통일 국토의 미래", "q": "통일이 되면 우리나라는 섬과 같은 상태에서 벗어나 대륙과 연결될 것이다.", "a": "O", "e": ""}, {"n": 88, "sec": "통일 국토의 미래", "q": "아시안 하이웨이는 유라시아 대륙의 32개국을 연결하는 국제 고속 도로망이다.", "a": "O", "e": ""}, {"n": 89, "sec": "통일 국토의 미래", "q": "아시안 하이웨이의 총 도로 길이는 약 1만 4천 km이다.", "a": "X", "e": "약 14만 km에 달해요."}, {"n": 90, "sec": "통일 국토의 미래", "q": "우리나라에는 아시안 하이웨이 제1노선과 제6노선이 통과한다.", "a": "O", "e": ""}, {"n": 91, "sec": "통일 국토의 미래", "q": "현재 아시안 하이웨이를 이용하여 우리나라에서 중국까지 육로로 자유롭게 갈 수 있다.", "a": "X", "e": "지금은 분단으로 단절! 통일이 되면 육로로 갈 수 있어요."}, {"n": 92, "sec": "통일 국토의 미래", "q": "시베리아 횡단 철도의 약칭은 TSR이다.", "a": "O", "e": ""}, {"n": 93, "sec": "통일 국토의 미래", "q": "몽골 횡단 철도의 약칭은 TCR이다.", "a": "X", "e": "몽골 횡단 철도는 TMGR, TCR은 중국 횡단 철도예요."}, {"n": 94, "sec": "통일 국토의 미래", "q": "시베리아·몽골·중국 횡단 철도 등은 서쪽의 유럽 철도와 연결되어 있다.", "a": "O", "e": ""}, {"n": 95, "sec": "통일 국토의 미래", "q": "남한과 북한의 통계 지표 비교에서 인구는 남한의 비율이 더 높다.", "a": "O", "e": ""}, {"n": 96, "sec": "통일 국토의 미래", "q": "남한과 북한의 통계 지표 비교에서 철도 총연장은 남한의 비율이 더 높다.", "a": "X", "e": "철도 총연장은 북한 비율이 더 높아요(도로 총연장은 남한↑)."}, {"n": 97, "sec": "통일 국토의 미래", "q": "철광석·무연탄 생산량과 석회석 매장량은 북한의 비율이 더 높다.", "a": "O", "e": ""}, {"n": 98, "sec": "통일 국토의 미래", "q": "선박 보유량은 남한이 대부분을 차지하므로, 통일 후 선박 보유량이 두 배 이상 늘어날 것이다.", "a": "X", "e": "남한이 이미 90% 이상이라 북한 몫을 더해도 두 배가 되지 않아요."}, {"n": 99, "sec": "통일 국토의 미래", "q": "수입 총액과 수출 총액은 남한이 대부분을 차지한다.", "a": "O", "e": ""}, {"n": 100, "sec": "통일 국토의 미래", "q": "통일 후 철광석, 무연탄, 석회석 등의 지하자원이 늘어나 산업이 발전할 것이다.", "a": "O", "e": ""}, {"n": 101, "sec": "통일 국토의 미래", "q": "통일 후 모습을 상상할 때는 경제적 효과에만 주목해야 한다.", "a": "X", "e": "경제적 효과에만 주목하기보다 자신의 일상생활과 연계하여 상상해요."}];
+const SECS = [...new Set(DATA.map(d=>d.sec))];
+const ROM=['1','2','3','4','5','6','7','8','9'];
+const KEY='lkt-soc2-tongil-ox-v1';
+let st={wrong:{},done:{}};
+try{const s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s&&s.wrong) st=s;}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const $=id=>document.getElementById(id);
+let list=[],pos=0,picked=null,shuffle=false,wrongOnly=false,section='all',right=0,tried=0;
+
+$('sec').innerHTML='<option value="all">전체 단원 ('+DATA.length+'문항)</option>'+
+  SECS.map((s,i)=>'<option value="'+i+'">'+ROM[i]+'. '+s+' ('+DATA.filter(d=>d.sec===s).length+')</option>').join('');
+
+function build(){
+  list=DATA.filter(d=>(section==='all'||d.sec===SECS[+section])&&(!wrongOnly||st.wrong[d.n]));
+  if(shuffle){for(let i=list.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[list[i],list[j]]=[list[j],list[i]]}}
+  pos=0;picked=null;right=0;tried=0;render();
+}
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function render(){
+  const total=list.length;
+  const nWrong=Object.keys(st.wrong).length;
+  $('score').innerHTML=tried?'<span>정답</span><strong>'+right+'/'+tried+'</strong>':'<span>틀린 문제</span><strong>'+nWrong+'</strong>';
+  $('bar').style.width=total?((pos+(picked?1:0))/total*100)+'%':'0';
+  $('prev').disabled=pos===0;
+  const card=$('card'),act=$('actions');
+  if(!total){
+    card.innerHTML='<div class="done"><div class="big">0</div><p>'+(wrongOnly?'틀린 문제가 없어요. 전체 문제로 돌아가 풀어 보세요.':'문제가 없어요.')+'</p></div>';
+    act.innerHTML='';return;
+  }
+  if(pos>=total){
+    card.innerHTML='<div class="done"><p>이번 회차 결과</p><div class="big">'+right+' / '+tried+'</div><p>틀린 문제는 자동으로 모아 두었어요.</p><div class="row"><button class="chip" id="again">처음부터 다시</button><button class="chip" id="gowrong">틀린 문제만 풀기</button></div></div>';
+    act.innerHTML='';
+    $('again').onclick=build;
+    $('gowrong').onclick=()=>{wrongOnly=true;$('wrong').setAttribute('aria-pressed','true');build()};
+    return;
+  }
+  const d=list[pos];
+  const si=SECS.indexOf(d.sec);
+  let h='<div class="meta"><span class="no">'+d.n+'<em>번</em></span><span class="tag">'+ROM[si]+'. '+esc(d.sec)+'</span></div><p class="q">'+esc(d.q)+'</p>';
+  if(picked){
+    const ok=picked===d.a;
+    h+='<div class="result" data-k="'+d.a+'"><div class="mark" aria-label="정답 '+d.a+'">'+d.a+'</div><div><p class="verdict '+(ok?'ok':'no')+'">'+(ok?'정답이에요!':'아쉬워요. 정답은 '+d.a)+'</p><p class="exp">'+esc(d.e||'옳은 설명이에요.')+'</p></div></div>';
+    act.innerHTML='<button class="next" id="nx">'+(pos+1<total?'다음 문제 →':'결과 보기')+'</button>';
+    $('nx').onclick=()=>{pos++;picked=null;render();window.scrollTo({top:0})};
+    $('nx').focus({preventScroll:true});
+  }else{
+    act.innerHTML='<div class="pad"><button id="bO" aria-label="O 맞다">O</button><button id="bX" aria-label="X 틀리다">X</button></div>';
+    $('bO').onclick=()=>answer('O');$('bX').onclick=()=>answer('X');
+  }
+  card.innerHTML=h;
+  const p=$('pos');
+}
+function answer(k){
+  const d=list[pos];picked=k;tried++;
+  if(k===d.a){right++; if(wrongOnly) delete st.wrong[d.n];}
+  else st.wrong[d.n]=1;
+  save();render();
+}
+$('sec').onchange=e=>{section=e.target.value;build()};
+$('shuf').onclick=e=>{shuffle=!shuffle;e.currentTarget.setAttribute('aria-pressed',shuffle);build()};
+$('wrong').onclick=e=>{wrongOnly=!wrongOnly;e.currentTarget.setAttribute('aria-pressed',wrongOnly);build()};
+$('prev').onclick=()=>{if(pos>0){pos--;picked=null;render()}};
+let armed=false;
+$('reset').onclick=e=>{const t=e.currentTarget;if(!armed){armed=true;t.textContent='한 번 더 누르면 초기화';setTimeout(()=>{armed=false;t.textContent='기록 초기화'},2500);return}
+  st={wrong:{},done:{}};save();armed=false;t.textContent='기록 초기화';wrongOnly=false;$('wrong').setAttribute('aria-pressed','false');build()};
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='SELECT'||e.target.tagName==='INPUT')return;
+  if(!picked&&(e.key==='o'||e.key==='O'))answer('O');
+  else if(!picked&&(e.key==='x'||e.key==='X'))answer('X');
+  else if(picked&&(e.key==='Enter'||e.key==='ArrowRight')){e.preventDefault();$('nx')&&$('nx').click()}
+});
+build();
+</script>
+<script>
+(function(){
+const H=1418297543,K='lkt-soc2-tongil-ox-gate';
+const hash=s=>{let h=5381;for(const c of s.trim().toLowerCase())h=((h*33)^c.charCodeAt(0))>>>0;return h};
+const g=document.getElementById('gate');
+let ok=false;try{ok=localStorage.getItem(K)===String(H)}catch(e){}
+if(ok){g.hidden=true;return}
+const M={'ㅂ':'q','ㅈ':'w','ㄷ':'e','ㄱ':'r','ㅅ':'t','ㅛ':'y','ㅕ':'u','ㅑ':'i','ㅐ':'o','ㅔ':'p','ㅁ':'a','ㄴ':'s','ㅇ':'d','ㄹ':'f','ㅎ':'g','ㅗ':'h','ㅓ':'j','ㅏ':'k','ㅣ':'l','ㅋ':'z','ㅌ':'x','ㅊ':'c','ㅍ':'v','ㅠ':'b','ㅜ':'n','ㅡ':'m'};
+const norm=s=>[...String(s).replace(/\s+/g,'')].map(c=>M[c]||c).join('');
+const tryIn=()=>{const v=document.getElementById('gc').value;
+ if(hash(norm(v))===H||hash(v)===H){try{localStorage.setItem(K,String(H))}catch(e){} g.hidden=true}
+ else document.getElementById('ge').textContent='코드가 맞지 않아요. 영문 자판으로 입력했는지 확인해 주세요.'};
+document.getElementById('gb').addEventListener('click',tryIn);
+document.getElementById('gc').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();tryIn()}});
+document.getElementById('gf').addEventListener('submit',e=>{e.preventDefault();tryIn()});
+})();
+</script>
+</body></html>
