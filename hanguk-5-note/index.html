@@ -1,0 +1,197 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"><title>민주화를 위한 노력 빈칸</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+:root{
+  --band:#1C2747; --band-ink:#FFFFFF; --band-soft:rgba(255,255,255,.14);
+  --bg:#F2F4F9; --surface:#FFFFFF; --ink:#16203A; --muted:#6A7389; --line:#E1E5EE;
+  --o:#2563EB; --o-soft:#E6EEFF; --x:#E0453A; --x-soft:#FDEBEA; --gold:#F5B731;
+  --display:"Black Han Sans","Noto Sans KR",sans-serif;
+  --sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --shadow:0 10px 30px rgba(22,32,58,.10),0 2px 6px rgba(22,32,58,.06);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --band:#141B30; --band-soft:rgba(255,255,255,.10);
+  --bg:#0E1322; --surface:#1A2238; --ink:#EEF1F8; --muted:#9AA3B8; --line:#2A3350;
+  --o:#6E9BFF; --o-soft:#1D2B52; --x:#FF7A70; --x-soft:#45201F; --gold:#F5C451;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --band:#141B30; --band-soft:rgba(255,255,255,.10);
+  --bg:#0E1322; --surface:#1A2238; --ink:#EEF1F8; --muted:#9AA3B8; --line:#2A3350;
+  --o:#6E9BFF; --o-soft:#1D2B52; --x:#FF7A70; --x-soft:#45201F; --gold:#F5C451;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}
+html,body{min-height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-tap-highlight-color:transparent;letter-spacing:-.01em}
+:root{padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--band)}
+.band{background:var(--band);color:var(--band-ink);padding-bottom:64px}
+.wrap{max-width:620px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));box-sizing:border-box}
+.band .wrap{padding-block:18px 0;display:flex;flex-direction:column;gap:16px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:12px;min-width:0}
+.badge{flex:0 0 auto;width:48px;height:48px;border-radius:14px;background:var(--surface);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:17px;line-height:1;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.badge b{color:var(--o);font-weight:400}.badge i{color:var(--x);font-style:normal}
+.logo small{display:block;font-size:12px;opacity:.75;font-weight:500;letter-spacing:.02em}
+.logo h1{margin:2px 0 0;font-family:var(--display);font-weight:400;font-size:clamp(19px,5.4vw,24px);white-space:nowrap;letter-spacing:0;line-height:1.15}
+.score{flex:0 0 auto;text-align:center;background:var(--band-soft);border-radius:14px;padding:8px 12px;min-width:64px;font-variant-numeric:tabular-nums}
+.score span{display:block;font-size:11px;opacity:.8}
+.score strong{display:block;font-size:20px;font-weight:900;line-height:1.2}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+select,.chip{font:inherit;font-size:14px;font-weight:500;color:var(--band-ink);background:var(--band-soft);border:1px solid transparent;border-radius:999px;padding:9px 14px;min-height:40px;-webkit-appearance:none;appearance:none}
+select{flex:1 1 150px;min-width:0;padding-right:34px;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 18px) 52%,calc(100% - 13px) 52%;background-size:5px 5px;background-repeat:no-repeat}
+select option{color:#16203A;background:#fff}
+.chip{cursor:pointer;flex:0 0 auto}
+.chip[aria-pressed="true"]{background:var(--gold);color:#1C2747}
+.progress{height:6px;background:var(--band-soft);border-radius:6px;overflow:hidden}
+.progress span{display:block;height:100%;background:var(--gold);width:0;border-radius:6px;transition:width .3s}
+main.wrap{margin-top:-48px;display:flex;flex-direction:column;gap:16px;padding-block:0 24px}
+.card{background:var(--surface);border-radius:24px;padding:24px 22px 22px;display:flex;flex-direction:column;gap:16px;min-height:280px;box-shadow:var(--shadow)}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.no{font-family:var(--display);font-size:22px;color:var(--ink);letter-spacing:0}
+.no em{font-style:normal;font-size:13px;font-family:var(--sans);font-weight:700;color:var(--muted);margin-left:4px}
+.tag{background:var(--bg);border-radius:999px;padding:5px 11px;font-weight:500;font-size:12px;max-width:60%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.q{font-size:clamp(19px,5.1vw,22px);font-weight:500;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.result{margin-top:auto;border-radius:18px;padding:16px;display:flex;gap:14px;align-items:flex-start;animation:pop .28s ease-out}
+.result[data-k="O"]{background:var(--o-soft)} .result[data-k="X"]{background:var(--x-soft)}
+@keyframes pop{from{transform:translateY(8px);opacity:.4}to{transform:none;opacity:1}}
+.mark{flex:0 0 auto;width:52px;height:52px;display:grid;place-items:center;font-family:var(--display);font-size:30px;border-radius:50%;color:#fff;animation:stamp .35s cubic-bezier(.3,1.6,.5,1)}
+.result[data-k="O"] .mark{background:var(--o)} .result[data-k="X"] .mark{background:var(--x)}
+@keyframes stamp{from{transform:scale(.4) rotate(-20deg)}to{transform:none}}
+.verdict{font-weight:900;font-size:16px;margin:3px 0 6px}
+.verdict.ok{color:var(--o)} .verdict.no{color:var(--x)}
+.exp{font-size:15.5px;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.pad{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pad button{font-family:var(--display);font-size:52px;line-height:1;cursor:pointer;border:none;border-radius:24px;min-height:104px;color:#fff;box-shadow:var(--shadow);transition:transform .1s}
+#bO{background:var(--o)} #bX{background:var(--x)}
+.pad button:active{transform:scale(.96)}
+.next{width:100%;font:inherit;font-size:18px;font-weight:700;cursor:pointer;border:none;border-radius:20px;min-height:66px;background:var(--band);color:#fff;box-shadow:var(--shadow)}
+:root[data-theme="dark"] .next{background:var(--gold);color:#1C2747}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .next{background:var(--gold);color:#1C2747}}
+.nav{display:flex;justify-content:space-between;gap:10px}
+.nav button{font:inherit;font-size:14px;font-weight:500;background:none;border:none;color:var(--muted);padding:8px 4px;cursor:pointer}
+.nav button:disabled{opacity:.35}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.done{text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;flex:1}
+.done .big{font-family:var(--display);font-size:54px;font-variant-numeric:tabular-nums}
+.done p{margin:0;color:var(--muted)}
+.done .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.done .chip{background:var(--band);color:#fff}
+footer{font-size:12px;color:var(--muted);text-align:center}
+.gate{position:fixed;inset:0;background:var(--band);display:flex;align-items:center;justify-content:center;z-index:20;padding:24px}
+.gate form{background:var(--surface);color:var(--ink);border-radius:24px;padding:30px 24px;width:100%;max-width:360px;display:flex;flex-direction:column;gap:14px;box-sizing:border-box;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.gate .badge{width:56px;height:56px;font-size:24px;background:var(--bg);box-shadow:none}
+.gate h2{margin:0;font-family:var(--display);font-weight:400;font-size:24px}
+.gate p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.gate input{font:inherit;font-size:18px;padding:14px 16px;border:2px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink)}
+.gate input:focus{border-color:var(--o);outline:none}
+.gate button{font:inherit;font-size:17px;font-weight:700;padding:15px;border-radius:14px;border:none;background:var(--o);color:#fff;cursor:pointer}
+.gate .err{color:var(--x);font-size:13px;min-height:1em}
+.sh{margin:6px 0 0;font-size:15.5px;font-weight:900;color:var(--ink);background:var(--surface);border-left:5px solid var(--gold);border-radius:12px;padding:9px 14px;box-shadow:var(--shadow)}
+.it{background:var(--surface);border-radius:18px;padding:14px 16px;box-shadow:var(--shadow);font-size:16px;line-height:2.05;word-break:keep-all;overflow-wrap:anywhere}
+.it.dn{opacity:.6}
+.it p{margin:2px 0}.it img{display:block;max-width:100%;max-height:260px;margin:4px auto 6px;border-radius:8px}
+.ih{display:flex;justify-content:space-between;align-items:center;line-height:1.3;margin-bottom:4px}
+.nn{font-family:var(--display);font-size:18px;color:var(--muted)}
+.chk{font:inherit;font-size:12.5px;border:1.5px solid var(--line);background:none;color:var(--muted);border-radius:999px;padding:4px 10px;cursor:pointer}
+.chk[aria-pressed="true"]{background:var(--o);border-color:var(--o);color:#fff}
+.bl{max-width:100%;white-space:normal;font:inherit;font-weight:700;display:inline-block;vertical-align:baseline;border:none;border-bottom:2.5px solid var(--o);background:var(--o-soft);border-radius:6px 6px 0 0;padding:0 6px;margin:0 2px;line-height:1.5;cursor:pointer;color:transparent;min-height:1.5em}
+.bl span{visibility:hidden}.bl.open{color:var(--x);background:var(--x-soft);border-bottom-color:var(--x)}.bl.open span{visibility:visible}
+.pick{white-space:normal}.pick i{font-style:normal;color:var(--muted);margin:0 2px}
+.op{font:inherit;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:0 7px;line-height:1.55;cursor:pointer;margin:0 1px}
+.op.right{background:var(--o);border-color:var(--o);color:#fff;font-weight:700}.op.bad{background:var(--x);border-color:var(--x);color:#fff}
+.tw{overflow-x:auto;margin:4px 0}.tw table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.7}.tw th,.tw td{border:1px solid var(--line);padding:6px 8px;vertical-align:top}.tw th{background:var(--bg);white-space:nowrap}
+.empty{text-align:center;color:var(--muted);padding:30px 10px;line-height:1.8;background:var(--surface);border-radius:18px}
+.tip{font-size:12.5px;opacity:.85;margin:0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style></head><body>
+<div class="gate" id="gate"><form id="gf"><div class="badge" aria-hidden="true"><b>빈</b><i>칸</i></div><h2>민주화를 위한 노력 빈칸</h2><p>이경태T 수강생 전용이에요.<br>선생님께 받은 입장 코드를 입력하세요.</p><input id="gc" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" inputmode="latin" placeholder="입장 코드" aria-label="입장 코드"><div class="err" id="ge"></div><button type="button" id="gb">입장하기</button></form></div>
+<div class="band"><div class="wrap">
+  <div class="top">
+    <div class="logo"><div class="badge" aria-hidden="true"><b>빈</b><i>칸</i></div><div><small>이경태T · 한국사2 5주차 교과서 빈칸</small><h1>민주화를 위한 노력 빈칸</h1></div></div>
+    <div class="score" id="score"></div>
+  </div>
+  <div class="controls">
+    <select id="sec" aria-label="단원 선택"></select>
+    <button class="chip" id="all" aria-pressed="false">정답 모두 보기</button>
+    <button class="chip" id="hide" aria-pressed="false">외운 문장 숨기기</button>
+  </div>
+  <div class="progress"><span id="bar"></span></div><p class="tip">빈칸을 누르면 정답이 보여요 · ( A / B )는 맞는 쪽을 눌러 보세요</p>
+</div></div>
+<main class="wrap">
+  <section id="list" style="display:flex;flex-direction:column;gap:12px"></section>
+  <div class="nav"><span></span><button id="reset">기록 초기화</button></div>
+  <footer>26 한영외고 1학년 2학기 기말고사 대비 · 한터&amp;SNT</footer>
+</main>
+<script>
+const DATA = [{"h": "5·16 군사 정변과 박정희 정부", "s": "5·16 군사 정변과 박정희 정부", "tbl": [["시기", "연도", "사건"], ["군정", "1961.5", "{5·16 군사 정변}"], ["군정", "1961.7", "{제1차 경제 개발 5개년 계획}"], ["군정", "1962.12", "{5차 개헌}(대통령 직선제 + 단원제)"], ["군정", "1963.2", "{민주 공화당} 창당"], ["제3공화국", "1964.6", "{6·3 시위}"], ["제3공화국", "1965.6", "{한일 기본 조약} 체결"], ["제3공화국", "1965.10", "{베트남 파병}"], ["제3공화국", "1966.3", "{브라운 각서}"], ["제3공화국", "1967.7", "{동백림 사건}"], ["제3공화국", "1968", "{북한의 도발}"], ["제3공화국", "1969.7", "{닉슨 독트린}"], ["제3공화국", "1969.10", "{6차 개헌}(3선 개헌)"], ["제3공화국", "1970", "{새마을 운동}, 경부 고속 도로 건설, {전태일}"], ["제4공화국", "1972.7", "{7·4 남북 공동 성명}"], ["제4공화국", "1972.10", "{10월 유신}"], ["제4공화국", "1972.12", "{유신 헌법} 공포"], ["제4공화국", "1973.8", "{김대중 납치 사건}"], ["제4공화국", "1973.12", "{개헌 청원 100만 인 서명 운동}"], ["제4공화국", "1974.1", "{긴급 조치 1호}"], ["제4공화국", "1974.4", "{제2차 인혁당 사건}"], ["제4공화국", "1974.9", "{천주교 정의 구현 사제단}"], ["제4공화국", "1975.5", "{긴급 조치 9호}"], ["제4공화국", "1976.3", "{3·1 민주 구국 선언}"], ["제4공화국", "1978.10", "{제2차 석유 파동}"], ["제4공화국", "1979.8", "{YH 무역 사건}"], ["제4공화국", "1979.10", "{김영삼 국회 제명} → {부·마 항쟁} → {10·26 사건}"]], "pre": "1."}, {"h": "5·16 군사 정변과 박정희 정부", "s": "5·16 군사 정변과 박정희 정부", "tbl": [["기구 설명", "기구 이름", "시기"], ["군사 정변 주도 세력 중심, 1963년 새 정부 출발 때까지 입법·행정·사법권 행사", "{국가 재건 최고 회의}", "{군정}"], ["평화 통일 추진 명분의 헌법 기구, 대통령 선출·헌법 개정안 최종 확정", "{통일 주체 국민 회의}", "{유신}"], ["신군부가 10·26 사태 후 사회적 혼란 수습 명분으로 설치한 초헌법적 기구", "{국가 보위 비상 대책 위원회}", "{5·18 이후 대통령 전}"]], "pre": "2."}, {"h": "5·16 군사 정변과 박정희 정부", "s": "5·16 군사 정변과 박정희 정부", "t": "3. 1961년 5월 16일 새벽, 육군 소장 박정희가 이끄는 군인들이 {군사 정변}을 일으켜 정부 주요 기관을 장악하였다. 그들은 {혁명 공약}을 발표하여 헌정을 중단하고 {군정}을 실시하였다."}, {"h": "5·16 군사 정변과 박정희 정부", "s": "5·16 군사 정변과 박정희 정부", "img": "p3_0", "lines": ["1. 반공을 국시의 제일의(義)로 삼는다. / 4. 민생고를 해결하고 국가 자주 경제 재건에 총력을 기울인다. / 6. 과업이 성취되면 양심적인 정치인들에게 정권을 이양하고 군 본연의 임무에 복귀한다.", "· 위 사료는 {5·16 군사 정변} 때 박정희가 주요 시설을 점령 후 발표한 {혁명 공약}이다."], "pre": "4."}, {"h": "5·16 군사 정변과 박정희 정부", "s": "5·16 군사 정변과 박정희 정부", "t": "5. 박정희가 중심이 된 군사 정변 세력은 {국가 재건 최고 회의}를 설치하여 {입법·사법·행정권}을 장악하였다. 특히 {언론}을 탄압하고 {정치인}의 활동을 통제하였으며 {통일 운동}에 앞장섰던 사람들을 체포하였다."}, {"h": "5·16 군사 정변과 박정희 정부", "s": "5·16 군사 정변과 박정희 정부", "t": "6. 국가 안보를 명분으로 {중앙정보부}를 설치하여 정치권력을 강화하는 데 이용하였다."}, {"h": "5·16 군사 정변과 박정희 정부", "s": "5·16 군사 정변과 박정희 정부", "t": "7. 1961년 국가 안전 보장을 명분으로 설치되었으나 박정희의 정권 창출과 권력 유지에 활용된 기관을 {중앙정보부}라고 하며 이후 국가 안전 기획부를 거쳐 현재 {국가 정보원}으로 개편되었다."}, {"h": "5·16 군사 정변과 박정희 정부", "s": "5·16 군사 정변과 박정희 정부", "t": "8. 1962년 {대통령 중심제*/의원 내각제}로 헌법을 개정하고 {민주 공화당*/자유당}을 창당하였다."}, {"h": "5·16 군사 정변과 박정희 정부", "s": "5·16 군사 정변과 박정희 정부", "t": "9. 박정희는 정치인에게 정권을 넘기고 군대로 복귀하겠다는 약속을 어기고 {민간인} 신분으로 대통령 선거에 출마하였다. 1963년 대통령 선거에서 {민주 공화당}의 후보로 나선 박정희는 {윤보선}을 누르고 대통령에 당선되었다."}, {"h": "5·16 군사 정변과 박정희 정부", "s": "5·16 군사 정변과 박정희 정부", "t": "10. 박정희 정부는 {경제 개발 자금}을 확보하기 위해 {한일 국교 정상화}에 나섰다. 미국도 공산 국가인 소련과 중국에 맞서기 위한 안보 체제를 구축하기 위해 한국과 일본의 관계 개선을 강력히 {요구하였다*/반대하였다}.\n· 미국은 한일 국교 정상화를 강력히 요구하였다. {O*/X}"}, {"h": "5·16 군사 정변과 박정희 정부", "s": "5·16 군사 정변과 박정희 정부", "t": "11. 중앙정보부장 {김종필}과 일본 외무상 오히라가 여러 차례 {비밀리에*/공개적으로} 만나 국교 정상화를 위한 회담을 진행하였다."}, {"h": "5·16 군사 정변과 박정희 정부", "s": "5·16 군사 정변과 박정희 정부", "t": "12. 한일 회담은 (1) {일본의 식민 지배에 대한 사죄와 배상} (2) {약탈된 문화유산의 반환}이 포함되지 않은 채 진행되었다. 이를 대일 {굴욕 외교}라 여긴 대학생과 고등학생은 대대적인 반대 시위를 벌였고, 시민들이 동조하면서 시위는 격렬해졌는데 이를 {6·3 시위}라고 한다."}, {"h": "5·16 군사 정변과 박정희 정부", "s": "5·16 군사 정변과 박정희 정부", "img": "p4_0", "lines": ["· 위 사료는 {한일 회담 반대 시위}로 학생과 시민들은 ‘제2의 한일 합방 결사 반대’, ‘굴욕적 대일 외교 반대’, ‘불법적 친일 정권 퇴진’을 주장하였다."], "pre": "13."}, {"h": "5·16 군사 정변과 박정희 정부", "s": "5·16 군사 정변과 박정희 정부", "t": "14. 박정희 정부는 {비상계엄령}을 선포하고 {군대}를 동원하여 시위를 진압하였다. 결국 {야당}의 반대에도 불구하고 민주 공화당 의원들만 참석한 가운데 {한일 협정}이 국회에서 비준되었다({1965}년)."}, {"h": "5·16 군사 정변과 박정희 정부", "s": "5·16 군사 정변과 박정희 정부", "t": "15. 그 결과 박정희 정부는 경제 개발에 필요한 자금을 일부 확보하였지만, 일본의 식민 지배에 대한 {사죄와 배상} 등은 {받아냈다/받아내지 못하였다*}."}, {"h": "5·16 군사 정변과 박정희 정부", "s": "5·16 군사 정변과 박정희 정부", "t": "16. 박정희 정부는 베트남 전쟁에 본격적으로 개입한 {미국}의 요청에 따라 베트남에 국군을 파병하였다. 파병 규모는 1964년부터 1973년까지 32만여 명에 달하였다. 미국은 그 대가로 경제 발전을 위한 {기술}과 {차관} 제공, {한국군 현대화} 등의 지원을 약속하였다.\n→ 처음에는 {비전투 요원}이 파병(1964)되었으나 {미국}의 요청으로 {전투 요원}이 파병(1965)되었다."}, {"h": "5·16 군사 정변과 박정희 정부", "s": "5·16 군사 정변과 박정희 정부", "t": "17. 베트남 파병으로 한국 기업의 해외 진출과 한국 상품의 수출 등이 활발해져 {경제 성장}을 위한 발판이 마련되었다. 그러나 전쟁에서 수많은 {국군} 장병이 희생되었고 {고엽제} 피해자도 발생하였다. 또한 한국인 {혼혈인(라이따이한)} 문제 등이 남겨졌으며, 일부 국군에 의해 베트남 민간인이 희생되기도 하였다."}, {"h": "5·16 군사 정변과 박정희 정부", "s": "5·16 군사 정변과 박정희 정부", "t": "18. · 미국은 파병 비용을 부담하고 한국군 현대화를 지원한다.\n· 베트남 주둔 한국군 지원 사업과 현지의 각종 사업에 한국을 참여시킨다.\n· 미국은 한국에 군사 원조와 차관을 제공한다.\n→ 위 사료는 {브라운 각서}이다. {1966}년 주한 미국 대사 브라운과 한국 외무 장관이 체결한 각서로 베트남 {추가} 파병에 따른 미국의 지원 내용이 담겨 있다."}, {"h": "5·16 군사 정변과 박정희 정부", "s": "5·16 군사 정변과 박정희 정부", "t": "19. {1968}년에는 북한의 도발이 이어지면서 남북 간의 긴장이 고조되었다.\n참고) 1968년 1월 북한 특수 부대 청와대 부근 침입(김신조 사건), 1월 미국 첩보함 푸에블로호 동해에서 나포, 11월 무장 공비 120여 명 울진·삼척 출몰 → 향토 예비군(4월), 주민 등록제(11월), 국민 교육 헌장(12월)"}, {"h": "5·16 군사 정변과 박정희 정부", "s": "5·16 군사 정변과 박정희 정부", "t": "20. 이미 재선에 성공한 박정희 정부는 이러한 위기 상황을 부각시키며 {반공 태세}를 강화하였다. 그리고 국가 안보와 지속적인 경제 성장을 유지한다는 명분으로 대통령의 {3회 연임을 허용}하는 {3선 개헌(1969년)}을 추진하였다."}, {"h": "5·16 군사 정변과 박정희 정부", "s": "5·16 군사 정변과 박정희 정부", "t": "21. 야당 의원과 학생, 시민들의 개헌 반대 운동이 전국으로 확산되는 가운데 여당은 야당 의원들을 따돌리고 국회 별관에서 편법으로 {3선 개헌안}을 통과시켰다. 이로써 박정희는 집권 연장의 길을 마련하였고 개정된 헌법에 따라 치른 제7대 대통령 선거에서 야당 후보 {김대중}을 힘겹게 누르고 대통령에 당선되었다(1971)."}, {"h": "5·16 군사 정변과 박정희 정부", "s": "5·16 군사 정변과 박정희 정부", "t": "22. 박정희 정권은 {동백림 사건}을 이용하여 …… 학생들과 야당의 규탄 운동을 침묵시킴으로써 궁극적으로 {3선 개헌}과 장기 집권의 초석을 만들 수 있었음.\n→ 위 사료는 {동백림 사건} 조사 보고서이다. {1967년} 7월 9일 주요 일간지 1면은 무려 194명이 연루된 대규모 {간첩 사건}으로 장식되었다. 중앙정보부가 {동베를린(동백림)}을 거점으로 활동하였다는 예술인과 대학교수, 학생 등을 {간첩} 혐의로 강제 연행하여 국내로 압송한 것이다. 하지만 재판 결과 이들의 간첩 혐의는 입증되지 않았다."}, {"h": "5·16 군사 정변과 박정희 정부", "s": "5·16 군사 정변과 박정희 정부", "t": "23. 투표는 유신 헌법 제39조의 규정에 따라 토론 없이 무기명으로 …… 찬성 2357표, 반대는 한 표도 없이 무효 2표로 박정희 후보를 선출하였다.\n→ 위 사료는 {유신 헌법}에 따라 실시된 대통령 선거를 보도한 기사이다. 99.92%의 득표율로 박정희가 당선되었다. {통일 주체 국민 회의} 대의원들만이 체육관에 모여 한 명뿐인 대통령 후보를 두고 투표에 참여한 결과였다."}, {"h": "유신 체제와 민주화 운동", "s": "유신 체제와 민주화 운동", "tbl": [["연도", "사건"], ["1967년 5월", "{6대 대통령 선거}"], ["1967년 7월", "{동백림 사건}"], ["1968년", "{북한의 도발}"], ["1969년 7월", "{닉슨 독트린}"], ["1969년 10월", "{6차 개헌(3선 개헌)}"], ["1970년", "{새마을 운동}, {경부 고속 도로 건설}, {전태일}"], ["1971년", "{7대 대통령 선거}"]], "pre": "1."}, {"h": "유신 체제와 민주화 운동", "s": "유신 체제와 민주화 운동", "t": "2. 1969년 {닉슨 독트린}이 발표된 이후 냉전 체제가 {완화*/심화}되었다. 이러한 국제 정세는 반공을 앞세운 박정희 정부에 {불리*/유리}하게 작용하였고, 경기 {침체로*/성장으로} 국민의 불만도 커졌다. 이런 가운데 박정희 정부는 북한과 대화에 나서 {7·4 남북 공동 성명}을 {1972}년에 발표하였다."}, {"h": "유신 체제와 민주화 운동", "s": "유신 체제와 민주화 운동", "t": "3. {남북통일}에 대한 국민의 관심이 높아진 가운데 박정희 정부는 {안보 위기}와 {평화 통일}에 대비한다는 구실로 {10월 유신}을 단행하였다. 전국에 {비상계엄}을 선포하고 국회를 해산한 뒤, 비상 국무 회의에서 제정한 유신 헌법을 {국민 투표}로 확정하였다.\n· 유신 헌법을 실시하기 전 전국에 비상계엄을 선포하고 국회를 해산하였다. {O*/X}\n· 유신 헌법은 국민 투표 없이 확정되었다. {O/X*}"}, {"h": "유신 체제와 민주화 운동", "s": "유신 체제와 민주화 운동", "t": "4. 유신 헌법은 {통일 주체 국민 회의}에서 대통령을 선출하도록 하였다. 대통령의 임기는 {4/6*}년이었으며 {중임 제한이 없어*/중임 제한이 있어} 박정희의 종신 집권이 가능해졌다."}, {"h": "유신 체제와 민주화 운동", "s": "유신 체제와 민주화 운동", "t": "5. 유신 헌법에서 대통령은 (1) 국회 의원 {3분의 1} 추천권 (2) {국회 해산권} (3) {법관 임명권} 등을 행사하여 삼권 분립을 사실상 {무력화}하였다. (4) 국민의 기본권마저 제한할 수 있는 {긴급 조치권}도 대통령에게 주어졌다. 이로써 민주 정치의 기본 원리를 무시한 {권위주의적 독재} 체제가 성립되었다."}, {"h": "유신 체제와 민주화 운동", "s": "유신 체제와 민주화 운동", "t": "6. 긴급 조치 1호(일부, 1974): (유신) 헌법을 부정, 비방 및 개정, 폐지를 요구하는 행위를 금한다. 이 조치를 위반한 자는 영장 없이 체포, 수색할 수 있으며 비상 군법 회의에서 심판, 처단한다.\n→ 위 사료는 {긴급 조치 1호}이다. 긴급 조치권은 {초헌법적} 권한으로 유신 반대 세력을 탄압하는 도구로 사용되었으며 {1974}년부터 {1979}년 12월까지 존속하였다."}, {"h": "유신 체제와 민주화 운동", "s": "유신 체제와 민주화 운동", "t": "7. 유신 체제의 억압 속에서 이에 저항하는 {민주화 운동}은 지속적으로 일어났다."}, {"h": "유신 체제와 민주화 운동", "s": "유신 체제와 민주화 운동", "t": "8. ① 1972.12 {유신 헌법 공포}\n② 1973.8 {김대중 납치 사건}: 유신 반대 운동은 {김대중}이 일본에서 유신 체제를 비판하다가 {중앙정보부}에 의해 국내로 납치된 사건을 계기로 활발해졌다.\n③ 1973.12 {개헌 청원 100만 인 서명 운동}: {장준하} 등 민주 인사들이 전개, 학생들은 유신 헌법 철폐 시위. 장준하가 창간한 잡지 {『사상계』}는 통일과 민주주의를 주된 내용으로 다루었다."}, {"h": "유신 체제와 민주화 운동", "s": "유신 체제와 민주화 운동", "t": "9. ④ 1974.1 {긴급 조치 1호}: 반유신 운동이 확산되자 박정희 정부는 {긴급 조치}를 발표하여 억압하였다.\n⑤ 1974.4 {제2차 인혁당 사건}: 중앙정보부는 학생 운동 배후에 {인민 혁명당}이 존재한다며 관련자들을 잡아들였다. 8명은 대법원 판결 18시간 만에 사형당하였고, 국내외 법조인들은 이를 {‘사법 살인’}이라고 비난하였다."}, {"h": "유신 체제와 민주화 운동", "s": "유신 체제와 민주화 운동", "t": "10. ⑥ 1974.9 {천주교 정의 구현 사제단}: 천주교 신부들이 조직해 유신 체제에 저항, 해직 언론인들은 {언론 자유 수호 투쟁}을 전개하였다.\n⑦ 1975.5 {긴급 조치 9호}\n⑧ 1976.3 {3·1 민주 구국 선언}: 정치인과 종교 인사들이 {명동 성당}에 모여 발표하여 유신 체제를 정면으로 비판하였다."}, {"h": "유신 체제와 민주화 운동", "s": "유신 체제와 민주화 운동", "t": "11. ⑨ 1978.12 제10대 국회 의원 선거: 야당인 {신민당}의 득표율이 집권 여당인 민주 공화당보다 {많았다*/적었다}.\n⑩ 1979 {제2차 석유 파동}: 국제 사회도 유신 독재와 인권 탄압을 비판하였고, 경제 상황도 어려워졌다.\n⑪ 1979.8 {YH 무역 사건}: 회사 측의 일방적인 폐업 조치에 항의하여 신민당사에서 농성하던 노동자들을 경찰이 강경 진압하였다. 그 과정에서 여성 노동자 한 명이 사망하였다."}, {"h": "유신 체제와 민주화 운동", "s": "유신 체제와 민주화 운동", "t": "12. 야당이 {YH 무역 사건}을 계기로 비판의 목소리를 높이자 여당은 신민당 총재 {김영삼}을 국회 의원에서 {제명}하였다. 그러자 김영삼의 정치적 근거지인 {부산과 마산(창원)} 일대에서 격렬한 유신 반대 시위가 벌어졌는데 이를 {부마 민주 항쟁}이라고 한다.\n· 이러한 상황에서 대통령 박정희가 {중앙정보부장 김재규}에게 피살되는 사건이 일어났는데 이를 {10·26 사태}라고 한다."}, {"h": "유신 체제와 민주화 운동", "s": "유신 체제와 민주화 운동", "t": "13. 우리는 국민의 자유를 억압하는 긴급 조치를 곧 철폐하고 …… 유신 헌법으로 허울만 남은 의회 정치가 회복되어야 …… 사법권의 독립을 촉구한다.\n→ 위 사료는 {3·1 민주 구국 선언}으로 {함석헌, 김대중, 윤보선} 등의 인사들이 유신 체제와 경제 발전 논리를 정면으로 비판하면서 발표하였다.\n→ {긴급 조치 9호} 이후 사건 혹은 {제2차 석유 파동} 이전 사건으로 매우 많이 출제됨"}, {"h": "유신 체제와 민주화 운동", "s": "유신 체제와 민주화 운동", "t": "14. 경제적 모순과 실정을 근로자의 불순으로 뒤집어씌우고 …… YH 사건에서 단적으로 보여 주고 있고 ……\n· 위 사료는 {1979. 10.}에 부산대학교 교정에 뿌려진 {민주 투쟁 선언문}이다.\n· {‘유신 철폐’}와 {‘독재 타도’}라는 구호와 함께 부산대학교에서 시작된 시위는 시내로 확산되었고 {시민}들도 동참하였다. 정부는 부산 일대에 {계엄령}을 선포하였지만 시위는 마산의 공단 지역 등으로 확산되었다.\n· 정권 내부 갈등이 {10·26 사태}로 이어지면서 유신 체제는 사실상 막을 내렸다. 부마 민주 항쟁은 유신 체제의 {붕괴}를 촉진하였고, 이후 {5·18 민주화 운동}으로 이어졌다."}, {"h": "5·18 민주화 운동", "s": "5·18 민주화 운동", "t": "1. 10·26 사태로 {비상계엄(제주도 제외)}이 선포된 가운데 국무총리 {최규하}가 {통일 주체 국민 회의*/국가 재건 최고 회의/국가 보위 비상 대책 위원회}를 통해 대통령에 선출되었다."}, {"h": "5·18 민주화 운동", "s": "5·18 민주화 운동", "t": "2. 국민은 유신 체제의 억압에서 벗어나 {민주주의}의 실현을 기대하였다. 그러나 {전두환}이 이끄는 일부 군인이 병력을 이끌고 {반란}을 일으켜 군사권을 장악하였는데 이를 {12·12 사태}라고 한다. 이들은 주요 {정부 기관}과 {언론}을 장악하고 정치에 개입하였다."}, {"h": "5·18 민주화 운동", "s": "5·18 민주화 운동", "img": "p10_0", "lines": ["· 12·12 사태를 일으킨 {신군부 세력}으로 앞줄 왼쪽에서 네 번째가 {노태우}, 다섯 번째가 {전두환}이다."], "pre": "3."}, {"h": "5·18 민주화 운동", "s": "5·18 민주화 운동", "t": "4. 신군부 세력의 등장으로 {군사 독재}가 이어질 것이라는 우려가 커지면서 {대학가}를 중심으로 {계엄 철폐}와 {유신 헌법 개정} 등 민주화를 요구하는 대대적 시위가 벌어졌다. 특히 {1980년 5월}에 시위는 절정에 달하였는데 이를 {서울의 봄}이라고 한다.\n참고) 신군부: 12·12 사태로 권력을 장악한 전두환·노태우 등의 군인(군 내부 사조직 하나회 중심). 박정희·김종필 등은 군부의 1세대."}, {"h": "5·18 민주화 운동", "s": "5·18 민주화 운동", "t": "5. 10·26 사태 직후 긴급 조치 9호가 해제되고 일부 민주 인사가 석방되면서 유신 철폐와 민주화를 요구하는 학생들의 시위가 확대되었는데 이를 {서울의 봄}이라고 한다.\n참고) 서울의 봄: 10·26 사태(1979)와 5·17 비상계엄 전국 확대 조치(1980) 사이의 정치적 과도기"}, {"h": "5·18 민주화 운동", "s": "5·18 민주화 운동", "t": "6. 학생들은 서울역 앞에서 대규모 집회를 연이어 개최하고, {비상계엄 해제}와 {신군부 퇴진}을 요구하였다. 그러나 시위 지도부는 신군부가 정치에 개입할 빌미를 주지 않기 위해 시위를 {중단}하였다."}, {"h": "5·18 민주화 운동", "s": "5·18 민주화 운동", "t": "7. 신군부 세력은 {5월 17일}에 {비상계엄을 전국}으로 확대하고, 김대중을 비롯한 야권 정치인과 민주 인사, 학생 대표 등을 체포하였다. 집회와 시위 등 모든 정치 활동을 금지하고, 언론·출판 검열을 강화하고 각 대학에는 휴교령을 내렸다."}, {"h": "5·18 민주화 운동", "s": "5·18 민주화 운동", "t": "8. 1980년 5월 18일 아침, 광주 지역에 계엄군으로 투입된 {공수 부대원}들이 등교하는 대학생들을 구타하며 해산시켰다. 이후 학생들은 {계엄 철폐}와 {신군부 퇴진}을 요구하는 시위를 벌였고, 시민들이 합류하였다."}, {"h": "5·18 민주화 운동", "s": "5·18 민주화 운동", "t": "9. 계엄군은 시위대를 향해 발포하여 수많은 사상자가 발생하였다. 일부 시민은 {무기}를 탈취하여 {시민군}을 조직하였다. 계엄군은 시내에서 {철수}하고 광주 외곽을 {봉쇄}하였다. 그리고 시민군을 {폭도}로 매도하고 {언론}을 통제하였다."}, {"h": "5·18 민주화 운동", "s": "5·18 민주화 운동", "t": "10. 광주 시민은 봉쇄된 상태에서 질서를 유지하며 {시민 수습 대책 위원회}를 구성하여 정부와 평화 협상을 시도하였다. 그러나 {5월 27일} 새벽 계엄군은 헬기와 탱크까지 앞세우고 시내에 진입하여 {전남 도청}에서 끝까지 항전하던 시민군을 {무력}으로 진압하였다."}, {"h": "5·18 민주화 운동", "s": "5·18 민주화 운동", "t": "11. 5·18 민주화 운동은 신군부의 불법적 정권 탈취와 국가 폭력에 맞선 {민주화 운동}이었다.\n(1) 6월 민주 항쟁 등 {1980년대 민주화 운동}의 토대가 되었으며,\n(2) 필리핀 등 {아시아} 여러 나라의 민주화 운동에도 영향을 주었다.\n(3) 일부 대학생은 신군부의 병력 동원이 국군의 작전 통제권을 가진 {미국}의 묵인 아래 이루어졌다고 판단하여 이후 {반미 운동}이 격화되기도 하였다."}, {"h": "5·18 민주화 운동", "s": "5·18 민주화 운동", "t": "12. 광주 시민 궐기문(1980. 5. 25.): 우리는 왜 총을 들 수밖에 없었는가. …… 협상이 올바른 방향으로 진행되면 즉각 총을 놓겠습니다.\n· 위 사료는 {광주 시민 궐기문}이다.\n· 5월 18일 {계엄군이 학생들의 시위를 진압} → 시민들이 시위에 참여\n· 5월 21일 {계엄군이 시위대에 발포} → {시민군 조직}, {계엄군 외곽 철수}\n· 5월 22일 {시민 수습 대책 위원회 구성}\n· 5월 25일 {광주 시민 궐기문}\n· 5월 27일 {계엄군이 전남 도청의 시민군 진압}"}, {"h": "5·18 민주화 운동", "s": "5·18 민주화 운동", "img": "p11_0", "lines": ["· 시민들은 시민군에게 물과 {주먹밥}을 나누어 주고 부상자를 위해 {헌혈}에 나섰다. 공권력이 사라진 상태에서도 스스로 치안과 질서를 유지하였다."], "pre": "13."}, {"h": "5·18 민주화 운동", "s": "5·18 민주화 운동", "img": "p12_1", "lines": ["· 전두환·노태우는 12·12 사태 및 5·17 내란 등의 혐의로 {1996}년 구속 기소되었고, 대법원은 전두환에게 {무기 징역}, 노태우에게 {징역 17년}을 선고하였다.", "· 대법원은 광주 시민의 시위가 {헌법 질서를 수호}하기 위한 정당한 행위였다고 명시하였다.", "· 5·18 기록물은 {2011}년 {유네스코 세계 기록 유산}으로 등재되었다."], "pre": "14."}, {"h": "5·18 민주화 운동", "s": "5·18 민주화 운동", "img": "p12_0", "lines": ["· 국가 차원에서 {5·18 민주화 운동 등에 관한 특별법}(1995)과 {5·18 민주화 운동 기념일}이 제정되었다."], "pre": "15."}, {"h": "5·18 민주화 운동", "s": "5·18 민주화 운동", "tbl": [["연도", "사건"], ["1979.10", "{10·26 사태}, 제주도를 제외한 비상계엄 선포"], ["1979.12", "{최규하} 대통령(통일 주체 국민 회의) → {12·12 사태}"], ["1980.5", "{전국 비상계엄} 선포 → {5·18 민주화 운동}"]], "pre": "16."}, {"h": "개헌의 변화", "s": "개헌의 변화", "t": "1. 1차 개헌(1952, 이승만): {발췌 개헌}, 6·25 전쟁 중 부산에서 통과\n→ 대통령 {직선제}, 국회 {양원제}(실제 시행 안 됨)"}, {"h": "개헌의 변화", "s": "개헌의 변화", "t": "2. 2차 개헌(1954, 이승만): {사사오입} 개헌\n→ {초대 대통령}에 한해 {중임 제한 철폐}"}, {"h": "개헌의 변화", "s": "개헌의 변화", "t": "3. 3차 개헌(1960.6, 허정 과도 정부): {4·19 혁명}\n→ {의원 내각제}, 국회 {양원제}({민의원}, {참의원}), 대통령은 국회에서 선출"}, {"h": "개헌의 변화", "s": "개헌의 변화", "t": "4. 4차 개헌(1960.11, 장면 내각): {3·15 부정 선거} 관련자 처벌 요구\n→ 부정 선거 관련자, 반민주 행위자 처벌을 위한 {소급 입법} 근거 마련"}, {"h": "개헌의 변화", "s": "개헌의 변화", "t": "5. 5차 개헌(1962, 박정희): 박정희의 {민정 이양} 추진\n→ 대통령 중심제, {직선제}, {4년 중임}, 국회 {단원제}"}, {"h": "개헌의 변화", "s": "개헌의 변화", "t": "6. 6차 개헌(1969, 박정희): {3선 개헌}, 박정희의 장기 집권 시도\n→ 대통령 {3회 연임} 허용"}, {"h": "개헌의 변화", "s": "개헌의 변화", "t": "7. 7차 개헌(1972, 박정희): {유신 헌법}, 박정희 종신 집권 시도\n→ 대통령 {간선제}({통일 주체 국민 회의}), 임기 {6년}, {중임 제한 없음}\n→ 대통령 권한 강화({긴급 조치권}, {국회 해산권}, 국회 의원 {3분의 1} 추천권 등)"}, {"h": "개헌의 변화", "s": "개헌의 변화", "t": "8. 8차 개헌(1980, 전두환): 유신 체제의 붕괴와 {신군부}의 권력 장악\n→ 대통령 {간선제}({대통령 선거인단}), {7년 단임}"}, {"h": "개헌의 변화", "s": "개헌의 변화", "t": "9. 9차 개헌(1987, 전두환): 현행 헌법, {6월 민주 항쟁}\n→ 대통령 {직선제}, {5년 단임}"}];
+const SECS=[...new Set(DATA.map(d=>d.h))];
+const ROM=['Ⅰ','Ⅱ','Ⅲ','Ⅳ','Ⅴ'];
+const KEY='hy-hist2-hanguk-5-note-v1';
+let st={done:{}};try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&s.done)st=s}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const $=id=>document.getElementById(id);
+let section='0',showAll=false,hideDone=false;
+$('sec').innerHTML=SECS.map((s,i)=>'<option value="'+i+'">'+(i+1)+'. '+s+' ('+DATA.filter(d=>d.h===s).length+')</option>').join('');
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function mk(t){
+  return esc(t).replace(/\{(.+?)\}/g,(m,x)=>{
+    if(x.includes('/')){
+      return '<span class="pick">( '+x.split('/').map(o=>{const ok=o.endsWith('*');o=o.replace(/\*$/,'');return '<button class="op'+(showAll&&ok?' right':'')+'" data-ok="'+(ok?1:0)+'">'+o+'</button>'}).join('<i>/</i>')+' )</span>';
+    }
+    return '<button class="bl'+(showAll?' open':'')+'" style="min-width:'+Math.min(14,Math.max(2.5,x.length*0.95))+'em"><span>'+x+'</span></button>';
+  }).replace(/_(.+?)_/g,'<u>$1</u>').replace(/\n/g,'<br>');
+}
+function render(){
+  const items=DATA.map((d,i)=>[d,i]).filter(([d])=>d.h===SECS[+section]);
+  const nd=items.filter(([d,i])=>st.done[i]).length;
+  $('score').innerHTML='<span>외운 문장</span><strong>'+nd+'/'+items.length+'</strong>';
+  $('bar').style.width=(items.length?nd/items.length*100:0)+'%';
+  let h='',cur='',n=0;
+  items.forEach(([d,i])=>{
+    if(hideDone&&st.done[i])return;
+    if(d.s!==cur){cur=d.s;n=0;h+='<h3 class="sh">'+esc(d.s)+'</h3>'}
+    n++;
+    const num=(d.pre||((d.t||'').match(/^(\d+)\./)||[])[0]||'');
+    h+='<article class="it'+(st.done[i]?' dn':'')+'"><div class="ih"><span class="nn">'+num+'</span><button class="chk" data-i="'+i+'" aria-pressed="'+(st.done[i]?'true':'false')+'">'+(st.done[i]?'외웠어요 ✓':'외웠어요')+'</button></div>';
+    if(d.img)h+='<img src="img/'+d.img+'.jpg" alt="">'+(d.lines||[]).map(l=>'<p>'+mk(l)+'</p>').join('');
+    else if(d.tbl)h+='<div class="tw"><table>'+d.tbl.map((r,ri)=>'<tr>'+r.map(c=>(ri===0?'<th>':'<td>')+mk(c)+(ri===0?'</th>':'</td>')).join('')+'</tr>').join('')+'</table></div>';
+    else h+='<p>'+mk(d.t.replace(/^\d+\.\s*/,''))+'</p>';
+    h+='</article>';
+  });
+  if(!h)h='<div class="empty">이 단원의 문장을 모두 외웠어요! 👏<br>‘외운 문장 숨기기’를 끄면 다시 볼 수 있어요.</div>';
+  $('list').innerHTML=h;
+}
+$('list').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  if(b.classList.contains('bl'))b.classList.toggle('open');
+  else if(b.classList.contains('op')){b.classList.add(b.dataset.ok==='1'?'right':'bad');if(b.dataset.ok!=='1')setTimeout(()=>b.classList.remove('bad'),900)}
+  else if(b.classList.contains('chk')){const i=b.dataset.i;if(st.done[i])delete st.done[i];else st.done[i]=1;save();render()}
+});
+$('sec').onchange=e=>{section=e.target.value;window.scrollTo({top:0});render()};
+$('all').onclick=e=>{showAll=!showAll;e.currentTarget.setAttribute('aria-pressed',showAll);e.currentTarget.textContent=showAll?'모두 가리기':'정답 모두 보기';render()};
+$('hide').onclick=e=>{hideDone=!hideDone;e.currentTarget.setAttribute('aria-pressed',hideDone);render()};
+let armed=false;
+$('reset').onclick=e=>{const t=e.currentTarget;if(!armed){armed=true;t.textContent='한 번 더 누르면 초기화';setTimeout(()=>{armed=false;t.textContent='기록 초기화'},2500);return}
+ st={done:{}};save();armed=false;t.textContent='기록 초기화';render()};
+render();
+</script>
+<script>
+(function(){
+const H=1418297543,K='hy-hist2-hanguk-5-note-gate';
+const hash=s=>{let h=5381;for(const c of s.trim().toLowerCase())h=((h*33)^c.charCodeAt(0))>>>0;return h};
+const g=document.getElementById('gate');
+let ok=false;try{ok=localStorage.getItem(K)===String(H)}catch(e){}
+if(ok){g.hidden=true;return}
+const M={'ㅂ':'q','ㅈ':'w','ㄷ':'e','ㄱ':'r','ㅅ':'t','ㅛ':'y','ㅕ':'u','ㅑ':'i','ㅐ':'o','ㅔ':'p','ㅁ':'a','ㄴ':'s','ㅇ':'d','ㄹ':'f','ㅎ':'g','ㅗ':'h','ㅓ':'j','ㅏ':'k','ㅣ':'l','ㅋ':'z','ㅌ':'x','ㅊ':'c','ㅍ':'v','ㅠ':'b','ㅜ':'n','ㅡ':'m'};
+const norm=s=>[...String(s).replace(/\s+/g,'')].map(c=>M[c]||c).join('');
+const tryIn=()=>{const v=document.getElementById('gc').value;
+ if(hash(norm(v))===H||hash(v)===H){try{localStorage.setItem(K,String(H))}catch(e){} g.hidden=true}
+ else document.getElementById('ge').textContent='코드가 맞지 않아요. 영문 자판으로 입력했는지 확인해 주세요.'};
+document.getElementById('gb').addEventListener('click',tryIn);
+document.getElementById('gc').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();tryIn()}});
+document.getElementById('gf').addEventListener('submit',e=>{e.preventDefault();tryIn()});
+})();
+</script>
+</body></html>
