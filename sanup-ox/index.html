@@ -1,0 +1,201 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"><title>산업화·제국주의 OX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+:root{
+  --band:#1C2747; --band-ink:#FFFFFF; --band-soft:rgba(255,255,255,.14);
+  --bg:#F2F4F9; --surface:#FFFFFF; --ink:#16203A; --muted:#6A7389; --line:#E1E5EE;
+  --o:#2563EB; --o-soft:#E6EEFF; --x:#E0453A; --x-soft:#FDEBEA; --gold:#F5B731;
+  --display:"Black Han Sans","Noto Sans KR",sans-serif;
+  --sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --shadow:0 10px 30px rgba(22,32,58,.10),0 2px 6px rgba(22,32,58,.06);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --band:#141B30; --band-soft:rgba(255,255,255,.10);
+  --bg:#0E1322; --surface:#1A2238; --ink:#EEF1F8; --muted:#9AA3B8; --line:#2A3350;
+  --o:#6E9BFF; --o-soft:#1D2B52; --x:#FF7A70; --x-soft:#45201F; --gold:#F5C451;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --band:#141B30; --band-soft:rgba(255,255,255,.10);
+  --bg:#0E1322; --surface:#1A2238; --ink:#EEF1F8; --muted:#9AA3B8; --line:#2A3350;
+  --o:#6E9BFF; --o-soft:#1D2B52; --x:#FF7A70; --x-soft:#45201F; --gold:#F5C451;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}
+html,body{min-height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-tap-highlight-color:transparent;letter-spacing:-.01em}
+:root{padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--band)}
+.band{background:var(--band);color:var(--band-ink);padding-bottom:64px}
+.wrap{max-width:620px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));box-sizing:border-box}
+.band .wrap{padding-block:18px 0;display:flex;flex-direction:column;gap:16px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:12px;min-width:0}
+.badge{flex:0 0 auto;width:48px;height:48px;border-radius:14px;background:var(--surface);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:20px;line-height:1;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.badge b{color:var(--o);font-weight:400}.badge i{color:var(--x);font-style:normal}
+.logo small{display:block;font-size:12px;opacity:.75;font-weight:500;letter-spacing:.02em}
+.logo h1{margin:2px 0 0;font-family:var(--display);font-weight:400;font-size:clamp(19px,5.4vw,24px);white-space:nowrap;letter-spacing:0;line-height:1.15}
+.score{flex:0 0 auto;text-align:center;background:var(--band-soft);border-radius:14px;padding:8px 12px;min-width:64px;font-variant-numeric:tabular-nums}
+.score span{display:block;font-size:11px;opacity:.8}
+.score strong{display:block;font-size:20px;font-weight:900;line-height:1.2}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+select,.chip{font:inherit;font-size:14px;font-weight:500;color:var(--band-ink);background:var(--band-soft);border:1px solid transparent;border-radius:999px;padding:9px 14px;min-height:40px;-webkit-appearance:none;appearance:none}
+select{flex:1 1 150px;min-width:0;padding-right:34px;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 18px) 52%,calc(100% - 13px) 52%;background-size:5px 5px;background-repeat:no-repeat}
+select option{color:#16203A;background:#fff}
+.chip{cursor:pointer;flex:0 0 auto}
+.chip[aria-pressed="true"]{background:var(--gold);color:#1C2747}
+.progress{height:6px;background:var(--band-soft);border-radius:6px;overflow:hidden}
+.progress span{display:block;height:100%;background:var(--gold);width:0;border-radius:6px;transition:width .3s}
+main.wrap{margin-top:-48px;display:flex;flex-direction:column;gap:16px;padding-block:0 24px}
+.card{background:var(--surface);border-radius:24px;padding:24px 22px 22px;display:flex;flex-direction:column;gap:16px;min-height:280px;box-shadow:var(--shadow)}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.no{font-family:var(--display);font-size:22px;color:var(--ink);letter-spacing:0}
+.no em{font-style:normal;font-size:13px;font-family:var(--sans);font-weight:700;color:var(--muted);margin-left:4px}
+.tag{background:var(--bg);border-radius:999px;padding:5px 11px;font-weight:500;font-size:12px;max-width:60%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.q{font-size:clamp(19px,5.1vw,22px);font-weight:500;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.result{margin-top:auto;border-radius:18px;padding:16px;display:flex;gap:14px;align-items:flex-start;animation:pop .28s ease-out}
+.result[data-k="O"]{background:var(--o-soft)} .result[data-k="X"]{background:var(--x-soft)}
+@keyframes pop{from{transform:translateY(8px);opacity:.4}to{transform:none;opacity:1}}
+.mark{flex:0 0 auto;width:52px;height:52px;display:grid;place-items:center;font-family:var(--display);font-size:30px;border-radius:50%;color:#fff;animation:stamp .35s cubic-bezier(.3,1.6,.5,1)}
+.result[data-k="O"] .mark{background:var(--o)} .result[data-k="X"] .mark{background:var(--x)}
+@keyframes stamp{from{transform:scale(.4) rotate(-20deg)}to{transform:none}}
+.verdict{font-weight:900;font-size:16px;margin:3px 0 6px}
+.verdict.ok{color:var(--o)} .verdict.no{color:var(--x)}
+.exp{font-size:15.5px;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.pad{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pad button{font-family:var(--display);font-size:52px;line-height:1;cursor:pointer;border:none;border-radius:24px;min-height:104px;color:#fff;box-shadow:var(--shadow);transition:transform .1s}
+#bO{background:var(--o)} #bX{background:var(--x)}
+.pad button:active{transform:scale(.96)}
+.next{width:100%;font:inherit;font-size:18px;font-weight:700;cursor:pointer;border:none;border-radius:20px;min-height:66px;background:var(--band);color:#fff;box-shadow:var(--shadow)}
+:root[data-theme="dark"] .next{background:var(--gold);color:#1C2747}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .next{background:var(--gold);color:#1C2747}}
+.nav{display:flex;justify-content:space-between;gap:10px}
+.nav button{font:inherit;font-size:14px;font-weight:500;background:none;border:none;color:var(--muted);padding:8px 4px;cursor:pointer}
+.nav button:disabled{opacity:.35}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.done{text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;flex:1}
+.done .big{font-family:var(--display);font-size:54px;font-variant-numeric:tabular-nums}
+.done p{margin:0;color:var(--muted)}
+.done .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.done .chip{background:var(--band);color:#fff}
+footer{font-size:12px;color:var(--muted);text-align:center}
+.gate{position:fixed;inset:0;background:var(--band);display:flex;align-items:center;justify-content:center;z-index:20;padding:24px}
+.gate form{background:var(--surface);color:var(--ink);border-radius:24px;padding:30px 24px;width:100%;max-width:360px;display:flex;flex-direction:column;gap:14px;box-sizing:border-box;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.gate .badge{width:56px;height:56px;font-size:24px;background:var(--bg);box-shadow:none}
+.gate h2{margin:0;font-family:var(--display);font-weight:400;font-size:24px}
+.gate p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.gate input{font:inherit;font-size:18px;padding:14px 16px;border:2px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink)}
+.gate input:focus{border-color:var(--o);outline:none}
+.gate button{font:inherit;font-size:17px;font-weight:700;padding:15px;border-radius:14px;border:none;background:var(--o);color:#fff;cursor:pointer}
+.gate .err{color:var(--x);font-size:13px;min-height:1em}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style></head><body>
+<div class="gate" id="gate"><form id="gf"><div class="badge" aria-hidden="true"><b>O</b><i>X</i></div><h2>산업화·제국주의 OX</h2><p>이경태T 수강생 전용이에요.<br>선생님께 받은 입장 코드를 입력하세요.</p><input id="gc" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" inputmode="latin" placeholder="입장 코드" aria-label="입장 코드"><div class="err" id="ge"></div><button type="button" id="gb">입장하기</button></form></div>
+<div class="band"><div class="wrap">
+  <div class="top">
+    <div class="logo"><div class="badge" aria-hidden="true"><b>O</b><i>X</i></div><div><small>이경태T · 중학교 역사 Ⅴ-2</small><h1>산업화·제국주의 OX</h1></div></div>
+    <div class="score" id="score"></div>
+  </div>
+  <div class="controls">
+    <select id="sec" aria-label="단원 선택"></select>
+    <button class="chip" id="shuf" aria-pressed="false">섞기</button>
+    <button class="chip" id="wrong" aria-pressed="false">틀린 문제</button>
+  </div>
+  <div class="progress"><span id="bar"></span></div>
+</div></div>
+<main class="wrap">
+  <section class="card" id="card" aria-live="polite"></section>
+  <div id="actions"></div>
+  <div class="nav"><button id="prev">← 이전 문제</button><button id="reset">기록 초기화</button></div>
+  <footer>중학교 역사 내신 대비 · 한터&amp;SNT</footer>
+</main>
+<script>
+const DATA = [{"n": 1, "sec": "유럽의 산업화", "q": "산업 혁명은 18세기 후반 유럽에서 기계의 발명과 기술의 혁신으로 나타난 경제와 사회 구조의 큰 변화이다.", "a": "O", "e": ""}, {"n": 2, "sec": "유럽의 산업화", "q": "산업 혁명은 미국에서 시작되었다.", "a": "X", "e": "산업 혁명은 영국에서 시작되었어요."}, {"n": 3, "sec": "유럽의 산업화", "q": "영국은 입헌 군주제와 내각 책임제가 자리를 잡아 정치적으로 안정되었다.", "a": "O", "e": ""}, {"n": 4, "sec": "유럽의 산업화", "q": "영국은 석탄, 철 등 지하자원이 부족하여 수입에 의존하였다.", "a": "X", "e": "영국은 석탄, 철 등 지하자원이 풍부했어요."}, {"n": 5, "sec": "유럽의 산업화", "q": "인클로저 운동으로 토지를 잃은 농민들이 도시로 모여 공장에 노동력을 제공하였다.", "a": "O", "e": ""}, {"n": 6, "sec": "유럽의 산업화", "q": "인클로저 운동으로 도시 인구가 농촌으로 이동하였다.", "a": "X", "e": "농민들이 농촌을 떠나 도시로 이동했어요."}, {"n": 7, "sec": "유럽의 산업화", "q": "인클로저 운동은 지주가 공유지에 울타리를 쳐서 사유지로 만든 일이다.", "a": "O", "e": ""}, {"n": 8, "sec": "유럽의 산업화", "q": "1차 인클로저 운동은 경작지 확대, 2차 인클로저 운동은 양 사육지 확대를 위해 일어났다.", "a": "X", "e": "1차는 양 사육지, 2차는 경작지 확대예요."}, {"n": 9, "sec": "유럽의 산업화", "q": "영국은 해외 식민지를 원료 공급지와 상품 시장으로 활용하였다.", "a": "O", "e": ""}, {"n": 10, "sec": "유럽의 산업화", "q": "영국의 산업 혁명은 모직물 공업에서 시작되었다.", "a": "X", "e": "면직물 공업에서 시작되었어요."}, {"n": 11, "sec": "유럽의 산업화", "q": "방적기는 옷감을 짜는 기계, 방직기는 실을 뽑는 기계이다.", "a": "X", "e": "방적기 = 실을 뽑는 기계, 방직기 = 옷감을 짜는 기계예요."}, {"n": 12, "sec": "유럽의 산업화", "q": "제임스 와트가 개량한 증기 기관이 새로운 동력원으로 활용되었다.", "a": "O", "e": ""}, {"n": 13, "sec": "유럽의 산업화", "q": "제임스 와트는 증기 기관을 처음 발명하였다.", "a": "X", "e": "와트는 증기 기관을 개량했어요."}, {"n": 14, "sec": "유럽의 산업화", "q": "영국 50파운드 지폐에는 제임스 와트와 매튜 볼튼이 그려져 있다.", "a": "O", "e": ""}, {"n": 15, "sec": "유럽의 산업화", "q": "공장제 기계 공업의 발전으로 공장에서 기계를 이용한 대량 생산이 가능해졌다.", "a": "O", "e": ""}, {"n": 16, "sec": "유럽의 산업화", "q": "가내 수공업은 자본가가 수공업 노동자를 공장에 고용하여 분업으로 생산하는 공업이다.", "a": "X", "e": "그것은 공장제 수공업이에요. 가내 수공업은 집에서 직접 만들어 사용해요."}, {"n": 17, "sec": "유럽의 산업화", "q": "공업은 가내 수공업 → 공장제 수공업 → 공장제 기계 공업 순으로 발달하였다.", "a": "O", "e": ""}, {"n": 18, "sec": "유럽의 산업화", "q": "하그리브스의 제니 방적기로 더 적은 노동력으로 실을 만들 수 있게 되었다.", "a": "O", "e": ""}, {"n": 19, "sec": "유럽의 산업화", "q": "스티븐슨은 증기선을, 풀턴은 증기 기관차를 개발하였다.", "a": "X", "e": "스티븐슨 = 증기 기관차, 풀턴 = 증기선이에요."}, {"n": 20, "sec": "유럽의 산업화", "q": "모스는 전신기를, 벨은 전화기를 발명하였다.", "a": "O", "e": ""}, {"n": 21, "sec": "유럽의 산업화", "q": "교통과 통신의 발전으로 시장이 확대되고 교역량이 감소하였다.", "a": "X", "e": "교역량이 증가했어요."}, {"n": 22, "sec": "유럽의 산업화", "q": "19세기에는 프랑스, 독일, 미국, 러시아, 일본 등에서 산업화가 이루어졌다.", "a": "O", "e": ""}, {"n": 23, "sec": "유럽의 산업화", "q": "뒤늦게 산업화를 시작한 독일, 러시아, 일본 등은 정부가 주도하여 급속한 산업화를 이루었다.", "a": "O", "e": ""}, {"n": 24, "sec": "유럽의 산업화", "q": "독일은 면직물 등 경공업을 중심으로 산업화를 이루었다.", "a": "X", "e": "독일은 철강, 화학, 전기 등 중공업 중심이에요."}, {"n": 25, "sec": "유럽의 산업화", "q": "증기 기관차와 증기선으로 물류 운송 비용과 시간이 크게 줄어들었다.", "a": "O", "e": ""}, {"n": 26, "sec": "유럽의 산업화", "q": "1840년대 이후 유럽에서는 ‘철도붐’이 일어났다.", "a": "O", "e": ""}, {"n": 27, "sec": "유럽의 산업화", "q": "스티븐슨은 로켓호를 제작하여 런던과 파리를 잇는 철도를 부설하였다.", "a": "X", "e": "리버풀과 맨체스터를 연결하는 철도예요."}, {"n": 28, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "산업화로 사람들은 물질적인 풍요와 생활의 편의를 누리게 되었다.", "a": "O", "e": ""}, {"n": 29, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "사람들이 일자리를 찾아 공장이 밀집된 도시로 이동하여 도시화가 진행되었다.", "a": "O", "e": ""}, {"n": 30, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "산업화로 산업 사회가 농업 중심 사회로 변화하였다.", "a": "X", "e": "농업 중심 사회 → 산업 사회로 변화했어요."}, {"n": 31, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "산업화로 자본가와 노동자가 새로운 계급으로 등장하였다.", "a": "O", "e": ""}, {"n": 32, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "이윤을 위해 상품을 생산하는 자본주의 경제 체제가 확립되었다.", "a": "O", "e": ""}, {"n": 33, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "1851년 영국 런던에서 만국 박람회가 열렸다.", "a": "O", "e": ""}, {"n": 34, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "영국의 도시 중 대학 도시인 케임브리지의 인구가 가장 빠르게 증가하였다.", "a": "X", "e": "케임브리지는 인구 증가가 거의 없었어요. 리버풀, 맨체스터, 버밍엄이 급증했어요."}, {"n": 35, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "맨체스터는 면직물 공업, 버밍엄은 제철·기계 공업, 리버풀은 무역항 도시이다.", "a": "O", "e": ""}, {"n": 36, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "산업화로 도시에서는 주택과 위생 문제, 환경 문제가 나타났다.", "a": "O", "e": ""}, {"n": 37, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "산업화의 혜택이 모든 사람에게 고르게 돌아가 빈부 격차가 줄어들었다.", "a": "X", "e": "자본가와 노동자 간 빈부 격차가 발생했어요."}, {"n": 38, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "노동자들은 열악한 환경에서 장시간 노동에 시달렸지만 낮은 임금을 받았다.", "a": "O", "e": ""}, {"n": 39, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "자본가들은 기계를 파괴하는 러다이트 운동을 벌였다.", "a": "X", "e": "러다이트 운동은 노동자가 벌였어요."}, {"n": 40, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "러다이트 운동은 19세기 초 영국 중부와 북부의 섬유 공업 지대에서 일어났다.", "a": "O", "e": ""}, {"n": 41, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "노동자들은 노동조합을 결성하여 노동 조건의 개선을 요구하였다.", "a": "O", "e": ""}, {"n": 42, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "사회주의자들은 생산 수단을 공동으로 소유하여 빈부 격차를 없애야 한다고 주장하였다.", "a": "O", "e": ""}, {"n": 43, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "오언은 계급 투쟁으로 새로운 사회를 건설해야 한다고 주장하였다.", "a": "X", "e": "그것은 마르크스예요. 오언은 경쟁 대신 협동을 강조했어요."}, {"n": 44, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "오언은 영국과 미국에 협동촌을 건설하기도 하였다.", "a": "O", "e": ""}, {"n": 45, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "마르크스는 초기 사회주의를 지지하며 공상적 사회주의를 주장하였다.", "a": "X", "e": "마르크스는 초기 사회주의를 공상적이라 비판하고 과학적 사회주의를 주장했어요."}, {"n": 46, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "「기차에서 본 런던의 모습」은 좁은 공간에 많은 사람이 밀집하여 사는 모습을 보여 준다.", "a": "O", "e": ""}, {"n": 47, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "「코튼 폴리스」는 1840년경 맨체스터의 공장 굴뚝 연기를 묘사하였다.", "a": "O", "e": ""}, {"n": 48, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "공장법(1833)은 직물 공장에서 9살 미만 어린이의 노동을 금지하였다.", "a": "O", "e": ""}, {"n": 49, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "공장법은 수도와 하수 시설의 개선을 규정하였다.", "a": "X", "e": "그것은 공중 보건법(1848)이에요."}, {"n": 50, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "노동조합법은 노동조합을 합법화하고 평화적인 피켓 시위 권리를 보장하였다.", "a": "O", "e": ""}, {"n": 51, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "공중 보건법은 1871년과 1875년에 제정되었다.", "a": "X", "e": "공중 보건법은 1848년, 노동조합법이 1871, 1875년이에요."}, {"n": 52, "sec": "자본주의와 새로운 사회 문제의 등장", "q": "엘리자베스 벤틀리는 6살 때부터 공장에서 일하였다고 증언하였다.", "a": "O", "e": ""}, {"n": 53, "sec": "제국주의 열강의 침략", "q": "19세기 후반 서양 열강은 원료와 상품 수출 시장, 자본 투자처를 확보하고자 하였다.", "a": "O", "e": ""}, {"n": 54, "sec": "제국주의 열강의 침략", "q": "제국주의는 자본과 군사력을 앞세워 약소국을 침략하고 식민지로 만드는 대외 팽창 정책이다.", "a": "O", "e": ""}, {"n": 55, "sec": "제국주의 열강의 침략", "q": "제국주의는 18세기 전반 절대 왕정 국가들이 추진하였다.", "a": "X", "e": "19세기 후반 산업화된 서양 열강이 추진했어요."}, {"n": 56, "sec": "제국주의 열강의 침략", "q": "인종주의는 인종 간에 우열이 존재한다는 생각이다.", "a": "O", "e": ""}, {"n": 57, "sec": "제국주의 열강의 침략", "q": "사회 진화론은 더 진보한 사회가 덜 진보한 사회를 지배하는 것이 당연하다는 생각이다.", "a": "O", "e": ""}, {"n": 58, "sec": "제국주의 열강의 침략", "q": "제국주의 열강은 모든 인간이 평등하다는 인권 사상으로 식민 지배를 정당화하였다.", "a": "X", "e": "인종주의, 사회 진화론, 문명화 주장으로 정당화했어요."}, {"n": 59, "sec": "제국주의 열강의 침략", "q": "하이네는 시 「노예선」을 통해 노예 무역을 비판하였다.", "a": "O", "e": ""}, {"n": 60, "sec": "제국주의 열강의 침략", "q": "제국주의 열강은 리빙스턴, 스탠리 등의 탐험을 바탕으로 아프리카에 진출하였다.", "a": "O", "e": ""}, {"n": 61, "sec": "제국주의 열강의 침략", "q": "영국은 카이로와 케이프타운을 연결하는 횡단 정책을 펼쳤다.", "a": "X", "e": "영국은 종단 정책이에요. 횡단 정책은 프랑스예요."}, {"n": 62, "sec": "제국주의 열강의 침략", "q": "프랑스는 아프리카 서부 해안부터 동쪽으로 진출하는 횡단 정책을 추진하였다.", "a": "O", "e": ""}, {"n": 63, "sec": "제국주의 열강의 침략", "q": "영국과 프랑스는 파쇼다에서 충돌하여 전면전을 벌였다.", "a": "X", "e": "외교적 절충으로 타협했어요(1898)."}, {"n": 64, "sec": "제국주의 열강의 침략", "q": "파쇼다 사건 이후 영국이 수단을 차지하였다.", "a": "O", "e": ""}, {"n": 65, "sec": "제국주의 열강의 침략", "q": "독일은 모로코를 둘러싸고 프랑스와 갈등을 빚었다.", "a": "O", "e": ""}, {"n": 66, "sec": "제국주의 열강의 침략", "q": "20세기 초 아프리카는 모든 지역이 열강의 식민지가 되었다.", "a": "X", "e": "라이베리아와 에티오피아는 식민지가 되지 않았어요."}, {"n": 67, "sec": "제국주의 열강의 침략", "q": "라이베리아는 미국의 흑인 노예들이 해방된 후 아프리카로 돌아와 세운 나라이다.", "a": "O", "e": ""}, {"n": 68, "sec": "제국주의 열강의 침략", "q": "라이베리아의 해방 노예들은 토착민과 평등하게 지냈다.", "a": "X", "e": "오히려 토착민을 차별하며 지배했어요."}, {"n": 69, "sec": "제국주의 열강의 침략", "q": "영국은 프랑스를 몰아내고 인도를 차지하였다.", "a": "O", "e": ""}, {"n": 70, "sec": "제국주의 열강의 침략", "q": "영국은 미얀마와 말레이반도까지 진출하였다.", "a": "O", "e": ""}, {"n": 71, "sec": "제국주의 열강의 침략", "q": "오스트레일리아와 뉴질랜드는 프랑스의 자치령이 되었다.", "a": "X", "e": "영국의 자치령이에요."}, {"n": 72, "sec": "제국주의 열강의 침략", "q": "프랑스는 베트남을 포함한 인도차이나반도를 점령하였다.", "a": "O", "e": ""}, {"n": 73, "sec": "제국주의 열강의 침략", "q": "네덜란드는 필리핀을 지배하였다.", "a": "X", "e": "네덜란드는 인도네시아, 필리핀은 미국이에요."}, {"n": 74, "sec": "제국주의 열강의 침략", "q": "미국은 에스파냐와의 전쟁에서 승리하여 필리핀을 식민지로 삼았다.", "a": "O", "e": ""}, {"n": 75, "sec": "제국주의 열강의 침략", "q": "미국은 괌과 하와이를 병합하였다.", "a": "O", "e": ""}, {"n": 76, "sec": "제국주의 열강의 침략", "q": "독일은 태평양의 여러 섬을 점령하였다.", "a": "O", "e": ""}, {"n": 77, "sec": "제국주의 열강의 침략", "q": "플랜테이션은 원주민이 자급을 위해 소규모로 곡물을 재배하는 농업이다.", "a": "X", "e": "선진국 자본·기술 + 원주민 값싼 노동력으로 상품 작물을 대규모로 재배해요."}, {"n": 78, "sec": "제국주의 열강의 침략", "q": "플랜테이션으로 약소국은 선진국에 경제적으로 종속되었다.", "a": "O", "e": ""}, {"n": 79, "sec": "제국주의 열강의 침략", "q": "에티오피아는 아도와 전투에서 이탈리아군을 격퇴하고 독립을 유지하였다.", "a": "O", "e": ""}, {"n": 80, "sec": "제국주의 열강의 침략", "q": "에티오피아는 아도와 전투에서 영국군을 격퇴하였다.", "a": "X", "e": "이탈리아군을 격퇴했어요."}, {"n": 81, "sec": "제국주의 열강의 침략", "q": "타이의 라마 5세는 영국과 프랑스 사이에서 균형 있는 외교를 펼쳤다.", "a": "O", "e": ""}, {"n": 82, "sec": "제국주의 열강의 침략", "q": "판보이쩌우는 미국에 유학생을 보내는 동유 운동을 전개하였다.", "a": "X", "e": "일본에 유학생을 보냈어요."}, {"n": 83, "sec": "제국주의 열강의 침략", "q": "세실 로즈는 국내 사회 문제를 해결하기 위해 새로운 영토 개척이 필요하다고 주장하였다.", "a": "O", "e": ""}, {"n": 84, "sec": "제국주의 열강의 침략", "q": "키플링의 「백인의 짐」은 제국주의를 비판한 시이다.", "a": "X", "e": "식민지인을 문명화하는 것이 백인의 의무라며 제국주의를 정당화했어요."}, {"n": 85, "sec": "제국주의 열강의 침략", "q": "「백인(?)의 짐」은 식민지인이 제국주의 열강을 업고 가는 모습으로 제국주의를 비판하였다.", "a": "O", "e": ""}, {"n": 86, "sec": "제국주의 열강의 침략", "q": "「식민지를 지배하는 방식」은 선교사를 이용해 접근한 열강이 군대로 식민지를 착취하는 모습이다.", "a": "O", "e": ""}, {"n": 87, "sec": "제국주의 열강의 침략", "q": "벨기에의 콩고 침략 풍자화에서 벨기에 왕은 늑대로 묘사되었다.", "a": "X", "e": "벨기에 왕은 뱀으로 묘사되었어요. 늑대는 파쇼다 풍자화의 영국이에요."}];
+const SECS = [...new Set(DATA.map(d=>d.sec))];
+const ROM=['Ⅰ','Ⅱ','Ⅲ','Ⅳ','Ⅴ','Ⅵ','Ⅶ','Ⅷ'];
+const KEY='ms-hist-ind-ox-v1';
+let st={wrong:{}};
+try{const s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s&&s.wrong) st=s;}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const $=id=>document.getElementById(id);
+let list=[],pos=0,picked=null,shuffle=false,wrongOnly=false,section='all',right=0,tried=0;
+$('sec').innerHTML='<option value="all">전체 단원 ('+DATA.length+'문항)</option>'+
+  SECS.map((s,i)=>'<option value="'+i+'">'+ROM[i]+'. '+s+' ('+DATA.filter(d=>d.sec===s).length+')</option>').join('');
+function build(){
+  list=DATA.filter(d=>(section==='all'||d.sec===SECS[+section])&&(!wrongOnly||st.wrong[d.n]));
+  if(shuffle){for(let i=list.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[list[i],list[j]]=[list[j],list[i]]}}
+  pos=0;picked=null;right=0;tried=0;render();
+}
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function render(){
+  const total=list.length;
+  const nWrong=Object.keys(st.wrong).length;
+  $('score').innerHTML=tried?'<span>정답</span><strong>'+right+'/'+tried+'</strong>':'<span>틀린 문제</span><strong>'+nWrong+'</strong>';
+  $('bar').style.width=total?((pos+(picked?1:0))/total*100)+'%':'0';
+  $('prev').disabled=pos===0;
+  const card=$('card'),act=$('actions');
+  if(!total){
+    card.innerHTML='<div class="done"><div class="big">0</div><p>'+(wrongOnly?'틀린 문제가 없어요. 전체 문제로 돌아가 풀어 보세요.':'문제가 없어요.')+'</p></div>';
+    act.innerHTML='';return;
+  }
+  if(pos>=total){
+    card.innerHTML='<div class="done"><p>이번 회차 결과</p><div class="big">'+right+' / '+tried+'</div><p>틀린 문제는 자동으로 모아 두었어요.</p><div class="row"><button class="chip" id="again">처음부터 다시</button><button class="chip" id="gowrong">틀린 문제만 풀기</button></div></div>';
+    act.innerHTML='';
+    $('again').onclick=build;
+    $('gowrong').onclick=()=>{wrongOnly=true;$('wrong').setAttribute('aria-pressed','true');build()};
+    return;
+  }
+  const d=list[pos];
+  const si=SECS.indexOf(d.sec);
+  let h='<div class="meta"><span class="no">'+d.n+'<em>번</em></span><span class="tag">'+ROM[si]+'. '+esc(d.sec)+'</span></div><p class="q">'+esc(d.q)+'</p>';
+  if(picked){
+    const ok=picked===d.a;
+    h+='<div class="result" data-k="'+d.a+'"><div class="mark" aria-label="정답 '+d.a+'">'+d.a+'</div><div><p class="verdict '+(ok?'ok':'no')+'">'+(ok?'정답이에요!':'아쉬워요. 정답은 '+d.a)+'</p><p class="exp">'+esc(d.e||'옳은 설명이에요.')+'</p></div></div>';
+    act.innerHTML='<button class="next" id="nx">'+(pos+1<total?'다음 문제 →':'결과 보기')+'</button>';
+    $('nx').onclick=()=>{pos++;picked=null;render();window.scrollTo({top:0})};
+    $('nx').focus({preventScroll:true});
+  }else{
+    act.innerHTML='<div class="pad"><button id="bO" aria-label="O 맞다">O</button><button id="bX" aria-label="X 틀리다">X</button></div>';
+    $('bO').onclick=()=>answer('O');$('bX').onclick=()=>answer('X');
+  }
+  card.innerHTML=h;
+}
+function answer(k){
+  const d=list[pos];picked=k;tried++;
+  if(k===d.a){right++; if(wrongOnly) delete st.wrong[d.n];}
+  else st.wrong[d.n]=1;
+  save();render();
+}
+$('sec').onchange=e=>{section=e.target.value;build()};
+$('shuf').onclick=e=>{shuffle=!shuffle;e.currentTarget.setAttribute('aria-pressed',shuffle);build()};
+$('wrong').onclick=e=>{wrongOnly=!wrongOnly;e.currentTarget.setAttribute('aria-pressed',wrongOnly);build()};
+$('prev').onclick=()=>{if(pos>0){pos--;picked=null;render()}};
+let armed=false;
+$('reset').onclick=e=>{const t=e.currentTarget;if(!armed){armed=true;t.textContent='한 번 더 누르면 초기화';setTimeout(()=>{armed=false;t.textContent='기록 초기화'},2500);return}
+  st={wrong:{}};save();armed=false;t.textContent='기록 초기화';wrongOnly=false;$('wrong').setAttribute('aria-pressed','false');build()};
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='SELECT'||e.target.tagName==='INPUT')return;
+  if(!picked&&(e.key==='o'||e.key==='O'))answer('O');
+  else if(!picked&&(e.key==='x'||e.key==='X'))answer('X');
+  else if(picked&&(e.key==='Enter'||e.key==='ArrowRight')){e.preventDefault();$('nx')&&$('nx').click()}
+});
+build();
+</script>
+<script>
+(function(){
+const H=1418297543,K='ms-hist-ind-ox-gate';
+const hash=s=>{let h=5381;for(const c of s.trim().toLowerCase())h=((h*33)^c.charCodeAt(0))>>>0;return h};
+const g=document.getElementById('gate');
+let ok=false;try{ok=localStorage.getItem(K)===String(H)}catch(e){}
+if(ok){g.hidden=true;return}
+const M={'ㅂ':'q','ㅈ':'w','ㄷ':'e','ㄱ':'r','ㅅ':'t','ㅛ':'y','ㅕ':'u','ㅑ':'i','ㅐ':'o','ㅔ':'p','ㅁ':'a','ㄴ':'s','ㅇ':'d','ㄹ':'f','ㅎ':'g','ㅗ':'h','ㅓ':'j','ㅏ':'k','ㅣ':'l','ㅋ':'z','ㅌ':'x','ㅊ':'c','ㅍ':'v','ㅠ':'b','ㅜ':'n','ㅡ':'m'};
+const norm=s=>[...String(s).replace(/\s+/g,'')].map(c=>M[c]||c).join('');
+const tryIn=()=>{const v=document.getElementById('gc').value;
+ if(hash(norm(v))===H||hash(v)===H){try{localStorage.setItem(K,String(H))}catch(e){} g.hidden=true}
+ else document.getElementById('ge').textContent='코드가 맞지 않아요. 영문 자판으로 입력했는지 확인해 주세요.'};
+document.getElementById('gb').addEventListener('click',tryIn);
+document.getElementById('gc').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();tryIn()}});
+document.getElementById('gf').addEventListener('submit',e=>{e.preventDefault();tryIn()});
+})();
+</script>
+</body></html>
