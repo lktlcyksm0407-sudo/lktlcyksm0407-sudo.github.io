@@ -1,0 +1,198 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"><title>세계 문제와 미래 사회 3주차</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+:root{
+  --band:#1C2747; --band-ink:#FFFFFF; --band-soft:rgba(255,255,255,.14);
+  --bg:#F2F4F9; --surface:#FFFFFF; --ink:#16203A; --muted:#6A7389; --line:#E1E5EE;
+  --o:#2563EB; --o-soft:#E6EEFF; --x:#E0453A; --x-soft:#FDEBEA; --gold:#F5B731;
+  --display:"Black Han Sans","Noto Sans KR",sans-serif;
+  --sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --shadow:0 10px 30px rgba(22,32,58,.10),0 2px 6px rgba(22,32,58,.06);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --band:#141B30; --band-soft:rgba(255,255,255,.10);
+  --bg:#0E1322; --surface:#1A2238; --ink:#EEF1F8; --muted:#9AA3B8; --line:#2A3350;
+  --o:#6E9BFF; --o-soft:#1D2B52; --x:#FF7A70; --x-soft:#45201F; --gold:#F5C451;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --band:#141B30; --band-soft:rgba(255,255,255,.10);
+  --bg:#0E1322; --surface:#1A2238; --ink:#EEF1F8; --muted:#9AA3B8; --line:#2A3350;
+  --o:#6E9BFF; --o-soft:#1D2B52; --x:#FF7A70; --x-soft:#45201F; --gold:#F5C451;
+  --shadow:0 10px 30px rgba(0,0,0,.35); color-scheme:dark}
+html,body{min-height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-tap-highlight-color:transparent;letter-spacing:-.01em}
+:root{padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--band)}
+.band{background:var(--band);color:var(--band-ink);padding-bottom:64px}
+.wrap{max-width:620px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));box-sizing:border-box}
+.band .wrap{padding-block:18px 0;display:flex;flex-direction:column;gap:16px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:12px;min-width:0}
+.badge{flex:0 0 auto;width:48px;height:48px;border-radius:14px;background:var(--surface);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:17px;line-height:1;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.badge b{color:var(--o);font-weight:400}.badge i{color:var(--x);font-style:normal}
+.logo small{display:block;font-size:12px;opacity:.75;font-weight:500;letter-spacing:.02em}
+.logo h1{margin:2px 0 0;font-family:var(--display);font-weight:400;font-size:clamp(19px,5.4vw,24px);letter-spacing:0;line-height:1.15}
+.score{flex:0 0 auto;text-align:center;background:var(--band-soft);border-radius:14px;padding:8px 12px;min-width:64px;font-variant-numeric:tabular-nums}
+.score span{display:block;font-size:11px;opacity:.8}
+.score strong{display:block;font-size:20px;font-weight:900;line-height:1.2}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+select,.chip{font:inherit;font-size:14px;font-weight:500;color:var(--band-ink);background:var(--band-soft);border:1px solid transparent;border-radius:999px;padding:9px 14px;min-height:40px;-webkit-appearance:none;appearance:none}
+select{flex:1 1 150px;min-width:0;padding-right:34px;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 18px) 52%,calc(100% - 13px) 52%;background-size:5px 5px;background-repeat:no-repeat}
+select option{color:#16203A;background:#fff}
+.chip{cursor:pointer;flex:0 0 auto}
+.chip[aria-pressed="true"]{background:var(--gold);color:#1C2747}
+.progress{height:6px;background:var(--band-soft);border-radius:6px;overflow:hidden}
+.progress span{display:block;height:100%;background:var(--gold);width:0;border-radius:6px;transition:width .3s}
+main.wrap{margin-top:-48px;display:flex;flex-direction:column;gap:16px;padding-block:0 24px}
+.card{background:var(--surface);border-radius:24px;padding:24px 22px 22px;display:flex;flex-direction:column;gap:16px;min-height:280px;box-shadow:var(--shadow)}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.no{font-family:var(--display);font-size:22px;color:var(--ink);letter-spacing:0}
+.no em{font-style:normal;font-size:13px;font-family:var(--sans);font-weight:700;color:var(--muted);margin-left:4px}
+.tag{background:var(--bg);border-radius:999px;padding:5px 11px;font-weight:500;font-size:12px;max-width:60%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.q{font-size:clamp(19px,5.1vw,22px);font-weight:500;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.result{margin-top:auto;border-radius:18px;padding:16px;display:flex;gap:14px;align-items:flex-start;animation:pop .28s ease-out}
+.result[data-k="O"]{background:var(--o-soft)} .result[data-k="X"]{background:var(--x-soft)}
+@keyframes pop{from{transform:translateY(8px);opacity:.4}to{transform:none;opacity:1}}
+.mark{flex:0 0 auto;width:52px;height:52px;display:grid;place-items:center;font-family:var(--display);font-size:30px;border-radius:50%;color:#fff;animation:stamp .35s cubic-bezier(.3,1.6,.5,1)}
+.result[data-k="O"] .mark{background:var(--o)} .result[data-k="X"] .mark{background:var(--x)}
+@keyframes stamp{from{transform:scale(.4) rotate(-20deg)}to{transform:none}}
+.verdict{font-weight:900;font-size:16px;margin:3px 0 6px}
+.verdict.ok{color:var(--o)} .verdict.no{color:var(--x)}
+.exp{font-size:15.5px;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.pad{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pad button{font-family:var(--display);font-size:52px;line-height:1;cursor:pointer;border:none;border-radius:24px;min-height:104px;color:#fff;box-shadow:var(--shadow);transition:transform .1s}
+#bO{background:var(--o)} #bX{background:var(--x)}
+.pad button:active{transform:scale(.96)}
+.next{width:100%;font:inherit;font-size:18px;font-weight:700;cursor:pointer;border:none;border-radius:20px;min-height:66px;background:var(--band);color:#fff;box-shadow:var(--shadow)}
+:root[data-theme="dark"] .next{background:var(--gold);color:#1C2747}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .next{background:var(--gold);color:#1C2747}}
+.nav{display:flex;justify-content:space-between;gap:10px}
+.nav button{font:inherit;font-size:14px;font-weight:500;background:none;border:none;color:var(--muted);padding:8px 4px;cursor:pointer}
+.nav button:disabled{opacity:.35}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.done{text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;flex:1}
+.done .big{font-family:var(--display);font-size:54px;font-variant-numeric:tabular-nums}
+.done p{margin:0;color:var(--muted)}
+.done .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.done .chip{background:var(--band);color:#fff}
+footer{font-size:12px;color:var(--muted);text-align:center}
+.gate{position:fixed;inset:0;background:var(--band);display:flex;align-items:center;justify-content:center;z-index:20;padding:24px}
+.gate form{background:var(--surface);color:var(--ink);border-radius:24px;padding:30px 24px;width:100%;max-width:360px;display:flex;flex-direction:column;gap:14px;box-sizing:border-box;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.gate .badge{width:56px;height:56px;font-size:24px;background:var(--bg);box-shadow:none}
+.gate h2{margin:0;font-family:var(--display);font-weight:400;font-size:24px}
+.gate p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.gate input{font:inherit;font-size:18px;padding:14px 16px;border:2px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink)}
+.gate input:focus{border-color:var(--o);outline:none}
+.gate button{font:inherit;font-size:17px;font-weight:700;padding:15px;border-radius:14px;border:none;background:var(--o);color:#fff;cursor:pointer}
+.gate .err{color:var(--x);font-size:13px;min-height:1em}
+.sh{margin:6px 0 0;font-size:15.5px;font-weight:900;color:var(--ink);background:var(--surface);border-left:5px solid var(--gold);border-radius:12px;padding:9px 14px;box-shadow:var(--shadow)}
+.it{background:var(--surface);border-radius:18px;padding:14px 16px;box-shadow:var(--shadow);font-size:16px;line-height:2.05;word-break:keep-all;overflow-wrap:anywhere}
+.it.dn{opacity:.6}
+.it p{margin:2px 0}.it img{display:block;max-width:100%;max-height:260px;margin:4px auto 6px;border-radius:8px}
+.ih{display:flex;justify-content:space-between;align-items:center;line-height:1.3;margin-bottom:4px}
+.nn{font-family:var(--display);font-size:18px;color:var(--muted)}
+.chk{font:inherit;font-size:12.5px;border:1.5px solid var(--line);background:none;color:var(--muted);border-radius:999px;padding:4px 10px;cursor:pointer}
+.chk[aria-pressed="true"]{background:var(--o);border-color:var(--o);color:#fff}
+.bl{max-width:100%;white-space:normal;font:inherit;font-weight:700;display:inline-block;vertical-align:baseline;border:none;border-bottom:2.5px solid var(--o);background:var(--o-soft);border-radius:6px 6px 0 0;padding:0 6px;margin:0 2px;line-height:1.5;cursor:pointer;color:transparent;min-height:1.5em}
+.bl span{visibility:hidden}.bl.open{color:var(--x);background:var(--x-soft);border-bottom-color:var(--x)}.bl.open span{visibility:visible}
+.pick{white-space:normal}.pick i{font-style:normal;color:var(--muted);margin:0 2px}
+.op{font:inherit;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:0 7px;line-height:1.55;cursor:pointer;margin:0 1px}
+.op.right{background:var(--o);border-color:var(--o);color:#fff;font-weight:700}.op.bad{background:var(--x);border-color:var(--x);color:#fff}
+.tw{overflow-x:auto;margin:4px 0}.tw table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.7}.tw th,.tw td{border:1px solid var(--line);padding:6px 8px;vertical-align:top}.tw th{background:var(--bg);white-space:nowrap}
+.empty{text-align:center;color:var(--muted);padding:30px 10px;line-height:1.8;background:var(--surface);border-radius:18px}
+.tip{font-size:12.5px;opacity:.85;margin:0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.it td:first-child,.it th:first-child{min-width:4.4em;word-break:keep-all}</style></head><body>
+<div class="gate" id="gate"><form id="gf"><div class="badge" aria-hidden="true"><b>빈</b><i>칸</i></div><h2>세계 문제와 미래 사회 3주차</h2><p>이경태T 수강생 전용이에요.<br>선생님께 받은 입장 코드를 입력하세요.</p><input id="gc" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" inputmode="latin" placeholder="입장 코드" aria-label="입장 코드"><div class="err" id="ge"></div><button type="button" id="gb">입장하기</button></form></div>
+<div class="band"><div class="wrap">
+  <div class="top">
+    <div class="logo"><div class="badge" aria-hidden="true"><b>빈</b><i>칸</i></div><div><small>이경태T · 암기 노트 빈칸</small><h1>세계 문제와 미래 사회 3주차</h1></div></div>
+    <div class="score" id="score"></div>
+  </div>
+  <div class="controls">
+    <select id="sec" aria-label="단원 선택"></select>
+    <button class="chip" id="all" aria-pressed="false">정답 모두 보기</button>
+    <button class="chip" id="hide" aria-pressed="false">외운 문장 숨기기</button>
+  </div>
+  <div class="progress"><span id="bar"></span></div><p class="tip">빈칸을 누르면 정답이 보여요 · ( A / B )는 맞는 쪽을 눌러 보세요</p>
+</div></div>
+<main class="wrap">
+  <section id="list" style="display:flex;flex-direction:column;gap:12px"></section>
+  <div class="nav"><span></span><button id="reset">기록 초기화</button></div>
+  <footer>26 한영외고 2학년 2학기 기말고사 대비 · 한터&amp;SNT</footer>
+</main>
+<script>
+const DATA = [{"t": "1. 문화 다양성은 언어, 의상, 전통, 도덕과 종교에 대한 관념 등 사람들 사이에서 발생하는 {모든 문화적 차이}로, {복합*/단순}적이고 포괄적으로 정의된다.", "h": "문화 다양성의 의미", "s": "문화 다양성의 의미"}, {"t": "2. 문화 다양성의 가장 대표적인 개념은 {2005}년 유네스코 '문화적 표현의 다양성 보호와 증진을 위한 협약'에서 제시되었다.", "h": "문화 다양성의 의미", "s": "문화 다양성의 의미"}, {"t": "3. 문화 다양성 = 집단과 사회의 문화가 {표현}되는 다양한 방식", "h": "문화 다양성의 의미", "s": "문화 다양성의 의미"}, {"t": "4. 문화 다양성은 다양한 문화 인정 + {공존} + 새로운 문화 {창조}를 포함한다.", "h": "문화 다양성의 의미", "s": "문화 다양성의 의미"}, {"t": "5. 등장 배경 : 세계화 → 문화 간 {경쟁}, {독점}, {갈등} 고조 → 문화적 폐해를 극복하는 대안", "h": "문화 다양성의 의미", "s": "문화 다양성의 의미"}, {"t": "6. 문화 다양성의 가장 중요한 가치는 다양한 문화들의 {공존*/통합}이다.", "h": "문화 다양성의 의미", "s": "문화 다양성의 의미"}, {"t": "7. [그림] \"다양한 문화가 공존할 때 세계는 색색의 아름다운 문화의 꽃을 피울 수 있다.\" - {UNESCO}", "h": "문화 다양성의 의미", "s": "문화 다양성의 의미"}, {"t": "1. 많은 국가들은 1970년대까지 이주민이 언어와 생활 습관을 버리고 주류 문화에 흡수되도록 하는 {문화 동화주의} 정책을 진행하였다.", "h": "문화 다원주의와 다문화주의", "s": "문화 다원주의와 다문화주의"}, {"t": "2. {문화 다원주의} : 각 문화의 고유한 가치를 인정하는 태도로, 동화주의에 {대항*/협력}하여 등장하였다. = {국수 대접} 이론", "h": "문화 다원주의와 다문화주의", "s": "문화 다원주의와 다문화주의"}, {"t": "3. 문화 다원주의는 각 문화의 우열이 {없다*/있다}고 보며, 주류 문화의 존재를 {인정*/부정}하면서 소수 문화를 동등하게 중시한다.", "h": "문화 다원주의와 다문화주의", "s": "문화 다원주의와 다문화주의"}, {"t": "4. {다문화주의} : 다양한 문화 집단들의 목소리가 {국가의 정책}에 반영되어야 한다는 주장 = {샐러드 볼} 이론", "h": "문화 다원주의와 다문화주의", "s": "문화 다원주의와 다문화주의"}, {"t": "5. 다문화주의는 주류 문화의 존재를 {인정하지 않는다*/인정한다}.", "h": "문화 다원주의와 다문화주의", "s": "문화 다원주의와 다문화주의"}, {"t": "6. 다문화주의는 동화주의 정책의 {한계}를 인식하고 1970년대 이후 등장하여, {1990*/1970}년대 범세계적 화두가 되었다.", "h": "문화 다원주의와 다문화주의", "s": "문화 다원주의와 다문화주의"}, {"t": "7. 다문화주의의 한계 : 겉으로는 다문화주의, 실제로는 {동화주의} / 공존보다 {사회 통합}을 궁극적 목표로 삼음", "h": "문화 다원주의와 다문화주의", "s": "문화 다원주의와 다문화주의"}, {"t": "8. 소수 집단에 기회 혹은 결과의 평등을 제공하는 정책 → {인종주의}의 강화(반발, 역차별 논란)", "h": "문화 다원주의와 다문화주의", "s": "문화 다원주의와 다문화주의"}, {"t": "9. 문화 다양성은 완전 개방을 요구하는 글로벌 경제 논리로부터 각 국가의 {문화 주권}과 문화 권리를 지켜 내는 논리이다.", "h": "문화 다원주의와 다문화주의", "s": "문화 다원주의와 다문화주의"}, {"t": "10. 문화 다양성은 문화의 {획일화}, 상업화, {종속화}에 대응하는 대안으로 주목받았다.", "h": "문화 다원주의와 다문화주의", "s": "문화 다원주의와 다문화주의"}, {"t": "1. '문화 다양성'이라는 용어는 {우루과이 라운드} 협상 이후 국제 사회에 등장하였다. (협상 시작 : {1986}년)", "h": "문화 다양성의 증가와 협약", "s": "문화 다양성의 증가와 협약"}, {"t": "2. {미국*/프랑스}은 문화도 다른 분야와 똑같이 취급할 것을 요구하였다.", "h": "문화 다양성의 증가와 협약", "s": "문화 다양성의 증가와 협약"}, {"t": "3. 프랑스는 '{문화적 예외}'의 입장 → 문화는 {교류*/교역}의 대상이지 {교역*/교류}의 대상이 아니다.", "h": "문화 다양성의 증가와 협약", "s": "문화 다양성의 증가와 협약"}, {"t": "4. {2001}년 유네스코 '{세계 문화 다양성 선언}' → 문화 다양성은 인류의 {공동 유산}, 현재와 {미래} 세대를 위한 혜택", "h": "문화 다양성의 증가와 협약", "s": "문화 다양성의 증가와 협약"}, {"t": "5. [그림] {2001}년 세계 문화 다양성 선언 포스터 : 생태 다양성이 자연에 필요한 것처럼 문화 다양성은 인류에게 필요", "h": "문화 다양성의 증가와 협약", "s": "문화 다양성의 증가와 협약"}, {"t": "6. 문화 다양성 협약은 {2005}년 10월 20일 유네스코 제{33}차 총회에서 채택되었다.", "h": "문화 다양성의 증가와 협약", "s": "문화 다양성의 증가와 협약"}, {"t": "7. {미국}과 {이스라엘}의 반대에도 154개 회원국 중 {148}개국의 찬성으로 채택되었다.", "h": "문화 다양성의 증가와 협약", "s": "문화 다양성의 증가와 협약"}, {"t": "8. 우리나라는 {2010}년 {110}번째로 협약을 비준하였다.", "h": "문화 다양성의 증가와 협약", "s": "문화 다양성의 증가와 협약"}, {"t": "9. 협약 내용 : 각국의 문화 정책 수립 {자주권} 보장, 문화 교류 {분쟁}의 해결 절차 제시, 문화 {약소국*/강대국}에 대한 지원 명시", "h": "문화 다양성의 증가와 협약", "s": "문화 다양성의 증가와 협약"}, {"t": "10. 협약은 {소수 민족}의 지식 체계를 유지·증진하는 것을 주요 사업으로 삼는다.", "h": "문화 다양성의 증가와 협약", "s": "문화 다양성의 증가와 협약"}, {"t": "11. 유네스코 협약은 {국가 간*/국가 내부} 문화 보호주의와 문화적 격차 해소를 주된 과제로 삼는다.", "h": "문화 다양성의 증가와 협약", "s": "문화 다양성의 증가와 협약"}, {"t": "1. 프랑스 : 산업 혁명 시대에는 주로 {유럽*/마그레브} 출신 이주 노동자가 유입되어 큰 어려움 없이 적응하였다.", "h": "다양한 문화 공존을 위한 노력", "s": "다양한 문화 공존을 위한 노력"}, {"t": "2. 프랑스는 제{1}차 세계 대전 이후 부족한 노동력을 보충하기 위해 '{국제 노동 이주 정책}'을 실시하였다.", "h": "다양한 문화 공존을 위한 노력", "s": "다양한 문화 공존을 위한 노력"}, {"t": "3. 프랑스는 {1974}년 이주 노동자의 {가족 합류}를 허용하면서 이주민 공동체가 본격적으로 형성되었다.", "h": "다양한 문화 공존을 위한 노력", "s": "다양한 문화 공존을 위한 노력"}, {"t": "4. 프랑스의 이주민 공동체는 주로 {마그레브} 지역(북아프리카의 모로코, 알제리, 튀니지) 출신이다.", "h": "다양한 문화 공존을 위한 노력", "s": "다양한 문화 공존을 위한 노력"}, {"t": "5. 동화주의 시기 프랑스에서는 {문화 단일성}이 사회적 규범이었고, 정체성은 {사적*/공적} 영역에서만 다루어졌다.", "h": "다양한 문화 공존을 위한 노력", "s": "다양한 문화 공존을 위한 노력"}, {"t": "6. 프랑스는 1980년대 후반 '{차이에 대한 권리}'를 인정하였다. (똘레랑스 → 권리)", "h": "다양한 문화 공존을 위한 노력", "s": "다양한 문화 공존을 위한 노력"}, {"t": "7. 프랑스는 비종교성 원칙(라이시테)을 {고수*/폐지}하면서도 파리 도심에 {아랍 문화관} 건립을 허용하였다.", "h": "다양한 문화 공존을 위한 노력", "s": "다양한 문화 공존을 위한 노력"}, {"t": "8. 프랑스는 이주민 자녀에게 {모국어} 교육을 실시하여 {다언어주의}의 수용을 확대하였다.", "h": "다양한 문화 공존을 위한 노력", "s": "다양한 문화 공존을 위한 노력"}, {"t": "9. 프랑스의 제도 : {국립 이민 문화관} 설립, {기회 균등법} 제정(대중 매체), 통합과 차별 퇴치 지원 기금 → {차별 퇴치 고용청} 설립", "h": "다양한 문화 공존을 위한 노력", "s": "다양한 문화 공존을 위한 노력"}, {"t": "10. [그림] {캐나다}는 160여 개국의 이민자들이 모여 {모자이크}처럼 한 사회를 이루었다.", "h": "다양한 문화 공존을 위한 노력", "s": "다양한 문화 공존을 위한 노력"}, {"t": "11. 캐나다는 {1967}년부터 인종, 출신국과 {무관*/관련}하게 교육 수준, 언어 능력 등을 점수화하는 {이민 점수제}를 시행하였다.", "h": "다양한 문화 공존을 위한 노력", "s": "다양한 문화 공존을 위한 노력"}, {"t": "12. 캐나다는 {다문화주의}를 {연방*/지방} 정부의 공식 통합 정책으로 채택하였다.", "h": "다양한 문화 공존을 위한 노력", "s": "다양한 문화 공존을 위한 노력"}, {"t": "13. 캐나다는 외국 예술가를 대상으로 취업 허가를 {면제*/제한}하였다.", "h": "다양한 문화 공존을 위한 노력", "s": "다양한 문화 공존을 위한 노력"}, {"t": "14. 스웨덴의 세 가지 원칙 : {평등}, {선택의 자유}, {협력}", "h": "다양한 문화 공존을 위한 노력", "s": "다양한 문화 공존을 위한 노력"}, {"t": "15. 스웨덴은 {제한적인*/완전한} 범위 내에서 이주민의 참정권을 인정하였다.", "h": "다양한 문화 공존을 위한 노력", "s": "다양한 문화 공존을 위한 노력"}, {"t": "16. 스웨덴은 {동화 전략}과 {다문화 정책}을 병행하였다.", "h": "다양한 문화 공존을 위한 노력", "s": "다양한 문화 공존을 위한 노력"}, {"t": "17. 스웨덴은 소수자 및 {성 평등} 정책을 문화 다양성 정책의 일환으로 시행하였다.", "h": "다양한 문화 공존을 위한 노력", "s": "다양한 문화 공존을 위한 노력"}, {"t": "18. [그림] 우리나라의 {무지개다리} 사업 : 문화 다양성을 {인권}의 측면에서 바라보고 다양한 문화 주체 간 교류 지원", "h": "다양한 문화 공존을 위한 노력", "s": "다양한 문화 공존을 위한 노력"}, {"t": "19. 무지개다리 사업은 전국의 {지역 문화 재단}을 중심으로 운영된다.", "h": "다양한 문화 공존을 위한 노력", "s": "다양한 문화 공존을 위한 노력"}, {"t": "1. 지식 정보사회 : 초고속 정보 통신망을 통해 세계가 하나로 연결되고, 지적 재산이 정보로 가공되어 그 자체가 {상품화}되어 {부가 가치}의 원천이 되는 사회", "h": "지식 정보사회의 도래", "s": "지식 정보사회의 도래"}, {"t": "2. 메가트렌드는 {유럽 연합 집행 위원회*/유엔 인권 이사회}가 정리하였다.", "h": "지식 정보사회의 도래", "s": "지식 정보사회의 도래"}, {"t": "3. 메가트렌드 : {세계화}, {인구 통계학적 변화}, {기술의 가속}", "h": "지식 정보사회의 도래", "s": "지식 정보사회의 도래"}, {"t": "4. 도시 이주, 고령화, 가족 구성원 수 변화는 {인구 통계학적 변화*/세계화}에 해당한다.", "h": "지식 정보사회의 도래", "s": "지식 정보사회의 도래"}, {"t": "5. 메가트렌드 중 {기술의 가속}이 우리 삶을 가장 빠르게 변화시킨다.", "h": "지식 정보사회의 도래", "s": "지식 정보사회의 도래"}, {"t": "6. {블록체인} : 거래 내역이 {수많은 컴퓨터에 동시에*/중앙 서버 한 곳에} 저장되어 데이터 조작을 사실상 불가능하게 하는 기술", "h": "지식 정보사회의 도래", "s": "지식 정보사회의 도래"}, {"t": "7. 블록체인은 현재 {암호 화폐}의 핵심이며, 미래에는 {전자 투표}, 화물 거래 시스템 등에 도입되어 {해킹}을 막을 것이다.", "h": "지식 정보사회의 도래", "s": "지식 정보사회의 도래"}, {"t": "8. {크리스퍼 유전자 가위} : 원하는 부위의 DNA를 잘라 내는 기술 → 의료 혁신, {생명 윤리} 논란", "h": "지식 정보사회의 도래", "s": "지식 정보사회의 도래"}, {"t": "9. 지리 정보 시스템을 활용한 무인 항공기 '{드론}' → 운송, 물류, 보안 산업에 변화", "h": "지식 정보사회의 도래", "s": "지식 정보사회의 도래"}, {"t": "10. 소셜 미디어는 SNS보다 {넓은*/좁은} 개념이다.", "h": "지식 정보사회의 도래", "s": "지식 정보사회의 도래"}, {"t": "11. [그림] 1차 {증기 기관} → 2차 {전기 기관}, 대량 생산 → 3차 정보 통신 기술, {자동화} → 4차 기술의 {융합}", "h": "지식 정보사회의 도래", "s": "지식 정보사회의 도래"}, {"t": "12. 4차 산업 혁명은 다보스 포럼 회장인 {클라우스 슈밥}이 주장하였다.", "h": "지식 정보사회의 도래", "s": "지식 정보사회의 도래"}, {"t": "13. 신상 털기에 대해 전문가들은 {범죄 행위*/사회 정의}라고 지적한다.", "h": "지식 정보사회의 도래", "s": "지식 정보사회의 도래"}, {"t": "1. {정보 인권} : 정보의 유통에 관한 개인의 기본적 권리들", "h": "정보 인권과 정보 격차", "s": "정보 인권과 정보 격차"}, {"t": "2. 정보 인권을 주목하는 이유 : ① 정보 그 자체가 지배 혹은 {권력}의 요소 ② 정보 자원에 대한 {접근성}이 중요", "h": "정보 인권과 정보 격차", "s": "정보 인권과 정보 격차"}, {"t": "3. {정보 격차} : 정보 기술에 접근할 수 있는 능력을 보유한 자와 그렇지 못한 자 사이에 경제적·사회적 격차가 심화되는 현상", "h": "정보 인권과 정보 격차", "s": "정보 인권과 정보 격차"}, {"t": "4. 우리나라 헌법재판소는 {개인 정보 자기 결정권}을 인정하여야 한다고 판결문에서 제시하였다.", "h": "정보 인권과 정보 격차", "s": "정보 인권과 정보 격차"}, {"t": "5. 그림 (가) CCTV 감시 → {사생활의 비밀과 자유} 침해, (나) 위치 정보 추적 → {개인 정보 자기 결정권} 침해", "h": "정보 인권과 정보 격차", "s": "정보 인권과 정보 격차"}, {"t": "1. {정보 프라이버시} : 자신에 관한 정보를 정보 주체가 스스로 {통제}할 수 있는 권리 → '개인 정보의 수집, 이용, 통제의 문제'", "h": "정보 인권의 유형", "s": "정보 인권의 유형"}, {"t": "2. 정보 프라이버시는 신체, 공간, 의사 결정에 대한 간섭 배제를 강조한 {전통적*/현대적} 프라이버시와 차별성이 있다.", "h": "정보 인권의 유형", "s": "정보 인권의 유형"}, {"t": "3. {표현의 자유} : 사상이나 의견을 외부에 표현하고 타인에게 전달하는 자유 → 개인적인 {자기실현}의 가치 + {자기 통치}의 민주적 가치", "h": "정보 인권의 유형", "s": "정보 인권의 유형"}, {"t": "4. 표현의 자유는 인간의 {정신적*/경제적} 자유와 정치적 자유의 핵심이다.", "h": "정보 인권의 유형", "s": "정보 인권의 유형"}, {"t": "5. {정보에 대한 접근권} : 정보의 자유 또는 {알 권리}의 기초 → {국민 주권} 원리의 실질화, {정보 격차} 해소까지 포괄", "h": "정보 인권의 유형", "s": "정보 인권의 유형"}, {"t": "6. {정보 문화 향유권} : 문화생활에 참여할 권리 + 과학의 진보와 응용의 혜택을 향유할 권리", "h": "정보 인권의 유형", "s": "정보 인권의 유형"}, {"t": "7. 정보 문화 향유권은 {1995}년 WTO {트립스(TRIPS)}를 계기로 구체화되었고, 과도한 {지적 재산권} 보호를 제한하는 원리이다.", "h": "정보 인권의 유형", "s": "정보 인권의 유형"}, {"t": "8. 미국 연방 대법원 : 영화 검열 자체가 곧 위헌은 {아니다*/맞다}. 단, {절차적 보장}이 있을 때만 허용", "h": "정보 인권의 유형", "s": "정보 인권의 유형"}, {"t": "9. 메릴랜드주 개정법은 {4 : 4}로 의견이 갈려 결과적으로 {합헌*/위헌}으로 종결되었다.", "h": "정보 인권의 유형", "s": "정보 인권의 유형"}, {"t": "1. {잊힐 권리} : 자신과 관련된 정보의 {삭제} 및 {확산 방지}를 요구할 수 있는 권리", "h": "잊힐 권리와 GDPR", "s": "잊힐 권리와 GDPR"}, {"t": "2. 잊힐 권리는 {2012}년 유럽 정보 보호법 개정안에서 명문화, {2014}년 유럽 사법 재판소 판결로 인정", "h": "잊힐 권리와 GDPR", "s": "잊힐 권리와 GDPR"}, {"t": "3. 잊힐 권리는 인터넷의 보편적 정보 {접근성}과 충돌한다. 팀 버너스리 : \"웹의 힘은 {보편성}에 있다.\"", "h": "잊힐 권리와 GDPR", "s": "잊힐 권리와 GDPR"}, {"t": "4. 개인 정보 관련 내용을 삭제해 주는 '{디지털 장의사}'가 주목받고 있다.", "h": "잊힐 권리와 GDPR", "s": "잊힐 권리와 GDPR"}, {"t": "5. {GDPR}은 {EU*/미국}에서 {2018}년부터 시행된 개인 정보 보호 법령이다.", "h": "잊힐 권리와 GDPR", "s": "잊힐 권리와 GDPR"}, {"t": "6. GDPR에서 새롭게 등장한 권리 : {처리 제한권}, {정보 이동권}", "h": "잊힐 권리와 GDPR", "s": "잊힐 권리와 GDPR"}, {"t": "7. GDPR은 개인 정보 처리의 목적과 수단을 결정하는 {컨트롤러}의 의무를 강조한다.", "h": "잊힐 권리와 GDPR", "s": "잊힐 권리와 GDPR"}, {"t": "8. 처리 제한권이 행사되면 컨트롤러는 그 정보를 {보유만*/즉시 삭제} 할 수 있다.", "h": "잊힐 권리와 GDPR", "s": "잊힐 권리와 GDPR"}, {"t": "9. 반대권은 정보 주체에게 {최초 연락}하는 시점에 알려 주어야 한다.", "h": "잊힐 권리와 GDPR", "s": "잊힐 권리와 GDPR"}, {"t": "10. {프로파일링 거부권} : 자동화된 처리에 의해서만 결정하는 것에 반대할 권리", "h": "잊힐 권리와 GDPR", "s": "잊힐 권리와 GDPR"}];
+const SECS=[...new Set(DATA.map(d=>d.h))];
+const ROM=['Ⅰ','Ⅱ','Ⅲ','Ⅳ','Ⅴ','Ⅵ','Ⅶ'];
+const KEY='hy-world-future-w3-note-v1';
+let st={done:{}};try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&s.done)st=s}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const $=id=>document.getElementById(id);
+let section='0',showAll=false,hideDone=false;
+$('sec').innerHTML=SECS.map((s,i)=>'<option value="'+i+'">'+(i+1)+'. '+s+' ('+DATA.filter(d=>d.h===s).length+')</option>').join('');
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function mk(t){
+  return esc(t).replace(/\{(.+?)\}/g,(m,x)=>{
+    if(x.includes('/')){
+      return '<span class="pick">( '+x.split('/').map(o=>{const ok=o.endsWith('*');o=o.replace(/\*$/,'');return '<button class="op'+(showAll&&ok?' right':'')+'" data-ok="'+(ok?1:0)+'">'+o+'</button>'}).join('<i>/</i>')+' )</span>';
+    }
+    return '<button class="bl'+(showAll?' open':'')+'" style="min-width:'+Math.min(14,Math.max(2.5,x.length*0.95))+'em"><span>'+x+'</span></button>';
+  }).replace(/_(.+?)_/g,'<u>$1</u>').replace(/\n/g,'<br>').replace(/&lt;br&gt;/g,'<br>');
+}
+function render(){
+  const items=DATA.map((d,i)=>[d,i]).filter(([d])=>d.h===SECS[+section]);
+  const nd=items.filter(([d,i])=>st.done[i]).length;
+  $('score').innerHTML='<span>외운 문장</span><strong>'+nd+'/'+items.length+'</strong>';
+  $('bar').style.width=(items.length?nd/items.length*100:0)+'%';
+  let h='',cur='',n=0;
+  items.forEach(([d,i])=>{
+    if(hideDone&&st.done[i])return;
+    if(d.s!==cur){cur=d.s;n=0;h+='<h3 class="sh">'+esc(d.s)+'</h3>'}
+    n++;
+    const num=(d.pre||((d.t||'').match(/^(\d+)\./)||[])[0]||'');
+    h+='<article class="it'+(st.done[i]?' dn':'')+'"><div class="ih"><span class="nn">'+num+'</span><button class="chk" data-i="'+i+'" aria-pressed="'+(st.done[i]?'true':'false')+'">'+(st.done[i]?'외웠어요 ✓':'외웠어요')+'</button></div>';
+    if(d.img)h+='<img src="img/'+d.img+'.jpg" alt="">'+(d.lines||[]).map(l=>'<p>'+mk(l)+'</p>').join('');
+    else if(d.tbl)h+='<div class="tw"><table>'+d.tbl.map((r,ri)=>'<tr>'+r.map(c=>(ri===0&&!d.nh?'<th>':'<td>')+mk(c)+(ri===0&&!d.nh?'</th>':'</td>')).join('')+'</tr>').join('')+'</table></div>';
+    else h+='<p>'+mk(d.t.replace(/^\d+\.\s*/,''))+'</p>';
+    h+='</article>';
+  });
+  if(!h)h='<div class="empty">이 단원의 문장을 모두 외웠어요! 👏<br>‘외운 문장 숨기기’를 끄면 다시 볼 수 있어요.</div>';
+  $('list').innerHTML=h;
+}
+$('list').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  if(b.classList.contains('bl'))b.classList.toggle('open');
+  else if(b.classList.contains('op')){b.classList.add(b.dataset.ok==='1'?'right':'bad');if(b.dataset.ok!=='1')setTimeout(()=>b.classList.remove('bad'),900)}
+  else if(b.classList.contains('chk')){const i=b.dataset.i;if(st.done[i])delete st.done[i];else st.done[i]=1;save();render()}
+});
+$('sec').onchange=e=>{section=e.target.value;window.scrollTo({top:0});render()};
+$('all').onclick=e=>{showAll=!showAll;e.currentTarget.setAttribute('aria-pressed',showAll);e.currentTarget.textContent=showAll?'모두 가리기':'정답 모두 보기';render()};
+$('hide').onclick=e=>{hideDone=!hideDone;e.currentTarget.setAttribute('aria-pressed',hideDone);render()};
+let armed=false;
+$('reset').onclick=e=>{const t=e.currentTarget;if(!armed){armed=true;t.textContent='한 번 더 누르면 초기화';setTimeout(()=>{armed=false;t.textContent='기록 초기화'},2500);return}
+ st={done:{}};save();armed=false;t.textContent='기록 초기화';render()};
+render();
+</script>
+<script>
+(function(){
+const H=1418297543,K='hy-world-future-w3-note-gate';
+const hash=s=>{let h=5381;for(const c of s.trim().toLowerCase())h=((h*33)^c.charCodeAt(0))>>>0;return h};
+const g=document.getElementById('gate');
+let ok=false;try{ok=localStorage.getItem(K)===String(H)}catch(e){}
+if(ok){g.hidden=true;return}
+const M={'ㅂ':'q','ㅈ':'w','ㄷ':'e','ㄱ':'r','ㅅ':'t','ㅛ':'y','ㅕ':'u','ㅑ':'i','ㅐ':'o','ㅔ':'p','ㅁ':'a','ㄴ':'s','ㅇ':'d','ㄹ':'f','ㅎ':'g','ㅗ':'h','ㅓ':'j','ㅏ':'k','ㅣ':'l','ㅋ':'z','ㅌ':'x','ㅊ':'c','ㅍ':'v','ㅠ':'b','ㅜ':'n','ㅡ':'m'};
+const norm=s=>[...String(s).replace(/\s+/g,'')].map(c=>M[c]||c).join('');
+const tryIn=()=>{const v=document.getElementById('gc').value;
+ if(hash(norm(v))===H||hash(v)===H){try{localStorage.setItem(K,String(H))}catch(e){} g.hidden=true}
+ else document.getElementById('ge').textContent='코드가 맞지 않아요. 영문 자판으로 입력했는지 확인해 주세요.'};
+document.getElementById('gb').addEventListener('click',tryIn);
+document.getElementById('gc').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();tryIn()}});
+document.getElementById('gf').addEventListener('submit',e=>{e.preventDefault();tryIn()});
+})();
+</script>
+<script>window.EXAM_CFG={"app": "세계 문제와 미래 사회 3주차 암기 노트", "sets": [{"label": "빈칸", "type": "note", "v": "DATA"}]}</script><script src="../lib/exam.js?v=2"></script>
+</body></html>
